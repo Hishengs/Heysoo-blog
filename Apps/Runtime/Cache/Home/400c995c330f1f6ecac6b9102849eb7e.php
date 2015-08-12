@@ -29,6 +29,7 @@
 </head>
 <body>
 <div id="mask"></div>
+<div id="hMessage_mask"></div>
 <!-- 左边侧 个人资料面板 -->
 <div id="left_panel">
 <div class="user_avatar">

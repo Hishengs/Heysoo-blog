@@ -101,4 +101,32 @@ class PieceController extends Controller {
             $this->ajaxReturn($response,'json');
         }
     }
+    //发布碎片评论
+    public function post_comment(){
+        if(C('PIECE_COMMENT_ON')){//评论功能是否开启
+            $piece_id = I('post.piece_id');
+            $comment_content = I('post.comment_content','','');
+            $user_id = $_SESSION['USER_ID'];
+            $comment_date = date("Y-m-d H:i:s");
+            $data = array('user_id'=>$user_id,'piece_id'=>$piece_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
+            $comment_model = D("PieceComment");
+            if($comment_model->add($data) != false){
+                $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
+                    'content'=>$comment_content)),'json');
+            }
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'评论失败'),'json');
+        }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
+    } 
+    //获取碎片评论
+    public function get_piece_comment(){
+        $piece_id = I('get.piece_id');
+        $comment_model = D("PieceComment");
+        $cdt['piece_id'] = $piece_id;
+        $comments = $comment_model->where($cdt)->order('comment_date desc')->select();
+        if($comments != false){
+            $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
+        }else{
+            $this->ajaxReturn(array('error'=>1,'msg'=>'评论获取失败'),'json');
+        }
+    }
 }

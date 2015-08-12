@@ -32,7 +32,7 @@
 <?php if($comments_num > 0): if(is_array($comments)): foreach($comments as $key=>$comment): ?><li class="hs-comment">
 <article class="hs-comment essay-comment"> <!-- 评论容器 -->
   <a href="">
-    <img class="hs-comment-avatar user-avatar" src="/ThinkPHP/Public/img/me.jpg" alt=""/> <!-- 评论者头像 -->
+    <img class="hs-comment-avatar user-avatar" src="/Heysoo/Public/img/me.jpg" alt=""/> <!-- 评论者头像 -->
   </a>
 
   <div class="hs-comment-main"> <!-- 评论内容容器 -->
@@ -54,6 +54,6 @@
 </div>
 
 <script type="text/javascript">
-	var avatar_path = "/ThinkPHP/Public/img/lion.png";
+	var avatar_path = "/Heysoo/Public/img/lion.png";
 </script>
-<script src="/ThinkPHP/Public/js/view.js"></script>
+<script src="/Heysoo/Public/js/view.js"></script>

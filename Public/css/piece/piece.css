@@ -9,6 +9,7 @@ div.piece_comment_view{ float: left; padding-right: 10px; width: 510px; height: 
 div.piece_comment_post{ float: right; padding: 10px; width: 400px; height: 100%; /* box-shadow: 0px 2px 5px rgba(0,0,0,0.8); */}
 div.piece_comment_piece{  box-shadow: 0px 1px 2px rgba(0,0,0,0.8); margin: 1px; padding: 15px; }
 div.piece_comment_view img{ max-width: 450px;}
+div.piece_comment_list{ overflow: hidden;}
 div.piece_comment_piece_info a{ color: #696969;}
 div.piece_comment_piece_info a:hover{ color: #333;}
 div.piece_comment_piece_content{ margin:10px auto;}
@@ -18,3 +19,7 @@ div.piece_comment_post_header{margin-bottom: 10px;}
 div.piece_comment_post textarea{ width: 380px; height: 100%;}
 div.piece_comment_tip{ display: table; margin: 0 auto; margin-top: 50px;}
 button.piece_comment_submit{ margin-top: 10px; float: right;}
+div.piece_comment_item{ padding: 15px; box-shadow: 0px 1px 2px rgba(0,0,0,0.5); margin:10px 1px;}
+div.piece_comment_item a{ color: #696969;}
+div.piece_comment_item a:hover{ color: #333;}
+div.piece_comment_content{ margin: 10px auto;}
