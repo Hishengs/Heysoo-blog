@@ -11,7 +11,8 @@ class CommentController extends Controller {
     }
     //获取文章评论
     public function get_essay_comments($essay_id){
-    	$result = $this->comment_model->where("essay_id=".$essay_id)->order("comment_date desc")->select();
+    	//$result = $this->comment_model->where("essay_id=".$essay_id)->order("comment_date desc")->select();
+        $result = $this->comment_model->join("hs_user ON hs_user.id=hs_comment.user_id AND hs_comment.essay_id=".$essay_id)->order("hs_comment.comment_date desc")->select();
     	return $result;
     }
 }

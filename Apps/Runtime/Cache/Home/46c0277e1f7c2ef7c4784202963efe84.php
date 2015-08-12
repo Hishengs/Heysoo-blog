@@ -1,11 +1,11 @@
 <?php if (!defined('THINK_PATH')) exit(); if(is_array($pieces)): foreach($pieces as $key=>$piece): ?><div class="piece" id="<?php echo ($piece['id']); ?>">
 <div class="piece_left">
-<a href="<?php echo U('User/index',array('user'=>$piece['username']));?>" target="_blank"><img class="user_avatar" src="/ThinkPHP/Public/img/me.jpg" title="访问他/她的主页"/></a>
+<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user_avatar" src="/Heysoo/Public/img/me.jpg" title="访问他/她的主页"/></a>
 </div>
 <div class="piece_right">
 <div class="bg"></div><div class="piece_triangle"></div>
 <div class="piece_info">
-<span class="piece_author"><a class="piece_user" href="<?php echo U('User/index',array('user'=>$piece['username']));?>" target="_blank"><?php echo ($piece["username"]); ?>  </a></span>&nbsp;
+<span class="piece_author"><a class="piece_user" href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><?php echo ($piece["username"]); ?>  </a></span>&nbsp;
 <span class="piece_date"><i class="icon-time"></i> <?php echo date("Y-m-d",strtotime($piece['date']));?></span>
 </div>
 <div class="piece_content">

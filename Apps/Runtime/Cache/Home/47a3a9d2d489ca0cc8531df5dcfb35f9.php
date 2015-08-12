@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
-<!-- <link rel="stylesheet" href="/ThinkPHP/Public/css/bootstrap/bootstrap.min.css"/> -->
-<link rel="stylesheet" href="/ThinkPHP/Public/bower_components/amazeui/dist/css/amazeui.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/font-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/login.css"/>
-<script src="/ThinkPHP/Public/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="/Heysoo/Public/css/bootstrap/bootstrap.min.css"/> -->
+<link rel="stylesheet" href="/Heysoo/Public/bower_components/amazeui/dist/css/amazeui.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/login.css"/>
+<script src="/Heysoo/Public/bower_components/jquery/dist/jquery.min.js"></script>
 </head>
 <style>
-body,div.login_panel{ background-image:url("/ThinkPHP/Public/img/bg_night2.png"); }
-button.login,button.register,span.hs-input-group-label{background-image: url("/ThinkPHP/Public/img/bg_night2.png");} 
+body,div.login_panel{ background-image:url("/Heysoo/Public/img/bg_night2.png"); }
+button.login,button.register,span.hs-input-group-label{background-image: url("/Heysoo/Public/img/bg_night2.png");} 
 span.hs-input-group-label{ background:transparent;}
 </style>
 <script>
@@ -38,7 +38,7 @@ span.hs-input-group-label{ background:transparent;}
 <div class="bg">
 <div class="login_panel">
 <div id="avatar">
-<img class="avatar_img" src="/ThinkPHP/Public/img/lion.png"/>
+<img class="avatar_img" src="/Heysoo/Public/img/lion.png"/>
 </div>
 <div class="title">Heysoo</div>
 <div class="slogan">每个人就是一个世界</div>

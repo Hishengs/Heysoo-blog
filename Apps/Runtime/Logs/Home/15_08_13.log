@@ -1,0 +1,2108 @@
+[ 2015-08-13T00:01:30+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=69   [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:01:33+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=64
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=64   [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:02:31+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=64
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.3140s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=64  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0030s ]
+
+[ 2015-08-13T00:02:50+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=62
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=62  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:02:55+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=61  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:04+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=58
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=58  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:25+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=56
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=56  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:30+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=55
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=55  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:35+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=54
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0020s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=54  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:42+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=53
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=53  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:03:45+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=53
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=53  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:13:19+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=56
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0150s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=56  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:13:25+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=58
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=58  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:13:35+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=61
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0050s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=61  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:13:42+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=62
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=62  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:13:56+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=64
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=64  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:14:07+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=66
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=66  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:14:12+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=67
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=67  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:14:16+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_comment.html?piece_id=69
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `hs_piece_comment` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content FROM `hs_piece_comment` INNER JOIN hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id=69  ORDER BY hs_piece_comment.comment_date desc  [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:16:04+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0375s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.215003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.225003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:16:05+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:16:07+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007501s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` ORDER BY date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.117502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.120002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-13T00:16:10+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0075s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.235003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.235003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:16:10+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:16:12+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0525s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.727008s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.729508s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:16:12+08:00 ] ::1 /Heysoo/Home/Piece/load_pieces_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+
+[ 2015-08-13T00:16:51+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `hs_piece` ORDER BY date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:17:19+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` ORDER BY date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.152502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.157502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007501s ]
+
+[ 2015-08-13T00:22:14+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.150003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.155003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:22:27+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.115001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.117501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005001s ]
+
+[ 2015-08-13T00:24:22+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0175s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.118502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.118502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:24:27+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+
+[ 2015-08-13T00:25:21+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.177503s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.177503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:25:24+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:25:33+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=25
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 25,10   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:25:37+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=35
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 35,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.062501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-13T00:26:57+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.205003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.207503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:26:57+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:27:01+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `id` = '1245' LIMIT 1   [ RunTime:0.0325s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0450s ]
+SQL: SELECT * FROM `hs_comment` WHERE ( essay_id=1245 ) ORDER BY comment_date desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.110001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.110001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:29:29+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.197502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.202502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:29:30+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:29:31+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in on clause is ambiguous
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-13T00:30:14+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.137502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.145002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010001s ]
+
+[ 2015-08-13T00:30:17+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.187503s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.187503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:30:17+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:30:19+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+ERR: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in on clause is ambiguous
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-13T00:33:59+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0975s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0300s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.127502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.132502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-13T00:34:02+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002501s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.192502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.192502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:34:03+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:34:04+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'hs_userName' in 'field list'
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-13T00:35:20+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.1050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.122502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.125002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.012500s ]
+
+[ 2015-08-13T00:35:23+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.217503s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.220003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:35:24+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.2075s ]
+
+[ 2015-08-13T00:35:25+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1245  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: id D:\workspace\www\Heysoo\Apps\Home\Controller\EssayController.class.php 第 77 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') ORDER BY comment_date desc' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-13T00:41:38+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002501s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002501s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.135002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.137502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002501s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-13T00:41:42+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.225003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.227503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:41:42+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:41:44+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1245  LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_comment` WHERE ( essay_id=1245 ) ORDER BY comment_date desc  [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.110001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-13T00:41:51+08:00 ] ::1 /Heysoo/Home/User/get_user_info.html?user=Hishengs
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+ERR: 参数错误或者未定义:userName
+
+[ 2015-08-13T00:42:01+08:00 ] ::1 /Heysoo/Home/User/get_user_info.html?user=Hishengs
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+ERR: 参数错误或者未定义:userName
+
+[ 2015-08-13T00:43:19+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.192502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.192502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:43:19+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:43:20+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1245  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_comment` WHERE ( essay_id=1245 ) ORDER BY comment_date desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.095001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:43:27+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.182503s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.185003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:43:27+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:43:28+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1245  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_comment` WHERE ( essay_id=1245 ) ORDER BY comment_date desc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.085001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.087501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:45:40+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002501s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.261004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.261004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:45:41+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:45:44+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1245
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1245  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_comment` INNER JOIN hs_user ON hs_user.id=hs_comment.user_id AND hs_comment.essay_id=1245  ORDER BY hs_comment.comment_date desc  [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.060001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-13T00:46:38+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.212502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.212502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:46:38+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+
+[ 2015-08-13T00:46:44+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1152
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1152  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_comment` INNER JOIN hs_user ON hs_user.id=hs_comment.user_id AND hs_comment.essay_id=1152  ORDER BY hs_comment.comment_date desc  [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.087500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.087500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:48:12+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.010000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.182502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.185002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:48:12+08:00 ] ::1 /Heysoo/Home/Essay/load_essays_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:48:35+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.077501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:48:35+08:00 ] ::1 /Heysoo/Home/Piece/load_pieces_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+
+[ 2015-08-13T00:51:08+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` WHERE `userName` = 'Hisheng' ORDER BY date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.105002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:51:08+08:00 ] ::1 /Heysoo/Home/Piece/load_pieces_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0200s ]
+
+[ 2015-08-13T00:52:02+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002501s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.080001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.080001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:52:02+08:00 ] ::1 /Heysoo/Home/Piece/load_pieces_html.html?page=0&type=init
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+
+[ 2015-08-13T00:53:05+08:00 ] ::1 /Heysoo/Home/Action/logout.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.110002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:53:08+08:00 ] ::1 /Heysoo/Home/Action/logout.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.087501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.092502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:53:11+08:00 ] ::1 /Heysoo/Home/Action/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.087502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.090002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:53:21+08:00 ] ::1 /Heysoo/Home/Action/do_login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `hs_user` SET `ip`='::1',`city`='',`last_login_date`='2015-08-13 00:53:20' WHERE `userName` = 'Hishengs' [ RunTime:0.2125s ]
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Home\Controller\ActionController.class.php 第 57 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.060001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:53:23+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.125002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.127502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:53:31+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hishengs' ORDER BY date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.087501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.087501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:53:41+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.078500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002501s ]
+
+[ 2015-08-13T00:57:13+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.135002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.140003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-13T00:57:43+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.112502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.112502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T00:57:53+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,10   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.010000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.070000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T00:58:01+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=25
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 25,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-13T00:58:08+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=35
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 35,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.082501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.082501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T00:58:11+08:00 ] ::1 /Heysoo/Home/Index/load_pieces.html?startNum=45
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 45,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.047501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-13T01:15:03+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.137502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.137502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T01:17:30+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' AND `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.085001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.085001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T01:18:15+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' AND `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.077501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.080001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T01:18:54+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002501s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_essay` WHERE `userName` = 'Hishengs' ORDER BY date desc LIMIT 10   [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.140002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.140002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T01:19:01+08:00 ] ::1 /Heysoo/Home/Piece/get_piece_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id=1000  ORDER BY hs_piece.date desc LIMIT 10   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' AND `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.120002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-13T01:21:40+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=1000 AND hs_essay.user_id=1000  ORDER BY hs_essay.date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0375s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.210002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.210002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+
+[ 2015-08-13T01:21:56+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1000
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1000  LIMIT 1   [ RunTime:0.0150s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0075s ]
+NOTIC: [8] Undefined index: id D:\workspace\www\Heysoo\Apps\Home\Controller\EssayController.class.php 第 78 行.
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY hs_comment.comment_date desc' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-13T01:23:40+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002501s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.155002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.155002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007501s ]
+
+[ 2015-08-13T01:23:43+08:00 ] ::1 /Heysoo/Home/Essay/get_essay_page.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=1000 AND hs_essay.user_id=1000  ORDER BY hs_essay.date desc LIMIT 10   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `userName` = 'Hishengs' LIMIT 1   [ RunTime:0.0375s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined variable: piece D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\f4a0105b4115a1a02beb4c29beeae421.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.210003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.212503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-13T01:23:45+08:00 ] ::1 /Heysoo/Home/Essay/view.html?type=essay&id=1000
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0000s ]
+SQL: SELECT hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content FROM `hs_essay` INNER JOIN hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id=1000  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_comment` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_comment` INNER JOIN hs_user ON hs_user.id=hs_comment.user_id AND hs_comment.essay_id=1000  ORDER BY hs_comment.comment_date desc  [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.010000s ]
+NOTIC: [8] Undefined index: title D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 2 行.
+NOTIC: [8] Undefined index: username D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 4 行.
+NOTIC: [8] Undefined index: date D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 5 行.
+NOTIC: [8] Undefined index: id D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 12 行.
+NOTIC: [8] Undefined index: content D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 15 行.
+NOTIC: [8] Undefined index: id D:\workspace\www\Heysoo\Apps\Runtime\Cache\Home\2ae7a9af6d5de38daf50c06a8e9e1ea9.php 第 24 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002501s ]
+

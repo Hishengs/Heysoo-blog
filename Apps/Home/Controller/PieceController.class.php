@@ -19,7 +19,9 @@ class PieceController extends Controller {
             $cdt['userName'] = $_SESSION['USER_NAME'];
         else
             $cdt['userName'] = $userName;
-        $pieces = $this->piece_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
+        $user_id = $_SESSION['USER_ID'];
+        //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($this->page_size)->select();
         $totalCount = $this->piece_model->where($cdt)->count();
         $totalPage = $totalCount/$this->page_size;
         $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
@@ -38,7 +40,10 @@ class PieceController extends Controller {
         $_COOKIE['history_url'] = U("Piece/index");
         C('LAYOUT_ON',FALSE);//关闭模板布局
         $cdt['userName'] = $_SESSION['USER_NAME'];
-        $pieces = $this->piece_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
+        $cdt['user_id'] = $_SESSION['USER_ID'];
+        $user_id = $_SESSION['USER_ID'];
+        //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($this->page_size)->select();
         $totalCount = $this->piece_model->where($cdt)->count();
         $totalPage = $totalCount/$this->page_size;
         $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
@@ -122,11 +127,16 @@ class PieceController extends Controller {
         $piece_id = I('get.piece_id');
         $comment_model = D("PieceComment");
         $cdt['piece_id'] = $piece_id;
-        $comments = $comment_model->where($cdt)->order('comment_date desc')->select();
+        $comments = $comment_model->field('hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
+        ->join('hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id='.$piece_id)->order('hs_piece_comment.comment_date desc')->select();
+        //$comments = $comment_model->where($cdt)->order('comment_date desc')->select();
         if($comments != false){
             $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
         }else{
-            $this->ajaxReturn(array('error'=>1,'msg'=>'评论获取失败'),'json');
+            if($comments == false)
+                $this->ajaxReturn(array('error'=>1,'msg'=>'评论获取失败'),'json');
+            else if($comments == NULL)
+                $this->ajaxReturn(array('error'=>2,'msg'=>'暂无评论'),'json');
         }
     }
 }

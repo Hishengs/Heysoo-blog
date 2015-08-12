@@ -11,8 +11,9 @@ class IndexController extends Controller {
             //check_history_url();
             C('LAYOUT_ON',TRUE);
     		$this->piece_model = D("Piece");
-    		$cdt['isPublic'] = 1;
-    		$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
+    		$cdt['visible'] = 1;
+    		//$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
+            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit(15)->select();
             $user_info = A('User')->get_user_info(session('USER_NAME'));
             $essay_nums = A('Essay')->get_essay_nums(session('USER_NAME'));
             $diary_nums = A('Diary')->get_diary_nums(session('USER_NAME'));
@@ -34,8 +35,9 @@ class IndexController extends Controller {
         //set_history_url(U('Index/index'));
         C('LAYOUT_ON',FALSE);//关闭模板布局
         $this->piece_model = D('Piece');
-        $cdt['isPublic'] = 1;
-        $pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
+        $cdt['visible'] = 1;
+        //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit(15)->select();
         for ($i=0; $i < count($pieces); $i++) { 
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
             }
@@ -85,7 +87,8 @@ class IndexController extends Controller {
         C('LAYOUT_ON',FALSE);
         $startNum = I('get.startNum');
         $piece_model = D('Piece');
-        $pieces = $piece_model->where("visible=1")->limit($startNum,10)->order("date desc")->select();
+        //$pieces = $piece_model->where("visible=1")->limit($startNum,10)->order("date desc")->select();
+        $pieces = $piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,10)->select();
         if($pieces != false){
             for ($i=0; $i < count($pieces); $i++) { 
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);

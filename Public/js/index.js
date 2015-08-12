@@ -144,7 +144,7 @@ function getViewPage(url,objId,type,id){
 			setLightBox();
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
-			alert(errorThrown);
+			console.log(XMLHttpRequest);
 		}
 	});
 }
@@ -358,7 +358,7 @@ function showPieceCmt(pieceId){
 	'<div class="piece_comment_piece_info"><a class="user" href="javascript:;">'+$("#"+pieceId).find("a.piece_user").html()+'</a><span class="date">'+$("#"+pieceId).find("span.piece_date").html()+'</span></div>'+
 	'<div class="piece_comment_piece_content">'+$("#"+pieceId).find("div.piece_content").html()+'</div><div class="piece_comment_piece_footer">'+
 	'<i class="icon-tag"></i> <a class="tag" href="javascript:;">'+$("#"+pieceId).find("a.tag").html()+'</a>'+
-	'</div></div><div class="piece_comment_list"><div class="piece_comment_tip"><i class="icon-warning-sign"></i> 暂无评论</div></div></div><div class="piece_comment_post">'+
+	'</div></div><hr><div class="piece_comment_list"><div class="piece_comment_tip"><i class="icon-warning-sign"></i> 暂无评论</div></div></div><div class="piece_comment_post">'+
 	'<div class="piece_comment_post_header"><i class="icon-coffee"></i> 评论碎片</div><form class="hs-form piece_comment_post_form">'+
 	'<textarea class="piece-comment-edit" name="piece-comment-edit"></textarea><button type="button" onclick="postPieceCmt('+pieceId+')" class="hs-btn hs-btn-primary post_piece_comment_btn">发 布</button>'+
 	'</form></div></div>');
@@ -457,16 +457,17 @@ function getPieceCmt(piece_id){
 		dataType:'json',
 		success:function(data){
 			if(data.error === 0){
+				console.log(data.comments);
 				//将评论插入评论列表
 				var html = '';
 				for (var i = 0;  i < data.comments.length; i++) {
 					html += '<div class="piece_comment_item"><div class="piece_comment_item_info">'+
-					'<a class="piece_comment_user" href="javascript:;">'+data.comments[i]['userName']+'</a>&nbsp;<span class="piece_comment_date"><i class="icon-time"></i> '+data.comments[i]['comment_date']+'</span></div>'+
+					'<a class="piece_comment_user" href="javascript:;">'+data.comments[i]['username']+'</a>&nbsp;<span class="piece_comment_date"><i class="icon-time"></i> '+data.comments[i]['comment_date']+'</span></div>'+
 					'<div class="piece_comment_item_content">'+data.comments[i]['comment_content']+'</div><div class="piece_comment_item_footer"></div></div>';
 				};
 				$("div.piece_comment_tip").remove();
 				$("div.piece_comment_list").prepend(html);
-			}else{ hMessage(data.msg); $("div.piece_comment_tip").html('<i class="icon-warning-sign"></i> 评论获取失败！');}
+			}else{ $("div.piece_comment_tip").html('<i class="icon-warning-sign"></i> '+data.msg);}
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
 			console.log(XMLHttpRequest);

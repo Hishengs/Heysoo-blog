@@ -1,7 +1,7 @@
 <div class="view_panel">
 	<h3 class="view_title">{$essay.title}</h3>
 	<div class="view_info">
-	<span class="view_userName"><a href="{:U('User/view',array('userName'=>$essay['username']))}" class="view_user" onmouseover=show_user_card('{$essay.username}',"{:U('User/get_user_info')}") onmouseout="hide_user_card();">{$essay.username}</a><div id="user_card"></div></span>
+	<span class="view_userName"><a href="javascript:;" class="view_user">{$essay.username}</a><div id="user_card"></div></span>
 	<span class="view_date"><i class="icon-time" title="发布时间"></i> {$essay.date}</span>
 	<span class="view_tag"><i class="icon-tag" title="文章标签"></i> 
 	<assign name="tags" value="$essay['tag']" /> 
