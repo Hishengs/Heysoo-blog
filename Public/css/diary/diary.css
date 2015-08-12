@@ -1,0 +1,14 @@
+/*css for edit,modify*/
+div.diary_edit,div.diary_modify{ max-width: 750px; /* width:100%; */ margin: 0 auto; background: #fff; box-shadow:0px 5px 10px rgba(0,0,0,0.5); padding: 20px;}
+div.diary_edit form div.diary_edit_footer{margin: 10px auto;}
+div.diary_edit form div.diary_edit_footer button{margin: 20px auto;}
+div.diary_edit_footer_note{font-size: 14px; color: #696969;}
+div.diary_edit form textarea{}
+div.diary_edit_header{margin: 10px auto;}
+div.diary_edit_header p{padding: 10px;}
+div.input-group{margin: 10px auto;}
+div.input-group input,div.input-group select{ border-radius: 0;}
+/**/
+span.diary_operation{ opacity: 0; float: right;}
+span.diary_operation:hover{ opacity: 1;}
+

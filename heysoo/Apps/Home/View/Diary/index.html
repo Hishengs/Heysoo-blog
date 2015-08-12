@@ -1,0 +1,31 @@
+<foreach name="diarys" item="diary">
+<div class="diary">
+<div class="diary_left">
+<div class="diary_date">
+<div class="date_y">{:date("Y",strtotime($diary['date']))}</div>
+<div class="date_md">{:date("m/d",strtotime($diary['date']))}</div>
+</div>
+</div>
+<div class="diary_right">
+<div class="bg"></div><div class="diary_triangle"></div>
+<div class="diary_info">
+<span class="diary_author"><a href="{:U('User/index',array('user'=>$piece['username']))}" target="_blank">{$diary.userName}  </a></span>
+</div>
+<div class="diary_content">
+<a href=javascript:getViewPage("{:U('Diary/view')}","content","diary",{$diary['id']})><h4>《{$diary.title}》</h4></a>
+{:mb_substr(strip_tags($diary['content']),0,150,'UTF-8')}... ...
+</div>
+<div class="diary_footer"><i class="icon-tag"></i> 
+<assign name="tags" value="$diary['tag']" /> 
+<foreach name="tags" item="tag" >
+<a href="{:U('Action/tag',array('tag'=>$tag))}" style="text-decoration:none;">{$tag}</a>&nbsp;
+</foreach>
+<if condition="$diary['visible'] eq 0">
+ <i class="icon-eye-close" title="私密"></i>
+</if>
+ <i class="icon-remove piece-remove" title="删除" onclick=javascript:javascript:deleteItem("{:U('Diary/delete')}",'diary',{$diary['id']});></i>
+</div>
+</div>
+</div>
+</foreach> 
+<button class="hs-btn hs-btn-primary hs-btn-block load_more"><i class="icon-arrow-down"></i> 加载更多</button>

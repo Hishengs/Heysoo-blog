@@ -1,0 +1,20 @@
+span.piece_operation{ float: right; opacity: 0;}
+span.piece_operation:hover{ opacity: 1;}
+/*css for piece_comment*/
+#piece_comment{ position: relative; position: fixed; z-index: 1000; width: 960px; height:500px;  box-shadow: 0px 2px 5px rgba(0,0,0,0.8); margin-left: -455px; margin-top:-250px; left:50%; top: 50%;  background: #fff; padding: 20px;}
+div.piece_comment_view,div.piece_comment_post{ display: inline-block; }
+div.piece_comment_view{ overflow: auto;}
+div.piece_comment_post{ position: relative;}
+div.piece_comment_view{ float: left; padding-right: 10px; width: 510px; height: 100%; border-right: 1px solid #bbb;}
+div.piece_comment_post{ float: right; padding: 10px; width: 400px; height: 100%; /* box-shadow: 0px 2px 5px rgba(0,0,0,0.8); */}
+div.piece_comment_piece{  box-shadow: 0px 1px 2px rgba(0,0,0,0.8); margin: 1px; padding: 15px; }
+div.piece_comment_view img{ max-width: 450px;}
+div.piece_comment_piece_info a{ color: #696969;}
+div.piece_comment_piece_info a:hover{ color: #333;}
+div.piece_comment_piece_content{ margin:10px auto;}
+div.piece_comment_piece_footer a{ color: #696969;}
+div.piece_comment_piece_footer a:hover{ color: #696969;}
+div.piece_comment_post_header{margin-bottom: 10px;}
+div.piece_comment_post textarea{ width: 380px; height: 100%;}
+div.piece_comment_tip{ display: table; margin: 0 auto; margin-top: 50px;}
+button.piece_comment_submit{ margin-top: 10px; float: right;}

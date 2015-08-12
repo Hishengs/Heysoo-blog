@@ -1,0 +1,29 @@
+/*css for essay index*/
+div.essays{ max-width: 1000px; margin: 0 auto;}
+div.essay_content a{ color: #696969; }
+div.essay_content a:hover{ color: #333; }
+h4.essay_title{ font-size: 2.2rem; font-weight: normal;}
+div.essay_footer a{ font-size: 1.4rem; color: #696969; text-decoration: none;}
+div.essay_footer a:hover{ color: #333;}
+span.essay_operation{ opacity: 0; float: right;}
+span.essay_operation:hover{ opacity: 1;}
+/*css for edit*/
+div.essay_edit,div.essay_modify{ max-width: 750px; /* width:100%; */ margin: 0 auto; background: #fff; box-shadow:0px 5px 10px rgba(0,0,0,0.5); padding: 20px;}
+div.essay_edit form div.essay_edit_footer{margin: 10px auto;}
+div.essay_edit form div.essay_edit_footer button{margin: 20px auto;}
+div.essay_edit_footer_note{font-size: 14px; color: #696969;}
+div.essay_edit form textarea{}
+div.essay_edit_header{margin: 10px auto;}
+div.essay_edit_header p{padding: 10px;}
+div.input-group{margin: 10px auto;}
+div.input-group input,div.input-group select{ border-radius: 0;}
+span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #dff0d8; color: #000; */}
+/*css for essay comment*/
+div.essay-comments{width: 750px; background: #fff;margin: 20px auto; padding: 20px;}
+article.essay-comment{ width: 100%; margin: 15px auto;}
+
+/*css for essay view*/
+div.post-comment{ width: 750px; margin: 20px auto; background:#fff; padding: 20px;}
+textarea.post-comment-edit{ height: 200px;}
+button.post-comment-btn{ margin-top:10px;}
+
