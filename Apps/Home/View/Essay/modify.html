@@ -1,0 +1,56 @@
+<div class="essay_modify">
+<div class="essay_edit_header"><!-- <p class="bg-primary">发布</p> --></div>
+<form class="hs-form essay_edit_form" method="post" action="{:U('Action/deal_modify',array('type'=>'essay'))}">
+	<input class="id" name="id" value="{$essay['id']}" style="display:none;">
+	<div class="hs-input-group hs-input-group-primary">
+	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
+	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题" placeholder="标题" value="{$essay['title']}">
+	</div>
+	<!-- <input class="form-control essay_tag" type="text" name="tag" title="标签" placeholder="标签"> -->
+	<div class="hs-input-group hs-input-group-primary">
+	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
+	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" value="{$essay['tag']}">
+	</div>
+
+	<div class="hs-input-group hs-input-group-primary">
+		<span class="hs-input-group-label">可见性 <i class="hs-icon-eye"></i></span>
+		<select class="hs-select visible" name="visible" title="可见性" placeholder="可见性">
+			<option value="1">所有人可见</option>
+			<option value="2">好友可见</option>
+			<option value="0">仅自己可见</option>
+		</select>
+	</div>
+
+	<textarea id="essay_editor" name="content">{$essay.content}</textarea>
+	<div class="essay_edit_footer">
+		<div class="essay_edit_footer_note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
+		<div class="essay_edit_footer_operation"></div>
+		<button class="hs-btn hs-btn-primary essay_submit" type="submit">保 存</button>
+	</div>
+</form>
+</div>
+<script type="text/javascript">
+	var basePath = "__PUBLIC__/editor/";
+	var getTokenPath = "{:U('Action/get_qiniu_token')}";
+</script>
+<script src="__PUBLIC__/editor/Kindeditor.js?v=xxx" ></script>
+<script charset="utf-8" src="__PUBLIC__/editor/lang/zh_CN.js"></script>
+<script>
+        KindEditor.ready(function(K) {
+        	var options = {
+        		width:'100%',
+        		height:'400px',
+        		basePath:basePath,
+        		themeType:'simple',
+        		items:[ 
+					'|','forecolor', 'hilitecolor', 'fontname' ,'bold', 'fontsize',
+					'italic', 'underline', '|', 'justifyleft', 'justifycenter', 'justifyright',
+				   'justifyfull', '|', 'subscript',
+				   'superscript', 'removeformat', '|', 'image', 'multiimage',
+					'emoticons','|', 'link', 'unlink', 'fullscreen',
+					'preview', '|'
+						],
+        	};
+            window.editor = K.create('#essay_editor',options);
+        });
+</script>
