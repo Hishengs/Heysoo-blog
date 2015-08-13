@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><link rel="stylesheet" href="/ThinkPHP/Public/css/view.css"/>
-<div class="view_panel">
+<?php if (!defined('THINK_PATH')) exit();?><div class="view_panel">
 	<h3 class="view_title"><?php echo ($diary["title"]); ?></h3>
 	<div class="view_info">
 	<span class="view_userName"><a href="<?php echo U('User/view',array('userName'=>$diary['username']));?>" class="view_user" onmouseover=show_user_card('<?php echo ($diary["username"]); ?>',"<?php echo U('User/get_user_info');?>") onmouseout="hide_user_card();"><?php echo ($diary["username"]); ?></a><div id="user_card"></div></span>
@@ -18,6 +17,6 @@
 	<div class="view_comment"></div>
 </div>
 <script type="text/javascript">
-	var avatar_path = "/ThinkPHP/Public/img/lion.png";
+	var avatar_path = "/Heysoo/Public/img/lion.png";
 </script>
-<script src="/ThinkPHP/Public/js/view.js"></script>
+<script src="/Heysoo/Public/js/view.js"></script>

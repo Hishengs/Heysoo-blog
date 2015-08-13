@@ -14,13 +14,13 @@ body{ background-image:url("__PUBLIC__/img/login_bg.jpg"); }
 <body>
 
 <div class="bg">
-<div class="register_panel">
+<div class="register-panel">
 
 <div id="avatar">
-<img class="avatar_img" src="__PUBLIC__/img/lion.png"/>
+<img class="avatar-img" src="__PUBLIC__/img/lion.png"/>
 </div>
 <div class="title">Heysoo</div>
-<form action="{:U('Action/do_register')}" class="hs-form register_form" method="post">
+<form action="{:U('Action/do_register')}" class="hs-form register-form" method="post">
 
 <div class="hs-input-group hs-input-group-primary">
 <span class="hs-input-group-label">用户名</span>
@@ -52,10 +52,10 @@ body{ background-image:url("__PUBLIC__/img/login_bg.jpg"); }
 <if condition="$register_verify_code_on eq true">
 <div class="hs-input-group hs-input-group-primary">
 <span class="hs-input-group-label">验证码</span>
-<input class="verify_code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
+<input class="verify-code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
 </div>
-<div class="verify_code">
-	<img class="verify_code_img" src="{:U('Action/create_verify_code')}" title="点击更换验证码" onclick=javascript:this.src="{:U('Action/create_verify_code')}">
+<div class="verify-code">
+	<img class="verify-code-img" src="{:U('Action/create_verify_code')}" title="点击更换验证码" onclick=javascript:this.src="{:U('Action/create_verify_code')}">
 </div>
 </if>
 

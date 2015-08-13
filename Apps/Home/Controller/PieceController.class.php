@@ -36,18 +36,15 @@ class PieceController extends Controller {
     }
     public function get_piece_page(){
       if($_SESSION['LOGIN_STATUS']){
-        //set_history_url(U('Piece/index'));
-        $_COOKIE['history_url'] = U("Piece/index");
         C('LAYOUT_ON',FALSE);//关闭模板布局
-        $cdt['userName'] = $_SESSION['USER_NAME'];
+        //$cdt['userName'] = $_SESSION['USER_NAME'];
         $cdt['user_id'] = $_SESSION['USER_ID'];
         $user_id = $_SESSION['USER_ID'];
         //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
         $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($this->page_size)->select();
         $totalCount = $this->piece_model->where($cdt)->count();
         $totalPage = $totalCount/$this->page_size;
-        $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
-        ->assign('totalPage',$totalPage);
+        $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)->assign('totalPage',$totalPage);
         for ($i=0; $i < count($pieces); $i++) { 
             $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
         }
@@ -56,8 +53,8 @@ class PieceController extends Controller {
         $this->ajaxReturn($result,'json');
       }
     }
-    public function get_piece_nums($username,$cdt=null){
-        $cdt['userName'] = $username;
+    public function get_piece_nums($user_id,$cdt=null){
+        $cdt['user_id'] = $user_id;
         return $this->piece_model->where($cdt)->count();
     }
     //发布碎片
@@ -79,8 +76,8 @@ class PieceController extends Controller {
             $this->error("修改失败，请稍后重试！");
     }
     //删除碎片
-    public function delete($id){
-        if($this->piece_model->where("id=".$id)->limit(1)->delete() != false)
+    public function delete($piece_id){
+        if($this->piece_model->where("piece_id=".$piece_id)->limit(1)->delete() != false)
             $this->ajaxReturn(array('error'=>0),'json');
         else
             $this->ajaxReturn(array('error'=>1),'json');
@@ -94,8 +91,9 @@ class PieceController extends Controller {
         }
         else{
             C('LAYOUT_ON',FALSE);
-            $cdt['userName'] = $_SESSION['USER_NAME'];
-            $pieces = $this->piece_model->where($cdt)->order('date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $user_id = $_SESSION['USER_ID'];
+            //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($page*$this->page_size,$this->page_size)->select();
             for ($i=0; $i < count($pieces); $i++) { 
                     $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
                 }

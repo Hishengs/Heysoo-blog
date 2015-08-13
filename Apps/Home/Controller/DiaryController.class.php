@@ -37,7 +37,7 @@ class DiaryController extends Controller {
     public function view(){
         C('LAYOUT_ON',FALSE);
         $id = I('get.id');
-        $diary = $this->diary_model->where("id=".$id)->find();
+        $diary = $this->diary_model->where("diary_id=".$id)->find();
         $diary['tag'] = explode(" ", $diary['tag']);
         $this->assign('diary',$diary);
         $result = $this->fetch();
@@ -46,14 +46,12 @@ class DiaryController extends Controller {
     public function get_diary_page(){
       if($_SESSION['LOGIN_STATUS']){
         C('LAYOUT_ON',FALSE);//关闭模板布局
-        session('current_item','Diary');
-        $username = I('get.userName');
-        if(!empty($username))
-            $cdt['userName'] = $username;
-        else
-            $cdt['userName'] = $_SESSION['USER_NAME'];
-        $diarys = $this->diary_model->where($cdt)->order('date desc')->limit(10)->select();
-        $totalCount = $this->diary_model->where($cdt)->count();
+        $user_id = I('get.user_id');
+        if(empty($user_id))
+            $user_id = $_SESSION['USER_ID'];
+        //$diarys = $this->diary_model->where($cdt)->order('date desc')->limit(10)->select();
+        $diarys = $this->diary_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_diary.user_id='.$user_id)->order('hs_diary.date desc')->limit($this->page_size)->select();
+        $totalCount = $this->diary_model->where("user_id=".$user_id)->count();
         $totalPage = $totalCount/$this->page_size;
         $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
         ->assign('totalPage',$totalPage);
@@ -65,8 +63,8 @@ class DiaryController extends Controller {
         $this->ajaxReturn($result,'json');
       }else $this->error('尚未登录，无法操作！',U("Action/login"));
     }
-    public function get_diary_nums($username,$cdt=null){
-        $cdt['userName'] = $username;
+    public function get_diary_nums($user_id,$cdt=null){
+        $cdt['user_id'] = $user_id;
         return $this->diary_model->where($cdt)->count();
     }
     //发布日记
@@ -83,7 +81,7 @@ class DiaryController extends Controller {
         C('LAYOUT_ON',TRUE);
         $id = I('get.id');
         $userName = $_SESSION['USER_NAME'];
-        $cdt['id'] = $id;
+        $cdt['diary_id'] = $id;
         $cdt['username'] = $userName;
         $diary = $this->diary_model->where($cdt)->find();
         $this->assign('diary',$diary);
@@ -99,7 +97,7 @@ class DiaryController extends Controller {
     }
     //删除日记
     public function delete($id){
-        if($this->diary_model->where("id=".$id)->limit(1)->delete() != false)
+        if($this->diary_model->where("diary_id=".$id)->limit(1)->delete() != false)
             $this->ajaxReturn(array('error'=>0),'json');
         else
             $this->ajaxReturn(array('error'=>1),'json');

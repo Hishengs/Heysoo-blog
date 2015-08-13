@@ -5,37 +5,39 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="favicon.ico">
 <title><?php echo ((isset($user['username'] ) && ($user['username'] !== ""))?($user['username'] ):"我的主页"); ?></title>
-<!-- <link rel="stylesheet" href="/ThinkPHP/Public/css/bootstrap/bootstrap.min.css"/> -->
-<link rel="stylesheet" href="/ThinkPHP/Public/css/font-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/index.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/piece/piece.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/diary/diary.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/essay/essay.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/view.css"/>
+<!-- <link rel="stylesheet" href="/Heysoo/Public/css/bootstrap/bootstrap.min.css"/> -->
+<link rel="stylesheet" href="/Heysoo/Public/css/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/index.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/piece/piece.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/diary/diary.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/essay/essay.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/view.css"/>
 <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/flat-hs/2.2.2/css/flat-hs.min.css"/> -->
-<link rel="stylesheet" href="/ThinkPHP/Public/bower_components/amazeui/dist/css/amazeui.css"/>
-<!-- <link rel="stylesheet" href="/ThinkPHP/Public/bower_components/semantic/dist/components/dropdown.min.css"/> -->
-<link rel="stylesheet" href="/ThinkPHP/Public/bower_components/lightbox2/dist/css/lightbox.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/bower_components/amazeui/dist/css/amazeui.css"/>
+<!-- <link rel="stylesheet" href="/Heysoo/Public/bower_components/semantic/dist/components/dropdown.min.css"/> -->
+<link rel="stylesheet" href="/Heysoo/Public/bower_components/lightbox2/dist/css/lightbox.css"/>
 <!--<style type="text/css">
-	#left_panel{ background-image: url('/ThinkPHP/Public/img/login_bg.png');}
-	#right_panel{ background-image: url('/ThinkPHP/Public/img/bg_day.png');}
+	#left-panel{ background-image: url('/Heysoo/Public/img/login_bg.png');}
+	#right-panel{ background-image: url('/Heysoo/Public/img/bg_day.png');}
 </style>-->
-<script src="/ThinkPHP/Public/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/ThinkPHP/Public/bower_components/jquery.lazyload/jquery.lazyload.js"></script>
+<script src="/Heysoo/Public/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/Heysoo/Public/bower_components/jquery.lazyload/jquery.lazyload.js"></script>
 <style type="text/css">
-	#left_panel{ background-image: url('/ThinkPHP/Public/img/login_bg.png');}
-	#right_panel{ background-image: url("/ThinkPHP/Public/img/<?php echo ($user_config['bg_img']); ?>.png");}
+	#left-panel{ background-image: url('/Heysoo/Public/img/login_bg.png');}
+	#right-panel{ background-image: url("/Heysoo/Public/img/<?php echo ($user_config['bg_img']); ?>.png");}
 </style>
 </head>
 <body>
+<div id="mask"></div>
+<div id="hMessage-mask"></div>
 <!-- 左边侧 个人资料面板 -->
-<div id="left_panel">
-<div class="user_avatar">
-<img class="user_avatar hs-img" src="/ThinkPHP/Public/img/me.jpg" title="点击修改头像">
+<div id="left-panel">
+<div class="user-avatar">
+<img class="user-avatar hs-img" src="/Heysoo/Public/img/me.jpg" title="点击修改头像">
 </div>
 <div class="userName"><?php echo ($user["username"]); ?></div>
-<div class="user_signature"><?php echo ((isset($user['signature'] ) && ($user['signature'] !== ""))?($user['signature'] ):'尚未设置签名'); ?></div>
-<div class="user_items">
+<div class="user-signature"><?php echo ((isset($user['signature'] ) && ($user['signature'] !== ""))?($user['signature'] ):'尚未设置签名'); ?></div>
+<div class="user-items">
 
 <div class="hs-btn-group hs-btn-group-justify">
     <button type="button" class="hs-btn hs-btn-primary hs-btn-msg" onclick="javascript:hMessage('尚未实现');"><i class="icon-envelope-alt"></i> 消息 <span class="hs-badge hs-badge-danger hs-round">15</span></button>
@@ -61,18 +63,18 @@
 </div>
 </div>
 
-<div id="right_panel">
+<div id="right-panel">
 <div id="content">
 
-<div class="essay_modify">
-<div class="essay_edit_header"><!-- <p class="bg-primary">发布</p> --></div>
-<form class="hs-form essay_edit_form" method="post" action="<?php echo U('Action/deal_modify',array('type'=>'essay'));?>">
-	<input class="id" name="id" value="<?php echo ($essay['id']); ?>" style="display:none;">
+<div class="essay-modify">
+<div class="essay-edit-header"><!-- <p class="bg-primary">发布</p> --></div>
+<form class="hs-form essay-edit-form" method="post" action="<?php echo U('Action/deal-modify',array('type'=>'essay'));?>">
+	<input class="id" name="id" value="<?php echo ($essay['essay_id']); ?>" style="display:none;">
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
 	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题" placeholder="标题" value="<?php echo ($essay['title']); ?>">
 	</div>
-	<!-- <input class="form-control essay_tag" type="text" name="tag" title="标签" placeholder="标签"> -->
+	<!-- <input class="form-control essay-tag" type="text" name="tag" title="标签" placeholder="标签"> -->
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
 	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" value="<?php echo ($essay['tag']); ?>">
@@ -87,20 +89,20 @@
 		</select>
 	</div>
 
-	<textarea id="essay_editor" name="content"><?php echo ($essay["content"]); ?></textarea>
-	<div class="essay_edit_footer">
-		<div class="essay_edit_footer_note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
-		<div class="essay_edit_footer_operation"></div>
-		<button class="hs-btn hs-btn-primary essay_submit" type="submit">保 存</button>
+	<textarea id="essay-editor" name="content"><?php echo ($essay["content"]); ?></textarea>
+	<div class="essay-edit-footer">
+		<div class="essay-edit-footer-note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
+		<div class="essay-edit-footer-operation"></div>
+		<button class="hs-btn hs-btn-primary essay-submit" type="submit">保 存</button>
 	</div>
 </form>
 </div>
 <script type="text/javascript">
-	var basePath = "/ThinkPHP/Public/editor/";
+	var basePath = "/Heysoo/Public/editor/";
 	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
 </script>
-<script src="/ThinkPHP/Public/editor/Kindeditor.js?v=xxx" ></script>
-<script charset="utf-8" src="/ThinkPHP/Public/editor/lang/zh_CN.js"></script>
+<script src="/Heysoo/Public/editor/Kindeditor.js?v=xxx" ></script>
+<script charset="utf-8" src="/Heysoo/Public/editor/lang/zh_CN.js"></script>
 <script>
         KindEditor.ready(function(K) {
         	var options = {
@@ -117,7 +119,7 @@
 					'preview', '|'
 						],
         	};
-            window.editor = K.create('#essay_editor',options);
+            window.editor = K.create('#essay-editor',options);
         });
 </script>
 
@@ -127,18 +129,18 @@
 <a href="javascript:gotoTop();" id="backTop"><i class="icon-arrow-up"></i> 回到顶部</a>
 </body>
 <script>
-	//var PUBLIC = "/ThinkPHP/Public";
 	var load_essays_path = "<?php echo U('Essay/load_essays');?>";
-	var public_path = "/ThinkPHP/Public";
-	//console.log(load_essays_path);
+	var public_path = "/Heysoo/Public";
+	var editor_basePath = "/Heysoo/Public/editor/";
+	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
 </script>
-<!-- <script src="/ThinkPHP/Public/js/require.js" data-main="main"></script> -->
-<script src="/ThinkPHP/Public/bower_components/lightbox2/dist/js/lightbox.js"></script>
-<script src="/ThinkPHP/Public/bower_components/amazeui/dist/js/amazeui.js"></script>
-<script src="/ThinkPHP/Public/editor/Kindeditor.js?v=xxx" ></script>
-<script src="/ThinkPHP/Public/editor/lang/zh_CN.js"></script>
-<script src="/ThinkPHP/Public/js/jqpaginator.min.js"></script>
-<script src="/ThinkPHP/Public/js/index.js"></script>
-<script src="/ThinkPHP/Public/js/pages.js"></script>
-<script src="/ThinkPHP/Public/js/piece.js"></script> 
+<!-- <script src="/Heysoo/Public/js/require.js" data-main="main"></script> -->
+<script src="/Heysoo/Public/bower_components/lightbox2/dist/js/lightbox.js"></script>
+<!-- <script src="/Heysoo/Public/bower_components/amazeui/dist/js/amazeui.js"></script> -->
+<script src="/Heysoo/Public/editor/Kindeditor.js" ></script>
+<script src="/Heysoo/Public/editor/lang/zh_CN.js"></script>
+<script src="/Heysoo/Public/js/jqpaginator.min.js"></script>
+<script src="/Heysoo/Public/js/index.js"></script>
+<script src="/Heysoo/Public/js/pages.js"></script>
+<script src="/Heysoo/Public/js/piece.js"></script> 
 </html>

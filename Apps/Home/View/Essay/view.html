@@ -1,22 +1,22 @@
-<div class="view_panel">
-	<h3 class="view_title">{$essay.title}</h3>
-	<div class="view_info">
-	<span class="view_userName"><a href="javascript:;" class="view_user">{$essay.username}</a><div id="user_card"></div></span>
-	<span class="view_date"><i class="icon-time" title="发布时间"></i> {$essay.date}</span>
-	<span class="view_tag"><i class="icon-tag" title="文章标签"></i> 
+<div class="view-panel">
+	<h3 class="view-title">{$essay.title}</h3>
+	<div class="view-info">
+	<span class="view-userName"><a href="javascript:;" class="view-user">{$essay.username}</a><div id="user-card"></div></span>
+	<span class="view-date"><i class="icon-time" title="发布时间"></i> {:date("m-d H:i",strtotime($essay['date']))}</span>
+	<span class="view-tag"><i class="icon-tag" title="文章标签"></i> 
 	<assign name="tags" value="$essay['tag']" /> 
 	<foreach name="tags" item="tag" >
 		<a href="javascript:tag('{$tag}');" style="text-decoration:none;">{$tag}</a>&nbsp;
 	</foreach>
 	</span>
-	<span class="essay_operation">
+	<span class="essay-operation">
 	<i class="icon-edit essay-modify" title="修改文章"></i>
 	<i class="icon-remove piece-remove" title="删除，请谨慎" onclick=javascript:deleteItem("{:U('Essay/delete')}",'essay',{$essay['id']});></i>
 	</span>
 	</div>
-	<div class="view_content">{$essay.content}</div>
-	<div class="view_footer"></div>
-	<div class="view_comment"></div>
+	<div class="view-content">{$essay.content}</div>
+	<div class="view-footer"></div>
+	<div class="view-comment"></div>
 </div>
 
 <!-- 发布评论 -->
@@ -36,7 +36,7 @@
 <li class="hs-comment">
 <article class="hs-comment essay-comment"> <!-- 评论容器 -->
   <a href="">
-    <img class="hs-comment-avatar user-avatar" src="__PUBLIC__/img/me.jpg" alt=""/> <!-- 评论者头像 -->
+    <img class="hs-comment-avatar comment-user-avatar" src="__PUBLIC__/img/me.jpg" alt=""/> <!-- 评论者头像 -->
   </a>
 
   <div class="hs-comment-main"> <!-- 评论内容容器 -->
@@ -44,7 +44,7 @@
       <!--<h3 class="hs-comment-title">评论标题</h3>-->
       <div class="hs-comment-meta"> <!-- 评论元数据 -->
         <a href="#link-to-user" class="hs-comment-author">{$comment['username']}</a> <!-- 评论者 -->
-        评论于 <time datetime="">{$comment.comment_date}</time>
+        评论于 <time datetime="">{:date("m-d H:i",strtotime($comment['comment_date']))}</time>
       </div>
     </header>
 

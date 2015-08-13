@@ -5,7 +5,7 @@
 <div class="piece_right">
 <div class="bg"></div><div class="piece_triangle"></div>
 <div class="piece_info">
-<span class="piece_author"><a class="piece_user" href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><?php echo ($piece["username"]); ?>  </a></span>&nbsp;
+<span class="piece_author"><a class="piece_user" href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><?php echo ($piece["username"]); ?>  </a></span>&nbsp;&nbsp;发布于
 <span class="piece_date"><i class="icon-time"></i> <?php echo date("Y-m-d",strtotime($piece['date']));?></span>
 </div>
 <div class="piece_content">

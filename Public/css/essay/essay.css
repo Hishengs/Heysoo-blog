@@ -1,20 +1,20 @@
 /*css for essay index*/
 div.essays{ max-width: 1000px; margin: 0 auto;}
-div.essay_content a{ color: #696969; }
-div.essay_content a:hover{ color: #333; }
-h4.essay_title{ font-size: 2.2rem; font-weight: normal;}
-div.essay_footer a{ font-size: 1.4rem; color: #696969; text-decoration: none;}
-div.essay_footer a:hover{ color: #333;}
-span.essay_operation{ opacity: 0; float: right;}
-span.essay_operation:hover{ opacity: 1;}
+div.essay-content a{ color: #696969; }
+div.essay-content a:hover{ color: #333; }
+h4.essay-title{ font-size: 2.2rem; font-weight: normal; color: #696969;}
+div.essay-footer a{ font-size: 1.4rem; color: #696969; text-decoration: none;}
+div.essay-footer a:hover,h4.essay-title:hover{ color: #333;}
+span.essay-operation{ opacity: 0; float: right;}
+span.essay-operation:hover{ opacity: 1;}
 /*css for edit*/
-div.essay_edit,div.essay_modify{ max-width: 750px; /* width:100%; */ margin: 0 auto; background: #fff; box-shadow:0px 5px 10px rgba(0,0,0,0.5); padding: 20px;}
-div.essay_edit form div.essay_edit_footer{margin: 10px auto;}
-div.essay_edit form div.essay_edit_footer button{margin: 20px auto;}
-div.essay_edit_footer_note{font-size: 14px; color: #696969;}
-div.essay_edit form textarea{}
-div.essay_edit_header{margin: 10px auto;}
-div.essay_edit_header p{padding: 10px;}
+div.essay-edit,div.essay-modify{ max-width: 750px; /* width:100%; */ margin: 0 auto; background: #fff; box-shadow:0px 5px 10px rgba(0,0,0,0.5); padding: 20px;}
+div.essay-edit form div.essay-edit-footer{margin: 10px auto;}
+div.essay-edit form div.essay-edit-footer button{margin: 20px auto;}
+div.essay-edit-footer-note{font-size: 14px; color: #696969;}
+div.essay-edit form textarea{}
+div.essay-edit-header{margin: 10px auto;}
+div.essay-edit-header p{padding: 10px;}
 div.input-group{margin: 10px auto;}
 div.input-group input,div.input-group select{ border-radius: 0;}
 span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #dff0d8; color: #000; */}

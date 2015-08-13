@@ -40,15 +40,12 @@ class EssayController extends Controller {
     public function get_essay_page(){
       if($_SESSION['LOGIN_STATUS']){
         C('LAYOUT_ON',FALSE);//关闭模板布局
-        $username = I('get.userName');
-        if(!empty($username))
-            $cdt['userName'] = $username;
-        else
-            $cdt['userName'] = $_SESSION['USER_NAME'];
-        $user_id = $_SESSION['USER_ID'];
+        $user_id = I('get.user_id');
+        if(empty($user_id))
+            $user_id = $_SESSION['USER_ID'];
         //$essays = $this->essay_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
         $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($this->page_size)->select();
-        $totalCount = $this->essay_model->where($cdt)->count();
+        $totalCount = $this->essay_model->where("user_id=".$user_id)->count();
         $totalPage = $totalCount/$this->page_size;
         $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
         ->assign('totalPage',$totalPage);
@@ -71,19 +68,19 @@ class EssayController extends Controller {
         //$cdt['id'] = $id;
         //$cdt['visible'] = 1;
         //$essay = $this->essay_model->where($cdt)->find(); 
-        $essay = $this->essay_model->field('hs_user.userName,hs_essay.id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
-        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.id='.$id)->find(); 
+        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
+        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         $essay['tag'] = explode(" ", $essay['tag']);
         //获取评论信息
-        $comments = A('Comment')->get_essay_comments($essay['id']);
+        $comments = A('Comment')->get_essay_comments($essay['essay_id']);
         $comments_num = count($comments);
         $this->assign('essay',$essay)->assign('comments',$comments)->assign('comments_num',$comments_num);
         $result = $this->fetch();
         $this->ajaxReturn($result,'json');
     }
     //获取文章数量
-    public function get_essay_nums($username,$cdt=null){
-        $cdt['userName'] = $username;
+    public function get_essay_nums($user_id,$cdt=null){
+        $cdt['user_id'] = $user_id;
         return $this->essay_model->where($cdt)->count();
     }
     //加载更多
@@ -120,7 +117,7 @@ class EssayController extends Controller {
     }
     //删除文章
     public function delete($id){
-        if($this->essay_model->where("id=".$id)->limit(1)->delete() != false)
+        if($this->essay_model->where("essay_id=".$id)->limit(1)->delete() != false)
             $this->ajaxReturn(array('error'=>0),'json');
         else
             $this->ajaxReturn(array('error'=>1),'json');
@@ -131,7 +128,7 @@ class EssayController extends Controller {
         $id = I('get.id');
         $userName = $_SESSION['USER_NAME'];
         $user_id = $_SESSION['USER_ID'];
-        $cdt['id'] = $id;
+        $cdt['essay_id'] = $id;
         $cdt['username'] = $userName;
         $essay = $this->essay_model->where($cdt)->find();
         $this->assign('essay',$essay);
@@ -140,7 +137,7 @@ class EssayController extends Controller {
     public function do_modify($id,$title,$tag,$content,$visible){
         $last_modify_date = date("Y-m-d H:i:s");
         $data = array('title'=>$title,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'last_modify_date'=>$last_modify_date);
-        if($this->essay_model->where("id=".$id)->save($data) != false)
+        if($this->essay_model->where("essay_id=".$id)->save($data) != false)
             $this->success("修改成功！",U("Essay/index"));
         else
             $this->error("修改失败，请稍后重试！");
@@ -171,8 +168,9 @@ class EssayController extends Controller {
         }
         else{
             C('LAYOUT_ON',FALSE);
-            $cdt['userName'] = $_SESSION['USER_NAME'];
-            $essays = $this->essay_model->where($cdt)->order('date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $user_id = $_SESSION['USER_ID'];
+            //$essays = $this->essay_model->where($cdt)->order('date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
             for ($i=0; $i < count($essays); $i++) { 
                     $essays[$i]['tag'] = explode(" ", $essays[$i]['tag']);
                 }

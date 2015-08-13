@@ -34,8 +34,8 @@ class UserController extends Controller {
       }else $this->error('尚未登录，无法操作！',U("Action/login"));
     }
     //获取用户信息
-    public function get_user_info($userName,$cdt=null){
-        $cdt['userName'] = $userName;
+    public function get_user_info($user_id,$cdt=null){
+        $cdt['id'] = $user_id;
         return $this->user_model->where($cdt)->find();
     }
     //获取用户配置

@@ -17,27 +17,27 @@
 <!-- <link rel="stylesheet" href="__PUBLIC__/bower_components/semantic/dist/components/dropdown.min.css"/> -->
 <link rel="stylesheet" href="__PUBLIC__/bower_components/lightbox2/dist/css/lightbox.css"/>
 <!--<style type="text/css">
-	#left_panel{ background-image: url('__PUBLIC__/img/login_bg.png');}
-	#right_panel{ background-image: url('__PUBLIC__/img/bg_day.png');}
+	#left-panel{ background-image: url('__PUBLIC__/img/login_bg.png');}
+	#right-panel{ background-image: url('__PUBLIC__/img/bg_day.png');}
 </style>-->
 <script src="__PUBLIC__/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="__PUBLIC__/bower_components/jquery.lazyload/jquery.lazyload.js"></script>
 <style type="text/css">
-	#left_panel{ background-image: url('__PUBLIC__/img/login_bg.png');}
-	#right_panel{ background-image: url("__PUBLIC__/img/{$user_config['bg_img']}.png");}
+	#left-panel{ background-image: url('__PUBLIC__/img/login_bg.png');}
+	#right-panel{ background-image: url("__PUBLIC__/img/{$user_config['bg_img']}.png");}
 </style>
 </head>
 <body>
 <div id="mask"></div>
-<div id="hMessage_mask"></div>
+<div id="hMessage-mask"></div>
 <!-- 左边侧 个人资料面板 -->
-<div id="left_panel">
-<div class="user_avatar">
-<img class="user_avatar hs-img" src="__PUBLIC__/img/me.jpg" title="点击修改头像">
+<div id="left-panel">
+<div class="user-avatar">
+<img class="user-avatar hs-img" src="__PUBLIC__/img/me.jpg" title="点击修改头像">
 </div>
 <div class="userName">{$user.username}</div>
-<div class="user_signature">{$user['signature'] | default='尚未设置签名' }</div>
-<div class="user_items">
+<div class="user-signature">{$user['signature'] | default='尚未设置签名' }</div>
+<div class="user-items">
 
 <div class="hs-btn-group hs-btn-group-justify">
     <button type="button" class="hs-btn hs-btn-primary hs-btn-msg" onclick="javascript:hMessage('尚未实现');"><i class="icon-envelope-alt"></i> 消息 <span class="hs-badge hs-badge-danger hs-round">15</span></button>
@@ -63,7 +63,7 @@
 </div>
 </div>
 
-<div id="right_panel">
+<div id="right-panel">
 <div id="content">
 
 {__CONTENT__}

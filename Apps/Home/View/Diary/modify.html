@@ -1,6 +1,6 @@
-<div class="diary_modify">
-<div class="diary_edit_header"><!-- <p class="bg-primary">发布</p> --></div>
-<form class="hs-form diary_edit_form" method="post" action="{:U('Action/deal_modify',array('type'=>'diary'))}">
+<div class="diary-modify">
+<div class="diary-edit-header"><!-- <p class="bg-primary">发布</p> --></div>
+<form class="hs-form diary-edit-form" method="post" action="{:U('Action/deal_modify',array('type'=>'diary'))}">
 	<input class="id" name="id" value="{$diary['id']}" style="display:none;">
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
@@ -21,11 +21,11 @@
 		</select>
 	</div>
 
-	<textarea id="diary_editor" name="content">{$diary.content}</textarea>
-	<div class="diary_edit_footer">
-		<div class="diary_edit_footer_note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
-		<div class="diary_edit_footer_operation"></div>
-		<button class="hs-btn hs-btn-primary essay_submit" type="submit">保 存</button>
+	<textarea id="diary-editor" name="content">{$diary.content}</textarea>
+	<div class="diary-edit-footer">
+		<div class="diary-edit-footer-note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
+		<div class="diary-edit-footer-operation"></div>
+		<button class="hs-btn hs-btn-primary essay-submit" type="submit">保 存</button>
 	</div>
 </form>
 </div>

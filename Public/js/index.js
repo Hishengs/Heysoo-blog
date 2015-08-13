@@ -8,7 +8,7 @@ var essayCmtOptions  = {
 		height:'180px',
 		minHeight:'180px',
 		resizeType:0,
-		items:[ '|', 'fontsize','removeformat', '|', 'image', 
+		items:[ '|', 'removeformat', '|', 'image', 
 				'emoticons','|', 'link', 'unlink','fullscreen', 'preview', '|'],
 				themeType : 'simple'
 			}; 
@@ -21,7 +21,7 @@ var pieceCmtOptions  = {
 		height:'330px',
 		minHeight:'330px',
 		resizeType:0,
-		items:[ '|', 'fontsize','removeformat', '|', 'image', 
+		items:[ '|', 'removeformat', '|', 'image', 
 				'emoticons','|', 'link', 'unlink','fullscreen', 'preview', '|'],
 				themeType : 'simple'
 			}; 
@@ -38,21 +38,25 @@ function init(){
 		$("#backTop").css("display","none");
 	});
 	//靠近左侧显示
-	/*$('body').mousemove(function(e) { 
+	$('body').mousemove(function(e) { 
 		var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
-		var yy = e.originalEvent.y || e.originalEvent.layerY || 0; 
+		/*var yy = e.originalEvent.y || e.originalEvent.layerY || 0; 
 		if(yy <= 20 && xx <= 400){
 			console.log(xx);
 			$("#content").css('padding-left','400px');
-			$("#left_panel").fadeIn(500);
+			$("#left-panel").fadeIn(500);
 		}else if(xx > 400){ 
-			$("#left_panel").fadeOut(500); 
+			$("#left-panel").fadeOut(500); 
 			$("#content").css('padding-left','0');
+		}*/
+		if(xx <= 20){
+			$("#content").css('padding-left','400px');
+			$("#left-panel").fadeIn(500);
 		}
-	}); */
+	}); 
 	//双击左侧控制面板隐藏
-	$("#left_panel").dblclick(function(){
-		$("#left_panel").fadeOut(1500,function(){
+	$("#left-panel").dblclick(function(){
+		$("#left-panel").fadeOut(500,function(){
 		$("#content").css('padding-left',0);
 		});
 	});
@@ -72,7 +76,7 @@ function setLightBox(){
       'fitImagesInViewport':false,
       'maxWidth':1000
     });
-	/*$("#content").find('div.piece_content').find("img").each(function(i){
+	/*$("#content").find('div.piece-content').find("img").each(function(i){
 		var img_link = $("<a></a>");
 		img_link.attr('href',$(this).attr("src"));
 		img_link.attr('data-lightbox',Math.random());
@@ -83,7 +87,7 @@ function setLightBox(){
 	});*/
 	$("div.pieces").find("div.piece").each(function(){
 		var id = $(this).attr('id');
-		$(this).find("div.piece_content").find("img").each(function(){
+		$(this).find("div.piece-content").find("img").each(function(){
 			var img_link = $("<a></a>");
 			img_link.attr('href',$(this).attr("src"));
 			img_link.attr('data-lightbox',id);
@@ -97,7 +101,7 @@ function setLightBox(){
 //lazyload
 function setLazyload(){
 	$(document).find("img").each(function(){
-		if($(this).attr("class") != "user_avatar"){
+		if($(this).attr("class") != "user-avatar"){
 			$(this).attr("class","lazy");
 			$(this).attr("data-original",$(this).attr("src"));
 		}
@@ -106,7 +110,7 @@ function setLazyload(){
 }
 //隐藏左边控制面板
 function hideControlPanel(){
-	$("#left_panel").fadeOut(1500,function(){
+	$("#left-panel").fadeOut(1500,function(){
 		$("#content").css('padding-left',0);
 	});
 }
@@ -153,7 +157,7 @@ function loadMore(url,objId){
 	//showLoadingMask(objId);
 	var page = $("#content").find("div.essay").length/10;
 	console.log(page);
-	$('button.load_more').remove();
+	$('button.load-more').remove();
 	$.ajax({
 		url:url,
 		type:'GET',
@@ -167,7 +171,7 @@ function loadMore(url,objId){
 				$("#"+objId).append(data);
 				$(document).scrollTop($(document).scrollTop()+300);
 			}
-			$("#"+objId).append($('button.load_more').html('加载更多'));
+			$("#"+objId).append($('button.load-more').html('加载更多'));
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
 			alert(XMLHttpRequest);
@@ -201,13 +205,13 @@ function showLoadingMask(objId){
 //内容遮罩
 function showMask(objId,content){
 	$("#"+objId).css('position','relative');
-	if($("#content_mask").length > 0){
-		$("#content_mask").html("");
-		$("#content_mask").append(content);
-		$("#content_mask").show();
+	if($("#content-mask").length > 0){
+		$("#content-mask").html("");
+		$("#content-mask").append(content);
+		$("#content-mask").show();
 	}
 	else{
-		var mask = $("<div id='content_mask'></div>");
+		var mask = $("<div id='content-mask'></div>");
 		mask.append(content);
 		mask.css({
 			"position":"fixed",
@@ -279,10 +283,10 @@ function hMessage(msg){
 	var time = arguments[1] ? arguments[1] : 2000; 
 	if($('#hMessage').length > 0){
 		$('#hMessage').html(msg);
-		$("#hMessage_mask").append($('#hMessage'));
+		$("#hMessage-mask").append($('#hMessage'));
 		$('#hMessage').css('display','block');
-		$('#hMessage_mask').show();
-		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage_mask').hide().empty();},time);
+		$('#hMessage-mask').show();
+		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();},time);
 	}else{
 		console.log(msg);
 		var hMessage = $('<div id="hMessage ">'+msg+'</div>');
@@ -302,10 +306,10 @@ function hMessage(msg){
 			"box-shadow":"0px 2px 5px 1px rgba(0, 0, 0, 0.5)"
 		});
 		//$("body").append(hMessage);
-		$("#hMessage_mask").append(hMessage);
+		$("#hMessage-mask").append(hMessage);
 		hMessage.css('display','block');
-		$('#hMessage_mask').show();
-		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage_mask').hide().empty();},time);
+		$('#hMessage-mask').show();
+		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();},time);
 	}
 }
 //处理标签
@@ -332,7 +336,7 @@ function initEssayComment(){
 }
 //loadPieces,底部加载更多评论
 function loadPieces(){
-	$("button.load_more").html('<i class="icon-arrow-up"></i> 加载中...');
+	$("button.load-more").html('<i class="icon-arrow-up"></i> 加载中...');
 	var startNum = $("#content").find("div.piece").length;
 	$.ajax({
 		url:controller_path+"Index/load_pieces.html",
@@ -344,7 +348,7 @@ function loadPieces(){
 				$("div.pieces").append(data.html);
 				setLightBox();
 			}else hMessage("没有更多了！");
-			$("button.load_more").html('<i class="icon-arrow-down"></i> 加载更多');
+			$("button.load-more").html('<i class="icon-arrow-down"></i> 加载更多');
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
 			console.log(XMLHttpRequest);
@@ -353,14 +357,14 @@ function loadPieces(){
 }
 //显示碎片评论
 function showPieceCmt(pieceId){
-	if($("#piece_comment").length > 0)return;
-	var pieceCmt = $('<div id="piece_comment"><div class="piece_comment_view"><div class="piece_comment_piece">'+
-	'<div class="piece_comment_piece_info"><a class="user" href="javascript:;">'+$("#"+pieceId).find("a.piece_user").html()+'</a><span class="date">'+$("#"+pieceId).find("span.piece_date").html()+'</span></div>'+
-	'<div class="piece_comment_piece_content">'+$("#"+pieceId).find("div.piece_content").html()+'</div><div class="piece_comment_piece_footer">'+
+	if($("#piece-comment").length > 0)return;
+	var pieceCmt = $('<div id="piece-comment"><div class="piece-comment-view"><div class="piece-comment-piece">'+
+	'<div class="piece-comment-piece-info"><a class="user" href="javascript:;">'+$("#"+pieceId).find("a.piece-user").html()+'</a><span class="date">'+$("#"+pieceId).find("span.piece-date").html()+'</span></div>'+
+	'<div class="piece-comment-piece-content">'+$("#"+pieceId).find("div.piece-content").html()+'</div><div class="piece-comment-piece-footer">'+
 	'<i class="icon-tag"></i> <a class="tag" href="javascript:;">'+$("#"+pieceId).find("a.tag").html()+'</a>'+
-	'</div></div><hr><div class="piece_comment_list"><div class="piece_comment_tip"><i class="icon-warning-sign"></i> 暂无评论</div></div></div><div class="piece_comment_post">'+
-	'<div class="piece_comment_post_header"><i class="icon-coffee"></i> 评论碎片</div><form class="hs-form piece_comment_post_form">'+
-	'<textarea class="piece-comment-edit" name="piece-comment-edit"></textarea><button type="button" onclick="postPieceCmt('+pieceId+')" class="hs-btn hs-btn-primary post_piece_comment_btn">发 布</button>'+
+	'</div></div><hr><div class="piece-comment-list"><div class="piece-comment-tip"><i class="icon-warning-sign"></i> 暂无评论</div></div></div><div class="piece-comment-post">'+
+	'<div class="piece-comment-post-header"><i class="icon-coffee"></i> 评论碎片</div><form class="hs-form piece-comment-post-form">'+
+	'<textarea class="piece-comment-edit" name="piece-comment-edit"></textarea><button type="button" onclick="postPieceCmt('+pieceId+')" class="hs-btn hs-btn-primary post-piece-comment-btn">发 布</button>'+
 	'</form></div></div>');
 	//$("#"+pieceId).css('position','relative');
 	$("#mask").prepend(pieceCmt);
@@ -370,13 +374,13 @@ function showPieceCmt(pieceId){
 	getPieceCmt(pieceId);//获取碎片评论
 	document.onclick = function(e){
 		var target = $(e.target); 
-		if(target.closest("#piece_comment").length == 0){ 
+		if(target.closest("#piece-comment").length == 0){ 
 			$("#mask").hide();
-			$("#piece_comment").remove();
+			$("#piece-comment").remove();
 			$("body").css('overflow-y','auto');
 		} 
 	}
-	$("button.piece_comment_submit").on('click',function(){
+	$("button.piece-comment-submit").on('click',function(){
 		hMessage('评论功能暂未实现');
 	});
 }
@@ -419,9 +423,9 @@ function postEssayCmt(essay_id){
 }
 //发布碎片评论
 function postPieceCmt(piece_id){
-	$("button.post_piece_comment_btn").html('<i class="icon-spinner"></i> 发布中...');
+	$("button.post-piece-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
 	piece_editor.sync(); //同步编辑器内容
-	var content = $("form.piece_comment_post_form").children("textarea[name='piece-comment-edit']").val();
+	var content = $("form.piece-comment-post-form").children("textarea[name='piece-comment-edit']").val();
 	console.log(content);
 	$.ajax({
 		url:controller_path+"Piece/post_comment.html",
@@ -433,13 +437,13 @@ function postPieceCmt(piece_id){
 				//清空编辑器
 				piece_editor.html('');
 				hMessage('评论发布成功！');
-				$("button.post_piece_comment_btn").html('发 布');
+				$("button.post-piece-comment-btn").html('发 布');
 				//将新评论插入评论列表
-				var html = '<div class="piece_comment_item"><div class="piece_comment_item_info">'+
-				'<a class="piece_comment_user" href="javascript:;">'+data.comment.user+'</a><span class="piece_comment_date"><i class="icon-time"></i> '+data.comment.date+'</span></div>'+
-				'<div class="piece_comment_item_content">'+data.comment.content+'</div><div class="piece_comment_item_footer"></div></div>';
-				$("div.piece_comment_tip").remove();
-				$("div.piece_comment_list").prepend(html);
+				var html = '<div class="piece-comment-item"><div class="piece-comment-item-info">'+
+				'<a class="piece-comment-user" href="javascript:;">'+data.comment.user+'</a><span class="piece-comment-date"><i class="icon-time"></i> '+data.comment.date+'</span></div>'+
+				'<div class="piece-comment-item-content">'+data.comment.content+'</div><div class="piece-comment-item-footer"></div></div>';
+				$("div.piece-comment-tip").remove();
+				$("div.piece-comment-list").prepend(html);
 			}else{ hMessage(data.msg); }
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -449,7 +453,7 @@ function postPieceCmt(piece_id){
 }
 //获取碎片评论
 function getPieceCmt(piece_id){
-	$("div.piece_comment_tip").html('<i class="icon-spinner"></i> 获取评论...');
+	$("div.piece-comment-tip").html('<i class="icon-spinner"></i> 获取评论...');
 	$.ajax({
 		url:controller_path+"Piece/get_piece_comment.html",
 		type:'GET',
@@ -457,17 +461,16 @@ function getPieceCmt(piece_id){
 		dataType:'json',
 		success:function(data){
 			if(data.error === 0){
-				console.log(data.comments);
 				//将评论插入评论列表
 				var html = '';
 				for (var i = 0;  i < data.comments.length; i++) {
-					html += '<div class="piece_comment_item"><div class="piece_comment_item_info">'+
-					'<a class="piece_comment_user" href="javascript:;">'+data.comments[i]['username']+'</a>&nbsp;<span class="piece_comment_date"><i class="icon-time"></i> '+data.comments[i]['comment_date']+'</span></div>'+
-					'<div class="piece_comment_item_content">'+data.comments[i]['comment_content']+'</div><div class="piece_comment_item_footer"></div></div>';
+					html += '<div class="piece-comment-item"><div class="piece-comment-item-info">'+
+					'<a class="piece-comment-user" href="javascript:;">'+data.comments[i]['username']+'</a>&nbsp;<span class="piece-comment-date"><i class="icon-time"></i> '+data.comments[i]['comment_date']+'</span></div>'+
+					'<div class="piece-comment-item-content">'+data.comments[i]['comment_content']+'</div><div class="piece-comment-item-footer"></div></div>';
 				};
-				$("div.piece_comment_tip").remove();
-				$("div.piece_comment_list").prepend(html);
-			}else{ $("div.piece_comment_tip").html('<i class="icon-warning-sign"></i> '+data.msg);}
+				$("div.piece-comment-tip").remove();
+				$("div.piece-comment-list").prepend(html);
+			}else{ $("div.piece-comment-tip").html('<i class="icon-warning-sign"></i> '+data.msg);}
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
 			console.log(XMLHttpRequest);

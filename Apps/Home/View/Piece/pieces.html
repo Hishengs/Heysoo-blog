@@ -1,21 +1,21 @@
 <foreach name="pieces" item="piece">
-<div class="piece" id="{$piece['id']}">
-<div class="piece_left">
-<div class="essay_date">
-<div class="date_y">{:date("Y",strtotime($piece['date']))}</div>
-<div class="date_md">{:date("m/d",strtotime($piece['date']))}</div>
+<div class="piece" id="{$piece['piece_id']}">
+<div class="piece-left">
+<div class="essay-date">
+<div class="date-y">{:date("Y",strtotime($piece['date']))}</div>
+<div class="date-md">{:date("m/d",strtotime($piece['date']))}</div>
 </div>
 </div>
-<div class="piece_right">
-<div class="bg"></div><div class="piece_triangle"></div>
-<div class="piece_info">
-<span class="piece_author">{$piece.username} &nbsp; &nbsp;</span>
-<span class="piece_date"> <i class="icon-time" title="发布时间"></i> {:date("Y-m-d",strtotime($piece['date']))}</span>
+<div class="piece-right">
+<div class="bg"></div><div class="piece-triangle"></div>
+<div class="piece-info">
+<span class="piece-author">{$piece.username} &nbsp; &nbsp;发布于</span>
+<span class="piece-date"> <i class="icon-time" title="发布时间"></i> {:date("Y-m-d",strtotime($piece['date']))}</span>
 </div>
-<div class="piece_content">
+<div class="piece-content">
 {$piece.content}
 </div>
-<div class="piece_footer"><i class="icon-tag"></i>  
+<div class="piece-footer"><i class="icon-tag"></i>  
 <assign name="tags" value="$piece['tag']" /> 
 <foreach name="tags" item="tag" >
 <a href="javascript:tag('{$tag}');" class="tag" style="text-decoration:none;">{$tag}</a>&nbsp;
@@ -23,8 +23,8 @@
 <if condition="$piece['visible'] eq 0">
   <i class="icon-eye-close" title="私密"></i>
 </if>
- <span class="piece_operation">
- <i class="icon-remove piece-remove" title="删除，请谨慎" onclick="javascript:deleteItem('piece',{$piece['id']});"></i>
+ <span class="piece-operation">
+ <i class="icon-remove piece-remove" title="删除，请谨慎" onclick="javascript:deleteItem('piece',{$piece['piece_id']});"></i>
  </span>
 </div>
 </div>
