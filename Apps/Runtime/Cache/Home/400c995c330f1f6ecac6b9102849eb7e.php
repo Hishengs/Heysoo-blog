@@ -12,9 +12,7 @@
 <link rel="stylesheet" href="/Heysoo/Public/css/diary/diary.css"/>
 <link rel="stylesheet" href="/Heysoo/Public/css/essay/essay.css"/>
 <link rel="stylesheet" href="/Heysoo/Public/css/view.css"/>
-<!-- <link rel="stylesheet" href="http://cdn.bootcss.com/flat-hs/2.2.2/css/flat-hs.min.css"/> -->
 <link rel="stylesheet" href="/Heysoo/Public/bower_components/amazeui/dist/css/amazeui.css"/>
-<!-- <link rel="stylesheet" href="/Heysoo/Public/bower_components/semantic/dist/components/dropdown.min.css"/> -->
 <link rel="stylesheet" href="/Heysoo/Public/bower_components/lightbox2/dist/css/lightbox.css"/>
 <!--<style type="text/css">
 	#left-panel{ background-image: url('/Heysoo/Public/img/login_bg.png');}
@@ -66,7 +64,7 @@
 <div id="right-panel">
 <div id="content">
 
-<div class="pieces">
+<div class="pieces" ng-app="Index" ng-controller="IndexController">
 <?php if(is_array($pieces)): foreach($pieces as $key=>$piece): ?><div class="piece" id="<?php echo ($piece['piece_id']); ?>">
 <div class="piece-left">
 <a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" src="/Heysoo/Public/img/me.jpg" title="访问他/她的主页"/></a>
@@ -87,9 +85,12 @@
 </div>
 </div>
 </div><?php endforeach; endif; ?>
-</div>
 
-<button type="button" class="hs-btn hs-btn-primary hs-btn-block load-more" onclick="loadPieces();"><i class="icon-arrow-down"></i> 加载更多</button>
+<div ng-include="'/Heysoo/Public/templates/Index/pieces.html'" ></div>
+
+</div>
+<!-- <button type="button" class="hs-btn hs-btn-primary hs-btn-block load-more" onclick="loadPieces();"><i class="icon-arrow-down"></i> 加载更多</button> -->
+
 
 </div>
 </div>
@@ -104,11 +105,13 @@
 </script>
 <!-- <script src="/Heysoo/Public/js/require.js" data-main="main"></script> -->
 <script src="/Heysoo/Public/bower_components/lightbox2/dist/js/lightbox.js"></script>
-<!-- <script src="/Heysoo/Public/bower_components/amazeui/dist/js/amazeui.js"></script> -->
+<script src="/Heysoo/Public/bower_components/angular/angular.min.js"></script>
+<script src="/Heysoo/Public/bower_components/ng-infinite-scroll/ng-infinite-scroll.min.js"></script>
 <script src="/Heysoo/Public/editor/Kindeditor.js" ></script>
 <script src="/Heysoo/Public/editor/lang/zh_CN.js"></script>
 <script src="/Heysoo/Public/js/jqpaginator.min.js"></script>
 <script src="/Heysoo/Public/js/index.js"></script>
 <script src="/Heysoo/Public/js/pages.js"></script>
 <script src="/Heysoo/Public/js/piece.js"></script> 
+<script src="/Heysoo/Public/js/modules/index.js"></script>
 </html>

@@ -1,0 +1,156 @@
+[ 2015-08-14T14:56:12+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:02:08+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:07:15+08:00 ] ::1 /Heysoo/Public/templates/Index/piece_data.json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载模块:Public
+
+[ 2015-08-14T15:07:18+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.234014s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:07:31+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:08:42+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:10:05+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:10:24+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:11:49+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:12:25+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:13:03+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:15:17+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:16:00+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:16:13+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:17:04+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:17:25+08:00 ] ::1 /Heysoo/__PUBLIC__/img/me.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载模块:__PUBLIC__
+
+[ 2015-08-14T15:19:17+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T15:27:51+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T18:53:29+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.031200s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:29:57+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:31:50+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:32:32+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:33:55+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:40:36+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:50:08+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+ERR: 无法加载模块:{{avatar}}
+
+[ 2015-08-14T19:53:20+08:00 ] ::1 /Heysoo/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载模块:{{avatar}}
+

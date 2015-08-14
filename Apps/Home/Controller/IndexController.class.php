@@ -47,7 +47,7 @@ class IndexController extends Controller {
       }else $this->error('尚未登录，无法操作！',U("Index/login"));
     }
     //view页面
-    public function view(){
+    /*public function view(){
         $type = I('get.type');
         $id = I('get.id');
         switch ($type) {
@@ -76,7 +76,7 @@ class IndexController extends Controller {
         }
         $result = $this->fetch(":view");
         $this->ajaxReturn($result,'json');
-    }
+    }*/
     //获取文章
    public function getEssay($id){
         $cdt['id'] = $id;
@@ -99,5 +99,18 @@ class IndexController extends Controller {
         }else
             $response['error'] = 1;
         $this->ajaxReturn($response,'json');
+   }
+   public function angular_test(){
+        C('LAYOUT_ON',FALSE);
+        $this->display(":view");
+   }
+   public function update_pieces(){
+        $startNum = I('get.startNum');
+        $this->piece_model = D('Piece');
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,15)->select();
+        for ($i=0; $i < count($pieces); $i++) { 
+                $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
+        }
+        $this->ajaxReturn($pieces,'json');
    }
 }

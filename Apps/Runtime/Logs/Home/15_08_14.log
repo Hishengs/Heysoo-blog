@@ -1,0 +1,3327 @@
+[ 2015-08-14T00:07:53+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.115007s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.021001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.043002s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:1.0131s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.5540s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.1900s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.1640s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.4370s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.1020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0570s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.1100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0780s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.023001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.025001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.706041s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.710041s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.043002s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.046002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.021001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.025001s ]
+
+[ 2015-08-14T00:08:29+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.059003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.060003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T00:10:01+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.033002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T00:10:58+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T00:12:18+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.098005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T00:13:43+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.036002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T00:14:54+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.048003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T00:15:26+08:00 ] ::1 /Heysoo/Home/view/tag.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载控制器:View
+
+[ 2015-08-14T00:20:47+08:00 ] ::1 /Heysoo/Home/view/tag.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载控制器:View
+
+[ 2015-08-14T00:20:53+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T00:22:49+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2015-08-14T00:25:25+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T00:26:48+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.031002s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.032002s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008001s ]
+
+[ 2015-08-14T00:27:02+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T00:27:15+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.111006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.113006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T00:27:21+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T00:28:10+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T14:30:13+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.085004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.085004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T14:30:46+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.101006s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.124007s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.126007s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T14:30:53+08:00 ] ::1 /Heysoo/Home/Index/angular_test.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-08-14T14:31:48+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.7960s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.4200s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0470s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0170s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.1020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.1450s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.2740s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0600s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.1250s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0500s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.717041s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.719042s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T14:32:00+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.083004s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0480s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.2190s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0360s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.945054s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.946054s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T14:40:24+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0240s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.103006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006001s ]
+
+[ 2015-08-14T14:40:34+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.104005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.105006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T14:52:16+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.079004s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.352020s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.355020s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T14:53:00+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0930s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.264015s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.266015s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T14:55:13+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.021002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.012001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.031002s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.751043s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.754043s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T14:56:05+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.5610s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.098006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:02:06+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.098005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:07:13+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.362021s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:1.009057s ]
+INFO: [ view_parse ] --END-- [ RunTime:1.010057s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:07:29+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.100006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T15:08:40+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.098005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:10:04+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.096006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:10:23+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.093005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.094005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:11:48+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.138008s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.139008s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T15:12:24+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.101005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.102006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T15:13:01+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.109006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2015-08-14T15:15:16+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0340s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.095006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.096006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2015-08-14T15:15:58+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.104006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.105006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005001s ]
+
+[ 2015-08-14T15:16:11+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.100005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T15:17:02+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.104006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.106006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T15:17:23+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.093005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2015-08-14T15:19:16+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.094005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006001s ]
+
+[ 2015-08-14T15:27:49+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.094005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2015-08-14T18:53:02+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.062501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.065001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.067501s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:1.5825s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.6475s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.2075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.2350s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.5375s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0575s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.1085s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.1350s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0925s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.027501s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.030001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.900014s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.905014s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.007500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.035001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.037501s ]
+
+[ 2015-08-14T19:29:20+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.040001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.042501s ]
+
+[ 2015-08-14T19:29:54+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0425s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0175s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0325s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0400s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0325s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0625s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.022500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.027500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.782512s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.787512s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T19:31:46+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0425s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0475s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.062501s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.065001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.245004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.250004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T19:32:29+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.115001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.115001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T19:32:35+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+NOTIC: [2] json_decode() expects parameter 1 to be string, array given D:\workspace\www\Heysoo\Apps\Home\Controller\IndexController.class.php 第 114 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2015-08-14T19:33:53+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.012500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.070001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0550s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.337505s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.340005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-14T19:33:59+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015601s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0231s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:40:34+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.015000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.020000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.160002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.160002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T19:40:51+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0518s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:41:24+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:50:05+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0300s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0275s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.155002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.157502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T19:50:15+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.4450s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:53:16+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0200s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0250s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.170002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.170002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007501s ]
+
+[ 2015-08-14T19:53:31+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.216001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0518s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:53:44+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T19:53:47+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T19:53:49+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0156s ]
+
+[ 2015-08-14T19:53:51+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.1011s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T20:26:19+08:00 ] ::1 /Heysoo/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:26:20+08:00 ] ::1 /Heysoo/Home/Action/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.1475s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.127502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.130002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:26:25+08:00 ] ::1 /Heysoo/Home/Action/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:26:35+08:00 ] ::1 /Heysoo/Home/Action/do_login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `userName` = 'Hisheng' LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `hs_user` SET `ip`='::1',`city`='',`last_login_date`='2015-08-14 20:26:34' WHERE `userName` = 'Hisheng' [ RunTime:0.1625s ]
+NOTIC: [8] Undefined index: userName D:\workspace\www\Heysoo\Apps\Home\Controller\ActionController.class.php 第 57 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.077501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:26:38+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0900s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.1025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.1500s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0675s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0475s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.120002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.125002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T20:26:39+08:00 ] ::1 /Heysoo/Home/Index/favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+
+[ 2015-08-14T20:26:39+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:26:49+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0181s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T20:30:05+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.135002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.135002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:30:07+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:30:15+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0181s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T20:33:22+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.123502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.123502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:33:24+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:33:32+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY hs_piece.date desc LIMIT 15' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:34:48+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.120001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.120001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:34:50+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:35:31+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.095001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:35:32+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.142502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.142502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007501s ]
+
+[ 2015-08-14T20:35:34+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.115002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.117502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:35:36+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:35:42+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY hs_piece.date desc LIMIT 15' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:36:49+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0550s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002501s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.122502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.127502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:36:51+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:36:53+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1 AND hs_piece.piece_id > 47  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0537s ]
+
+[ 2015-08-14T20:49:32+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0575s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.105002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:49:34+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:49:46+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002501s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1 AND hs_piece.piece_id > 47  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T20:49:50+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.140002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.140002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T20:49:52+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:50:25+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002501s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.096001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T20:50:26+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:50:30+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY hs_piece.date desc LIMIT 15' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:51:16+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.105002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.105002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T20:51:18+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:51:20+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:52:15+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.110001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.110001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:52:17+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:52:18+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T20:53:40+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.135002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.137502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T20:53:42+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T20:53:44+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T21:01:13+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.100002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.102502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:01:15+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:01:17+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002501s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002501s ]
+
+[ 2015-08-14T21:02:58+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.100002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.020000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.030000s ]
+
+[ 2015-08-14T21:03:00+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:03:02+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:35:46+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.102502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T21:35:47+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:35:50+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?piece_id=47
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T21:36:23+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.105001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T21:36:24+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:36:26+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?piece_id=47
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:36:46+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:36:48+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:36:50+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?piece_id=47
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1 AND hs_piece.piece_id > 47  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T21:39:56+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0100s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.107501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.110001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:39:58+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:40:53+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0300s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002500s ]
+
+[ 2015-08-14T21:40:54+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:41:01+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?piece_date=2015-05-06%2001:04:08
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '01:04:08  ORDER BY hs_piece.date desc LIMIT 15' at line 1
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Library\Think\Db\Driver.class.php:169) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:46:53+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0500s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.005000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.172503s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.172503s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2015-08-14T21:46:55+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:46:59+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 0,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:47:58+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0075s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.102502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.017500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.017500s ]
+
+[ 2015-08-14T21:47:59+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.002500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:48:02+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.092501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2015-08-14T21:48:03+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:48:08+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:48:30+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002501s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:49:02+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T21:49:05+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:49:08+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:50:03+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0075s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:50:05+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:50:10+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0625s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002500s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.110002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.110002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2015-08-14T21:50:12+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007501s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T21:50:34+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0025s ]
+
+[ 2015-08-14T21:50:45+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T22:02:58+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.099005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2015-08-14T22:03:00+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T22:03:06+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0020s ]
+
+[ 2015-08-14T22:04:20+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.101006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.103006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2015-08-14T22:04:22+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T22:04:25+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0010s ]
+
+[ 2015-08-14T23:00:43+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0600s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0120s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.222013s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.224013s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.013001s ]
+
+[ 2015-08-14T23:00:45+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0020s ]
+
+[ 2015-08-14T23:00:46+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.012001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.009000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T23:01:22+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:01:22+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:01:26+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:01:27+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0648s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0030s ]
+
+[ 2015-08-14T23:01:29+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0010s ]
+
+[ 2015-08-14T23:01:42+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.099005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.100005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2015-08-14T23:01:44+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T23:08:08+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0050s ]
+
+[ 2015-08-14T23:09:02+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:09:02+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0010s ]
+
+[ 2015-08-14T23:09:05+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0030s ]
+
+[ 2015-08-14T23:09:10+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:09:32+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0156s ]
+
+[ 2015-08-14T23:13:18+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:22:08+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.104006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2015-08-14T23:22:10+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T23:23:23+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0010s ]
+
+[ 2015-08-14T23:27:08+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0000s ]
+
+[ 2015-08-14T23:27:08+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=30
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 30,15   [ RunTime:0.0020s ]
+
+[ 2015-08-14T23:32:18+08:00 ] ::1 /Heysoo/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `hs_user` WHERE `id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_essay` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_essay` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `hs_diary` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_diary` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `hs_piece` WHERE `user_id` = 1000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `hs_user_config` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `hs_user_config` WHERE ( user_id=1000 ) LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.098006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007001s ]
+
+[ 2015-08-14T23:32:19+08:00 ] ::1 /Heysoo/Home/Index/%7B%7Bavatar%7D%7D
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+ERR: 非法操作:{{avatar}}
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 229 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\workspace\www\Heysoo\Core\Common\functions.php:126) D:\workspace\www\Heysoo\Core\Library\Think\Think.class.php 第 230 行.
+
+[ 2015-08-14T23:32:35+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0010s ]
+
+[ 2015-08-14T23:32:38+08:00 ] ::1 /Heysoo/Home/Index/update_pieces.html?startNum=15
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `hs_piece` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `hs_piece` INNER JOIN hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1  ORDER BY hs_piece.date desc LIMIT 15,15   [ RunTime:0.0000s ]
+
