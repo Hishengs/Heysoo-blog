@@ -65,9 +65,6 @@ class EssayController extends Controller {
     public function view(){
         C('LAYOUT_ON',FALSE);
         $id = I('get.id');
-        //$cdt['id'] = $id;
-        //$cdt['visible'] = 1;
-        //$essay = $this->essay_model->where($cdt)->find(); 
         $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         $essay['tag'] = explode(" ", $essay['tag']);
@@ -197,4 +194,26 @@ class EssayController extends Controller {
             else $this->ajaxReturn(array('error'=>1,'msg'=>'评论失败'),'json');
         }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
     } 
+    //
+    public function ng_get_essay_page(){
+        if($_SESSION['LOGIN_STATUS']){
+            $user_id = $_SESSION['USER_ID'];
+            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($this->page_size)->select();
+            $totalCount = $this->essay_model->where('user_id='.$user_id)->count();
+            $page = array('totalCount'=>$totalCount,'pageSize'=>$this->page_size,'totalPage'=>$totalCount/$this->page_size);
+            $response = array('items'=>$essays,'page'=>$page);
+            $this->ajaxReturn($response,'json');
+        }
+    }
+    public function ng_view(){
+        $id = I('get.id');
+        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
+        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
+        //$essay['tag'] = explode(" ", $essay['tag']);
+        //获取评论信息
+        $comments = A('Comment')->get_essay_comments($essay['essay_id']);
+        $comments_num = count($comments);
+        $res = array('essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num);
+        $this->ajaxReturn($res,'json');
+    }
 }

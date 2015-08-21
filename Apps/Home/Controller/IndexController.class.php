@@ -4,6 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
 	private $login_status = false;
 	private $piece_model;
+    private $piece_nums = 10;
 
     public function index(){
         if(!empty($_COOKIE['history_url']))redirect($_COOKIE['history_url']);
@@ -13,7 +14,7 @@ class IndexController extends Controller {
     		$this->piece_model = D("Piece");
     		$cdt['visible'] = 1;
     		//$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
-            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit(15)->select();
+            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
             $user_info = A('User')->get_user_info(session('USER_ID'));
             $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
             $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
@@ -37,7 +38,7 @@ class IndexController extends Controller {
         $this->piece_model = D('Piece');
         $cdt['visible'] = 1;
         //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit(15)->select();
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
         for ($i=0; $i < count($pieces); $i++) { 
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
             }
@@ -107,7 +108,7 @@ class IndexController extends Controller {
    public function update_pieces(){
         $startNum = I('get.startNum');
         $this->piece_model = D('Piece');
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,15)->select();
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,$this->piece_nums)->select();
         for ($i=0; $i < count($pieces); $i++) { 
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
         }

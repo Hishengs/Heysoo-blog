@@ -1,0 +1,25 @@
+<div class="essays">
+<div class="essay" id="{{essay.essay_id}}" ng-repeat="essay in items">
+<div class="essay-left">
+<div class="essay-date">
+<div class="date-y">年</div>
+<div class="date-md">月日</div>
+</div>
+</div>
+<div class="essay-right">
+<div class="bg"></div><div class="essay-triangle"></div>
+<div class="essay-info">
+<a ng-click='getViewPage(essay.essay_id)' href="javascript:;"><h4 class="essay-title">{{essay.title}}</h4></a>
+<div class="essay-id" style="display:none;">{{essay.essay_id}}</div>
+</div>
+<div class="essay-content" ng-bind-html="essay.content | subStr:150 | trustHtml"></div>...
+<div class="essay-footer"><i class="icon-tag"></i> 
+<a href="javascript:tag('{{essay.tag}}');">{{essay.tag}}</a>&nbsp;
+<span class="essay-operation">
+ <i class="icon-edit essay-modify" title="修改" onclick="javascript:;"></i>
+ <i class="icon-remove essay-remove" title="删除，请谨慎" onclick="javascript:;"></i>
+ </span>
+</div>
+</div>
+</div>
+</div>

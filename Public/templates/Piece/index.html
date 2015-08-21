@@ -1,0 +1,63 @@
+<div class="pieces">
+<div class="piece" id="{{piece.piece_id}}" ng-repeat="piece in items">
+<div class="piece-left">
+<div class="essay-date">
+<div class="date-y">年</div>
+<div class="date-md">月日</div>
+</div>
+</div>
+<div class="piece-right">
+<div class="bg"></div><div class="piece-triangle"></div>
+<div class="piece-info">
+<span class="piece-author"><a href="javascript:;">{{piece.username}}</a> &nbsp; &nbsp;发布于</span>
+<span class="piece-date"> <i class="icon-time" title="发布时间"></i> {{piece.date | date:'shortDate'}}</span>
+</div>
+<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
+<div class="piece-footer"><i class="icon-tag"></i>  
+<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
+<if condition="$piece['visible'] eq 0">
+  <i class="icon-eye-close" title="私密"></i>
+</if>
+ <span class="piece-operation">
+ <i class="icon-remove piece-remove" title="删除，请谨慎" onclick="javascript:deleteItem('piece',1);"></i>
+ </span>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="piece-pagination" class="pagination">
+</div>
+<!--<script type="text/javascript" ng-model="page">
+	$('#piece-pagination').jqPaginator({
+		prev: '<li class="prev"><a href="javascript:;">上一页</a></li>',
+		next: '<li class="next"><a href="javascript:;">下一页</a></li>',
+		page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+		first: '<li class="first"><a href="javascript:;">首页</a></li>',
+		last: '<li class="last"><a href="javascript:;">末页</a></li>',
+	    totalPages: 1,
+	    totalCounts:10,
+	    pageSize:page.10,
+	    visiblePages: 7,
+	    currentPage: 1,
+	    onPageChange: function (num, type) {
+	        $.ajax({
+	        	url:controller_path+"Piece/load_pieces_html.html",
+				type:'GET',
+				data:{'page':num-1,'type':type},
+				dataType:'json',
+				success:function(data){
+					if(data.error == 0){
+						$(".pieces").empty();
+						$(".pieces").html(data.html);
+						$(document).scrollTop(0);
+					}
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					console.log(XMLHttpRequest);
+				}
+	        });
+	    }
+	});
+</script>-->

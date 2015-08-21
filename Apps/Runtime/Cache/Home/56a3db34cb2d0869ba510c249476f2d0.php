@@ -1,6 +1,7 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" ng-app="Index" ng-controller="c_index">
 <head>
+<base href="/Heysoo/Home/Index/">
 <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="favicon.ico">
@@ -12,25 +13,22 @@
 <link rel="stylesheet" href="/Heysoo/Public/css/diary/diary.css"/>
 <link rel="stylesheet" href="/Heysoo/Public/css/essay/essay.css"/>
 <link rel="stylesheet" href="/Heysoo/Public/css/view.css"/>
-<!-- <link rel="stylesheet" href="http://cdn.bootcss.com/flat-hs/2.2.2/css/flat-hs.min.css"/> -->
-<link rel="stylesheet" href="/Heysoo/Public/bower_components/amazeui/dist/css/amazeui.css"/>
-<!-- <link rel="stylesheet" href="/Heysoo/Public/bower_components/semantic/dist/components/dropdown.min.css"/> -->
-<link rel="stylesheet" href="/Heysoo/Public/bower_components/lightbox2/dist/css/lightbox.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/bower/amazeui/dist/css/amazeui.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/bower/lightbox2/dist/css/lightbox.css"/>
 <!--<style type="text/css">
 	#left-panel{ background-image: url('/Heysoo/Public/img/login_bg.png');}
 	#right-panel{ background-image: url('/Heysoo/Public/img/bg_day.png');}
 </style>-->
-<script src="/Heysoo/Public/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/Heysoo/Public/bower_components/jquery.lazyload/jquery.lazyload.js"></script>
+<script src="/Heysoo/Public/bower/jquery/dist/jquery.min.js"></script>
 <style type="text/css">
 	#left-panel{ background-image: url('/Heysoo/Public/img/login_bg.png');}
-	#right-panel{ background-image: url("/Heysoo/Public/img/<?php echo ($user_config['bg_img']); ?>.png");}
+	body{ background-image: url("/Heysoo/Public/img/<?php echo ($user_config['bg_img']); ?>.png");}
 </style>
 </head>
 <body>
 <div id="mask"></div>
 <div id="hMessage-mask"></div>
-<!-- 左边侧 个人资料面板 -->
+
 <div id="left-panel">
 <div class="user-avatar">
 <img class="user-avatar hs-img" src="/Heysoo/Public/img/me.jpg" title="点击修改头像">
@@ -46,16 +44,12 @@
 </div>
 
 <button class="hs-btn hs-btn-primary hs-btn-block" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="icon-random"></i> 首页</button>
-<button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Piece/get_piece_page');?>","content",4)><i class="icon-fire"></i> 我的碎片(<?php echo ((isset($piece_nums ) && ($piece_nums !== ""))?($piece_nums ):0); ?>)</button>
+<button class="hs-btn hs-btn-primary hs-btn-block" ng-click="getPage('piece')"><i class="icon-fire"></i> 我的碎片(<?php echo ((isset($piece_nums ) && ($piece_nums !== ""))?($piece_nums ):0); ?>)</button>
 <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Essay/get_essay_page');?>","content",2)><i class="icon-font"></i> 我的文章(<?php echo ((isset($essay_nums ) && ($essay_nums !== ""))?($essay_nums ):0); ?>)</button>
 <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Diary/get_diary_page');?>","content",3)><i class="icon-calendar"></i> 我的日记(<?php echo ((isset($diary_nums ) && ($diary_nums !== ""))?($diary_nums ):0); ?>)</button>
 
-<!-- <button class="hs-btn hs-btn-primary hs-btn-block" onclick=showEditPage("<?php echo U('Action/get_edit_page');?>","essay","content")><i class="icon-pencil"></i> 提笔ajax</button>
-<button class="hs-btn hs-btn-primary hs-btn-block" onclick="window.location.href='<?php echo U('Essay/edit_page');?>'"><i class="icon-pencil"></i> 提笔</button> -->
-
 </div>
 <div class="hs-btn-group hs-btn-group-justify setting">
-<!--  <button class="hs-btn hs-btn-primary hs-btn-block"><i class="icon-wrench"></i> 设置</button>-->
 <button class="hs-btn hs-btn-primary" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="icon-off"></i> 退出</button>
 <button class="hs-btn hs-btn-primary" onclick="javascript:hMessage('尚未实现');"><i class="icon-wrench"></i> 设置</button>
 <button class="hs-btn hs-btn-primary" onclick="javascript:hMessage('尚未实现');"><i class="icon-search"></i> 搜索</button>
@@ -64,17 +58,15 @@
 </div>
 
 <div id="right-panel">
-<div id="content">
-
+<div id="content" ng-controller="c_content">
+<div ui-view="content"></div>
 <div class="essay-edit">
 <div class="essay-edit-header"><!-- <p class="bg-primary">发布</p> --></div>
 <form class="hs-form essay-edit-form" method="post" action="<?php echo U('Action/deal_post');?>">
-	<!-- <input class="form-control essay-title" type="text" name="title" title="标题" placeholder="标题"> -->
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
 	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题" placeholder="标题">
 	</div>
-	<!-- <input class="form-control essay-tag" type="text" name="tag" title="标签" placeholder="标签"> -->
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
 	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签">
@@ -144,13 +136,16 @@
 	var editor_basePath = "/Heysoo/Public/editor/";
 	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
 </script>
-<!-- <script src="/Heysoo/Public/js/require.js" data-main="main"></script> -->
-<script src="/Heysoo/Public/bower_components/lightbox2/dist/js/lightbox.js"></script>
-<!-- <script src="/Heysoo/Public/bower_components/amazeui/dist/js/amazeui.js"></script> -->
+<script src="/Heysoo/Public/bower/lightbox2/dist/js/lightbox.js"></script>
+<script src="/Heysoo/Public/bower/layzrjs/dist/layzr.min.js"></script>
+<script src="/Heysoo/Public/bower/angular/angular.min.js"></script>
+<script src="/Heysoo/Public/bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/Heysoo/Public/bower/ng-infinite-scroll/ng-infinite-scroll.min.js"></script>
 <script src="/Heysoo/Public/editor/Kindeditor.js" ></script>
 <script src="/Heysoo/Public/editor/lang/zh_CN.js"></script>
 <script src="/Heysoo/Public/js/jqpaginator.min.js"></script>
 <script src="/Heysoo/Public/js/index.js"></script>
 <script src="/Heysoo/Public/js/pages.js"></script>
 <script src="/Heysoo/Public/js/piece.js"></script> 
+<script src="/Heysoo/Public/js/app.js"></script>
 </html>

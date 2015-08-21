@@ -1,4 +1,19 @@
 var controller_path = "/Heysoo/Home/";
+var progress_bar = $.AMUI.progress;//进度条
+//发布
+var editOpts = {
+    width:'100%',
+    height:'400px',
+    basePath:editor_basePath,
+    themeType:'simple',
+    items:[ '|','forecolor', 'hilitecolor', 'fontname' ,'bold', 
+	'italic', 'underline', '|', 'justifyleft', 'justifycenter', 'justifyright',
+	'justifyfull', '|', 'subscript',
+	'superscript', 'removeformat', '|', 'image', 'multiimage',
+	'emoticons','|', 'link', 'unlink', 'fullscreen',
+	'preview', '|'
+	],
+};
 //文章评论配置
 var essayCmtOptions  = {
 		basePath:editor_basePath,
@@ -8,9 +23,8 @@ var essayCmtOptions  = {
 		height:'180px',
 		minHeight:'180px',
 		resizeType:0,
-		items:[ '|', 'removeformat', '|', 'image', 
-				'emoticons','|', 'link', 'unlink','fullscreen', 'preview', '|'],
-				themeType : 'simple'
+		items:['emoticons', 'link'],
+		themeType : 'simple'
 			}; 
 //碎片评论配置
 var pieceCmtOptions  = {
@@ -21,9 +35,8 @@ var pieceCmtOptions  = {
 		height:'330px',
 		minHeight:'330px',
 		resizeType:0,
-		items:[ '|', 'removeformat', '|', 'image', 
-				'emoticons','|', 'link', 'unlink','fullscreen', 'preview', '|'],
-				themeType : 'simple'
+		items:['emoticons', 'link'],
+		themeType : 'simple'
 			}; 
 jQuery(function($) {
 	//初始化
@@ -61,7 +74,7 @@ function init(){
 		});
 	});
 	setLightBox();
-	//setLazyload();
+	setLazyload();
 }	
 //
 function gotoTop(){
@@ -102,11 +115,11 @@ function setLightBox(){
 function setLazyload(){
 	$(document).find("img").each(function(){
 		if($(this).attr("class") != "user-avatar"){
-			$(this).attr("class","lazy");
-			$(this).attr("data-original",$(this).attr("src"));
+			$(this).attr("data-layzr",$(this).attr('src'));
+			$(this).removeAttr("src");
 		}
 	});
-	$("img.lazy").lazyload();
+	var layzr = new Layzr();
 }
 //隐藏左边控制面板
 function hideControlPanel(){
@@ -188,6 +201,7 @@ function getPage(url,objId,page){
 		success:function(data){
 			$("#"+objId).html(data);
 			setLightBox();
+			$(document).scrollTop(0);
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
 			console.log(XMLHttpRequest);
@@ -227,6 +241,10 @@ function showMask(objId,content){
 		$("#"+objId).prepend(mask);
 		mask.show();
 	}
+}
+//隐藏遮罩
+function hideMask(){
+	$("#content-mask").hide();
 }
 //弹出层编辑器
 function showEditPage(url,type,objId){
@@ -383,10 +401,6 @@ function showPieceCmt(pieceId){
 	$("button.piece-comment-submit").on('click',function(){
 		hMessage('评论功能暂未实现');
 	});
-}
-//获取碎片评论
-function getPieceCmt(pieceId){
-
 }
 //发布文章评论
 function postEssayCmt(essay_id){

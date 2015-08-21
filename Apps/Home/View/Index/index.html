@@ -1,4 +1,4 @@
-<div class="pieces" ng-app="Index" ng-controller="IndexController">
+<div class="pieces">
 <foreach name="pieces" item="piece">
 <div class="piece" id="{$piece['piece_id']}">
 <div class="piece-left">
@@ -26,5 +26,6 @@
 
 <div ng-include="'__PUBLIC__/templates/Index/pieces.html'" ></div>
 
+<div ui-view></div>
 </div>
 <!-- <button type="button" class="hs-btn hs-btn-primary hs-btn-block load-more" onclick="loadPieces();"><i class="icon-arrow-down"></i> 加载更多</button> -->

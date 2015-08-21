@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>注册</title>
-<!-- <link rel="stylesheet" href="/ThinkPHP/Public/css/bootstrap/bootstrap.min.css"/> -->
-<link rel="stylesheet" href="/ThinkPHP/Public/bower_components/amazeui/dist/css/amazeui.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/font-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/ThinkPHP/Public/css/register.css"/>
+<!-- <link rel="stylesheet" href="/Heysoo/Public/css/bootstrap/bootstrap.min.css"/> -->
+<link rel="stylesheet" href="/Heysoo/Public/bower/amazeui/dist/css/amazeui.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/font-awesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="/Heysoo/Public/css/register.css"/>
 </head>
 <style>
-body{ background-image:url("/ThinkPHP/Public/img/login_bg.jpg"); }
+body{ background-image:url("/Heysoo/Public/img/login_bg.jpg"); }
 </style>
 <body>
 
 <div class="bg">
-<div class="register_panel">
+<div class="register-panel">
 
 <div id="avatar">
-<img class="avatar_img" src="/ThinkPHP/Public/img/lion.png"/>
+<img class="avatar-img" src="/Heysoo/Public/img/lion.png"/>
 </div>
 <div class="title">Heysoo</div>
-<form action="<?php echo U('Action/do_register');?>" class="hs-form register_form" method="post">
+<form action="<?php echo U('Action/do_register');?>" class="hs-form register-form" method="post">
 
 <div class="hs-input-group hs-input-group-primary">
 <span class="hs-input-group-label">用户名</span>
@@ -49,10 +49,10 @@ body{ background-image:url("/ThinkPHP/Public/img/login_bg.jpg"); }
 
 <?php if($register_verify_code_on == true): ?><div class="hs-input-group hs-input-group-primary">
 <span class="hs-input-group-label">验证码</span>
-<input class="verify_code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
+<input class="verify-code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
 </div>
-<div class="verify_code">
-	<img class="verify_code_img" src="<?php echo U('Action/create_verify_code');?>" title="点击更换验证码" onclick=javascript:this.src="<?php echo U('Action/create_verify_code');?>">
+<div class="verify-code">
+	<img class="verify-code-img" src="<?php echo U('Action/create_verify_code');?>" title="点击更换验证码" onclick=javascript:this.src="<?php echo U('Action/create_verify_code');?>">
 </div><?php endif; ?>
 
 <button type="submit" class="hs-btn hs-btn-primary hs-btn-block register">注  册</button>

@@ -1,0 +1,58 @@
+<div class="view-panel">
+	<h3 class="view-title">{{essay.title}}</h3>
+	<div class="view-info">
+	<span class="view-userName"><a href="javascript:;" class="view-user">{{essay.username}}</a><div id="user-card"></div></span>
+	<span class="view-date"><i class="icon-time" title="发布时间"></i> {{essay.date}}</span>
+	<span class="view-tag"><i class="icon-tag" title="文章标签"></i> 
+	<a href="javascript:tag('{{essay.tag}}');" style="text-decoration:none;">{{essay.tag}}</a>&nbsp;
+	</span>
+	<span class="essay-operation">
+	<i class="icon-edit essay-modify" title="修改文章"></i>
+	<i class="icon-remove piece-remove" title="删除，请谨慎" onclick="deleteItem(essay.essay_id)"></i>
+	</span>
+	</div>
+	<div class="view-content" ng-bind-html="essay.content | trustHtml"></div>
+	<div class="view-footer"></div>
+	<div class="view-comment"></div>
+</div>
+
+<!-- 发布评论 -->
+<div class="post-comment">
+<form class="hs-form essay-comment-form" id="essay-comment-form">
+<textarea class="post-comment-edit" name="comment-content" class="post-comment-edit"></textarea>
+<button type="button" onclick="postEssayCmt(essay.essay_id)" class="hs-btn hs-btn-primary post-essay-comment-btn">发布评论</button>
+</form>
+</div>
+
+<!-- 评论区 -->
+<div class="essay-comments">
+<ul class="hs-comments-list hs-comments-list-flip">
+
+<li class="hs-comment" ng-repeat="comment in comments">
+<article class="hs-comment essay-comment"> <!-- 评论容器 -->
+  <a href="javascript:;">
+    <img class="hs-comment-avatar comment-user-avatar" src="{{avatar_path}}" alt=""/> <!-- 评论者头像 -->
+  </a>
+
+  <div class="hs-comment-main"> <!-- 评论内容容器 -->
+    <header class="hs-comment-hd">
+      <!--<h3 class="hs-comment-title">评论标题</h3>-->
+      <div class="hs-comment-meta"> <!-- 评论元数据 -->
+        <a href="javascript:;" class="hs-comment-author">{{comment.username}}</a> <!-- 评论者 -->
+        评论于 <time datetime="">{{comment.comment_date}}</time>
+      </div>
+    </header>
+
+    <div class="hs-comment-bd" ng-bind-html="comment.comment_content | trustHtml"></div> <!-- 评论内容 -->
+  </div>
+</article>
+</li>
+
+
+</ul>
+</div>
+
+<script type="text/javascript">
+	var avatar_path = "__PUBLIC__/img/lion.png";
+    initEssayComment();
+</script>

@@ -11,7 +11,7 @@
 	</div>
 	<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
 	<div class="piece-footer"><i class="icon-tag"></i> 
-	<a href="javascript:tag('{{tag}}');" class="tag" style="text-decoration:none;" ng-repeat="tag in piece.tag">
+	<a ng:href="javascript:tag('{{tag}}');" class="tag" style="text-decoration:none;" ng-repeat="tag in piece.tag">
 	{{tag}}
 	</a>&nbsp;
 	<span class="piece-footer-right"><a href="javascript:showPieceCmt();"><i class="icon-comment-alt" title="评论"></i></a></span>

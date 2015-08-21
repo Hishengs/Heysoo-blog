@@ -1,21 +1,8 @@
-var index_module = angular.module('Index',['infinite-scroll']);
+var index_module = angular.module('Index',['infinite-scroll','ui.router']);
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
+//首页滑动加载控制器
 index_module.controller('IndexController',function($scope,Piece){
 	$scope.avatar = public_path+"/img/me.jpg";
-	/*$scope.loadMore = function(){
-		var last = $scope.pieces[$scope.pieces.length - 1];
-		var startNum = $("div.piece").length;
-		console.log('请求的文章ID是：'+startNum);
-		$("button.load-more").html('加载中...');
-		var url = "/Heysoo/Home/Index/update_pieces.html?startNum="+startNum;
-		$http.get(url).success(function(response){
-			//$scope.pieces = response;
-			$scope.pieces.push(response);
-			$scope.hide = false;
-			console.log(response);
-			$("button.load-more").html('加载更多');
-		});
-	}*/
 	$scope.datas = new Piece();
 });
 index_module.filter('trustHtml', function ($sce) {
@@ -56,3 +43,12 @@ index_module.factory('Piece', function($http) {
 
   return Piece;
 });
+//首页碎片评论控制器
+index_module.controller('pieceCmtCrl',function($scope){
+	//
+});
+
+//路由配置
+index_module.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/blog/index");
+}]);

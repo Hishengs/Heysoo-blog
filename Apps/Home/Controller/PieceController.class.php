@@ -137,4 +137,14 @@ class PieceController extends Controller {
                 $this->ajaxReturn(array('error'=>2,'msg'=>'暂无评论'),'json');
         }
     }
+    public function ng_get_piece_page(){
+      if($_SESSION['LOGIN_STATUS']){
+        $user_id = $_SESSION['USER_ID'];
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($this->page_size)->select();
+        $totalCount = $this->piece_model->where('user_id='.$user_id)->count();
+        $page = array('totalCount'=>$totalCount,'pageSize'=>$this->page_size,'totalPage'=>$totalCount/$this->page_size);
+        $response = array('items'=>$pieces,'page'=>$page);
+        $this->ajaxReturn($response,'json');
+      }
+    }
 }
