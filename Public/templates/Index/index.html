@@ -1,0 +1,20 @@
+<div class="pieces">
+<div class="piece" id="{{ piece.piece_id }}" ng-repeat="piece in index_items">
+<div class="piece-left">
+<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" ng-src="{{ avatar }}" title="访问他/她的主页"/></a>
+</div>
+<div class="piece-right">
+<div class="bg"></div><div class="piece-triangle"></div>
+<div class="piece-info">
+<span class="piece-user"><a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
+</div>
+<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
+<div class="piece-footer"><i class="hs-icon-tag"></i> 
+<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
+<span class="piece-footer-right"><a href="javascript:;"><i class="hs-icon-comment-alt" title="评论"></i></a></span>
+</div>
+</div>
+</div>
+</div>
+<button type="button" class="hs-btn hs-btn-primary hs-btn-block load-more index-load-more" ng-click="indexLoadMore();" ><i class="hs-icon-arrow-down"></i> 加载更多</button>

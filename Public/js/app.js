@@ -1,20 +1,20 @@
 var c_path = "/Heysoo/Home/";
 var m_index = angular.module('Index',['infinite-scroll','ui.router']);
+/*angular config*/
 /*Config*/
 var tpl_piece_url = public_path+'/templates/Piece/index.html';
 var tpl_edit_url = public_path+'/templates/Essay/edit.html';
 var tpl_essay_url = public_path+'/templates/Essay/index.html';
 var tpl_view_url = public_path+'/templates/Essay/view.html';
-m_index.config(['$locationProvider', '$urlRouterProvider','$httpProvider', function($locationProvider, $urlRouterProvider,$httpProvider) {
+m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     //$locationProvider.html5Mode(true);
-    if (!$httpProvider.defaults.headers.get) {
-      $httpProvider.defaults.headers.get = {};
-    }
-    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-    $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
     $urlRouterProvider.otherwise("");
 }]);
+//httpProvider
+/*m_index.config(['$httpProvider',function($httpProvider){
+	//
+}]);*/
+//stateProvider
 m_index.config(['$stateProvider',function($stateProvider){
     $stateProvider.state('piece',{
         url:'/piece',
@@ -38,20 +38,11 @@ m_index.config(['$stateProvider',function($stateProvider){
         }
     });
 }]);
-//var app = angular.module('Heysoo',['ui.router']);
-angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
-/*Controller*/
-/*m_index.controller('c_app',function($scope,$state,$http){
-  $scope.getPage = function(page){
-    if(page === 'piece'){
-      var url = "/Heysoo/Home/Piece/ng_get_piece_page.html";
-      $http.get(url).success(function(res){
-        $scope.pieces = res;
-        $state.go('piece');
-      });
-    }else return;
-  }
-});*/
+//deal unsafe:javascript:...
+m_index.config(function($compileProvider){
+      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
+});
+/*controller of angular*/
 m_index.controller('c_content',function($scope,$state,$http){
   //$state.go('piece');
 })
@@ -78,6 +69,7 @@ m_index.controller('c_index',function($scope,$state,$http,Piece){
         });
     }
     $scope.edit = function(){
+      $scope.edit_post_path = home_path+"/Action/deal_post.html";
       $state.go('edit');
     }
     $scope.getViewPage = function(id){
@@ -94,20 +86,55 @@ m_index.controller('c_index',function($scope,$state,$http,Piece){
       });
     }
 });
-m_index.controller('c_essay',function($scope,$state,$http){
-    //
-});
-/*Filter*/
-m_index.filter('trustHtml', function ($sce) {
-        return function (input) {
-            return $sce.trustAsHtml(input);
+m_index.controller('c_edit',function($scope,$state,$http){
+    $scope.edit_visible = "1";
+    $scope.edit_type = "piece";
+    var url = home_path+"/Essay/ng_essay_post.html";
+    console.log(url);
+    $scope.editPost = function(){
+      $scope.edit_content = edit_post.html();
+      console.log("title:"+$scope.edit_title);
+      console.log("tag:"+$scope.edit_tag);
+      console.log("type:"+$scope.edit_type);
+      console.log("visible:"+$scope.edit_visible);
+      console.log("content:"+$scope.edit_content);
+      /*$.ajax({
+        url:url,
+        type:'POST',
+        data:{
+          'title':$scope.edit_title,
+          'tag':$scope.edit_tag,
+          'type':$scope.edit_type,
+          'visible':$scope.edit_visible,
+          'content':$scope.edit_content
+        },
+        dataType:'json',
+        success:function(res){
+          console.log(res);
+          if(res.error === 0){
+            hMessage(res.msg);
+            //$state.go('piece');
+          }else{hMessage(res.msg);}
         }
-});
-m_index.filter('subStr', function () {
-        return function (input,limit) {
-            //去掉所有的html标记
-            return input.replace(/<[^>]+>/g,"").substr(0,limit);
+      });*/
+      $http({
+        method:'POST',
+        url:url,
+        data:{
+          'title':$scope.edit_title,
+          'tag':$scope.edit_tag,
+          'type':$scope.edit_type,
+          'visible':$scope.edit_visible,
+          'content':$scope.edit_content
         }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+          //$state.go('piece');
+        }else{hMessage(res.msg);}
+      });
+    }
 });
 /*Factory*/
 m_index.factory('Piece', function($http) {
@@ -140,10 +167,15 @@ m_index.factory('Piece', function($http) {
 
   return Piece;
 });
-
-//deal unsafe:javascript:...
-m_index.config(function($compileProvider){
-      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
+/*Filter*/
+m_index.filter('trustHtml', function ($sce) {
+        return function (input) {
+            return $sce.trustAsHtml(input);
+        }
 });
-
-/*test for vue*/
+m_index.filter('subStr', function () {
+        return function (input,limit) {
+            //去掉所有的html标记
+            return input.replace(/<[^>]+>/g,"").substr(0,limit);
+        }
+});

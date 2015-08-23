@@ -31,7 +31,7 @@
 <li class="hs-comment" ng-repeat="comment in comments">
 <article class="hs-comment essay-comment"> <!-- 评论容器 -->
   <a href="javascript:;">
-    <img class="hs-comment-avatar comment-user-avatar" src="{{avatar_path}}" alt=""/> <!-- 评论者头像 -->
+    <img class="hs-comment-avatar comment-user-avatar" ng-src="{{avatar_path}}" alt=""/> <!-- 评论者头像 -->
   </a>
 
   <div class="hs-comment-main"> <!-- 评论内容容器 -->
@@ -53,6 +53,5 @@
 </div>
 
 <script type="text/javascript">
-	var avatar_path = "__PUBLIC__/img/lion.png";
     initEssayComment();
 </script>

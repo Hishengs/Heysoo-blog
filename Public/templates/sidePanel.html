@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-cn" ng-app="Index" ng-controller="c_index">
-<head>
-<base href="/Heysoo/Home/Index/">
-<meta charset="UTF-8">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link rel="icon" type="image/png" href="__PUBLIC__/img/favicon.ico">
-<title>{$user['username'] | default="我的主页"}</title>
-<link rel="stylesheet" href="__PUBLIC__/bower/fontawesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="__PUBLIC__/bower/lightbox2/dist/css/lightbox.css"/>
-<link rel="stylesheet" href="__PUBLIC__/css/dist/plugins.css"/>
-<link rel="stylesheet" href="__PUBLIC__/css/dist/index.css"/>
-<style type="text/css">
-	#left-panel{ background-image: url('__PUBLIC__/img/login_bg.png');}
-	body{ background-image: url("__PUBLIC__/img/{$user_config['bg_img']}.png");}
-</style>
-</head>
-<body>
-<div id="mask"></div>
-<div id="hMessage-mask"></div>
-
-<div id="left-panel" ng-controller="c_sidePanel">
 <div class="user-avatar">
 <img class="user-avatar hs-img" ng-src="{{avatar}}" title="点击修改头像">
 </div>
@@ -45,28 +23,3 @@
 <button class="hs-btn hs-btn-primary" onclick="javascript:hMessage('尚未实现');"><i class="hs-icon-search"></i> 搜索</button>
 <button class="hs-btn hs-btn-primary" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
 </div>
-</div>
-
-<div id="right-panel">
-<div id="content">
-<div ui-view="content">
-<div ng-include="'__PUBLIC__/templates/Index/index.html'"></div>
-</div>
-</div>
-</div>
-<!-- 回到顶部 -->
-<a href="javascript:gotoTop();" id="backTop"><i class="hs-icon-arrow-up"></i> 回到顶部</a>
-</body>
-<script>
-	var load_essays_path = "{:U('Essay/load_essays')}";
-	var public_path = "__PUBLIC__";
-	var editor_basePath = "__PUBLIC__/editor/";
-	var getTokenPath = "{:U('Action/get_qiniu_token')}";
-	var home_path = "__MODULE__";
-</script>
-<script src="__PUBLIC__/js/dist/plugins.js"></script>
-<script src="__PUBLIC__/js/dist/angular.js"></script>
-<script src="__PUBLIC__/js/dist/index.js"></script>
-<script src="__PUBLIC__/js/dist/app.js"></script>
-<!-- <script src="__PUBLIC__/js/app.js"></script> -->
-</html>

@@ -37,7 +37,20 @@ gulp.task('plugins-css', function() {
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
 });
+//concat angular files
+gulp.task('angular-app', function() {
+  gulp.src(['./js/angular/index.js','./js/angular/config.js','./js/angular/controller.js',
+    './js/angular/factory.js','./js/angular/filter.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('./js/dist/'));
+});
 // 默认任务
 gulp.task('default', function() {
     gulp.run('index');
+});
+gulp.task('watch', function () {
+   gulp.watch('./js/angular/*.js', function (event) {
+     console.log('Event type: ' + event.type); // added, changed, or deleted
+     console.log('Event path: ' + event.path); // The path of the modified file
+  });
 });

@@ -60,6 +60,7 @@ class PieceController extends Controller {
     //发布碎片
     public function piece_post($tag,$content,$visible,$ext=null){
         $userName = $_SESSION['USER_NAME'];
+        $tag = $tag?$tag:'碎片';
         $post_date = date("Y-m-d H:i:s");
         $data = array('tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
         if($this->piece_model->add($data) != false){
@@ -137,14 +138,18 @@ class PieceController extends Controller {
                 $this->ajaxReturn(array('error'=>2,'msg'=>'暂无评论'),'json');
         }
     }
-    public function ng_get_piece_page(){
+    public function ng_get_piece_page($page=null){
       if($_SESSION['LOGIN_STATUS']){
+        $page = $page?$page-1:0;
         $user_id = $_SESSION['USER_ID'];
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)->order('hs_piece.date desc')->limit($this->page_size)->select();
-        $totalCount = $this->piece_model->where('user_id='.$user_id)->count();
-        $page = array('totalCount'=>$totalCount,'pageSize'=>$this->page_size,'totalPage'=>$totalCount/$this->page_size);
-        $response = array('items'=>$pieces,'page'=>$page);
+        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$user_id)
+        ->order('hs_piece.date desc')->limit($page*$this->page_size,$this->page_size)->select();
+        $response = array('error'=>0,'items'=>$pieces,'page'=>$page+1);
+        $this->ajaxReturn($response,'json');
+      }else{
+        $response = array('error'=>1,'msg'=>'尚未登录，无法操作！');
         $this->ajaxReturn($response,'json');
       }
     }
+    
 }

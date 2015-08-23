@@ -1,18 +1,18 @@
-<div class="essay-edit">
+<div class="essay-edit" ng-controller="c_edit">
 <div class="essay-edit-header"></div>
-<form class="hs-form essay-edit-form" method="post" action="{:U('Action/deal_post')}">
+<form class="hs-form essay-edit-form">
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
-	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题" placeholder="标题">
+	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题，碎片无需填" placeholder="标题，碎片无需填" ng-model="edit_title">
 	</div>
 	<div class="hs-input-group hs-input-group-primary">
 	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
-	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签">
+	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" ng-model="edit_tag">
 	</div>
 
 	<div class="hs-input-group hs-input-group-primary">
 		<span class="hs-input-group-label">类型 <i class="hs-icon-bookmark"></i></span>
-		<select class="hs-select type" name="type" title="发布类型" placeholder="发布类型">
+		<select class="hs-select type" name="type" title="发布类型" placeholder="发布类型" ng-model="edit_type">
 			<option value="piece">碎片</option>
 			<option value="essay">文章</option>
 			<option value="diary">日记</option>
@@ -21,22 +21,22 @@
 
 	<div class="hs-input-group hs-input-group-primary">
 		<span class="hs-input-group-label">可见性 <i class="hs-icon-eye"></i></span>
-		<select class="hs-select visible" name="visible" title="可见性" placeholder="可见性">
+		<select class="hs-select visible" name="visible" title="可见性" placeholder="可见性" ng-model="edit_visible">
 			<option value="1">所有人可见</option>
 			<option value="2">好友可见</option>
-			<option value="3">仅自己可见</option>
+			<option value="0">仅自己可见</option>
 		</select>
 	</div>
 
-	<textarea id="essay-editor" name="content"></textarea>
+	<textarea id="essay-editor" name="content" ng-model="edit_content"></textarea>
 	<div class="essay-edit-footer">
 		<div class="essay-edit-footer-note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
 		<div class="essay-edit-footer-operation"></div>
-		<button class="hs-btn hs-btn-primary essay-submit" type="submit">发 布</button>
+		<button class="hs-btn hs-btn-primary essay-submit" type="button" ng-click="editPost()">发 布</button>
 	</div>
 </form>
 </div>
 
 <script>
-KindEditor.create('#essay-editor',editOpts);
+window.edit_post = KindEditor.create('#essay-editor',editOpts);
 </script>

@@ -112,6 +112,25 @@ class EssayController extends Controller {
             $this->success('发布成功！',U("Essay/index"));
         }else $this->error("发布失败，请稍后重试！");
     }
+    public function ng_essay_post(){
+        $visible = I('post.visible');
+        $title = I('post.title');
+        $tag = I('post.tag');
+        $content = I('post.content','','');
+        $type = I('post.type');
+        $userName = $_SESSION['USER_NAME'];
+        $user_id = $_SESSION['USER_ID'];
+        $post_date = date("Y-m-d H:i:s");
+        $data = array('user_id'=>$user_id,'title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
+        $result = $this->essay_model->add($data);
+        if($result != false){
+            /*if($visible == 1){
+                $content = "我发布了一篇文章：<a href='javascript:viewEssay($result);'>$title</a>";
+                A('Piece')->piece_post('文章',$content,1);
+            }*/
+            $this->ajaxReturn(array('error'=>0,'msg'=>'发布成功！'),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');
+    }
     //删除文章
     public function delete($id){
         if($this->essay_model->where("essay_id=".$id)->limit(1)->delete() != false)
@@ -195,13 +214,16 @@ class EssayController extends Controller {
         }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
     } 
     //
-    public function ng_get_essay_page(){
+    public function ng_get_essay_page($page=null){
         if($_SESSION['LOGIN_STATUS']){
+            $page = $page?$page-1:0;
             $user_id = $_SESSION['USER_ID'];
-            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($this->page_size)->select();
-            $totalCount = $this->essay_model->where('user_id='.$user_id)->count();
-            $page = array('totalCount'=>$totalCount,'pageSize'=>$this->page_size,'totalPage'=>$totalCount/$this->page_size);
-            $response = array('items'=>$essays,'page'=>$page);
+            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.
+                $user_id)->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $response = array('error'=>0,'items'=>$essays,'page'=>$page+1);
+            $this->ajaxReturn($response,'json');
+        }else{
+            $response = array('error'=>1,'msg'=>'尚未登录，无法操作！');
             $this->ajaxReturn($response,'json');
         }
     }

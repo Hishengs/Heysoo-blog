@@ -10,16 +10,16 @@
 <div class="bg"></div><div class="piece-triangle"></div>
 <div class="piece-info">
 <span class="piece-author"><a href="javascript:;">{{piece.username}}</a> &nbsp; &nbsp;发布于</span>
-<span class="piece-date"> <i class="icon-time" title="发布时间"></i> {{piece.date | date:'shortDate'}}</span>
+<span class="piece-date"> <i class="hs-icon-time" title="发布时间"></i> {{piece.date | date:'shortDate'}}</span>
 </div>
 <div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
-<div class="piece-footer"><i class="icon-tag"></i>  
+<div class="piece-footer"><i class="hs-icon-tag"></i>  
 <a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
 <if condition="$piece['visible'] eq 0">
-  <i class="icon-eye-close" title="私密"></i>
+  <i class="hs-icon-eye-close" title="私密"></i>
 </if>
  <span class="piece-operation">
- <i class="icon-remove piece-remove" title="删除，请谨慎" onclick="javascript:deleteItem('piece',1);"></i>
+ <i class="hs-icon-remove piece-remove" title="删除，请谨慎" onclick="javascript:deleteItem('piece',1);"></i>
  </span>
 </div>
 </div>
@@ -27,37 +27,13 @@
 </div>
 
 
-<div id="piece-pagination" class="pagination">
+<div id="piece-pagination" class="pagination" ng-controller="c_paginator">
+<div class="hs-btn-group hs-btn-group-justify">
+    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','prev');">上一页</button>
+    <select class="hs-select" style="background:#0e90d2;color:#fff;border-color:#0e90d2;border-radius:0;" ng-options="option.name for option in paginator_pages" ng-model="paginator_current_page">
+    </select>
+    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','go');">前往</button>
+    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','next');">下一页</button>
 </div>
-<!--<script type="text/javascript" ng-model="page">
-	$('#piece-pagination').jqPaginator({
-		prev: '<li class="prev"><a href="javascript:;">上一页</a></li>',
-		next: '<li class="next"><a href="javascript:;">下一页</a></li>',
-		page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
-		first: '<li class="first"><a href="javascript:;">首页</a></li>',
-		last: '<li class="last"><a href="javascript:;">末页</a></li>',
-	    totalPages: 1,
-	    totalCounts:10,
-	    pageSize:page.10,
-	    visiblePages: 7,
-	    currentPage: 1,
-	    onPageChange: function (num, type) {
-	        $.ajax({
-	        	url:controller_path+"Piece/load_pieces_html.html",
-				type:'GET',
-				data:{'page':num-1,'type':type},
-				dataType:'json',
-				success:function(data){
-					if(data.error == 0){
-						$(".pieces").empty();
-						$(".pieces").html(data.html);
-						$(document).scrollTop(0);
-					}
-				},
-				error:function(XMLHttpRequest, textStatus, errorThrown){
-					console.log(XMLHttpRequest);
-				}
-	        });
-	    }
-	});
-</script>-->
+</div>
+

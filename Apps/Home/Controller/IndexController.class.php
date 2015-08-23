@@ -7,27 +7,41 @@ class IndexController extends Controller {
     private $piece_nums = 10;
 
     public function index(){
-        if(!empty($_COOKIE['history_url']))redirect($_COOKIE['history_url']);
     	if(session('LOGIN_STATUS')){
             //check_history_url();
-            C('LAYOUT_ON',TRUE);
+            //C('LAYOUT_ON',TRUE);
     		$this->piece_model = D("Piece");
     		$cdt['visible'] = 1;
     		//$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
-            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
+            //$pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
             $user_info = A('User')->get_user_info(session('USER_ID'));
             $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
             $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
             $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
-            for ($i=0; $i < count($pieces); $i++) { 
+            /*for ($i=0; $i < count($pieces); $i++) { 
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
-            }
-    		$this->assign('pieces',$pieces)->assign('user',$user_info)->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
+            }*/
+    		//$this->assign('pieces',$pieces)->assign('user',$user_info)
+            $this->assign('user',$user_info)
+            ->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
     		//获取用户配置
             $user_config = A('User')->get_user_config($_SESSION['USER_ID']);
             $this->assign('user_config',$user_config);
             $this->display();
     	}else{
+            $this->redirect("Action/login");
+        }
+    }
+
+    public function ng_index(){
+        if(session('LOGIN_STATUS')){
+            $page = I('get.index_page');
+            $page = $page?$page-1:0;
+            $this->piece_model = D("Piece");
+            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')
+            ->order('hs_piece.date desc')->limit($page*$this->piece_nums,$this->piece_nums)->select();
+            $this->ajaxReturn($pieces,'json');
+        }else{
             $this->redirect("Action/login");
         }
     }
@@ -113,5 +127,14 @@ class IndexController extends Controller {
                 $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
         }
         $this->ajaxReturn($pieces,'json');
+   }
+   public function ng_init_side_panel(){
+        $user_info = A('User')->get_user_info(session('USER_ID'));
+        $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
+        $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
+        $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
+        $response = array('error'=>0,'user'=>$user_info,'essay_nums'=>$essay_nums,
+            'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums);
+        $this->ajaxReturn($response,'json');
    }
 }

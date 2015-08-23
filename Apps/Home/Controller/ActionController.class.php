@@ -316,4 +316,21 @@ class ActionController extends Controller {
           break;
       }
     }
+    public function ng_paginator(){
+      $type = I('get.type');
+      $page = I('get.page');
+      switch ($type) {
+        case 'piece':
+          A('Piece')->ng_get_piece_page($page);
+          break;
+        
+        case 'essay':
+          A('Essay')->ng_get_essay_page($page);
+          break;
+
+        default:
+          //
+          break;
+      }
+    }
 }

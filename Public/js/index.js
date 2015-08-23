@@ -89,7 +89,7 @@ function setLightBox(){
       'fitImagesInViewport':false,
       'maxWidth':1000
     });
-	/*$("#content").find('div.piece-content').find("img").each(function(i){
+	$("#content").find("img").each(function(i){
 		var img_link = $("<a></a>");
 		img_link.attr('href',$(this).attr("src"));
 		img_link.attr('data-lightbox',Math.random());
@@ -97,8 +97,8 @@ function setLightBox(){
 		$(this).clone(true).appendTo(img_link);
 		$(this).before(img_link);
 		$(this).remove();
-	});*/
-	$("div.pieces").find("div.piece").each(function(){
+	});
+	/*$("div.pieces").find("div.piece").each(function(){
 		var id = $(this).attr('id');
 		$(this).find("div.piece-content").find("img").each(function(){
 			var img_link = $("<a></a>");
@@ -109,7 +109,7 @@ function setLightBox(){
 			$(this).before(img_link);
 			$(this).remove();
 		});
-	});
+	});*/
 }
 //lazyload
 function setLazyload(){
@@ -169,7 +169,6 @@ function getViewPage(url,objId,type,id){
 function loadMore(url,objId){
 	//showLoadingMask(objId);
 	var page = $("#content").find("div.essay").length/10;
-	console.log(page);
 	$('button.load-more').remove();
 	$.ajax({
 		url:url,
@@ -177,7 +176,6 @@ function loadMore(url,objId){
 		data:{'page':page},
 		dataType:'json',
 		success:function(data){
-			console.log(data);
 			if(data.empty === 1){
 				hMessage('没有更多了！');
 			}else{
@@ -255,7 +253,6 @@ function showEditPage(url,type,objId){
 		data:{'type':type},
 		dataType:'json',
 		success:function(data){
-			console.log(data);
 			$("#"+objId).html(data);
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -272,7 +269,6 @@ function deleteItem(type,id){
 		data:{'type':type,'id':id},
 		dataType:'json',
 		success:function(data){
-			console.log(data);
 			if(data.error == 0){
 				switch(type){
 					case "essay":
@@ -303,10 +299,19 @@ function hMessage(msg){
 		$('#hMessage').html(msg);
 		$("#hMessage-mask").append($('#hMessage'));
 		$('#hMessage').css('display','block');
+		$('body').css({
+			'overflow-x':'hidden',
+			'overflow-y':'hidden'
+		});
 		$('#hMessage-mask').show();
-		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();},time);
+		setTimeout(function(){
+			$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();
+			$('body').css({
+				'overflow-x':'auto',
+				'overflow-y':'auto'
+			});
+		},time);
 	}else{
-		console.log(msg);
 		var hMessage = $('<div id="hMessage ">'+msg+'</div>');
 		hMessage.css({
 			"position":"fixed",
@@ -323,11 +328,20 @@ function hMessage(msg){
 			"font-size":"16px",
 			"box-shadow":"0px 2px 5px 1px rgba(0, 0, 0, 0.5)"
 		});
-		//$("body").append(hMessage);
 		$("#hMessage-mask").append(hMessage);
 		hMessage.css('display','block');
+		$('body').css({
+			'overflow-x':'hidden',
+			'overflow-y':'hidden'
+		});
 		$('#hMessage-mask').show();
-		setTimeout(function(){$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();},time);
+		setTimeout(function(){
+			$('#hMessage').hide().empty();$('#hMessage-mask').hide().empty();
+			$('body').css({
+				'overflow-x':'auto',
+				'overflow-y':'auto'
+			});
+		},time);
 	}
 }
 //处理标签
@@ -440,7 +454,6 @@ function postPieceCmt(piece_id){
 	$("button.post-piece-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
 	piece_editor.sync(); //同步编辑器内容
 	var content = $("form.piece-comment-post-form").children("textarea[name='piece-comment-edit']").val();
-	console.log(content);
 	$.ajax({
 		url:controller_path+"Piece/post_comment.html",
 		type:'POST',
