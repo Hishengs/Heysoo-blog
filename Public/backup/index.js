@@ -1,3 +1,4 @@
+var controller_path = "/Heysoo/Home/";
 var progress_bar = $.AMUI.progress;//进度条
 //发布
 var editOpts = {
@@ -49,6 +50,20 @@ function init(){
 		else
 		$("#backTop").css("display","none");
 	});
+	//靠近左侧显示
+	/*$('body').mousemove(function(e) { 
+		var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
+		if(xx <= 20){
+			$("#content").css('padding-left','400px');
+			$("#left-panel").fadeIn(500);
+		}
+	}); */
+	//双击左侧控制面板隐藏
+	/*$("#left-panel").dblclick(function(){
+		$("#left-panel").fadeOut(500,function(){
+		$("#content").css('padding-left',0);
+		});
+	});*/
 	setLightBox();
 	setLazyload();
 }	
@@ -240,7 +255,7 @@ function showEditPage(url,type,objId){
 function deleteItem(type,id){
 	if(confirm('你确定要删除？'))
 	$.ajax({
-		url:home_path+"/Action/delete.html",
+		url:controller_path+"Action/delete.html",
 		type:'GET',
 		data:{'type':type,'id':id},
 		dataType:'json',
@@ -325,7 +340,7 @@ function tag(tag){
 	hMessage(tag);
 	return;
 	$.ajax({
-		url:home_path+"/Action/tag.html",
+		url:controller_path+"Action/tag.html",
 		type:'GET',
 		data:{'tag':tag},
 		dataType:'json',
@@ -347,7 +362,7 @@ function loadPieces(){
 	$("button.load-more").html('<i class="icon-arrow-up"></i> 加载中...');
 	var startNum = $("#content").find("div.piece").length;
 	$.ajax({
-		url:home_path+"/Index/load_pieces.html",
+		url:controller_path+"Index/load_pieces.html",
 		type:'GET',
 		data:{'startNum':startNum},
 		dataType:'json',
@@ -398,7 +413,7 @@ function postEssayCmt(essay_id){
 	essay_editor.sync(); //同步编辑器内容
 	var content = $("#essay-comment-form").children("textarea[name='comment-content']").val();
 	$.ajax({
-		url:home_path+"/Essay/post_comment.html",
+		url:controller_path+"Essay/post_comment.html",
 		type:'POST',
 		data:{'essay_id':essay_id,'comment_content':content},
 		dataType:'json',
@@ -425,12 +440,40 @@ function postEssayCmt(essay_id){
 		}
 	});
 }
-
+//发布碎片评论
+/*function postPieceCmt(piece_id){
+	$("button.post-piece-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
+	piece_cmt_editor.sync(); //同步编辑器内容
+	var content = $("form.piece-comment-post-form").children("textarea[name='piece-comment-edit']").val();
+	$.ajax({
+		url:controller_path+"Piece/post_comment.html",
+		type:'POST',
+		data:{'piece_id':piece_id,'comment_content':content},
+		dataType:'json',
+		success:function(data){
+			if(data.error === 0){
+				//清空编辑器
+				piece_cmt_editor.html('');
+				hMessage('评论发布成功！');
+				$("button.post-piece-comment-btn").html('发 布');
+				//将新评论插入评论列表
+				var html = '<div class="piece-comment-item"><div class="piece-comment-item-info">'+
+				'<a class="piece-comment-user" href="javascript:;">'+data.comment.user+'</a><span class="piece-comment-date"><i class="icon-time"></i> '+data.comment.date+'</span></div>'+
+				'<div class="piece-comment-item-content">'+data.comment.content+'</div><div class="piece-comment-item-footer"></div></div>';
+				$("div.piece-comment-tip").remove();
+				$("div.piece-comment-list").prepend(html);
+			}else{ hMessage(data.msg); }
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest);
+		}
+	});
+}*/
 //获取碎片评论
 function updatePieceCmt(piece_id){
 	$("div.piece-comment-tip").html('<i class="icon-spinner"></i> 获取评论...');
 	$.ajax({
-		url:home_path+"/Piece/get_piece_comment.html",
+		url:controller_path+"Piece/get_piece_comment.html",
 		type:'GET',
 		data:{'piece_id':piece_id},
 		dataType:'json',

@@ -14,7 +14,7 @@ m_index.factory('Piece', function($http) {
     this.busy = true;
 
     var startNum = $("div.piece").length;
-    var url = "/Heysoo/Home/Index/update_pieces.html?startNum="+startNum;
+    var url = home_path+"/Index/update_pieces.html?startNum="+startNum;
 
     $http.get(url).success(function(data) {
       if(data.length < 1)this.end = true;
@@ -24,7 +24,6 @@ m_index.factory('Piece', function($http) {
       }
       this.busy = false;
     }.bind(this));
-    //$tempalteCache.remove(url);
   };
 
   return Piece;

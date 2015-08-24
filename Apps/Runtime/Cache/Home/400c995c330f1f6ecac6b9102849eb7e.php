@@ -16,10 +16,12 @@
 </style>
 </head>
 <body>
-<div id="mask"></div>
+<div id="mask" ng-show="mask_show">
+	<div ui-view="mask"></div>
+</div>
 <div id="hMessage-mask"></div>
 
-<div id="left-panel" ng-controller="c_sidePanel">
+<div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
 <div class="user-avatar">
 <img class="user-avatar hs-img" ng-src="{{avatar}}" title="点击修改头像">
 </div>
@@ -63,6 +65,8 @@
 	var editor_basePath = "/Heysoo/Public/editor/";
 	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
 	var home_path = "/Heysoo/Home";
+	console.log(home_path);
+	console.log(public_path);
 </script>
 <script src="/Heysoo/Public/js/dist/plugins.js"></script>
 <script src="/Heysoo/Public/js/dist/angular.js"></script>

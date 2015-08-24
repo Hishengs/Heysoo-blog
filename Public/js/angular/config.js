@@ -5,8 +5,9 @@ var tpl_edit_url = public_path+'/templates/Essay/edit.html';
 var tpl_essay_url = public_path+'/templates/Essay/index.html';
 var tpl_view_url = public_path+'/templates/Essay/view.html';
 var tpl_index_url = public_path+'/templates/Index/index.html';
+var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
 }]);
 //httpProvider
@@ -48,8 +49,8 @@ m_index.config(['$httpProvider',function($httpProvider){
 }]);
 //stateProvider
 m_index.config(['$stateProvider',function($stateProvider){
-    $stateProvider.state('root',{
-        url:''
+    $stateProvider.state('home',{
+        url:'/'
     }).state('piece',{
         url:'/piece/page=:page',
         views:{
@@ -69,6 +70,11 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/view/:id',
         views:{
             'content':{templateUrl:tpl_view_url}
+        }
+    }).state('comment',{
+        url:'/comment/:id',
+        views:{
+            'mask':{templateUrl:tpl_cmt_url}
         }
     });
 }]);

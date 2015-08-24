@@ -1,4 +1,4 @@
-<div class="pieces">
+<div class="pieces" ng-controller="c_piece">
 <div class="piece" id="{{ piece.piece_id }}" ng-repeat="piece in index_items">
 <div class="piece-left">
 <a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" ng-src="{{ avatar }}" title="访问他/她的主页"/></a>
@@ -12,7 +12,7 @@
 <div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
 <div class="piece-footer"><i class="hs-icon-tag"></i> 
 <a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
-<span class="piece-footer-right"><a href="javascript:;"><i class="hs-icon-comment-alt" title="评论"></i></a></span>
+<span class="piece-footer-right"><a href="javascript:;" ng-click="showCmt($index,piece.piece_id)"><i class="hs-icon-comment" title="评论"></i></a></span>
 </div>
 </div>
 </div>

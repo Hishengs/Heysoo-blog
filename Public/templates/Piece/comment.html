@@ -1,46 +1,46 @@
-大河向东流啊~<!-- <div id="piece-comment" ng-controller="pieceCmtCrl" ng-hide="hide">
+<div id="piece-comment" ng-controller="c_comment">
 <div class="piece-comment-view">
 <div class="piece-comment-piece">
 <div class="piece-comment-piece-info">
-<a class="user" href="javascript:;">{{piece.user}}</a>
-<span class="date">{{piece.date}}</span>
+<a class="user" href="javascript:;">{{cmt_obj.username}}</a>
+<span class="date"> &nbsp;发布于 {{cmt_obj.date}}</span>
 </div>
-<div class="piece-comment-piece-content">
-{{piece.content}}
-</div>
+<div class="piece-comment-piece-content" ng-bind-html="cmt_obj.content | trustHtml"></div>
 <div class="piece-comment-piece-footer">
-<i class="icon-tag"></i> <a class="tag" href="javascript:;">{{piece.tag}}</a>
+<i class="hs-icon-tag"></i> <a class="tag" href="javascript:;">{{cmt_obj.tag}}</a>
 </div>
 </div><hr>
 <div class="piece-comment-list">
 
 <div class="piece-comment-item" ng-repeat="item in items">
 <div class="piece-comment-item-info">
-<a class="piece-comment-user" href="javascript:;">{{item.user}}</a>&nbsp;
-<span class="piece-comment-date"><i class="icon-time"></i>{{item.date}}
+<a class="piece-comment-user" href="javascript:;">评论者</a>&nbsp;
+<span class="piece-comment-date"><i class="icon-time"></i>评论日期
 </span>
 </div>
 <div class="piece-comment-item-content">
-{{item.content}}
+评论内容
 </div>
 <div class="piece-comment-item-footer">
 </div>
 </div>
 <div class="piece-comment-tip">
 <i class="icon-warning-sign"></i> 暂无评论
-碎片ID是{{piece.id}}
+碎片ID:{{cmt_obj_id}}
 </div>
 
 </div>
 </div>
 <div class="piece-comment-post">
 <div class="piece-comment-post-header">
-<i class="icon-coffee"></i> 评论碎片
+<i class="hs-icon-coffee"></i> 评论碎片<a class="closeCmt" href="javascript:;" ng-click="closeCmt();">关闭</a>
 </div>
 <form class="hs-form piece-comment-post-form">
-<textarea class="piece-comment-edit" name="piece-comment-edit"></textarea>
-<button type="button" onclick="postPieceCmt()" class="hs-btn hs-btn-primary post-piece-comment-btn">发 布</button>
+<textarea class="piece-comment-edit" id="piece_cmt_editor" name="piece-comment-edit"></textarea>
+<button type="button" ng-click="postPieceCmt()" class="hs-btn hs-btn-primary post-piece-comment-btn">发 布</button>
 </form>
 </div>
-<button type="button" ng-click="closeCmt();">关闭</button>
-</div> -->
+</div>
+<script type="text/javascript">
+	window.piece_cmt_editor = KindEditor.create('#piece_cmt_editor',pieceCmtOptions);
+</script>
