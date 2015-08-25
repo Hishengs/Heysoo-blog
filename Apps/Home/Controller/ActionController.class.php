@@ -222,7 +222,7 @@ class ActionController extends Controller {
         echo json_encode(array('error'=>1,'message'=>'图片上传出错！'));
     }
     //处理文章，碎片，日记等的发布
-    public function deal_post(){
+    public function ng_deal_post(){
         $visible = I('post.visible');
         $title = I('post.title');
         $tag = I('post.tag');
@@ -230,26 +230,44 @@ class ActionController extends Controller {
         $type = I('post.type');
         switch ($type) {
             case 'piece':
-                A('Piece')->piece_post($tag,$content,$visible);
+                A('Piece')->ng_piece_post($tag,$content,$visible);
                 break;
             case 'essay':
-                A('Essay')->essay_post($title,$tag,$content,$visible);
+                A('Essay')->ng_essay_post($title,$tag,$content,$visible);
                 break;
             case 'diary':
-                A('Diary')->diary_post($title,$tag,$content,$visible);
+                A('Diary')->ng_diary_post($title,$tag,$content,$visible);
                 break;
             default:
                 $this->error('请求失败！');
                 break;
         }
     }
-    public function deal_modify(){
+    public function ng_modify(){
+        $id = I('get.id');
+        $type = I('get.type');
+        switch ($type) {
+            case 'piece':
+                A('Piece')->get_piece($id);
+                break;
+            case 'essay':
+                A('Essay')->get_essay($id);
+                break;
+            case 'diary':
+                $this->ajaxReturn(array('error'=>1,'msg'=>'请求失败！'),'json');
+                break;
+            default:
+                $this->ajaxReturn(array('error'=>1,'msg'=>'请求失败！'),'json');
+                break;
+        }
+    }
+    public function ng_deal_modify(){
         $id = I('post.id');
         $visible = I('post.visible');
         $title = I('post.title');
         $tag = I('post.tag');
         $content = I('post.content','','');
-        $type = I('get.type');
+        $type = I('post.type');
         switch ($type) {
             case 'piece':
                 A('Piece')->do_modify($id,$tag,$content,$visible);
@@ -272,12 +290,12 @@ class ActionController extends Controller {
       $this->ajaxReturn($response,'json');
     }
     //删除操作
-    public function delete(){
+    public function ng_delete(){
       $type = I('get.type');
       $id = I('get.id');
       switch ($type) {
         case 'essay':
-          A('Essay')->delete($id);
+          A('Essay')->ng_delete($id);
           break;
         
         case 'diary':
@@ -285,34 +303,11 @@ class ActionController extends Controller {
           break;
 
         case 'piece':
-          A('Piece')->delete($id);
+          A('Piece')->ng_delete($id);
           break;
 
         default:
           $this->error('请求失败！');
-          break;
-      }
-    }
-    //分页处理
-    public function deal_pagination(){
-      $pageNumber = I('get.pageNumber');//第几页
-      $pageSize = I('get.pageSize');//每一页的记录数
-      $type = I('get.type');
-      switch ($type) {
-        case 'essay':
-          A('Essay')->deal_pagination($pageNumber,$pageSize);
-          break;
-        
-        case 'diary':
-          A('Diary')->deal_pagination($pageNumber,$pageSize);
-          break;
-
-        case 'piece':
-          A('Piece')->deal_pagination($pageNumber,$pageSize);
-          break;
-
-        default:
-          $this->ajaxReturn(array('error'=>1),'json');
           break;
       }
     }

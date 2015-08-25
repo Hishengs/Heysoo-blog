@@ -65,13 +65,9 @@
 	var editor_basePath = "/Heysoo/Public/editor/";
 	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
 	var home_path = "/Heysoo";
-	console.log(home_path);
-	console.log(public_path);
-	console.log(home_path+"/Index/ng_index.html");
 </script>
 <script src="/Heysoo/Public/js/dist/plugins.js"></script>
 <script src="/Heysoo/Public/js/dist/angular.js"></script>
 <script src="/Heysoo/Public/js/dist/index.js"></script>
 <script src="/Heysoo/Public/js/dist/app.js"></script> 
-<!-- <script src="/Heysoo/Public/js/app.js"></script> -->
 </html>

@@ -58,14 +58,14 @@ class PieceController extends Controller {
         return $this->piece_model->where($cdt)->count();
     }
     //发布碎片
-    public function piece_post($tag,$content,$visible,$ext=null){
+    public function ng_piece_post($tag,$content,$visible,$ext=null){
         $userName = $_SESSION['USER_NAME'];
         $tag = $tag?$tag:'碎片';
         $post_date = date("Y-m-d H:i:s");
         $data = array('tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
         if($this->piece_model->add($data) != false){
-            $this->success('发布成功！',U("Piece/index"));
-        }else $this->error("发布失败，请稍后重试！");
+            $this->ajaxReturn(array('error'=>0,'msg'=>'发布成功！'),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');
     }
     //碎片修改
     public function modify($id,$tag,$content,$visible){
@@ -77,11 +77,11 @@ class PieceController extends Controller {
             $this->error("修改失败，请稍后重试！");
     }
     //删除碎片
-    public function delete($piece_id){
+    public function ng_delete($piece_id){
         if($this->piece_model->where("piece_id=".$piece_id)->limit(1)->delete() != false)
-            $this->ajaxReturn(array('error'=>0),'json');
+            $this->ajaxReturn(array('error'=>0,'msg'=>'删除成功！'),'json');
         else
-            $this->ajaxReturn(array('error'=>1),'json');
+            $this->ajaxReturn(array('error'=>1,'msg'=>'删除失败！'),'json');
     }
     public function load_pieces_html(){
         $page = I('get.page');
@@ -150,6 +150,12 @@ class PieceController extends Controller {
         $response = array('error'=>1,'msg'=>'尚未登录，无法操作！');
         $this->ajaxReturn($response,'json');
       }
+    }
+    //get message of one piece
+    public function get_piece($id){
+        $piece = $this->piece_model->field('hs_user.userName,hs_piece.piece_id,hs_piece.date,hs_piece.tag,hs_piece.content')->
+        join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.piece_id='.$id)->find(); 
+        $this->ajaxReturn(array('error'=>0,'items'=>$piece),'json');
     }
     
 }

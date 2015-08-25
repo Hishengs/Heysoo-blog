@@ -13,12 +13,13 @@
 <div class="essay-id" style="display:none;">{{essay.essay_id}}</div>
 </div>
 <div class="essay-content" ng-bind-html="essay.content | subStr:150 | trustHtml"></div>...
-<div class="essay-footer"><i class="icon-tag"></i> 
+<div class="essay-footer"><i class="hs-icon-tag"></i> 
 <a href="javascript:tag('{{essay.tag}}');">{{essay.tag}}</a>&nbsp;
+<i class="hs-icon-eye-slash" ng-show="essay.visible==0" title="不可见"></i> 
 <span class="essay-operation">
- <i class="icon-edit essay-modify" title="修改" onclick="javascript:;"></i>
- <i class="icon-remove essay-remove" title="删除，请谨慎" onclick="javascript:;"></i>
- </span>
+ <i class="hs-icon-edit essay-modify" title="修改" ng-click="modify('essay',essay.essay_id)"></i>
+ <i class="hs-icon-remove essay-remove" title="删除，请谨慎" ng-click="deleteItem('essay',essay.essay_id)"></i>
+</span>
 </div>
 </div>
 </div>

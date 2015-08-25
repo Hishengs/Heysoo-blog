@@ -237,7 +237,7 @@ function showEditPage(url,type,objId){
 	});
 }
 //删除
-function deleteItem(type,id){
+/*function deleteItem(type,id){
 	if(confirm('你确定要删除？'))
 	$.ajax({
 		url:home_path+"/Action/delete.html",
@@ -267,7 +267,7 @@ function deleteItem(type,id){
 			console.log(XMLHttpRequest);
 		}
 	});
-}
+}*/
 //弹出消息框
 function hMessage(msg){
 	var time = arguments[1] ? arguments[1] : 2000; 

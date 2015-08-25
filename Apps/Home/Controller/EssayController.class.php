@@ -112,12 +112,7 @@ class EssayController extends Controller {
             $this->success('发布成功！',U("Essay/index"));
         }else $this->error("发布失败，请稍后重试！");
     }
-    public function ng_essay_post(){
-        $visible = I('post.visible');
-        $title = I('post.title');
-        $tag = I('post.tag');
-        $content = I('post.content','','');
-        $type = I('post.type');
+    public function ng_essay_post($title,$tag='碎片',$content,$visible){
         $userName = $_SESSION['USER_NAME'];
         $user_id = $_SESSION['USER_ID'];
         $post_date = date("Y-m-d H:i:s");
@@ -132,11 +127,11 @@ class EssayController extends Controller {
         }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');
     }
     //删除文章
-    public function delete($id){
+    public function ng_delete($id){
         if($this->essay_model->where("essay_id=".$id)->limit(1)->delete() != false)
-            $this->ajaxReturn(array('error'=>0),'json');
+            $this->ajaxReturn(array('error'=>0,'msg'=>'删除成功！'),'json');
         else
-            $this->ajaxReturn(array('error'=>1),'json');
+            $this->ajaxReturn(array('error'=>1,'msg'=>'删除失败！'),'json');
     }
     //修改文章
     public function modify(){
@@ -154,9 +149,9 @@ class EssayController extends Controller {
         $last_modify_date = date("Y-m-d H:i:s");
         $data = array('title'=>$title,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'last_modify_date'=>$last_modify_date);
         if($this->essay_model->where("essay_id=".$id)->save($data) != false)
-            $this->success("修改成功！",U("Essay/index"));
+            $this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！'),'json');
         else
-            $this->error("修改失败，请稍后重试！");
+            $this->ajaxReturn(array('error'=>1,'msg'=>'修改失败！'),'json');
     }
     //处理分页
     public function deal_pagination($pageNumber,$pageSize){
@@ -237,5 +232,11 @@ class EssayController extends Controller {
         $comments_num = count($comments);
         $res = array('essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num);
         $this->ajaxReturn($res,'json');
+    }
+    //get message of one essay
+    public function get_essay($id){
+        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,hs_essay.tag,hs_essay.content')->
+        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
+        $this->ajaxReturn(array('error'=>0,'items'=>$essay),'json');
     }
 }

@@ -8,7 +8,7 @@ var minify = require('gulp-minify-css');
 
 // 创建 Compass 任务
 gulp.task('index', function() {
-  gulp.src(['./js/index.js','./js/page.js','./js/piece.js'])
+  gulp.src(['./js/index.js'])
     .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));

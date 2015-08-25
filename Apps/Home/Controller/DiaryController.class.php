@@ -68,13 +68,13 @@ class DiaryController extends Controller {
         return $this->diary_model->where($cdt)->count();
     }
     //发布日记
-    public function diary_post($title,$tag,$content,$visible,$ext=null){
+    public function ng_diary_post($title,$tag,$content,$visible,$ext=null){
         $userName = $_SESSION['USER_NAME'];
         $post_date = date("Y-m-d H:i:s");
         $data = array('title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
         if($this->diary_model->add($data) != false){
-            $this->success('发布成功！',U("Diary/index"));
-        }else $this->error("发布失败，请稍后重试！");
+            $this->ajaxReturn(array('error'=>0,'msg'=>'发布成功！'),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');
     }
     //日记修改
     public function modify(){

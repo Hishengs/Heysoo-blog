@@ -6,7 +6,6 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     //$scope.datas = new Piece();
     $rootScope.mask_show = false;
     var url = home_path+"/Index/ng_index.html";
-    console.log(url);
     
     $http.get(url).success(function(res){
       $rootScope.index_items = res;
@@ -69,6 +68,24 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
             progress_bar.done();
       });
     }
+    //删除
+    $scope.deleteItem = function(type,id){
+      if(confirm('你确定要删除？')){
+        var url = home_path+"/Action/ng_delete.html";
+          $http.get(url,{params:{'type':type,'id':id}}).success(function(res){
+              if(res.error === 0){
+                $("#"+id).remove();
+                hMessage(res.msg);
+              }else{hMessage(res.msg);}
+          });
+      }
+    }
+    //修改
+    $scope.modify = function(type,id){
+      $rootScope.type = type;
+      $rootScope.id = id;
+      $state.go('modify',{type:type,id:id});
+    }
 });
 //边栏管理
 m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
@@ -102,7 +119,7 @@ m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
 m_index.controller('c_edit',function($scope,$state,$http){
     $scope.edit_visible = "1";
     $scope.edit_type = "piece";
-    var url = home_path+"/Essay/ng_essay_post.html";
+    var url = home_path+"/Action/ng_deal_post.html";
     $scope.editPost = function(){
       $scope.edit_content = edit_post.html();
       $http({
@@ -119,7 +136,8 @@ m_index.controller('c_edit',function($scope,$state,$http){
         console.log(res);
         if(res.error === 0){
           hMessage(res.msg);
-          //$state.go('piece');
+          edit_post.html('');
+          $state.go($scope.edit_type);
         }else{hMessage(res.msg);}
       });
     }
@@ -205,6 +223,38 @@ m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
               hMessage(res.msg);
               updatePieceCmt(piece_id);
           }else{hMessage(res.msg);}
-      });
+    });
+  }
+})
+//文章修改
+m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
+  var url = home_path+"/Action/ng_modify.html";
+  $http.get(url,{params:{'type':$rootScope.type,'id':$rootScope.id}}).success(function(res){
+      if(res.error === 0){
+        console.log(res);
+        modify_editor.html(res.items.content);
+        $scope.essay_title = res.items.title;
+        $scope.essay_tag = res.items.tag;
+        $scope.essay_visible = res.items.visible;
+      }else{hMessage(res.msg);}
+  });
+  //提交修改
+  $scope.postModify = function(){
+    var content = modify_editor.html();
+    $http({
+          method:'POST',
+          url:home_path+"/Action/ng_deal_modify.html",
+          data:{
+            'type':$rootScope.type,'id':$rootScope.id,'content':content,
+            'title':$scope.essay_title,'tag':$scope.essay_tag,'visible':$scope.essay_visible
+          }
+        }).success(function(res){
+          if(res.error === 0){
+            //清空编辑器
+            modify_editor.html('');
+            hMessage(res.msg);
+            window.history.go(-1);
+          }else{hMessage(res.msg);}
+    });
   }
 })

@@ -6,6 +6,7 @@ var tpl_essay_url = public_path+'/templates/Essay/index.html';
 var tpl_view_url = public_path+'/templates/Essay/view.html';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
+var tpl_modify_url = public_path+'/templates/Essay/modify.html';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -14,6 +15,7 @@ m_index.config(['$locationProvider', '$urlRouterProvider', function($locationPro
 m_index.config(['$httpProvider',function($httpProvider){
    // Use x-www-form-urlencoded Content-Type
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+  $httpProvider.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
   //The workhorse; converts an object to x-www-form-urlencoded serialization.
   var param = function(obj) {
     var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
@@ -75,6 +77,11 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/comment/:id',
         views:{
             'mask':{templateUrl:tpl_cmt_url}
+        }
+    }).state('modify',{
+        url:'/modify/type/:type/id/:id',
+        views:{
+            'content':{templateUrl:tpl_modify_url}
         }
     });
 }]);
