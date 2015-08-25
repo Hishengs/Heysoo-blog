@@ -133,9 +133,9 @@ class PieceController extends Controller {
             $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
         }else{
             if($comments == false)
-                $this->ajaxReturn(array('error'=>1,'msg'=>'评论获取失败'),'json');
+                $this->ajaxReturn(array('error'=>1,'msg'=>'暂无评论'),'json');
             else if($comments == NULL)
-                $this->ajaxReturn(array('error'=>2,'msg'=>'暂无评论'),'json');
+                $this->ajaxReturn(array('error'=>2,'msg'=>'评论获取失败'),'json');
         }
     }
     public function ng_get_piece_page($page=null){

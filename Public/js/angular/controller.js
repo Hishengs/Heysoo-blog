@@ -11,9 +11,9 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     $http.get(url).success(function(res){
       $rootScope.index_items = res;
       $scope.index_page = 2;
-  });
-  setLightBox();
-  $state.go('home');
+    });
+    setLightBox();
+    $state.go('home');
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
       $('button.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');

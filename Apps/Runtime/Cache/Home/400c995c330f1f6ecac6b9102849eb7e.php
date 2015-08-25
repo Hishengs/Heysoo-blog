@@ -1,7 +1,7 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn" ng-app="Index" ng-controller="c_index">
 <head>
-<base href="/Heysoo/Home/Index/">
+<base href="/Heysoo/">
 <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="/Heysoo/Public/img/favicon.ico">
@@ -64,13 +64,14 @@
 	var public_path = "/Heysoo/Public";
 	var editor_basePath = "/Heysoo/Public/editor/";
 	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
-	var home_path = "/Heysoo/Home";
+	var home_path = "/Heysoo";
 	console.log(home_path);
 	console.log(public_path);
+	console.log(home_path+"/Index/ng_index.html");
 </script>
 <script src="/Heysoo/Public/js/dist/plugins.js"></script>
 <script src="/Heysoo/Public/js/dist/angular.js"></script>
 <script src="/Heysoo/Public/js/dist/index.js"></script>
-<script src="/Heysoo/Public/js/dist/app.js"></script>
+<script src="/Heysoo/Public/js/dist/app.js"></script> 
 <!-- <script src="/Heysoo/Public/js/app.js"></script> -->
 </html>

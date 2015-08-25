@@ -3,8 +3,8 @@ span.piece-operation:hover{ opacity: 1;}
 /*css for piece index*/
 div.piece{}
 div.piece-info{ font-size: 1.4rem;}
-span.piece-footer-right a{ color: #696969;}
-span.piece-footer-right a:hover{ color: #333;}
+a.closeCmt,span.piece-footer-right a{ color: #696969;}
+a.closeCmt:hover,span.piece-footer-right a:hover{ color: #333;}
 /*css for piece-comment*/
 #piece-comment{ position: relative; position: fixed; z-index: 1000; width: 960px; height:500px;  box-shadow: 0px 2px 5px rgba(0,0,0,0.8); margin-left: -455px; margin-top:-250px; left:50%; top: 50%;  background: #fff; padding: 20px;}
 div.piece-comment-view,div.piece-comment-post{ display: inline-block; }
@@ -28,3 +28,4 @@ div.piece-comment-item{ padding: 15px; box-shadow: 0px 1px 2px rgba(0,0,0,0.5); 
 div.piece-comment-item a{ color: #696969;}
 div.piece-comment-item a:hover{ color: #333;}
 div.piece-comment-item-content{ margin: 10px auto;}
+a.closeCmt{float: right;}
