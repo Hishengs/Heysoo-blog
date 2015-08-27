@@ -23,7 +23,9 @@ div.essay-comments{width: 750px; background: #fff;margin: 20px auto; padding: 20
 article.essay-comment{ width: 100%; margin: 15px auto;}
 
 /*css for essay view*/
-div.post-comment{ width: 750px; margin: 20px auto; background:#fff; padding: 20px;}
+div.post-comment{ margin: 20px auto; background:#fff; padding: 20px;}
 textarea.post-comment-edit{ height: 200px;}
 button.post-comment-btn{ margin-top:10px;}
+div.view-wrapper{width: 750px; margin: 0 auto;}
+div.essay-comments-tip,div.essay-comment-on-tip{text-align: center;}
 

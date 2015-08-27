@@ -393,7 +393,7 @@ function showPieceCmt(pieceId){
 	});
 }
 //发布文章评论
-function postEssayCmt(essay_id){
+/*function postEssayCmt(essay_id){
 	$("button.post-essay-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
 	essay_editor.sync(); //同步编辑器内容
 	var content = $("#essay-comment-form").children("textarea[name='comment-content']").val();
@@ -424,7 +424,7 @@ function postEssayCmt(essay_id){
 			console.log(XMLHttpRequest);
 		}
 	});
-}
+}*/
 
 //获取碎片评论
 function updatePieceCmt(piece_id){

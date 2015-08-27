@@ -21,6 +21,14 @@ var tpl_view_url = public_path+'/templates/Essay/view.html';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
 var tpl_modify_url = public_path+'/templates/Essay/modify.html';
+var tpl_message_url = public_path+'/templates/message.html';
+var tpl_tag_url = public_path+'/templates/tag.html';
+var tpl_setting_url = public_path+'/templates/setting.html';
+var tpl_search_url = public_path+'/templates/search.html';
+var tpl_comment_url = public_path+'/templates/message/comment.html';
+var tpl_whisper_url = public_path+'/templates/message/whisper.html';
+var tpl_at_url = public_path+'/templates/message/at.html';
+var tpl_notice_url = public_path+'/templates/message/notice.html';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -97,6 +105,50 @@ m_index.config(['$stateProvider',function($stateProvider){
         views:{
             'content':{templateUrl:tpl_modify_url}
         }
+    }).state('message',{
+        url:'/message',
+        views:{
+            'content':{templateUrl:tpl_message_url}
+        }
+    }).state('msg_comment',{
+        url:'/comment',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_comment_url}
+        }
+    }).state('msg_at',{
+        url:'/at',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_at_url}
+        }
+    }).state('msg_whisper',{
+        url:'/whisper',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_whisper_url}
+        }
+    }).state('msg_notice',{
+        url:'/notice',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_notice_url}
+        }
+    }).state('tag',{
+        url:'/tag',
+        views:{
+            'content':{templateUrl:tpl_tag_url}
+        }
+    }).state('setting',{
+        url:'/setting',
+        views:{
+            'content':{templateUrl:tpl_setting_url}
+        }
+    }).state('search',{
+        url:'/search',
+        views:{
+            'content':{templateUrl:tpl_search_url}
+        }
     });
 }]);
 //deal unsafe:javascript:...
@@ -166,6 +218,9 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
       $http.get(url).success(function(res){
             $scope.essay = res.essay;
             $scope.comments = res.comments;
+            if(res.comments.length < 1)$scope.essay_comments_tip_show = true;
+            else $scope.essay_comments_tip_show = false;
+            $scope.essay_comment_on = res.essay_comment_on;
             $scope.avatar_path = public_path+"/img/me.jpg";
             $state.go('view',{id:id});
             $(document).scrollTop(0);
@@ -190,6 +245,32 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
       $rootScope.type = type;
       $rootScope.id = id;
       $state.go('modify',{type:type,id:id});
+    }
+    //消息面板
+    $scope.showMessage = function(){
+      $scope.msg_tip_show = false;
+      var msg_url = home_path+"/Message/get_msg_list.html";
+      $http.get(msg_url).success(function(res){
+        if(res.error === 0){
+           $scope.msgs = res.items;
+           $scope.senders = res.senders;
+           if(res.items.length < 1)$scope.msg_tip_show = true;
+           else $scope.msg_tip_show = false;
+         }else{$scope.msg_tip_show = true;}
+      });
+      $state.go('message');
+    }
+    //标签面板
+    $scope.showTag = function(){
+      $state.go('tag');
+    }
+    //设置面板
+    $scope.showSetting = function(){
+      $state.go('setting');
+    }
+    //搜索面板
+    $scope.showSearch = function(){
+      $state.go('search');
     }
 });
 //边栏管理
@@ -283,8 +364,9 @@ m_index.controller('c_paginator',function($scope,$rootScope,$state,$http){
 });
 //碎片
 m_index.controller('c_piece',function($scope,$rootScope,$state,$http){
-  $scope.showCmt = function(id,piece_id){
+  $scope.showCmt = function(id,piece_id,user_id){
     $rootScope.piece_id = piece_id;
+    $rootScope.piece_user_id = user_id;
     $rootScope.cmt_obj_id = id;
     $rootScope.cmt_obj = $rootScope.index_items[id];
     $("body").css('overflow-y','hidden');
@@ -319,7 +401,7 @@ m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
     $http({
           method:'POST',
           url:home_path+"/Piece/post_comment.html",
-          data:{'piece_id':piece_id,'comment_content':content}
+          data:{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content}
         }).success(function(res){
           if(res.error === 0){
             //清空编辑器
@@ -363,6 +445,61 @@ m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
     });
   }
 })
+m_index.controller('c_essay_cmt',function($scope,$state,$http){
+  //文章评论
+  $scope.postEssayCmt = function(essay_id){
+    $("button.post-essay-comment-btn").html('<i class="hs-icon-spinner"></i> 发布中...');
+    essay_editor.sync(); //同步编辑器内容
+    var content = $("#essay-comment-form").children("textarea[name='comment-content']").val();
+    $http({
+          method:'POST',
+          url:home_path+"/Essay/post_comment.html",
+          data:{'essay_id':essay_id,'comment_content':content}
+        }).success(function(res){
+          if(res.error === 0){
+            //清空编辑器
+            essay_editor.html('');
+            hMessage(res.msg);
+            $("button.post-essay-comment-btn").html('发布评论');
+            //将新评论插入评论列表
+            var html = '<li class="hs-comment">'+
+            '<article class="hs-comment essay-comment"><a href="">'+
+            '<img class="hs-comment-avatar comment-user-avatar" src="'+public_path+'/img/me.jpg" alt=""/></a>'+
+            '<div class="hs-comment-main"><header class="hs-comment-hd">'+
+            '<div class="hs-comment-meta"><a href="#link-to-user" class="hs-comment-author">'+res.comment.user+'</a>'+
+            '评论于 <time datetime="">'+res.comment.date+'</time></div></header>'+
+            '<div class="hs-comment-bd">'+res.comment.content+'</div></div></article></li>';
+            $("div.comment-tip").remove();
+            $("div.essay-comments").children("ul").prepend(html);
+          }else{
+            hMessage(res.msg);
+            $("button.post-essay-comment-btn").html('发布评论');
+          }
+    });
+  }
+})
+//消息控制器
+m_index.controller('c_message',function($scope,$state,$http){
+  $scope.msg_tab = 'comment';
+  $scope.msgDetail = function(msg_obj_type,msg_obj_id){
+    //console.log('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
+    hMessage('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
+  }
+  //Tab切换
+  $scope.msgSwitchTab = function(tab,id){
+    $scope.msg_tab = tab;
+    var msg_url = home_path+"/Message/get_msg_list.html?type="+tab+"&id="+id;
+    $http.get(msg_url).success(function(res){
+       if(res.error === 0){
+         $scope.msgs = res.items;
+         $scope.senders = res.senders;
+         if(res.items.length < 1)$scope.msg_tip_show = true;
+         else $scope.msg_tip_show = false;
+       }else{$scope.msg_tip_show = true;}
+    });
+    $state.go("msg_"+tab);
+  }
+});
 /*Factory*/
 m_index.factory('Piece', function($http) {
   var Piece = function() {

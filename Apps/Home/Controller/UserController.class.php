@@ -48,4 +48,8 @@ class UserController extends Controller {
     public function get_user_avatar(){
         //
     }
+    //get userName by id
+    public function get_name_by_id($id){
+        return $this->user_model->where('id='.$id)->field('userName')->find();
+    }
 }

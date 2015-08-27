@@ -110,13 +110,18 @@ class PieceController extends Controller {
         if(C('PIECE_COMMENT_ON')){//评论功能是否开启
             $piece_id = I('post.piece_id');
             $comment_content = I('post.comment_content','','');
+            $msg_receiver_id = I('post.obj_id');
             $user_id = $_SESSION['USER_ID'];
             $comment_date = date("Y-m-d H:i:s");
             $data = array('user_id'=>$user_id,'piece_id'=>$piece_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
             $comment_model = D("PieceComment");
             if($comment_model->add($data) != false){
+                //生成消息
+                //$userName = A('User')->get_name_by_id($user_id);
+                $msg_content = A('User')->get_name_by_id($user_id)['username'].' 评论了你的碎片';
+                A('Message')->msg_push('comment',1,'piece',$piece_id,$comment_date,$user_id,$msg_receiver_id,$msg_content);
                 $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
-                    'content'=>$comment_content)),'json');
+                    'content'=>$comment_content),'msg'=>'评论成功'),'json');
             }
             else $this->ajaxReturn(array('error'=>1,'msg'=>'评论失败'),'json');
         }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
@@ -128,7 +133,6 @@ class PieceController extends Controller {
         $cdt['piece_id'] = $piece_id;
         $comments = $comment_model->field('hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
         ->join('hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id='.$piece_id)->order('hs_piece_comment.comment_date desc')->select();
-        //$comments = $comment_model->where($cdt)->order('comment_date desc')->select();
         if($comments != false){
             $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
         }else{

@@ -44,7 +44,9 @@ class EssayController extends Controller {
         if(empty($user_id))
             $user_id = $_SESSION['USER_ID'];
         //$essays = $this->essay_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
-        $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($this->page_size)->select();
+        $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->
+        field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,left(hs_essay.content,200),hs_essay.visible')
+        ->order('hs_essay.date desc')->limit($this->page_size)->select();
         $totalCount = $this->essay_model->where("user_id=".$user_id)->count();
         $totalPage = $totalCount/$this->page_size;
         $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
@@ -202,8 +204,10 @@ class EssayController extends Controller {
             $data = array('user_id'=>$user_id,'essay_id'=>$essay_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
             $comment_model = D("Comment");
             if($comment_model->add($data) != false){
+                $msg_content = A('User')->get_name_by_id($user_id)['username'].' 评论了你的文章';
+                A('Message')->msg_push('comment',1,'essay',$essay_id,$comment_date,$user_id,1000,$msg_content);
                 $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
-                    'content'=>$comment_content)),'json');
+                    'content'=>$comment_content),'msg'=>'评论成功！'),'json');
             }
             else $this->ajaxReturn(array('error'=>1,'msg'=>'评论失败'),'json');
         }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
@@ -213,8 +217,9 @@ class EssayController extends Controller {
         if($_SESSION['LOGIN_STATUS']){
             $page = $page?$page-1:0;
             $user_id = $_SESSION['USER_ID'];
-            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.
-                $user_id)->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
+            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$user_id)
+            ->field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,LEFT(hs_essay.content,1000) as content,hs_essay.visible')
+            ->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
             $response = array('error'=>0,'items'=>$essays,'page'=>$page+1);
             $this->ajaxReturn($response,'json');
         }else{
@@ -227,10 +232,11 @@ class EssayController extends Controller {
         $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         //$essay['tag'] = explode(" ", $essay['tag']);
+        $essay_comment_on = C('ESSAY_COMMENT_ON');//是否开启评论
         //获取评论信息
         $comments = A('Comment')->get_essay_comments($essay['essay_id']);
         $comments_num = count($comments);
-        $res = array('essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num);
+        $res = array('essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on);
         $this->ajaxReturn($res,'json');
     }
     //get message of one essay

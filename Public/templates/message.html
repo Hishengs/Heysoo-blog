@@ -1,0 +1,20 @@
+<div class="hs-panel hs-panel-primary msg-panel" ng-controller="c_message">
+  <div class="hs-panel-hd"><big><b>消息</b></big>[暂未实现]</div>
+  <div class="hs-panel-bd">
+    <div class="hs-btn-group hs-btn-group-justify">
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-primary': msg_tab=='comment'}" ng-click="msgSwitchTab('comment',1)">评论</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-primary': msg_tab=='at'}" ng-click="msgSwitchTab('at',3)">@我</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-primary': msg_tab=='whisper'}" ng-click="msgSwitchTab('whisper',2)">私信</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-primary': msg_tab=='notice'}" ng-click="msgSwitchTab('notice',0)">通知</button>
+    </div>
+    <div class="msg-view" ui-view="message">
+      <div class="msg-list" ng-hide="msg_tip_show">
+        <div class="msg-item hs-panel hs-panel-default" ng-repeat="msg in msgs">
+          <div class="hs-panel-hd">{{msg.msg_date}}<a class="msg-set-read" href="javascript:;"></a></div>
+          <div class="hs-panel-bd"><a href="javascript:;">{{senders[$index]['username']}}</a>&nbsp;{{msg.msg_content}}<a class="msg-see-more" href="javascript:;" ng-click="msgDetail(msg.msg_obj_type,msg.msg_obj_id)">查看详情</a></div>
+        </div>
+      </div>
+      <div class="msg-tip" ng-show="msg_tip_show"><i class="hs-icon-warning"></i> 暂无评论</div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,14 @@ var tpl_view_url = public_path+'/templates/Essay/view.html';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
 var tpl_modify_url = public_path+'/templates/Essay/modify.html';
+var tpl_message_url = public_path+'/templates/message.html';
+var tpl_tag_url = public_path+'/templates/tag.html';
+var tpl_setting_url = public_path+'/templates/setting.html';
+var tpl_search_url = public_path+'/templates/search.html';
+var tpl_comment_url = public_path+'/templates/message/comment.html';
+var tpl_whisper_url = public_path+'/templates/message/whisper.html';
+var tpl_at_url = public_path+'/templates/message/at.html';
+var tpl_notice_url = public_path+'/templates/message/notice.html';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -82,6 +90,50 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/modify/type/:type/id/:id',
         views:{
             'content':{templateUrl:tpl_modify_url}
+        }
+    }).state('message',{
+        url:'/message',
+        views:{
+            'content':{templateUrl:tpl_message_url}
+        }
+    }).state('msg_comment',{
+        url:'/comment',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_comment_url}
+        }
+    }).state('msg_at',{
+        url:'/at',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_at_url}
+        }
+    }).state('msg_whisper',{
+        url:'/whisper',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_whisper_url}
+        }
+    }).state('msg_notice',{
+        url:'/notice',
+        parent:'message',
+        views:{
+            'message':{templateUrl:tpl_notice_url}
+        }
+    }).state('tag',{
+        url:'/tag',
+        views:{
+            'content':{templateUrl:tpl_tag_url}
+        }
+    }).state('setting',{
+        url:'/setting',
+        views:{
+            'content':{templateUrl:tpl_setting_url}
+        }
+    }).state('search',{
+        url:'/search',
+        views:{
+            'content':{templateUrl:tpl_search_url}
         }
     });
 }]);

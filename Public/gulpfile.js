@@ -26,7 +26,8 @@ gulp.task('plugins-concat', function() {
     .pipe(gulp.dest('./js/dist/'));
 });
 gulp.task('index-css', function() {
-  gulp.src(['./css/index.css','./css/piece/piece.css','./css/diary/diary.css','./css/essay/essay.css','./css/view.css'])
+  gulp.src(['./css/index.css','./css/piece/piece.css','./css/diary/diary.css','./css/essay/essay.css',
+    './css/view.css','./css/message.css'])
     .pipe(concat('index.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
