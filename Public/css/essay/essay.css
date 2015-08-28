@@ -7,6 +7,7 @@ div.essay-footer a{ font-size: 1.4rem; color: #696969; text-decoration: none;}
 div.essay-footer a:hover,h4.essay-title:hover{ color: #333;}
 span.essay-operation{ opacity: 0; float: right;}
 span.essay-operation:hover{ opacity: 1;}
+div.essays-empty-tip{}
 /*css for edit*/
 div.essay-edit,div.essay-modify{ max-width: 750px; margin: 0 auto; background: #fff; /* box-shadow:0px 5px 10px rgba(0,0,0,0.5); */ padding: 20px;}
 div.essay-edit form div.essay-edit-footer{margin: 10px auto;}

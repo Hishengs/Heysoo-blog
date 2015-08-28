@@ -7,14 +7,21 @@ var tpl_view_url = public_path+'/templates/Essay/view.html';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
 var tpl_modify_url = public_path+'/templates/Essay/modify.html';
-var tpl_message_url = public_path+'/templates/message.html';
+var tpl_message_url = public_path+'/templates/message/message.html';
 var tpl_tag_url = public_path+'/templates/tag.html';
-var tpl_setting_url = public_path+'/templates/setting.html';
+var tpl_setting_url = public_path+'/templates/setting/setting.html';
 var tpl_search_url = public_path+'/templates/search.html';
 var tpl_comment_url = public_path+'/templates/message/comment.html';
 var tpl_whisper_url = public_path+'/templates/message/whisper.html';
 var tpl_at_url = public_path+'/templates/message/at.html';
 var tpl_notice_url = public_path+'/templates/message/notice.html';
+var tpl_profile_url = public_path+'/templates/setting/profile.html';
+var tpl_interface_url = public_path+'/templates/setting/interface.html';
+var tpl_push_url = public_path+'/templates/setting/push.html';
+var tpl_privacy_url = public_path+'/templates/setting/privacy.html';
+var tpl_follow_url = public_path+'/templates/follow/follow.html';
+var tpl_followed_url = public_path+'/templates/follow/followed.html';
+var tpl_following_url = public_path+'/templates/follow/following.html';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -62,7 +69,7 @@ m_index.config(['$stateProvider',function($stateProvider){
     $stateProvider.state('home',{
         url:'/'
     }).state('piece',{
-        url:'/piece/page=:page',
+        url:'/piece/page/:page',
         views:{
             'content':{templateUrl:tpl_piece_url}
         }
@@ -72,7 +79,7 @@ m_index.config(['$stateProvider',function($stateProvider){
             'content':{templateUrl:tpl_edit_url}
         }
     }).state('essay',{
-        url:'/essay/page=:page',
+        url:'/essay/page/:page',
         views:{
             'content':{templateUrl:tpl_essay_url}
         }
@@ -134,6 +141,47 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/search',
         views:{
             'content':{templateUrl:tpl_search_url}
+        }
+    }).state('setting_profile',{
+        url:'/profile',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_profile_url}
+        }
+    }).state('setting_interface',{
+        url:'/interface',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_interface_url}
+        }
+    }).state('setting_push',{
+        url:'/push',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_push_url}
+        }
+    }).state('setting_privacy',{
+        url:'/privacy',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_privacy_url}
+        }
+    }).state('follow',{
+        url:'/follow',
+        views:{
+            'content':{templateUrl:tpl_follow_url}
+        }
+    }).state('follow_followed',{
+        url:'/followed',
+        parent:'follow',
+        views:{
+            'follow':{templateUrl:tpl_followed_url}
+        }
+    }).state('follow_following',{
+        url:'/following',
+        parent:'follow',
+        views:{
+            'follow':{templateUrl:tpl_following_url}
         }
     });
 }]);

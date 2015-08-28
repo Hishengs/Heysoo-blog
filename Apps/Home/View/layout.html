@@ -32,7 +32,7 @@
 <div class="hs-btn-group hs-btn-group-justify">
     <button type="button" class="hs-btn hs-btn-primary hs-btn-msg" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息 </button>
     <button type="button" class="hs-btn hs-btn-primary" ng-click="edit()"><i class="hs-icon-edit"></i> 发布</button>
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="void()"><i class="hs-icon-user"></i> 好友</button>
+    <button type="button" class="hs-btn hs-btn-primary" ng-click="showFollow()"><i class="hs-icon-user"></i> 关注</button>
 </div>
 
 <button class="hs-btn hs-btn-primary hs-btn-block" onclick="javascript:window.location.href='{:U('Index/index')}'"><i class="hs-icon-random"></i> 首页</button>
@@ -52,7 +52,7 @@
 
 <div id="right-panel">
 <div id="content">
-<div ui-view="content">
+<div ui-view="content" class="content-view">
 <div ng-include="'__PUBLIC__/templates/Index/index.html'"></div>
 </div>
 </div>

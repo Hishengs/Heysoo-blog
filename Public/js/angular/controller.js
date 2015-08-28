@@ -44,6 +44,8 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
         }else return;
         $http.get(url).success(function(res){
             $rootScope.items = res.items;
+            if(res.items.length < 1)$scope.res_empty = true;
+            else $scope.res_empty = false;
             $scope.page = res.page;
             $state.go(c_state,{page:1});
             paginator_index = 1;
@@ -104,6 +106,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
          progress_bar.done();
       });
       $state.go('message');
+      $state.go('msg_comment');
     }
     //标签面板
     $scope.showTag = function(){
@@ -111,16 +114,23 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     }
     //设置面板
     $scope.showSetting = function(){
+      $scope.setting_tab = 'profile';
       var url = home_path+"/User/ng_get_user_info.html";
       $http.get(url).success(function(res){
         $scope.user_info = res.items;
       });
       $scope.origin_user_avatar_path = "FgW07muueXq9EI9OIdezcY5ODe4f";
       $state.go('setting');
+      $state.go('setting_profile');
     }
     //搜索面板
     $scope.showSearch = function(){
       $state.go('search');
+    }
+    //好友
+    $scope.showFollow = function(){
+      $state.go('follow');
+      $state.go("follow_followed");
     }
 });
 //边栏管理
@@ -348,5 +358,20 @@ m_index.controller('c_message',function($scope,$state,$http){
        }else{$scope.msg_tip_show = true;}
     });
     $state.go("msg_"+tab);
+  }
+});
+//设置控制器
+m_index.controller('c_setting',function($scope,$state,$http){
+  $scope.settingSwitchTab = function(tab){
+    $scope.setting_tab = tab;
+    $state.go("setting_"+tab);
+  }
+});
+//好友控制器
+m_index.controller('c_follow',function($scope,$state,$http){
+  $scope.follow_tab = 'followed';
+  $scope.followSwitchTab = function(tab){
+    $scope.follow_tab = tab;
+    $state.go("follow_"+tab);
   }
 });

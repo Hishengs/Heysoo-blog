@@ -1,4 +1,4 @@
-<div class="pieces">
+<div class="pieces" ng-hide="res_empty">
 <div class="piece" id="{{piece.piece_id}}" ng-repeat="piece in items">
 <div class="piece-left">
 <div class="essay-date">
@@ -26,8 +26,9 @@
 </div>
 </div>
 
+<div class="pieces-empty-tip center-tip" ng-show="res_empty"><i class="hs-icon-warning"></i> 你还没有发布过碎片哦~</div>
 
-<div id="piece-pagination" class="pagination" ng-controller="c_paginator">
+<div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
 <div class="hs-btn-group hs-btn-group-justify">
     <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','prev');">上一页</button>
     <select class="hs-select" style="background:#0e90d2;color:#fff;border-color:#0e90d2;border-radius:0;" ng-options="option.name for option in paginator_pages" ng-model="paginator_current_page">
