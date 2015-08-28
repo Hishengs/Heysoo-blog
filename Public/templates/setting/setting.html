@@ -1,0 +1,14 @@
+<div class="hs-panel hs-panel-primary y-full" ng-controller="c_setting">
+  <div class="hs-panel-hd"><big><b>设置</b></big>[暂未实现]</div>
+  <div class="hs-panel-bd">
+    <div class="hs-btn-group hs-btn-group-justify">
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-primary': setting_tab=='profile'}" ng-click="settingSwitchTab('profile')">资料</button>
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-primary': setting_tab=='interface'}" ng-click="settingSwitchTab('interface')">界面</button>
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-primary': setting_tab=='push'}" ng-click="settingSwitchTab('push')">推送</button>
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-primary': setting_tab=='privacy'}" ng-click="settingSwitchTab('privacy')">隐私</button>
+    </div>
+    <div class="setting-items" ui-view="v_setting">
+        
+    </div>
+  </div>
+</div>

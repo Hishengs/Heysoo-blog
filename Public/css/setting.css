@@ -1,0 +1,6 @@
+div.setting-items > ul > li{padding: 15px 0;}
+div.setting-user-avatar img{max-width: 128px;width: 128px;}
+div.setting-user-avatar{margin-top:20px;}
+span.setting-item-right{float: right;}
+div.setting-upload-avatar{display: inline-block; float: right;}
+div.setting-upload-avatar div{display: inline-block;}
