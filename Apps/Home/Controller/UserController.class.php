@@ -38,6 +38,13 @@ class UserController extends Controller {
         $cdt['id'] = $user_id;
         return $this->user_model->where($cdt)->find();
     }
+    public function ng_get_user_info(){
+        $cdt['id'] = session('USER_ID');
+        $response = $this->user_model->where($cdt)->find();
+        if($response != false)
+            $this->ajaxReturn(array('error'=>0,'items'=>$response),'json');
+        else $this->ajaxReturn(array('error'=>1,'msg'=>'获取失败'),'json');
+    }
     //获取用户配置
     public function get_user_config($user_id=null){
         if(empty($user_id))$user_id = $this->user_id;

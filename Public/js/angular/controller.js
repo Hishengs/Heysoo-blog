@@ -91,6 +91,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     }
     //消息面板
     $scope.showMessage = function(){
+      progress_bar.start();
       $scope.msg_tip_show = false;
       var msg_url = home_path+"/Message/get_msg_list.html";
       $http.get(msg_url).success(function(res){
@@ -100,6 +101,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
            if(res.items.length < 1)$scope.msg_tip_show = true;
            else $scope.msg_tip_show = false;
          }else{$scope.msg_tip_show = true;}
+         progress_bar.done();
       });
       $state.go('message');
     }
@@ -109,6 +111,11 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     }
     //设置面板
     $scope.showSetting = function(){
+      var url = home_path+"/User/ng_get_user_info.html";
+      $http.get(url).success(function(res){
+        $scope.user_info = res.items;
+      });
+      $scope.origin_user_avatar_path = "FgW07muueXq9EI9OIdezcY5ODe4f";
       $state.go('setting');
     }
     //搜索面板

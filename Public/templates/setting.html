@@ -7,5 +7,43 @@
       <button type="button" class="hs-btn hs-btn-default" onclick="javascript:;">推送</button>
       <button type="button" class="hs-btn hs-btn-default" onclick="javascript:;">隐私</button>
     </div>
+    <div class="setting-items">
+        <div class="hs-panel hs-panel-default setting-user-avatar">
+    		<div class="hs-panel-hd">头像</div>
+    		<div class="hs-panel-bd">
+    		<a href="javascript:;"><img class="origin-user-avatar" src="https://dn-lanbaidiao.qbox.me/{{origin_user_avatar_path}}" alt='我的头像'></a>
+
+    		<div class="hs-form-group hs-form-file setting-upload-avatar">
+			</div>
+    		</div>
+    	</div>
+    	<ul class="hs-list">
+    	<li class="">称呼
+    	<span class="setting-item-right">{{user_info.username}}
+    	&nbsp;<i class="hs-icon-angle-right"></i>
+    	</span>
+    	</li>
+    	<li class="">ID
+    	<span class="setting-item-right">{{user_info.id}}
+    	&nbsp;<i class="hs-icon-angle-right"></i>
+    	</span>
+    	</li>
+    	<li class="">邮箱
+    	<span class="setting-item-right">{{user_info.email}}
+    	&nbsp;<i class="hs-icon-angle-right"></i>
+    	</span>
+    	</li>
+    	<li class="">个性签名
+    	<span class="setting-item-right">{{user_info.signature}}
+    	&nbsp;<i class="hs-icon-angle-right"></i>
+    	</span>
+    	</li>
+    	<li class="">所在地
+    	<span class="setting-item-right">{{user_info.city}}
+    	&nbsp;<i class="hs-icon-angle-right"></i>
+    	</span>
+    	</li>
+    	</ul>
+    </div>
   </div>
 </div>
