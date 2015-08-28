@@ -1,4 +1,4 @@
-/.settings
-/Core
-/Apps/Runtime
+/.settings/
+/Core/
+/Apps/Runtime/
 /Public/bower/
