@@ -27,6 +27,9 @@ class IndexController extends Controller {
     		//获取用户配置
             $user_config = A('User')->get_user_config($_SESSION['USER_ID']);
             $this->assign('user_config',$user_config);
+            //获取未读消息
+            $unread_msg_num = A('Message')->get_unread_msg_num();
+            $this->assign('unread_msg_num',$unread_msg_num);
             $this->display();
     	}else{
             $this->redirect("Action/login");

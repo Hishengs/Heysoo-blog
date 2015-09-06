@@ -15,7 +15,7 @@ class MessageController extends Controller {
     public function index(){
     	//
     }
-    //生成消息
+    //push a message
     public function msg_push($msg_type='system',$msg_type_id=0,$msg_obj_type=null,$msg_obj_id=null,$msg_date,$msg_sender_id,
     	$msg_receiver_id,$msg_content,$msg_link=null){
     	$data = array('msg_type'=>$msg_type,'msg_type_id'=>$msg_type_id,'msg_obj_type'=>$msg_obj_type,
@@ -31,7 +31,7 @@ class MessageController extends Controller {
     	if($response != false)$this->ajaxReturn(array('error'=>0,'data'=>$response),'json');
     	else $this->ajaxReturn(array('error'=>1,'msg'=>''),'json');
     }
-    //
+    //get messages list
     public function get_msg_list(){
     	$type = I('get.type')?I('get.type'):'comment';
     	$id = I('get.id')?I('get.id'):1;
@@ -45,5 +45,22 @@ class MessageController extends Controller {
     		$this->ajaxReturn(array('error'=>0,'items'=>$response,'senders'=>$senders),'json');
     	}
     	else $this->ajaxReturn(array('error'=>1,'msg'=>'消息获取失败','items'=>array()),'json');
+    }
+    //get unread message number
+    public function get_unread_msg_num($user_id=null){
+        $user_id = $user_id?$user_id:session('USER_ID');
+        $cdt = array('msg_receiver_id'=>$user_id,'msg_is_read'=>0);
+        $res = $this->msg_model->where($cdt)->count();
+        if($res != false)return $res;
+        else return;
+    }
+    //set message read
+    public function set_msg_read($user_id=null){
+        $user_id = $user_id?$user_id:session('USER_ID');
+        $cdt = array('msg_receiver_id'=>$user_id,'msg_is_read'=>0);
+        $data = array('msg_is_read'=>1);
+        $res = $this->msg_model->where($cdt)->save($data);
+        if($res != false)$this->ajaxReturn(array('error'=>0));
+        else $this->ajaxReturn(array('error'=>1));
     }
 }
