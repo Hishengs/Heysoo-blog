@@ -9,7 +9,11 @@
 ###>>后端
 >[ThinkPHP](http://www.thinkphp.cn)
 
+###>>数据库
+>MySQL
+
 ###>>前端
+>AngularJs
 ####Javascript
 >[jQuery](http://www.jquery.com)
 >[lightbox](http://www.lokeshdhakar.com/projects/lightbox2/)
