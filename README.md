@@ -5,7 +5,7 @@
 >[Lanbaidiao](http://www.lanbaidiao.com) 或者 [Heysoo](http://www.heysoo.com)
 
 ***
-##框架
+##架构
 ###>>后端
 >[ThinkPHP](http://www.thinkphp.cn)
 
@@ -13,8 +13,9 @@
 >MySQL
 
 ###>>前端
->AngularJs
-####Javascript
+####框架
+>[AngularJs](http://www.angularjs.org)
+####插件
 >[jQuery](http://www.jquery.com)
 >[lightbox](http://www.lokeshdhakar.com/projects/lightbox2/)
 >[jpaginator](http://jpaginator.teenwon.com)
