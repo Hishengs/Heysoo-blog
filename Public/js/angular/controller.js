@@ -104,6 +104,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
            else $scope.msg_tip_show = false;
          }else{$scope.msg_tip_show = true;}
          progress_bar.done();
+         $rootScope.unread_msg_num = '';
       });
       $state.go('message');
       $state.go('msg_comment');
@@ -144,6 +145,7 @@ m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
       $rootScope.essay_nums = res.essay_nums;
       $rootScope.piece_nums = res.piece_nums;
       $rootScope.diary_nums = res.diary_nums;
+      $rootScope.unread_msg_num = res.unread_msg_num;
     }
   });
   //靠近左侧显示
@@ -160,6 +162,18 @@ m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
     $("#content").css('padding-left',0);
     });
   }
+  //设置定时器，定时获取未读消息数目#每1分钟
+  var timer = 60000;
+  setInterval(function(){
+    var url = home_path+"/Message/ng_get_unread_msg_num.html";
+    $http.get(url).success(function(res){
+      if(res.unread_msg_num < 1 || $rootScope.unread_msg_num === res.unread_msg_num)timer -= 1000;//若没有新消息或者新消息条目没变化，则加快读取
+      else timer += 1000;//若有新消息，则延缓读取
+      timer = timer<30000?60000:timer;//如果timer小于一半，则重置timer
+      $rootScope.unread_msg_num = res.unread_msg_num;
+      console.log("timer:"+timer);
+    });
+  },timer);
 });
 //文章，碎片，日记发布
 m_index.controller('c_edit',function($scope,$state,$http){
@@ -233,6 +247,11 @@ m_index.controller('c_piece',function($scope,$rootScope,$state,$http){
     $state.go('comment');
     $rootScope.mask_show = true;
     updatePieceCmt(piece_id);
+  }
+  //查看用户主页
+  $scope.viewUser = function(userName){
+    var url = home_path+"/User/index.html?user="+userName;
+    window.open(url);
   }
 })
 m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
@@ -375,3 +394,4 @@ m_index.controller('c_follow',function($scope,$state,$http){
     $state.go("follow_"+tab);
   }
 });
+

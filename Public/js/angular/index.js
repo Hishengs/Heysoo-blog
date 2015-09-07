@@ -1,4 +1,4 @@
-var m_index = angular.module('Index',['infinite-scroll','ui.router']);
+var m_index = angular.module('Index',['infinite-scroll','ui.router','ipCookie']);
 /*Controller*/
 /*m_index.controller('c_app',function($scope,$state,$http){
   $scope.getPage = function(page){

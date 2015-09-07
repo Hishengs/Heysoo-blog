@@ -14,7 +14,7 @@ gulp.task('index', function() {
     .pipe(gulp.dest('./js/dist/'));
 });
 gulp.task('angular-concat', function() {
-  gulp.src(['./bower/angular/angular.min.js','./bower/angular-ui-router/release/angular-ui-router.min.js','./bower/ng-infinite-scroll/ng-infinite-scroll.min.js'])
+  gulp.src(['./bower/angular/angular.min.js','./bower/angular-ui-router/release/angular-ui-router.min.js','./bower/ng-infinite-scroll/ng-infinite-scroll.min.js','./bower/angular-cookie/angular-cookie.min.js'])
     .pipe(concat('angular.js'))
     .pipe(gulp.dest('./js/dist/'));
 });

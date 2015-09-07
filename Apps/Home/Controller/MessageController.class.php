@@ -36,9 +36,10 @@ class MessageController extends Controller {
     	$type = I('get.type')?I('get.type'):'comment';
     	$id = I('get.id')?I('get.id'):1;
     	$user_id = session('USER_ID');
-    	$cdt = array('msg_receiver_id'=>$user_id,'msg_type'=>$type,'msg_type_id'=>$id,'msg_is_read'=>0);
-    	$response = $this->msg_model->where($cdt)->order('msg_date desc')->select();
+    	$cdt = array('msg_receiver_id'=>$user_id,'msg_type'=>$type,'msg_type_id'=>$id);
+    	$response = $this->msg_model->where($cdt)->order('msg_is_read asc,msg_date desc')->select();
     	if($response != false){
+            $this->set_msg_read();//将消息设置为已读
     		for($i=0;$i<count($response);$i++){
     			$senders[$i] = A('User')->get_name_by_id($response[$i]['msg_sender_id']);
     		}
@@ -54,13 +55,18 @@ class MessageController extends Controller {
         if($res != false)return $res;
         else return;
     }
+    public function ng_get_unread_msg_num(){
+        $user_id = I('get.user_id');
+        $unread_msg_num = $this->get_unread_msg_num($user_id);
+        $this->ajaxReturn(array('unread_msg_num'=>$unread_msg_num));
+    }
     //set message read
     public function set_msg_read($user_id=null){
         $user_id = $user_id?$user_id:session('USER_ID');
         $cdt = array('msg_receiver_id'=>$user_id,'msg_is_read'=>0);
         $data = array('msg_is_read'=>1);
         $res = $this->msg_model->where($cdt)->save($data);
-        if($res != false)$this->ajaxReturn(array('error'=>0));
-        else $this->ajaxReturn(array('error'=>1));
+        /*if($res != false)$this->ajaxReturn(array('error'=>0));
+        else $this->ajaxReturn(array('error'=>1));*/
     }
 }

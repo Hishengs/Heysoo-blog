@@ -6,7 +6,7 @@
 <div class="piece-right">
 <div class="bg"></div><div class="piece-triangle"></div>
 <div class="piece-info">
-<span class="piece-user"><a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+<span class="piece-user"><a href="javascript:;" ng-click="viewUser(piece.username)" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 <span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
 </div>
 <div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>

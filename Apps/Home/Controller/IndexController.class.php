@@ -27,9 +27,6 @@ class IndexController extends Controller {
     		//获取用户配置
             $user_config = A('User')->get_user_config($_SESSION['USER_ID']);
             $this->assign('user_config',$user_config);
-            //获取未读消息
-            $unread_msg_num = A('Message')->get_unread_msg_num();
-            $this->assign('unread_msg_num',$unread_msg_num);
             $this->display();
     	}else{
             $this->redirect("Action/login");
@@ -136,8 +133,10 @@ class IndexController extends Controller {
         $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
         $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
         $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
+        //获取未读消息
+        $unread_msg_num = A('Message')->get_unread_msg_num();
         $response = array('error'=>0,'user'=>$user_info,'essay_nums'=>$essay_nums,
-            'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums);
+            'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums,'unread_msg_num'=>$unread_msg_num);
         $this->ajaxReturn($response,'json');
    }
 }
