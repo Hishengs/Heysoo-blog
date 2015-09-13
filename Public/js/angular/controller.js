@@ -131,7 +131,19 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
     //好友
     $scope.showFollow = function(){
       $state.go('follow');
+      var url = home_path+"/User/get_follow_list.html?type=followed";
+      $http.get(url).success(function(res){
+        if(res.error === 0 && res.items.length > 0){
+          $rootScope.follow_items = res.items;
+          $rootScope.follow_tip_show = false;
+        }else $rootScope.follow_tip_show = true;
+      });
       $state.go("follow_followed");
+    }
+    //查看用户主页
+    $rootScope.viewUser = function(userName){
+      var url = home_path+"/User/index.html?user="+userName;
+      window.open(url);
     }
 });
 //边栏管理
@@ -247,11 +259,6 @@ m_index.controller('c_piece',function($scope,$rootScope,$state,$http){
     $state.go('comment');
     $rootScope.mask_show = true;
     updatePieceCmt(piece_id);
-  }
-  //查看用户主页
-  $scope.viewUser = function(userName){
-    var url = home_path+"/User/index.html?user="+userName;
-    window.open(url);
   }
 })
 m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
@@ -387,11 +394,64 @@ m_index.controller('c_setting',function($scope,$state,$http){
   }
 });
 //好友控制器
-m_index.controller('c_follow',function($scope,$state,$http){
+m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
+  $rootScope.follow_tip_show = true;
   $scope.follow_tab = 'followed';
   $scope.followSwitchTab = function(tab){
     $scope.follow_tab = tab;
+    $rootScope.follow_items = null;
+    var url = home_path+"/User/get_follow_list.html?type="+tab;
+    $http.get(url).success(function(res){
+      if(res.error === 0 && res.items.length > 0){
+        $rootScope.follow_items = res.items;
+        $rootScope.follow_tip_show = false;
+      }else $rootScope.follow_tip_show = true;
+    });
     $state.go("follow_"+tab);
+    //remove follow
+    $scope.remvoeFollow = function(type,follow_id){
+      url  = home_path+"/User/remove_follow.html";
+      $http({
+          method:'POST',
+          url:url,
+          data:{'type':type,'follow_id':follow_id}
+        }).success(function(res){
+          if(res.error === 0){
+            $("#"+follow_id).remove();
+            hMessage(res.msg);
+          }else hMessage(res.msg);
+      });
+    }
+  }
+});
+//reset password 重置密码
+m_index.controller('c_reset_passwd',function($scope,$http){
+  $scope.old_passwd = $scope.new_passwd = '';
+  $scope.resetPasswd = function(){
+    if($scope.old_passwd === '' || $scope.new_passwd === ''){hMessage('密码不能为空！');return;}
+    else if($scope.old_passwd === $scope.new_passwd){hMessage('新旧密码不能一样！');return;}
+    console.log('old password:'+$scope.old_passwd+',new password:'+$scope.new_passwd);
+    var url = home_path+"/User/reset_passwd.html";
+    $http({
+          method:'POST',
+          url:url,
+          data:{'old_passwd':$scope.old_passwd,'new_passwd':$scope.new_passwd}
+        }).success(function(res){
+          console.log(res);
+          if(res.error === 0){
+            hMessage(res.msg);
+            setTimeout(function(){window.location.href=home_path+"/Action/logout.html";},2000);
+          }else hMessage(res.msg);
+      });
+  }
+});
+//modify user avatar 修改头像
+m_index.controller('c_modify_avatar',function($scope,$http){
+  $scope.avatarChanged = function(obj){
+    console.log(obj);
+  }
+  $scope.modifyAvatar = function(){
+    console.log('你即将上传：'+$scope.new_avatar);
   }
 });
 

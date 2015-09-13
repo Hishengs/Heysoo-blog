@@ -1,10 +1,13 @@
-<div class="hs-panel hs-panel-default setting-user-avatar">
-    <div class="hs-panel-hd">头像</div>
+<div class="hs-panel hs-panel-default setting-user-avatar" ng-controller="c_modify_avatar">
+    <div class="hs-panel-hd">头像
+        <form class="hs-form setting-upload-avatar-form" style="display:inline-block;float:right;">
+            <input style="display:inline-block;" type="file" name="new_avatar" onchange="angular.element(this).scope().avatarChanged(this)">
+            <button style="display:inline-block;" class="hs-btn hs-btn-primary hs-btn-xs" ng-click="modifyAvatar()">上传</button>
+        </form>
+    </div>
     <div class="hs-panel-bd">
-    	<a href="javascript:;"><img class="origin-user-avatar" src="https://dn-lanbaidiao.qbox.me/{{origin_user_avatar_path}}" alt='我的头像' title="点击修改头像"></a>
-
-    	<div class="hs-form-group hs-form-file setting-upload-avatar">
-		</div>
+    	<a href="javascript:;"><img class="origin-user-avatar" src="https://dn-lanbaidiao.qbox.me/{{origin_user_avatar_path}}" alt='我的头像'>
+        </a>
     </div>
 </div>
 <ul class="hs-list">
@@ -34,3 +37,22 @@
     	</span>
     	</li>
 </ul>
+
+<hr data-hs-widget="divider" style="" class="hs-divider hs-divider-dashed" />
+
+<div class="hs-panel hs-panel-default setting-modify-passwd" ng-controller="c_reset_passwd">
+    <div class="hs-panel-hd">重置密码</div>
+    <div class="hs-panel-bd">
+        <form class="hs-form">
+            <div class="hs-input-group">
+              <span class="hs-input-group-label"><i class="hs-icon-lock hs-icon-fw"></i> 旧密码</span>
+              <input type="password" class="hs-form-field" name="old_passwd" placeholder="旧密码" ng-model="old_passwd">
+            </div>
+            <div class="hs-input-group">
+              <span class="hs-input-group-label"><i class="hs-icon-lock hs-icon-fw"></i> 新密码</span>
+              <input type="password" class="hs-form-field" name="new_passwd" placeholder="新密码" ng-model="new_passwd">
+            </div>
+            <button class="hs-btn hs-btn-primary" ng-click="resetPasswd()">重置</button>
+        </form>
+    </div>
+</div>

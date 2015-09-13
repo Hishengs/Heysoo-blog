@@ -41,6 +41,7 @@
 <div id="right-panel">
 <div id="content">
 
+<div class="content-tip center-tip"><i class="hs-icon-warning"></i> 抱歉啦，这个页面还没做好~</div>
 
 </div>
 </div>

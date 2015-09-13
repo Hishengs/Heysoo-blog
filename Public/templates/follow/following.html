@@ -1,1 +1,11 @@
-<div class="follow-tip center-tip"><i class="hs-icon-warning"></i> 暂无关注的人</div>
+<div class="follow-tip center-tip" ng-show="follow_tip_show"><i class="hs-icon-warning"></i> 暂无关注的人</div>
+<ul class="hs-list following-list">
+	<li class="following-list-item" id="{{item.follow_id}}" ng-repeat="item in follow_items">
+	<span><a href="javascript:;" ng-click="viewUser(item.username)">{{item.username}}</a></span>
+		<span class="follow-item-right">
+    	<a href="javascript:;" ng-click="remvoeFollow('following',item.follow_id)"><span class="hs-badge hs-badge-warning">
+    	取消关注<i class="hs-icon-close"></i>
+    	</span></a>
+    	</span>
+    </li>
+</ul>
