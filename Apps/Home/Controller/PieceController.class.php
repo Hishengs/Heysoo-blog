@@ -60,9 +60,10 @@ class PieceController extends Controller {
     //发布碎片
     public function ng_piece_post($tag,$content,$visible,$ext=null){
         $userName = $_SESSION['USER_NAME'];
+        $user_id = $_SESSION['USER_ID'];
         $tag = $tag?$tag:'碎片';
         $post_date = date("Y-m-d H:i:s");
-        $data = array('tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
+        $data = array('user_id'=>$user_id,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'date'=>$post_date);
         if($this->piece_model->add($data) != false){
             $this->ajaxReturn(array('error'=>0,'msg'=>'发布成功！'),'json');
         }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');

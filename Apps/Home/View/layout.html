@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-cn" ng-app="Index" ng-controller="c_index">
+<html lang="zh" ng-app="Index" ng-controller="c_index">
 <head>
-<base href="/Heysoo/">
+<base href="/heysoo/">
 <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png" href="__PUBLIC__/img/favicon.ico">
@@ -23,7 +23,7 @@
 
 <div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
 <div class="user-avatar">
-<img class="user-avatar hs-img" ng-src="{{avatar}}" title="点击修改头像">
+<img class="user-avatar hs-img" ng-src="{{avatar}}" title="点击修改头像" >
 </div>
 <div class="userName">{{user.username}}</div>
 <div class="user-signature">{{user.signature}}</div>
@@ -38,7 +38,7 @@
 <button class="hs-btn hs-btn-primary hs-btn-block" onclick="javascript:window.location.href='{:U('Index/index')}'"><i class="hs-icon-random"></i> 首页</button>
 <button class="hs-btn hs-btn-primary hs-btn-block" ng-click="getPage('piece')"><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
 <button class="hs-btn hs-btn-primary hs-btn-block" ng-click="getPage('essay')"><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
-<button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("{:U('Diary/get_diary_page')}","content",3)><i class="hs-icon-calendar"></i> 我的日记({{diary_nums}})</button>
+<!-- <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("{:U('Diary/get_diary_page')}","content",3)><i class="hs-icon-calendar"></i> 我的日记({{diary_nums}})</button> -->
 
 </div>
 <div class="hs-btn-group hs-btn-group-justify setting">

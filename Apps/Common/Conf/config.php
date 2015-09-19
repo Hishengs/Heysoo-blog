@@ -23,5 +23,5 @@ return array(
 		'SITE_PREFIX' => 'http://localhost',
 		'URL_MODEL' => 2,
 		'ESSAY_COMMENT_ON' => true,
-		'PIECE_COMMENT_ON' => true
+		'PIECE_COMMENT_ON' => true,
 		);

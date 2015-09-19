@@ -424,6 +424,16 @@ m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
     }
   }
 });
+m_index.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
+  console.log('c_setting_profile');
+  $scope.modifyProfile = function(option){
+    //hMessage("你即将修改："+option);
+    $state.go('setting_profile_'+option);
+    console.log('goto:setting_profile_'+option);
+    $rootScope.mask_show = true;
+    setTimeout(function(){$rootScope.mask_show = false;},2000);
+  }
+})
 //reset password 重置密码
 m_index.controller('c_reset_passwd',function($scope,$http){
   $scope.old_passwd = $scope.new_passwd = '';

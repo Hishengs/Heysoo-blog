@@ -52,137 +52,18 @@ function init(){
 	setLightBox();
 	setLazyload();
 }	
-//
-function gotoTop(){
-	$(document).scrollTop(0);
-}
+//返回顶部
+function gotoTop(){$(document).scrollTop(0);}
 //lightbox
-function setLightBox(){
-	//设置参数
-	lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'fitImagesInViewport':false,
-      'maxWidth':1000
-    });
-	$("#content").find("img").each(function(i){
-		var img_link = $("<a></a>");
-		img_link.attr('href',$(this).attr("src"));
-		img_link.attr('data-lightbox',Math.random());
-		$(this).attr("title","点击查看大图");
-		$(this).clone(true).appendTo(img_link);
-		$(this).before(img_link);
-		$(this).remove();
-	});
-	/*$("div.pieces").find("div.piece").each(function(){
-		var id = $(this).attr('id');
-		$(this).find("div.piece-content").find("img").each(function(){
-			var img_link = $("<a></a>");
-			img_link.attr('href',$(this).attr("src"));
-			img_link.attr('data-lightbox',id);
-			$(this).attr("title","点击查看大图");
-			$(this).clone(true).appendTo(img_link);
-			$(this).before(img_link);
-			$(this).remove();
-		});
-	});*/
-}
+function setLightBox(){}
 //lazyload
-function setLazyload(){
-	$(document).find("img").each(function(){
-		if($(this).attr("class") != "user-avatar"){
-			$(this).attr("data-layzr",$(this).attr('src'));
-			$(this).removeAttr("src");
-		}
-	});
-	var layzr = new Layzr();
-}
-//隐藏左边控制面板
+function setLazyload(){}
+//隐藏左边控制面板 hide the left panel
 function hideControlPanel(){
 	$("#left-panel").fadeOut(1500,function(){
 		$("#content").css('padding-left',0);
 	});
 }
-
-//设置浏览器url
-function setUrl(url,title,stateObject){
-	history.pushState(stateObject,title,url);
-}
-//获取文章信息
-function loadEssays(url,parentId){
-	$.ajax({
-		url:url,
-		type:'GET',
-		data:{'page':'essay'},
-		dataType:'json',
-		success:function(data){
-			var html = getEssayPage(data);
-			$('#'+parentId).html(html);
-		},
-		error:function(){}
-	});
-}
-
-function getViewPage(url,objId,type,id){
-	showLoadingMask(objId);
-	$.ajax({
-		url:url,
-		type:'GET',
-		data:{'type':type,'id':id},
-		dataType:'json',
-		success:function(data){
-			$("#"+objId).html(data);
-			initEssayComment();
-			$(document).scrollTop(0);
-			setLightBox();
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}
-
-function loadMore(url,objId){
-	//showLoadingMask(objId);
-	var page = $("#content").find("div.essay").length/10;
-	$('button.load-more').remove();
-	$.ajax({
-		url:url,
-		type:'GET',
-		data:{'page':page},
-		dataType:'json',
-		success:function(data){
-			if(data.empty === 1){
-				hMessage('没有更多了！');
-			}else{
-				$("#"+objId).append(data);
-				$(document).scrollTop($(document).scrollTop()+300);
-			}
-			$("#"+objId).append($('button.load-more').html('加载更多'));
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			alert(XMLHttpRequest);
-		}
-	});
-}
-function getPage(url,objId,page){
-	showLoadingMask(objId);
-	$.ajax({
-		url:url,
-		type:'GET',
-		data:{},
-		dataType:'json',
-		success:function(data){
-			$("#"+objId).html(data);
-			setLightBox();
-			$(document).scrollTop(0);
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}
-
 //加载遮罩
 function showLoadingMask(objId){
 	var loading_img = $("<img>")
@@ -220,54 +101,6 @@ function showMask(objId,content){
 function hideMask(){
 	$("#content-mask").hide();
 }
-//弹出层编辑器
-function showEditPage(url,type,objId){
-	showLoadingMask(objId);
-	$.ajax({
-		url:url,
-		type:'GET',
-		data:{'type':type},
-		dataType:'json',
-		success:function(data){
-			$("#"+objId).html(data);
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}
-//删除
-/*function deleteItem(type,id){
-	if(confirm('你确定要删除？'))
-	$.ajax({
-		url:home_path+"/Action/delete.html",
-		type:'GET',
-		data:{'type':type,'id':id},
-		dataType:'json',
-		success:function(data){
-			if(data.error == 0){
-				switch(type){
-					case "essay":
-					$("#content").find("div.essay[id="+id+"]").remove();
-					break;
-					case "diary":
-					$("#content").find("div.diary[id="+id+"]").remove();
-					break;
-					case "piece":
-					$("#content").find("div.piece[id="+id+"]").remove();
-					break;
-					case "essay":
-					break;
-				}
-				hMessage('操作成功！');
-			}
-			else hMessage('操作失败！');
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}*/
 //弹出消息框
 function hMessage(msg){
 	var time = arguments[1] ? arguments[1] : 2000; 
@@ -338,93 +171,6 @@ function tag(tag){
 		}
 	});
 }
-//
-function initEssayComment(){
-        window.essay_editor = KindEditor.create('.post-comment-edit',essayCmtOptions);
-}
-//loadPieces,底部加载更多评论
-function loadPieces(){
-	$("button.load-more").html('<i class="icon-arrow-up"></i> 加载中...');
-	var startNum = $("#content").find("div.piece").length;
-	$.ajax({
-		url:home_path+"/Index/load_pieces.html",
-		type:'GET',
-		data:{'startNum':startNum},
-		dataType:'json',
-		success:function(data){
-			if(data.error === 0){
-				$("div.pieces").append(data.html);
-				setLightBox();
-			}else hMessage("没有更多了！");
-			$("button.load-more").html('<i class="icon-arrow-down"></i> 加载更多');
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}
-//显示碎片评论
-function showPieceCmt(pieceId){
-	if($("#piece-comment").length > 0)return;
-	var pieceCmt = $('<div id="piece-comment"><div class="piece-comment-view"><div class="piece-comment-piece">'+
-	'<div class="piece-comment-piece-info"><a class="user" href="javascript:;">'+$("#"+pieceId).find("a.piece-user").html()+'</a><span class="date">'+$("#"+pieceId).find("span.piece-date").html()+'</span></div>'+
-	'<div class="piece-comment-piece-content">'+$("#"+pieceId).find("div.piece-content").html()+'</div><div class="piece-comment-piece-footer">'+
-	'<i class="icon-tag"></i> <a class="tag" href="javascript:;">'+$("#"+pieceId).find("a.tag").html()+'</a>'+
-	'</div></div><hr><div class="piece-comment-list"><div class="piece-comment-tip"><i class="icon-warning-sign"></i> 暂无评论</div></div></div><div class="piece-comment-post">'+
-	'<div class="piece-comment-post-header"><i class="icon-coffee"></i> 评论碎片</div><form class="hs-form piece-comment-post-form">'+
-	'<textarea class="piece-comment-edit" name="piece-comment-edit"></textarea><button type="button" onclick="postPieceCmt('+pieceId+')" class="hs-btn hs-btn-primary post-piece-comment-btn">发 布</button>'+
-	'</form></div></div>');
-	//$("#"+pieceId).css('position','relative');
-	$("#mask").prepend(pieceCmt);
-	$("#mask").show();
-	$("body").css('overflow-y','hidden');
-	window.piece_editor = KindEditor.create('.piece-comment-edit',pieceCmtOptions);
-	updatePieceCmt(pieceId);//获取碎片评论
-	document.onclick = function(e){
-		var target = $(e.target); 
-		if(target.closest("#piece-comment").length == 0){ 
-			$("#mask").hide();
-			$("#piece-comment").remove();
-			$("body").css('overflow-y','auto');
-		} 
-	}
-	$("button.piece-comment-submit").on('click',function(){
-		hMessage('评论功能暂未实现');
-	});
-}
-//发布文章评论
-/*function postEssayCmt(essay_id){
-	$("button.post-essay-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
-	essay_editor.sync(); //同步编辑器内容
-	var content = $("#essay-comment-form").children("textarea[name='comment-content']").val();
-	$.ajax({
-		url:home_path+"/Essay/post_comment.html",
-		type:'POST',
-		data:{'essay_id':essay_id,'comment_content':content},
-		dataType:'json',
-		success:function(data){
-			if(data.error === 0){
-				//清空编辑器
-				essay_editor.html('');
-				hMessage('评论发布成功！');
-				$("button.post-essay-comment-btn").html('发布评论');
-				//将新评论插入评论列表
-				var html = '<li class="hs-comment">'+
-				'<article class="hs-comment essay-comment"><a href="">'+
-				'<img class="hs-comment-avatar user-avatar" src="'+public_path+'/img/me.jpg" alt=""/></a>'+
-				'<div class="hs-comment-main"><header class="hs-comment-hd">'+
-				'<div class="hs-comment-meta"><a href="#link-to-user" class="hs-comment-author">'+data.comment.user+'</a>'+
-				'评论于 <time datetime="">'+data.comment.date+'</time></div></header>'+
-				'<div class="hs-comment-bd">'+data.comment.content+'</div></div></article></li>';
-				$("div.comment-tip").remove();
-				$("div.essay-comments").children("ul").prepend(html);
-			}else{ hMessage(data.msg); }
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}*/
 
 //获取碎片评论
 function updatePieceCmt(piece_id){
@@ -452,3 +198,4 @@ function updatePieceCmt(piece_id){
 		}
 	});
 }
+

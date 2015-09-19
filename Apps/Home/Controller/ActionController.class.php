@@ -48,7 +48,7 @@ class ActionController extends Controller {
                     //记录登录信息
                     date_default_timezone_set("Asia/Hong_Kong");
                     $user_ip = $this->get_user_ip();
-                    $data = array('ip'=>$user_ip,'city'=>$this->get_user_city($user_ip),'last_login_date'=>date('Y-m-d H:i:s'));
+                    $data = array('ip'=>$user_ip,'city'=>$this->get_user_city($user_ip),'last_login_date'=>date('Y-m-d H:i:s'),'is_login'=>1);
                     $cdt = array('userName'=>$userName);
                     $this->user_model->where($cdt)->save($data);
                     $_SESSION['USER_NAME'] = $userName;
@@ -116,9 +116,12 @@ class ActionController extends Controller {
     }
     //注销
     function logout(){
+      $user_id = $_SESSION['USER_ID'];
         unset($_SESSION['USER_NAME']);
         unset($_SESSION['USER_ID']);
         $_SESSION['LOGIN_STATUS'] = false;
+       /* $data['is_login'] = 0;
+        $this->user_model->where('id='.$user_id)->save($data);*/
         $this->success('注销成功！',U("Action/login"),2);
     }
     //生成验证码

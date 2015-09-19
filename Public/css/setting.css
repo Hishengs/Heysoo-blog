@@ -1,4 +1,6 @@
-div.setting-items > ul > li{padding: 15px 0;}
+/*ul.hs-list > li{padding: 15px 0;}*/
+ul.hs-list > li a{color: #555;}
+ul.hs-list > li a:hover{color: #333;}
 div.setting-user-avatar img{max-width: 128px;width: 128px;}
 div.setting-user-avatar{margin-top:20px;}
 span.setting-item-right{float: right;}

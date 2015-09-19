@@ -1,3 +1,4 @@
+<div class="setting-profile" ng-controller="c_setting_profile">
 <div class="hs-panel hs-panel-default setting-user-avatar" ng-controller="c_modify_avatar">
     <div class="hs-panel-hd">头像
         <form class="hs-form setting-upload-avatar-form" style="display:inline-block;float:right;">
@@ -11,30 +12,31 @@
     </div>
 </div>
 <ul class="hs-list">
-    	<li class="">称呼
+    	<li class=""><a href="javascript:;" ng-click="modifyProfile('userName')">称呼
     	<span class="setting-item-right">{{user_info.username}}
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">ID
+    	<li class=""><a href="javascript:;">ID
     	<span class="setting-item-right">{{user_info.id}}
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">邮箱
+    	<li class=""><a href="javascript:;">邮箱
     	<span class="setting-item-right">{{user_info.email}}
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">个性签名
+    	<li class=""><a href="javascript:;" ng-click="modifyProfile('Signature')">个性签名
     	<span class="setting-item-right">{{user_info.signature}}
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">所在地
+                <li class=""><a href="javascript:;">IP
+                <span class="setting-item-right">{{user_info.ip}}
+                </span></a>
+                </li>
+    	<li class=""><a href="javascript:;">所在地
     	<span class="setting-item-right">{{user_info.city}}
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
 </ul>
 
@@ -56,3 +58,8 @@
         </form>
     </div>
 </div>
+
+</div>
+
+
+

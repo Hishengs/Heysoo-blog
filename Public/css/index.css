@@ -68,3 +68,7 @@ div.hs-input-group{ margin: 10px auto; font-size: 14px;}
 /**/
 .y-full{min-height: 100vh; height: 100%; margin:0;}
 .center-tip{text-align: center;position: absolute;height: 100px; left: 0;right: 0;top:0;bottom: 0;margin:auto;}
+.x-center{position: absolute; left: 0;right: 0;top:0;bottom: 0;margin:auto;}
+/**hs-pop-panel*/
+.hs-pop-panel{background: #fff; z-index: 1000;position: absolute;left: 0;right: 0;top:0;bottom: 0;margin:auto;
+	padding: 15px;}

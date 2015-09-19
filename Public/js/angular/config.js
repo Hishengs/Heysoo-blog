@@ -22,6 +22,7 @@ var tpl_privacy_url = public_path+'/templates/setting/privacy.html';
 var tpl_follow_url = public_path+'/templates/follow/follow.html';
 var tpl_followed_url = public_path+'/templates/follow/followed.html';
 var tpl_following_url = public_path+'/templates/follow/following.html';
+var tpl_action_url = public_path+'/templates/action';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -92,6 +93,12 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/comment/:id',
         views:{
             'mask':{templateUrl:tpl_cmt_url}
+        }
+    }).state('setting_profile_userName',{
+        url:'/modifyUserName',
+        //parent:'setting',
+        views:{
+            'mask':{templateUrl:tpl_action_url+"/setting/modifyUserName.html"}
         }
     }).state('modify',{
         url:'/modify/type/:type/id/:id',

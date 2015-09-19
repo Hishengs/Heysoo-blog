@@ -36,6 +36,7 @@ var tpl_privacy_url = public_path+'/templates/setting/privacy.html';
 var tpl_follow_url = public_path+'/templates/follow/follow.html';
 var tpl_followed_url = public_path+'/templates/follow/followed.html';
 var tpl_following_url = public_path+'/templates/follow/following.html';
+var tpl_action_url = public_path+'/templates/action';
 m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -106,6 +107,12 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/comment/:id',
         views:{
             'mask':{templateUrl:tpl_cmt_url}
+        }
+    }).state('setting_profile_userName',{
+        url:'/modifyUserName',
+        //parent:'setting',
+        views:{
+            'mask':{templateUrl:tpl_action_url+"/setting/modifyUserName.html"}
         }
     }).state('modify',{
         url:'/modify/type/:type/id/:id',
@@ -629,6 +636,16 @@ m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
     }
   }
 });
+m_index.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
+  console.log('c_setting_profile');
+  $scope.modifyProfile = function(option){
+    //hMessage("你即将修改："+option);
+    $state.go('setting_profile_'+option);
+    console.log('goto:setting_profile_'+option);
+    $rootScope.mask_show = true;
+    setTimeout(function(){$rootScope.mask_show = false;},2000);
+  }
+})
 //reset password 重置密码
 m_index.controller('c_reset_passwd',function($scope,$http){
   $scope.old_passwd = $scope.new_passwd = '';

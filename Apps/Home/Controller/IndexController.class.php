@@ -7,25 +7,19 @@ class IndexController extends Controller {
     private $piece_nums = 10;
 
     public function index(){
-    	if(session('LOGIN_STATUS')){
-            //check_history_url();
-            //C('LAYOUT_ON',TRUE);
-    		$this->piece_model = D("Piece");
-    		$cdt['visible'] = 1;
-    		//$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
-            //$pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
-            $user_info = A('User')->get_user_info(session('USER_ID'));
+        if(A('Auth')->is_login()){
+            $this->piece_model = D("Piece");
+            $cdt['visible'] = 1;
+
             $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
             $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
             $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
-            /*for ($i=0; $i < count($pieces); $i++) { 
-                $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
-            }*/
-    		//$this->assign('pieces',$pieces)->assign('user',$user_info)
+          
             $this->assign('user',$user_info)
             ->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
-    		//获取用户配置
+    	//获取用户配置
             $user_config = A('User')->get_user_config($_SESSION['USER_ID']);
+            
             $this->assign('user_config',$user_config);
             $this->display();
     	}else{

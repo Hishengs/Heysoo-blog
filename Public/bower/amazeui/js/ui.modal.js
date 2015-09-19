@@ -14,16 +14,16 @@ var supportTransition = UI.support.transition;
 var Modal = function(element, options) {
   this.options = $.extend({}, Modal.DEFAULTS, options || {});
   this.$element = $(element);
-  this.$dialog =   this.$element.find('.am-modal-dialog');
+  this.$dialog =   this.$element.find('.hs-modal-dialog');
 
   if (!this.$element.attr('id')) {
-    this.$element.attr('id', UI.utils.generateGUID('am-modal'));
+    this.$element.attr('id', UI.utils.generateGUID('hs-modal'));
   }
 
-  this.isPopup = this.$element.hasClass('am-popup');
-  this.isActions = this.$element.hasClass('am-modal-actions');
-  this.isPrompt = this.$element.hasClass('am-modal-prompt');
-  this.isLoading = this.$element.hasClass('am-modal-loading');
+  this.isPopup = this.$element.hasClass('hs-popup');
+  this.isActions = this.$element.hasClass('hs-modal-actions');
+  this.isPrompt = this.$element.hasClass('hs-modal-prompt');
+  this.isLoading = this.$element.hasClass('hs-modal-loading');
   this.active = this.transitioning = this.relatedTarget = null;
 
   this.events();
@@ -31,12 +31,12 @@ var Modal = function(element, options) {
 
 Modal.DEFAULTS = {
   className: {
-    active: 'am-modal-active',
-    out: 'am-modal-out'
+    active: 'hs-modal-active',
+    out: 'hs-modal-out'
   },
   selector: {
-    modal: '.am-modal',
-    active: '.am-modal-active'
+    modal: '.hs-modal',
+    active: '.hs-modal-active'
   },
   closeViaDimmer: true,
   cancelable: true,
@@ -188,9 +188,9 @@ Modal.prototype.events = function() {
   var options = this.options;
   var _this = this;
   var $element = this.$element;
-  var $ipt = $element.find('.am-modal-prompt-input');
-  var $confirm = $element.find('[data-am-modal-confirm]');
-  var $cancel = $element.find('[data-am-modal-cancel]');
+  var $ipt = $element.find('.hs-modal-prompt-input');
+  var $confirm = $element.find('[data-hs-modal-confirm]');
+  var $cancel = $element.find('[data-hs-modal-cancel]');
   var getData = function() {
     var data = [];
     $ipt.each(function() {
@@ -219,7 +219,7 @@ Modal.prototype.events = function() {
   }
 
   // Close Modal when button clicked
-  $element.find('[data-am-modal-close], .am-modal-btn').
+  $element.find('[data-hs-modal-close], .hs-modal-btn').
     on('click.close.modal.amui', function(e) {
       e.preventDefault();
       var $this = $(this);
@@ -277,9 +277,9 @@ function Plugin(option, relatedTarget) {
 $.fn.modal = Plugin;
 
 // Init
-$doc.on('click.modal.amui.data-api', '[data-am-modal]', function() {
+$doc.on('click.modal.amui.data-api', '[data-hs-modal]', function() {
   var $this = $(this);
-  var options = UI.utils.parseOptions($this.attr('data-am-modal'));
+  var options = UI.utils.parseOptions($this.attr('data-hs-modal'));
   var $target = $(options.target ||
   (this.href && this.href.replace(/.*(?=#[^\s]+$)/, '')));
   var option = $target.data('amui.modal') ? 'toggle' : options;

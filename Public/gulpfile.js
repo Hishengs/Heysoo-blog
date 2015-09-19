@@ -19,8 +19,10 @@ gulp.task('angular-concat', function() {
     .pipe(gulp.dest('./js/dist/'));
 });
 gulp.task('plugins-concat', function() {
-  gulp.src(['./bower/jquery/dist/jquery.min.js','./bower/amazeui/dist/js/amazeui.min.js','./bower/lightbox2/dist/js/lightbox.min.js','./bower/layzrjs/dist/layzr.min.js','./editor/Kindeditor.js',
-    './editor/lang/zh_CN.js','./js/jqpaginator.min.js'])
+  gulp.src(['./bower/jquery/dist/jquery.min.js',
+    './bower/amazeui/dist/js/amazeui.min.js',
+    './editor/kindeditor.js',
+    './editor/lang/zh_CN.js'])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));

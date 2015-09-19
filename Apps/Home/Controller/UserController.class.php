@@ -2,7 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 class UserController extends Controller {
-	private $user_model;
+    private $user_model;
     private $follow_model;
     private $userName;
     private $user_id;
@@ -14,6 +14,7 @@ class UserController extends Controller {
         $this->userName = $_SESSION['USER_NAME'];
         $this->user_id = $_SESSION['USER_ID'];
     }
+
 
     public function index(){
       if($_SESSION['LOGIN_STATUS']){
