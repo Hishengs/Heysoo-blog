@@ -1,24 +1,113 @@
+<div class="setting-interface" ng-controller="c_setting_interface">
 <ul class="hs-list">
-    	<li class="">主题
+    	<li class=""><a href="javascript:;" ng-click="modifyInterface('theme')">主题
     	<span class="setting-item-right">
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">颜色
+    	<li class=""><a href="javascript:;" ng-click="modifyInterface('color')">颜色
     	<span class="setting-item-right">
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">边栏背景图
+    	<li class=""><a href="javascript:;" ng-click="modifyInterface('sidebarbg')">边栏背景图
     	<span class="setting-item-right">
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
-    	<li class="">主页背景图
+    	<li class=""><a href="javascript:;" ng-click="modifyInterface('mainbg')">主页背景图
     	<span class="setting-item-right">
     	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span>
+    	</span></a>
     	</li>
 </ul>
-<button class="hs-btn hs-btn-primary" type="button">保存</button>
-<div class="hs-alert hs-alert-warning">Tip:尚未实现</div>
+</div>
+<!-- <div class="hs-alert hs-alert-warning">Tip:尚未实现</div> -->
+<!--修改对话框-->
+<!--修改主题-->
+<div ng-controller="c_setting_interface_modal">
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="setting_interface_modal_theme">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">选择主题
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <hr>
+    <div class="hs-modal-bd">
+      <form class="hs-form">
+                 <select data-hs-selected>
+                      <option value="theme-1" selected>主题一</option>
+                      <option value="theme-2">主题二</option>
+                      <option value="theme-3">主题三</option>
+                      <option value="theme-4">主题四</option>
+                </select>
+                <hr>
+                <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifyTheme('theme')">保存</button>
+    </form>
+    </div>
+  </div>
+</div>
+<!--修改颜色-->
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="setting_interface_modal_color">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">修改颜色
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <hr>
+    <div class="hs-modal-bd">
+      <form class="hs-form">
+             <select ng-model="interface_color" data-hs-selected>
+                      <option value="primary" selected>默认(蓝色)</option>
+                      <option value="success">绿色</option>
+                      <option value="warning">橘色</option>
+                      <option value="purple">紫色</option>
+            </select>
+            <hr>
+            <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifyColor('color')">保存</button>
+        </form>
+    </div>
+  </div>
+</div>
+<!--修改边栏背景-->
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="setting_interface_modal_sidebarbg">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">修改边栏背景
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <hr>
+    <div class="hs-modal-bd">
+      <form class="hs-form">
+             <select data-hs-selected>
+                      <option value="sidebar-bg-1" selected>背景图一</option>
+                      <option value="sidebar-bg-2">背景图二</option>
+                      <option value="sidebar-bg-3">背景图三</option>
+                      <option value="sidebar-bg-4">背景图四</option>
+            </select>
+            <hr>
+            <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifySidebarBg('sidebarbg')">保存</button>
+        </form>
+    </div>
+  </div>
+</div>
+<!--修改主页背景-->
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="setting_interface_modal_mainbg">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">修改主页背景
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <hr>
+    <div class="hs-modal-bd">
+      <form class="hs-form">
+             <select data-hs-selected>
+                      <option value="main-bg-1" selected>背景图一</option>
+                      <option value="main-bg-2">背景图二</option>
+                      <option value="main-bg-3">背景图三</option>
+                      <option value="main-bg-4">背景图四</option>
+            </select>
+            <hr>
+            <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifyMainBg('mainbg')">保存</button>
+        </form>
+    </div>
+  </div>
+</div>
+
+</div>

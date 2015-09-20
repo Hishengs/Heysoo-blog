@@ -23,9 +23,11 @@ var tpl_follow_url = public_path+'/templates/follow/follow.html';
 var tpl_followed_url = public_path+'/templates/follow/followed.html';
 var tpl_following_url = public_path+'/templates/follow/following.html';
 var tpl_action_url = public_path+'/templates/action';
-m_index.config(['$locationProvider', '$urlRouterProvider', function($locationProvider, $urlRouterProvider) {
+m_index.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
+    //deal unsafe:javascript:...
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
 }]);
 //httpProvider
 m_index.config(['$httpProvider',function($httpProvider){
@@ -193,6 +195,6 @@ m_index.config(['$stateProvider',function($stateProvider){
     });
 }]);
 //deal unsafe:javascript:...
-m_index.config(function($compileProvider){
+/*m_index.config(function($compileProvider){
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
-});
+});*/

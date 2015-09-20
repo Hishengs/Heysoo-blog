@@ -1,7 +1,8 @@
 /*controller of angular*/
-m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece){
+m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCookie){
   //$state.go('root');
     $rootScope.avatar = public_path+"/img/me.jpg";
+    $rootScope.interface_color = ipCookie('interface_color')?ipCookie('interface_color'):'primary';//主题颜色
     //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
     //$scope.datas = new Piece();
     $rootScope.mask_show = false;
@@ -424,16 +425,61 @@ m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
     }
   }
 });
+/**setting*/
 m_index.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
-  console.log('c_setting_profile');
   $scope.modifyProfile = function(option){
+    $("#setting_profile_modal_"+option).modal('toggle');
     //hMessage("你即将修改："+option);
-    $state.go('setting_profile_'+option);
-    console.log('goto:setting_profile_'+option);
+    /*$state.go('setting_profile_'+option);
     $rootScope.mask_show = true;
-    setTimeout(function(){$rootScope.mask_show = false;},2000);
+    setTimeout(function(){$rootScope.mask_show = false;},2000);*/
   }
 })
+m_index.controller('c_setting_interface',function($scope,$rootScope,$http,$state){
+  $scope.modifyInterface = function(option){
+    $("#setting_interface_modal_"+option).modal('toggle');
+  }
+});
+//管理对话框
+m_index.controller('c_setting_profile_modal',function($scope,$http){
+  $scope.new_username = $scope.new_signature = '';
+  $scope.modifyUserName = function(option){
+    $("#setting_profile_modal_"+option).modal('toggle');
+    hMessage('用户名已成功修改为：'+$scope.new_username);
+  }
+  $scope.modifySignature = function(option){
+    $("#setting_profile_modal_"+option).modal('toggle');
+    hMessage('签名已成功修改为：'+$scope.new_signature);
+  }
+});
+m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
+  $scope.interface_color = 'primary';
+  $scope.modifyTheme = function(option){
+    $("#setting_interface_modal_"+option).modal('toggle');
+    hMessage('主题定制中，请耐心等候...');
+  }
+  $scope.modifyColor = function(option){
+    $("#setting_interface_modal_"+option).modal('toggle');
+    hMessage('颜色定制中，请耐心等候...');
+    console.log($scope.interface_color);
+    $rootScope.interface_color = $scope.interface_color;
+    ipCookie('interface_color',$scope.interface_color);
+  }
+  $scope.modifySidebarBg = function(option){
+    $("#setting_interface_modal_"+option).modal('toggle');
+    hMessage('边栏背景定制中，请耐心等候...');
+  }
+  $scope.modifyMainBg = function(option){
+    $("#setting_interface_modal_"+option).modal('toggle');
+    hMessage('主页背景定制中，请耐心等候...');
+  }
+});
+m_index.controller('c_setting_privacy_modal',function($scope,$http){
+  //
+});
+m_index.controller('c_setting_push_modal',function($scope,$http){
+  //
+});
 //reset password 重置密码
 m_index.controller('c_reset_passwd',function($scope,$http){
   $scope.old_passwd = $scope.new_passwd = '';

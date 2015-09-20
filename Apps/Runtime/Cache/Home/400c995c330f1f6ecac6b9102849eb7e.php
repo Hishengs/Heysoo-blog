@@ -30,23 +30,23 @@
 <div class="user-items">
 
 <div class="hs-btn-group hs-btn-group-justify">
-    <button type="button" class="hs-btn hs-btn-primary hs-btn-msg" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></button>
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="edit()"><i class="hs-icon-edit"></i> 发布</button>
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="showFollow()"><i class="hs-icon-user"></i> 关注</button>
+    <button type="button" class="hs-btn hs-btn-msg hs-btn-{{interface_color}}" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="edit()"><i class="hs-icon-edit"></i> 发布</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showFollow()"><i class="hs-icon-user"></i> 关注</button>
 </div>
 
-<button class="hs-btn hs-btn-primary hs-btn-block" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="hs-icon-random"></i> 首页</button>
-<button class="hs-btn hs-btn-primary hs-btn-block" ng-click="getPage('piece')"><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
-<button class="hs-btn hs-btn-primary hs-btn-block" ng-click="getPage('essay')"><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="hs-icon-random"></i> 首页</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('piece')"><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('essay')"><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
 <!-- <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Diary/get_diary_page');?>","content",3)><i class="hs-icon-calendar"></i> 我的日记({{diary_nums}})</button> -->
 
 </div>
 <div class="hs-btn-group hs-btn-group-justify setting">
-<button class="hs-btn hs-btn-primary" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="hs-icon-off"></i> 退出</button>
-<button class="hs-btn hs-btn-primary" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
-<button type="button" class="hs-btn hs-btn-primary" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
-<button class="hs-btn hs-btn-primary" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>
-<button class="hs-btn hs-btn-primary" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
+<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="hs-icon-off"></i> 退出</button>
+<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
+<button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
+<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>
+<button class="hs-btn hs-btn-{{interface_color}}" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
 </div>
 </div>
 

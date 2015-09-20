@@ -21,7 +21,7 @@
 <div class="post-comment" ng-controller="c_essay_cmt" ng-show="essay_comment_on">
 <form class="hs-form essay-comment-form" id="essay-comment-form">
 <textarea class="post-comment-edit" name="comment-content" class="post-comment-edit"></textarea>
-<button type="button" ng-click="postEssayCmt(essay.essay_id)" class="hs-btn hs-btn-primary post-essay-comment-btn">发布评论</button>
+<button type="button" ng-click="postEssayCmt(essay.essay_id)" class="hs-btn hs-btn-{{interface_color}} post-essay-comment-btn">发布评论</button>
 </form>
 </div>
 
@@ -55,7 +55,7 @@
 
 </div>
 
-<div class="essay-comments-tip hs-alert hs-alert-primary" ng-show="essay_comments_tip_show" data-hs-alert><i class="hs-icon-coffee"></i> 暂无评论，快来抢沙发吧~</div>
+<div class="essay-comments-tip hs-alert hs-alert-{{interface_color}}" ng-show="essay_comments_tip_show" data-hs-alert><i class="hs-icon-coffee"></i> 暂无评论，快来抢沙发吧~</div>
 
 </div>
 <script type="text/javascript">
