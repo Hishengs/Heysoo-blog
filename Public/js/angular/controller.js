@@ -568,4 +568,7 @@ m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval)
     }
   }
 });
-
+/**setting_push*/
+m_index.controller('c_setting_push',function($scope.$rootScope,$http){});
+/**setting_privacy*/
+m_index.controller('c_setting_privacy',function($scope.$rootScope,$http){});
