@@ -331,7 +331,7 @@ KindEditor.plugin('image', function(K) {
 	self.clickToolbar(name, self.plugin.image.edit);
 });
 
-getQiniuToken(getTokenPath);
+getQiniuToken(get_token_path);
 
 function getQiniuToken(url){
 	$.ajax({

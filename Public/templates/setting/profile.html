@@ -1,13 +1,16 @@
 <div class="setting-profile" ng-controller="c_setting_profile">
 <div class="hs-panel hs-panel-default setting-user-avatar" ng-controller="c_modify_avatar">
     <div class="hs-panel-hd">头像
-        <form class="hs-form setting-upload-avatar-form" style="display:inline-block;float:right;">
-            <input style="display:inline-block;" type="file" name="new_avatar" onchange="angular.element(this).scope().avatarChanged(this)">
-            <button style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="modifyAvatar()">上传</button>
+        <form class="hs-form upload-avatar-form" style="display:inline-block;float:right;" enctype="multipart/form-data" action="http://upload.qiniu.com/" method="post" target="upload_avatar_ifm">
+            <input style="display:inline-block;" type="file" name="file" id="new_avatar" ng-model="new_avatar">
+            <input style="display:none" name="token" id="upload_avatar_token" ng-model="upload_avatar_token">
+            <!-- <button style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="selectAvatar()" ng-bind="selectAvatarBtn"></button> -->
+            <button type="button" style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="uploadAvatar()" ng-bind="uploadAvatarBtn"></button>
         </form>
+        <iframe id='upload_avatar_ifm' name='upload_avatar_ifm' style="display:none"/>
     </div>
     <div class="hs-panel-bd">
-    	<a href="javascript:;"><img class="origin-user-avatar" src="https://dn-lanbaidiao.qbox.me/{{origin_user_avatar_path}}" alt='我的头像'>
+    	<a href="javascript:;"><img class="origin-user-avatar" ng-src="{{avatar}}" alt='我的头像' ng-click="selectAvatar()" title="点击更换头像">
         </a>
     </div>
 </div>
@@ -43,7 +46,7 @@
 <hr data-hs-widget="divider" style="" class="hs-divider hs-divider-dashed" />
 
 <div class="hs-panel hs-panel-default setting-modify-passwd" ng-controller="c_reset_passwd">
-    <div class="hs-panel-hd">重置密码</div>
+    <div class="hs-panel-hd" title="重置后需重新登录">重置密码&nbsp;&nbsp;<i class="hs-icon-info"></i></div>
     <div class="hs-panel-bd">
         <form class="hs-form">
             <div class="hs-input-group">

@@ -207,12 +207,14 @@ class ActionController extends Controller {
     }
     //获取七牛token
     public function get_qiniu_token(){
-      $callbackUrl = C('SITE_PREFIX').U("Action/qiniu_callback");//回调地址
-      $param = array('scope'=>C('QINIU_BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl);
-      $auth = new \Think\Upload\Driver\Qiniu\QiniuStorage();
-      $token = $auth->getToken(C('QINIU_SK'),C('QINIU_AK'),$param);
-      $response = array('status'=>'success','token'=>$token);
-      $this->ajaxReturn($response,'json');
+      if(isset($_SESSION['USER_ID'])){
+        $callbackUrl = C('SITE_PREFIX').U("Action/qiniu_callback");//回调地址
+        $param = array('scope'=>C('QINIU_BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl);
+        $auth = new \Think\Upload\Driver\Qiniu\QiniuStorage();
+        $token = $auth->getToken(C('QINIU_SK'),C('QINIU_AK'),$param);
+        $response = array('status'=>'success','token'=>$token);
+        $this->ajaxReturn($response,'json');
+       }else $this->error('请先登录后再操作！',U('Action/login'));
     }
     //七牛回调
     public function qiniu_callback(){
@@ -220,9 +222,11 @@ class ActionController extends Controller {
       $upload_ret = json_decode($upload_ret,true); //将json数据转换为数组
 
       if(!empty($upload_ret['key']))
-        echo json_encode(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']));
+        //echo json_encode(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']));
+        $this->ajaxReturn(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']),'json');
       else
-        echo json_encode(array('error'=>1,'message'=>'图片上传出错！'));
+        //echo json_encode(array('error'=>1,'message'=>'图片上传出错！'));
+        $this->ajaxReturn(array('error'=>1,'message'=>'图片上传出错！'),'json');
     }
     //处理文章，碎片，日记等的发布
     public function ng_deal_post(){

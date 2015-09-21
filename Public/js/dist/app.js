@@ -331,10 +331,10 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     //设置面板
     $scope.showSetting = function(){
       $scope.setting_tab = 'profile';
-      var url = home_path+"/User/ng_get_user_info.html";
+      /*var url = home_path+"/User/ng_get_user_info.html";
       $http.get(url).success(function(res){
         $scope.user_info = res.items;
-      });
+      });*/
       $scope.origin_user_avatar_path = "FgW07muueXq9EI9OIdezcY5ODe4f";
       $state.go('setting');
       $state.go('setting_profile');
@@ -364,11 +364,12 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
 //边栏管理
 m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
   //ng_init_side_panel
-  $scope.avatar = $rootScope.avatar;
+  //$scope.avatar = $rootScope.avatar;
   var url = home_path+"/Index/ng_init_side_panel.html";
   $http.get(url).success(function(res){
     if(res.error === 0){
-      $rootScope.user = res.user;
+      $rootScope.avatar = res.user.avatar;
+      $rootScope.user_info = res.user;
       $rootScope.essay_nums = res.essay_nums;
       $rootScope.piece_nums = res.piece_nums;
       $rootScope.diary_nums = res.diary_nums;
@@ -655,15 +656,33 @@ m_index.controller('c_setting_interface',function($scope,$rootScope,$http,$state
   }
 });
 //管理对话框
-m_index.controller('c_setting_profile_modal',function($scope,$http){
+m_index.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
   $scope.new_username = $scope.new_signature = '';
   $scope.modifyUserName = function(option){
     $("#setting_profile_modal_"+option).modal('toggle');
-    hMessage('用户名已成功修改为：'+$scope.new_username);
+    $http({
+          method:'POST',
+          url:home_path+"/User/modify_userName.html",
+          data:{'new_username':$scope.new_username}
+        }).success(function(res){
+          if(res.error === 0){
+            $rootScope.user_info.username = $scope.new_username;
+            hMessage('用户名已成功修改为：'+$scope.new_username);
+          }else{hMessage(res.msg);}
+    });
   }
   $scope.modifySignature = function(option){
     $("#setting_profile_modal_"+option).modal('toggle');
-    hMessage('签名已成功修改为：'+$scope.new_signature);
+    $http({
+          method:'POST',
+          url:home_path+"/User/modify_signature.html",
+          data:{'new_signature':$scope.new_signature}
+        }).success(function(res){
+          if(res.error === 0){
+            $rootScope.user_info.signature = $scope.new_signature;
+            hMessage('签名已成功修改为：'+$scope.new_signature);
+          }else{hMessage(res.msg);}
+    });
   }
 });
 m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
@@ -674,8 +693,7 @@ m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,
   }
   $scope.modifyColor = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
-    hMessage('颜色定制中，请耐心等候...');
-    console.log($scope.interface_color);
+    //hMessage('颜色定制中，请耐心等候...');
     $rootScope.interface_color = $scope.interface_color;
     ipCookie('interface_color',$scope.interface_color);
   }
@@ -707,7 +725,6 @@ m_index.controller('c_reset_passwd',function($scope,$http){
           url:url,
           data:{'old_passwd':$scope.old_passwd,'new_passwd':$scope.new_passwd}
         }).success(function(res){
-          console.log(res);
           if(res.error === 0){
             hMessage(res.msg);
             setTimeout(function(){window.location.href=home_path+"/Action/logout.html";},2000);
@@ -716,12 +733,53 @@ m_index.controller('c_reset_passwd',function($scope,$http){
   }
 });
 //modify user avatar 修改头像
-m_index.controller('c_modify_avatar',function($scope,$http){
-  $scope.avatarChanged = function(obj){
-    console.log(obj);
+m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
+  //$scope.selectAvatarBtn = "选择头像";
+  $scope.selectAvatar = function(){
+    document.getElementById("new_avatar").click();
   }
-  $scope.modifyAvatar = function(){
-    console.log('你即将上传：'+$scope.new_avatar);
+  $scope.new_avatar = null;
+  $scope.uploadAvatarBtn = "上传";
+  //获取并设置七牛token
+  $http.get(get_token_path+"?type=img").success(function(res){
+    $scope.upload_avatar_token = res.token;
+  });
+  
+  $scope.uploadAvatar = function(){
+    var uploadable = true;
+    var checkTime=200;
+    //先检查文件，判空，类型和大小
+    var imgFile = document.getElementById("new_avatar").files[0];
+    if(imgFile == null){hMessage('请先选择图片！');uploadable = false;}else{
+        console.log(imgFile);
+        if(imgFile.type != "image/jpeg" && imgFile.type != "image/jpg" && imgFile.type != "image/png" && uploadable){hMessage('请选择正确的图片格式：jpeg,jpg,png！'); uploadable = false;}
+        var imgSize = imgFile.size / (1024*1024);
+        if(imgSize > 2 && uploadable){hMessage('上传图片请限制在2M以内！'); uploadable = false;}
+    }
+   //执行上传操作
+      if(uploadable){
+        $(".upload-avatar-form").submit();
+        $scope.uploadAvatarBtn = "上传中...";
+        var stop = $interval(function(){
+          if($(window.frames["upload_avatar_ifm"].document).find('pre').html() != undefined)
+          {
+            var callback = JSON.parse($(window.frames["upload_avatar_ifm"].document).find('pre').html());
+            if(callback.error == 0){
+              $rootScope.avatar = callback.url;
+              $scope.uploadAvatarBtn = "上传成功！";
+              //同步数据库
+              var url = home_path+"/User/updateAvatar.html?new_avatar="+$rootScope.avatar;
+              $http.get(url).success(function(res){
+                if(res.error == 0){
+                        console.log('同步成功！');
+                  }else console.log('同步失败！');
+              });
+            }else hMessage('头像修改失败，请稍后重试！');
+           $(window.frames["upload_avatar_ifm"].document).find('pre').html('');
+            $interval.cancel(stop);
+          }
+      },checkTime);
+    }
   }
 });
 

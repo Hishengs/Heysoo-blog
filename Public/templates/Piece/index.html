@@ -30,11 +30,11 @@
 
 <div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
 <div class="hs-btn-group hs-btn-group-justify">
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','prev');">上一页</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','prev');">上一页</button>
     <select class="hs-select" style="background:#0e90d2;color:#fff;border-color:#0e90d2;border-radius:0;" ng-options="option.name for option in paginator_pages" ng-model="paginator_current_page">
     </select>
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','go');">前往</button>
-    <button type="button" class="hs-btn hs-btn-primary" ng-click="paginator('piece','next');">下一页</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','go');">前往</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','next');">下一页</button>
 </div>
 </div>
 

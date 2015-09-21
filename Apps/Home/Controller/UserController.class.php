@@ -142,4 +142,33 @@ class UserController extends Controller {
             else $this->ajaxReturn(array('error'=>1,'msg'=>'重置失败！'));
         }
     }
+    //setting
+    public function modify_userName(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $new_userName = I('post.new_username');
+            $data = array('userName'=>$new_userName);
+            if($this->user_model->where('id='.$user_id)->save($data) != false)$this->ajaxReturn(array('error'=>0),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'用户名修改失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    public function modify_signature(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $new_signature = I('post.new_signature');
+            $data = array('signature'=>$new_signature);
+            if($this->user_model->where('id='.$user_id)->save($data) != false)$this->ajaxReturn(array('error'=>0),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'签名修改失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    public function updateAvatar(){
+        if(isset($_SESSION['USER_ID'])){
+            $new_avatar = I('get.new_avatar');
+            $user_id = $_SESSION['USER_ID'];
+            $data = array('avatar'=>$new_avatar);
+            $res = $this->user_model->where('id='.$user_id)->save($data);
+            if($res != false)$this->ajaxReturn(array('error'=>0),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>$res),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
 }

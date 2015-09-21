@@ -23,10 +23,10 @@
 
 <div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
 <div class="user-avatar">
-<img class="user-avatar hs-img" ng-src="{{avatar}}" title="点击修改头像" >
+<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80" title="点击修改头像" >
 </div>
-<div class="userName">{{user.username}}</div>
-<div class="user-signature">{{user.signature}}</div>
+<div class="userName">{{user_info.username}}</div>
+<div class="user-signature">{{user_info.signature}}</div>
 <div class="user-items">
 
 <div class="hs-btn-group hs-btn-group-justify">
@@ -64,7 +64,7 @@
 	var load_essays_path = "<?php echo U('Essay/load_essays');?>";
 	var public_path = "/heysoo/Public";
 	var editor_basePath = "/heysoo/Public/editor/";
-	var getTokenPath = "<?php echo U('Action/get_qiniu_token');?>";
+	var get_token_path = "<?php echo U('Action/get_qiniu_token');?>";
 	var home_path = "/heysoo";
 </script>
 <script src="/heysoo/Public/js/dist/plugins.js"></script>
