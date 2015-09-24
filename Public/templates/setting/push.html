@@ -2,29 +2,24 @@
 <ul class="hs-list">
     	<li class=""><a href="javascript:;" >评论
     	<span class="setting-item-right">
-    	<label><input type="radio" name="comment_on" value="1" checked>是</label>
-    	<label><input type="radio" name="comment_on" value="0">否</label>
+    	<input type="checkbox" name="comment_on" ng-model="user_config.push_comment">
     	</span></a>
     	</li>
     	<li class=""><a href="javascript:;" >@我
     	<span class="setting-item-right">
-    	<label><input type="radio" name="at_on" value="1" checked>是</label>
-    	<label><input type="radio" name="at_on" value="0">否</label>
+    	<input type="checkbox" name="at_on" ng-model="user_config.push_at">
     	</span></a></a>
     	</li>
     	<li class=""><a href="javascript:;" >私信
     	<span class="setting-item-right">
-    	<label><input type="radio" name="whisper_on" value="1" checked>是</label>
-    	<label><input type="radio" name="whisper_on" value="0">否</label>
+    	<input type="checkbox" name="whisper_on" ng-model="user_config.push_whisper">
     	</span></a>
     	</li>
     	<li class=""><a href="javascript:;" >通知
     	<span class="setting-item-right">
-    	<label><input type="radio" name="notice_on" value="1" checked>是</label>
-    	<label><input type="radio" name="notice_on" value="0">否</label>
+    	<input type="checkbox" name="notice_on" ng-model="user_config.push_notice">
     	</span></a>
     	</li>
 </ul>
-<button class="hs-btn hs-btn-{{interface_color}}" type="button">保存</button>
-<div class="hs-alert hs-alert-{{interface_color}}">Tip:尚未实现</div>
+<button class="hs-btn hs-btn-{{interface_color}}" type="button" ng-click="savePush()">保存</button>
 </div>

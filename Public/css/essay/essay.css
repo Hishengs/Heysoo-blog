@@ -27,6 +27,22 @@ article.essay-comment{ width: 100%; margin: 15px auto;}
 div.post-comment{ margin: 20px auto; background:#fff; padding: 20px;}
 textarea.post-comment-edit{ height: 200px;}
 button.post-comment-btn{ margin-top:10px;}
-div.view-wrapper{width: 750px; margin: 0 auto;}
+div.view-wrapper{width: 800px; margin: 0 auto;}
 div.essay-comments-tip,div.essay-comment-on-tip{text-align: center;}
+div.view-panel{ min-height: 100%; height: auto; padding:20px; margin:0 auto; background-color: #fff; /* box-shadow:0px 2px 5px rgba(0,0,0,0.5); */}
+div.view-info,div.view-footer{ margin:20px 0; font-size: 1.2rem; }
+div.view-info span{ margin-right: 10px;}
+div.view-content{ font-size: 1.5rem;}
+div.view-content img{ max-width: 740px;}
+
+a.view-user,span.view-date,span.view-tag a{ color: #696969;}
+a.view-user:hover,span.view-tag a:hover{ color: #333;}
+h3.view-title{ font-weight: normal; font-size: 2.2rem;}
+
+span.view-userName{ position: relative;}
+#user-card{ color:#fff; box-shadow:0px 2px 5px rgba(0,0,0,0.5); position: absolute; left:0; top:10px; display: none; z-index: 999; background-color: #6fc6f8; width: 360px; text-align: center; padding: 30px 0px 50px 0px;}
+#user-card button{ border-radius: 0;}
+div.user-card-action{margin: 20px 0;}
+div.user-card-name{ font-size: 18px; margin-bottom: 10px;}
+#user-card img.user-card-avatar{width: 80px; height: 80px; border-radius: 40px; margin-bottom: 20px;}
 

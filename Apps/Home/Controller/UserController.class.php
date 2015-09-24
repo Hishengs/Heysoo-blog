@@ -10,6 +10,8 @@ class UserController extends Controller {
     function __construct(){
         parent::__construct();
         $this->user_model = D('User');
+        $this->user_config_model = D('UserConfig');
+        $this->user_tag_model = D('Tag');
         $this->follow_model = D('Follow');
         $this->userName = $_SESSION['USER_NAME'];
         $this->user_id = $_SESSION['USER_ID'];
@@ -52,8 +54,15 @@ class UserController extends Controller {
     //get user config
     public function get_user_config($user_id=null){
         if(empty($user_id))$user_id = $this->user_id;
-        $result = D('UserConfig')->where('user_id='.$user_id)->find();
+        $result = $this->user_config_model->where('user_id='.$user_id)->find();
         return $result;
+    }
+    public function ng_get_user_config($user_id=null){
+        if(empty($user_id))$user_id = $this->user_id;
+        $result = $this->user_config_model->where('user_id='.$user_id)->find();
+        if($result != false)
+        $this->ajaxReturn(array('error'=>0,'user_config'=>$result));
+        else $this->ajaxReturn(array('error'=>1,'msg'=>'获取失败！'));
     }
     //get user avatar
     public function get_user_avatar(){
@@ -109,7 +118,7 @@ class UserController extends Controller {
             $join_sql = 'hs_user on hs_user.id = hs_follow.follower_id';
         }
         $res = $this->follow_model->join($join_sql)->where($cdt)->order('hs_follow.follow_date')->select();
-        if($res != false)$this->ajaxReturn(array('error'=>0,'items'=>$res));
+        if($res !== false)$this->ajaxReturn(array('error'=>0,'items'=>$res));
         else $this->ajaxReturn(array('error'=>1,'items'=>array(),'msg'=>'查询失败！'));
     }
     //remove follow
@@ -138,7 +147,7 @@ class UserController extends Controller {
             }
             $cdt['id'] = $user_id;
             $data['passwd'] = $new_passwd;
-            if($this->user_model->where($cdt)->save($data) != false)$this->ajaxReturn(array('error'=>0,'msg'=>'重置成功，请重新登陆！'));
+            if($this->user_model->where($cdt)->save($data) !== false)$this->ajaxReturn(array('error'=>0,'msg'=>'重置成功，请重新登陆！'));
             else $this->ajaxReturn(array('error'=>1,'msg'=>'重置失败！'));
         }
     }
@@ -148,7 +157,7 @@ class UserController extends Controller {
             $user_id = $_SESSION['USER_ID'];
             $new_userName = I('post.new_username');
             $data = array('userName'=>$new_userName);
-            if($this->user_model->where('id='.$user_id)->save($data) != false)$this->ajaxReturn(array('error'=>0),'json');
+            if($this->user_model->where('id='.$user_id)->save($data) !== false)$this->ajaxReturn(array('error'=>0),'json');
             else $this->ajaxReturn(array('error'=>1,'msg'=>'用户名修改失败，请稍后重试！'),'json');
         }else $this->error('请先登录后再操作！',U('Action/login'));
     }
@@ -157,7 +166,7 @@ class UserController extends Controller {
             $user_id = $_SESSION['USER_ID'];
             $new_signature = I('post.new_signature');
             $data = array('signature'=>$new_signature);
-            if($this->user_model->where('id='.$user_id)->save($data) != false)$this->ajaxReturn(array('error'=>0),'json');
+            if($this->user_model->where('id='.$user_id)->save($data) !== false)$this->ajaxReturn(array('error'=>0),'json');
             else $this->ajaxReturn(array('error'=>1,'msg'=>'签名修改失败，请稍后重试！'),'json');
         }else $this->error('请先登录后再操作！',U('Action/login'));
     }
@@ -167,8 +176,73 @@ class UserController extends Controller {
             $user_id = $_SESSION['USER_ID'];
             $data = array('avatar'=>$new_avatar);
             $res = $this->user_model->where('id='.$user_id)->save($data);
-            if($res != false)$this->ajaxReturn(array('error'=>0),'json');
+            if($res !== false)$this->ajaxReturn(array('error'=>0),'json');
             else $this->ajaxReturn(array('error'=>1,'msg'=>$res),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    //modify push,privacy
+    public function modify_push(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $comment_on = I('post.comment_on');
+            $at_on = I('post.at_on');
+            $whisper_on = I('post.whisper_on');
+            $notice_on = I('post.notice_on');
+            $data = array('push_comment'=>$comment_on,'push_at'=>$at_on,'push_whisper'=>$whisper_on,'push_notice'=> $notice_on);
+            $res = $this->user_config_model->where('user_id='.$user_id)->save($data);
+            if($res  !==false)$this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！'),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'保存失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    public function modify_privacy(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $followable = I('post.followable');
+            $visitable = I('post.visitable');
+            $essay_comment = I('post.essay_comment');
+            $piece_comment = I('post.piece_comment');
+            $data = array('privacy_followable'=>$followable,'privacy_visitable'=>$visitable,'privacy_essay_comment'=>$essay_comment,'privacy_piece_comment'=> $piece_comment);
+            $res = $this->user_config_model->where('user_id='.$user_id)->save($data);
+            if($res !== false)$this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！'),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'保存失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    //modify interface
+    public function modify_interface_color(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $interface_color = I('get.interface_color');
+            $data = array('interface_color'=>$interface_color);
+            $res = $this->user_config_model->where('user_id='.$user_id)->save($data);
+            if($res !== false)$this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！'),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'修改失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    //modify backgroumd img
+    public function modify_bg(){
+        if(isset($_SESSION['USER_ID'])){
+            $type = I('get.type');
+            $select = I('get.select');
+            $img_url = C('QINIU_RES_URL').$select.".png";
+            $user_id = $_SESSION['USER_ID'];
+            if($type == 'mainBg')
+                $data = array('main_bg'=>$img_url);
+            else
+                $data = array('sidebar_bg'=>$img_url);
+            $res = $this->user_config_model->where('user_id='.$user_id)->save($data);
+            if($res !== false)$this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！','url'=>$img_url),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'修改失败，请稍后重试！'),'json');
+        }else $this->error('请先登录后再操作！',U('Action/login'));
+    }
+    //获取用户标签列表
+    public function get_user_tag(){
+        if(isset($_SESSION['USER_ID'])){
+            $user_id = $_SESSION['USER_ID'];
+            $type = I('get.type');
+            $cdt = array('user_id='=>$user_id,'tag_type'=>$type);
+            $res = $this->user_tag_model->where($cdt)->select();
+            if($res !== false)$this->ajaxReturn(array('error'=>0,'items'=>$res),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>'查询失败，请稍后重试！'),'json');
         }else $this->error('请先登录后再操作！',U('Action/login'));
     }
 }

@@ -29,7 +29,7 @@ gulp.task('plugins-concat', function() {
 });
 gulp.task('index-css', function() {
   gulp.src(['./css/index.css','./css/piece/piece.css','./css/diary/diary.css','./css/essay/essay.css',
-    './css/view.css','./css/message.css','./css/setting.css','./css/follow.css'])
+    './css/message.css','./css/setting.css'])
     .pipe(concat('index.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
@@ -51,9 +51,9 @@ gulp.task('angular-app', function() {
 gulp.task('default', function() {
     gulp.run('index');
 });
-gulp.task('watch', function () {
+/*gulp.task('watch', function () {
    gulp.watch('./js/angular/*.js', function (event) {
      console.log('Event type: ' + event.type); // added, changed, or deleted
      console.log('Event path: ' + event.path); // The path of the modified file
   });
-});
+});*/

@@ -8,9 +8,13 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
+//$request_url =  $_SERVER['REQUEST_URI'];
+/*echo $request_url;
+if($request_url == "/heysoo/")echo "equal";
+else echo "not equal";
+exit();*/
+//if(strstr($request_url,"index.html") === false && strstr($request_url,"heysoo/Index") === false){echo "<script>window.location.href='http://localhost/heysoo/Index/';</script>";exit();}
 // 应用入口文件
-
 // 检测PHP环境
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 

@@ -24,4 +24,5 @@ return array(
 		'URL_MODEL' => 2,
 		'ESSAY_COMMENT_ON' => true,
 		'PIECE_COMMENT_ON' => true,
+		'QINIU_RES_URL' => 'https://dn-lanbaidiao.qbox.me/'
 		);

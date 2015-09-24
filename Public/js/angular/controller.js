@@ -2,13 +2,19 @@
 m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCookie){
   //$state.go('root');
     $rootScope.avatar = public_path+"/img/me.jpg";
-    $rootScope.interface_color = ipCookie('interface_color')?ipCookie('interface_color'):'primary';//主题颜色
+    
     //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
     //$scope.datas = new Piece();
     $rootScope.mask_show = false;
-    var url = home_path+"/Index/ng_index.html";
-    
-    $http.get(url).success(function(res){
+    //获取用户配置
+    $http.get(home_path+"/User/ng_get_user_config.html").success(function(res){
+      if(res.error === 0)
+      $rootScope.user_config = res.user_config;
+      $rootScope.interface_color = res.user_config.interface_color?res.user_config.interface_color:ipCookie('interface_color');//主题颜色
+      $rootScope.mainBg = res.user_config.main_bg;//主页背景
+      $rootScope.sideBarBg = res.user_config.sidebar_bg; //边栏背景
+    });
+    $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
       $scope.index_page = 2;
     });
@@ -131,6 +137,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     }
     //好友
     $scope.showFollow = function(){
+      $rootScope.follow_items = new Array(0);
       $state.go('follow');
       var url = home_path+"/User/get_follow_list.html?type=followed";
       $http.get(url).success(function(res){
@@ -369,10 +376,6 @@ m_index.controller('c_essay_cmt',function($scope,$state,$http){
 //消息控制器
 m_index.controller('c_message',function($scope,$state,$http){
   $scope.msg_tab = 'comment';
-  $scope.msgDetail = function(msg_obj_type,msg_obj_id){
-    //console.log('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
-    hMessage('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
-  }
   //Tab切换
   $scope.msgSwitchTab = function(tab,id){
     $scope.msg_tab = tab;
@@ -397,11 +400,12 @@ m_index.controller('c_setting',function($scope,$state,$http){
 });
 //好友控制器
 m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
-  $rootScope.follow_tip_show = true;
+  if($rootScope.follow_items.length < 1)$rootScope.follow_tip_show = true;
+  else $rootScope.follow_tip_show = false;
   $scope.follow_tab = 'followed';
   $scope.followSwitchTab = function(tab){
     $scope.follow_tab = tab;
-    $rootScope.follow_items = null;
+    $rootScope.follow_items = new Array(0);
     var url = home_path+"/User/get_follow_list.html?type="+tab;
     $http.get(url).success(function(res){
       if(res.error === 0 && res.items.length > 0){
@@ -473,23 +477,40 @@ m_index.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
 });
 m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
   $scope.interface_color = 'primary';
+  $scope.interface_mainBg = "bg_day";
+  $scope.interface_sideBarBg = "sidebar-bg-1";
   $scope.modifyTheme = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
     hMessage('主题定制中，请耐心等候...');
   }
   $scope.modifyColor = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
-    //hMessage('颜色定制中，请耐心等候...');
+    //修改主题颜色
+    $http.get(home_path+"/User/modify_interface_color.html?interface_color="+$scope.interface_color).success(function(res){
+      hMessage(res.msg);
+    });
     $rootScope.interface_color = $scope.interface_color;
     ipCookie('interface_color',$scope.interface_color);
   }
   $scope.modifySidebarBg = function(option){
+    $http.get(home_path+"/User/modify_bg.html?type=sidebar&select="+$scope.interface_sideBarBg).success(function(res){
+      if(res.error === 0){
+        $rootScope.sideBarBg = res.url;
+        hMessage(res.msg);
+      }
+      else hMessage(res.msg);
+    });
     $("#setting_interface_modal_"+option).modal('toggle');
-    hMessage('边栏背景定制中，请耐心等候...');
   }
   $scope.modifyMainBg = function(option){
+    $http.get(home_path+"/User/modify_bg.html?type=mainBg&select="+$scope.interface_mainBg).success(function(res){
+      if(res.error === 0){
+        $rootScope.mainBg = res.url;
+        hMessage(res.msg);
+      }
+      else hMessage(res.msg);
+    });
     $("#setting_interface_modal_"+option).modal('toggle');
-    hMessage('主页背景定制中，请耐心等候...');
   }
 });
 m_index.controller('c_setting_privacy_modal',function($scope,$http){
@@ -569,6 +590,112 @@ m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval)
   }
 });
 /**setting_push*/
-m_index.controller('c_setting_push',function($scope.$rootScope,$http){});
+m_index.controller('c_setting_push',function($scope,$rootScope,$http){
+  $rootScope.user_config.push_comment = $rootScope.user_config.push_comment=='1'?true:false;
+  $rootScope.user_config.push_at = $rootScope.user_config.push_at=='1'?true:false;
+  $rootScope.user_config.push_whisper = $rootScope.user_config.push_whisper=='1'?true:false;
+  $rootScope.user_config.push_notice = $rootScope.user_config.push_notice=='1'?true:false;
+ 
+  $scope.savePush = function(){
+    $http({
+        method:'POST',
+        url:home_path+"/User/modify_push.html",
+        data:{
+          'comment_on':$rootScope.user_config.push_comment?1:0,
+          'at_on':$rootScope.user_config.push_at?1:0,
+          'whisper_on':$rootScope.user_config.push_whisper?1:0,
+          'notice_on':$rootScope.user_config.push_notice?1:0
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+        }else{hMessage(res.msg);}
+      });
+  }
+});
 /**setting_privacy*/
-m_index.controller('c_setting_privacy',function($scope.$rootScope,$http){});
+m_index.controller('c_setting_privacy',function($scope,$rootScope,$http){
+  $rootScope.user_config.privacy_followable = $rootScope.user_config.privacy_followable=='1'?true:false;
+  $rootScope.user_config.privacy_visitable = $rootScope.user_config.privacy_visitable=='1'?true:false;
+  $rootScope.user_config.privacy_essay_comment = $rootScope.user_config.privacy_essay_comment=='1'?true:false;
+  $rootScope.user_config.privacy_piece_comment = $rootScope.user_config.privacy_piece_comment=='1'?true:false;
+  $scope.savePrivacy = function(){
+    $http({
+        method:'POST',
+        url:home_path+"/User/modify_privacy.html",
+        data:{
+          'followable':$rootScope.user_config.privacy_followable?1:0,
+          'visitable':$rootScope.user_config.privacy_visitable?1:0,
+          'essay_comment':$rootScope.user_config.privacy_essay_comment?1:0,
+          'piece_comment':$rootScope.user_config.privacy_piece_comment?1:0
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+        }else{hMessage(res.msg);}
+      });
+  }
+});
+//comment box
+m_index.controller('c_message_comment',function($scope,$rootScope,$http){
+  $scope.show_piece_text = "查看碎片";
+  $scope.show_original_piece = false;
+  $scope.showPiece = function(){
+    if(!$scope.show_original_piece)
+      {$scope.show_original_piece = true;$scope.show_piece_text = "收起碎片";}
+    else
+       {$scope.show_original_piece = false;$scope.show_piece_text = "查看碎片";}
+  }
+  $scope.showMsgDetail = function(msg_obj_type,msg_obj_id){
+    $scope.current_cmt = null;
+    console.log(msg_obj_type+","+msg_obj_id);
+    //获取评论详情
+    if(msg_obj_type == 'essay')var url = home_path+"/Comment/ng_get_essay_comment.html?cmt_id="+msg_obj_id;
+    else if(msg_obj_type == 'piece')var url = home_path+"/Comment/ng_get_piece_comment.html?cmt_id="+msg_obj_id;
+    $http.get(url).success(function(res){
+      console.log(res);
+      if(res.error === 0){$scope.current_cmt = res.comment;$("#msgDetailModal_"+msg_obj_type).modal('toggle');}
+      else hMessage(res.msg);
+    });
+  }
+});
+//controller of tag
+m_index.controller('c_tag',function($scope,$rootScope,$state,$http){
+  $rootScope.tag_tab = "essay";
+  $rootScope.tag_tip = true;
+  $http.get(home_path+"/User/get_user_tag.html?type=essay").success(function(res){
+    if(res.error === 0){
+      $rootScope.tag_items = res.items;
+      if(res.items.length > 0)$rootScope.tag_tip = false;
+    }
+  });
+  $state.go("tag_essay");
+  $scope.tagSwitchTab = function(tab,id){
+    $rootScope.tag_tab = tab;
+    $http.get(home_path+"/User/get_user_tag.html?type="+tab).success(function(res){
+      if(res.error === 0){
+        $rootScope.tag_items = res.items;
+        if(res.items.length > 0)$rootScope.tag_tip = false;
+        else $rootScope.tag_tip = true;
+      }
+    });
+    $state.go("tag_"+tab);
+  }
+  $scope.newTagModal = function(type){
+    $("#tag_new_modal").modal('toggle');
+  }
+  $scope.newTag = function(type){
+    $("#tag_new_modal").modal('toggle');
+    hMessage('创建成功！');
+  }
+  //移除标签
+  $scope.removeTag = function(tag_id){
+    $("#tag_"+tag_id).remove();
+    hMessage('移除成功！');
+  }
+});
+m_index.controller('c_tag_essay',function($scope,$rootScope,$http){
+ //
+});

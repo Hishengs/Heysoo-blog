@@ -9,6 +9,7 @@ class ActionController extends Controller {
     function __construct(){
         parent::__construct();
         $this->user_model = D('User');
+        $this->user_config_model = D('UserConfig');
     }
 
     public function index(){
@@ -98,7 +99,13 @@ class ActionController extends Controller {
             }
             $register_date = date('Y-m-d H:i:s');
             $data = array('userName'=>$userName,'passwd'=>$passwd,'email'=>$email,'salt'=>$salt,'crypt_times'=>$crypt_times,'register_date'=>$register_date);
-            if($this->user_model->data($data)->add())$this->success('注册成功！',U('Action/login'));
+            $res = $this->user_model->data($data)->add();
+            if($res !== false){
+              //同时创建配置
+              $user_config_data = array('user_id'=>$res);
+              $this->user_config_model->add($user_config_data);
+              $this->success('注册成功！',U('Action/login'));
+            }
             else $this->error('注册失败，请稍后重试！');
           }
         }else $this->error('请填写完整的注册信息！');

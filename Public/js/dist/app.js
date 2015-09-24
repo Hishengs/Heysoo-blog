@@ -14,29 +14,16 @@ var m_index = angular.module('Index',['infinite-scroll','ui.router','ipCookie'])
 
 /*angular config*/
 /*Config*/
-var tpl_piece_url = public_path+'/templates/Piece/index.html';
-var tpl_edit_url = public_path+'/templates/Essay/edit.html';
-var tpl_essay_url = public_path+'/templates/Essay/index.html';
-var tpl_view_url = public_path+'/templates/Essay/view.html';
+var tpl_piece_url = public_path+'/templates/Piece';
+var tpl_essay_url = public_path+'/templates/Essay';
 var tpl_index_url = public_path+'/templates/Index/index.html';
-var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
-var tpl_modify_url = public_path+'/templates/Essay/modify.html';
-var tpl_message_url = public_path+'/templates/message/message.html';
-var tpl_tag_url = public_path+'/templates/tag.html';
-var tpl_setting_url = public_path+'/templates/setting/setting.html';
+var tpl_message_url = public_path+'/templates/message';
+var tpl_tag_url = public_path+'/templates/tag';
 var tpl_search_url = public_path+'/templates/search.html';
-var tpl_comment_url = public_path+'/templates/message/comment.html';
-var tpl_whisper_url = public_path+'/templates/message/whisper.html';
-var tpl_at_url = public_path+'/templates/message/at.html';
-var tpl_notice_url = public_path+'/templates/message/notice.html';
-var tpl_profile_url = public_path+'/templates/setting/profile.html';
-var tpl_interface_url = public_path+'/templates/setting/interface.html';
-var tpl_push_url = public_path+'/templates/setting/push.html';
-var tpl_privacy_url = public_path+'/templates/setting/privacy.html';
-var tpl_follow_url = public_path+'/templates/follow/follow.html';
-var tpl_followed_url = public_path+'/templates/follow/followed.html';
-var tpl_following_url = public_path+'/templates/follow/following.html';
+var tpl_setting_url = public_path+'/templates/setting';
+var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
+
 m_index.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -81,6 +68,8 @@ m_index.config(['$httpProvider',function($httpProvider){
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 }]);
+
+
 //stateProvider
 m_index.config(['$stateProvider',function($stateProvider){
     $stateProvider.state('home',{
@@ -88,27 +77,27 @@ m_index.config(['$stateProvider',function($stateProvider){
     }).state('piece',{
         url:'/piece/page/:page',
         views:{
-            'content':{templateUrl:tpl_piece_url}
+            'content':{templateUrl:tpl_piece_url+"/index.html"}
         }
     }).state('edit',{
         url:'/edit',
         views:{
-            'content':{templateUrl:tpl_edit_url}
+            'content':{templateUrl:tpl_essay_url+"/edit.html"}
         }
     }).state('essay',{
         url:'/essay/page/:page',
         views:{
-            'content':{templateUrl:tpl_essay_url}
+            'content':{templateUrl:tpl_essay_url+"/index.html"}
         }
     }).state('view',{
         url:'/view/:id',
         views:{
-            'content':{templateUrl:tpl_view_url}
+            'content':{templateUrl:tpl_essay_url+"/view.html"}
         }
     }).state('comment',{
         url:'/comment/:id',
         views:{
-            'mask':{templateUrl:tpl_cmt_url}
+            'mask':{templateUrl:tpl_piece_url+"/comment.html"}
         }
     }).state('setting_profile_userName',{
         url:'/modifyUserName',
@@ -119,46 +108,64 @@ m_index.config(['$stateProvider',function($stateProvider){
     }).state('modify',{
         url:'/modify/type/:type/id/:id',
         views:{
-            'content':{templateUrl:tpl_modify_url}
+            'content':{templateUrl:tpl_essay_url+"/modify.html"}
         }
     }).state('message',{
         url:'/message',
         views:{
-            'content':{templateUrl:tpl_message_url}
+            'content':{templateUrl:tpl_message_url+"/message.html"}
         }
     }).state('msg_comment',{
         url:'/comment',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_comment_url}
+            'message':{templateUrl:tpl_message_url+"/comment.html"}
         }
     }).state('msg_at',{
         url:'/at',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_at_url}
+            'message':{templateUrl:tpl_message_url+"/at.html"}
         }
     }).state('msg_whisper',{
         url:'/whisper',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_whisper_url}
+            'message':{templateUrl:tpl_message_url+"/whisper.html"}
         }
     }).state('msg_notice',{
         url:'/notice',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_notice_url}
+            'message':{templateUrl:tpl_message_url+"/notice.html"}
         }
     }).state('tag',{
         url:'/tag',
         views:{
-            'content':{templateUrl:tpl_tag_url}
+            'content':{templateUrl:tpl_tag_url+"/tag.html"}
+        }
+    }).state('tag_essay',{
+        url:'/essay',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/essay_tag.html"}
+        }
+    }).state('tag_piece',{
+        url:'/piece',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/piece_tag.html"}
+        }
+    }).state('tag_friend',{
+        url:'/friend',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/friend_tag.html"}
         }
     }).state('setting',{
         url:'/setting',
         views:{
-            'content':{templateUrl:tpl_setting_url}
+            'content':{templateUrl:tpl_setting_url+"/setting.html"}
         }
     }).state('search',{
         url:'/search',
@@ -169,60 +176,63 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/profile',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_profile_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/profile.html"}
         }
     }).state('setting_interface',{
         url:'/interface',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_interface_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/interface.html"}
         }
     }).state('setting_push',{
         url:'/push',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_push_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/push.html"}
         }
     }).state('setting_privacy',{
         url:'/privacy',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_privacy_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/privacy.html"}
         }
     }).state('follow',{
         url:'/follow',
         views:{
-            'content':{templateUrl:tpl_follow_url}
+            'content':{templateUrl:tpl_follow_url+"/follow.html"}
         }
     }).state('follow_followed',{
         url:'/followed',
         parent:'follow',
         views:{
-            'follow':{templateUrl:tpl_followed_url}
+            'follow':{templateUrl:tpl_follow_url+"/followed.html"}
         }
     }).state('follow_following',{
         url:'/following',
         parent:'follow',
         views:{
-            'follow':{templateUrl:tpl_following_url}
+            'follow':{templateUrl:tpl_follow_url+"/following.html"}
         }
     });
 }]);
-//deal unsafe:javascript:...
-/*m_index.config(function($compileProvider){
-      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
-});*/
+
 /*controller of angular*/
 m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCookie){
   //$state.go('root');
     $rootScope.avatar = public_path+"/img/me.jpg";
-    $rootScope.interface_color = ipCookie('interface_color')?ipCookie('interface_color'):'primary';//主题颜色
+    
     //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
     //$scope.datas = new Piece();
     $rootScope.mask_show = false;
-    var url = home_path+"/Index/ng_index.html";
-    
-    $http.get(url).success(function(res){
+    //获取用户配置
+    $http.get(home_path+"/User/ng_get_user_config.html").success(function(res){
+      if(res.error === 0)
+      $rootScope.user_config = res.user_config;
+      $rootScope.interface_color = res.user_config.interface_color?res.user_config.interface_color:ipCookie('interface_color');//主题颜色
+      $rootScope.mainBg = res.user_config.main_bg;//主页背景
+      $rootScope.sideBarBg = res.user_config.sidebar_bg; //边栏背景
+    });
+    $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
       $scope.index_page = 2;
     });
@@ -345,6 +355,7 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     }
     //好友
     $scope.showFollow = function(){
+      $rootScope.follow_items = new Array(0);
       $state.go('follow');
       var url = home_path+"/User/get_follow_list.html?type=followed";
       $http.get(url).success(function(res){
@@ -583,10 +594,6 @@ m_index.controller('c_essay_cmt',function($scope,$state,$http){
 //消息控制器
 m_index.controller('c_message',function($scope,$state,$http){
   $scope.msg_tab = 'comment';
-  $scope.msgDetail = function(msg_obj_type,msg_obj_id){
-    //console.log('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
-    hMessage('msg_obj_type:'+msg_obj_type+',msg_obj_id:'+msg_obj_id);
-  }
   //Tab切换
   $scope.msgSwitchTab = function(tab,id){
     $scope.msg_tab = tab;
@@ -611,11 +618,12 @@ m_index.controller('c_setting',function($scope,$state,$http){
 });
 //好友控制器
 m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
-  $rootScope.follow_tip_show = true;
+  if($rootScope.follow_items.length < 1)$rootScope.follow_tip_show = true;
+  else $rootScope.follow_tip_show = false;
   $scope.follow_tab = 'followed';
   $scope.followSwitchTab = function(tab){
     $scope.follow_tab = tab;
-    $rootScope.follow_items = null;
+    $rootScope.follow_items = new Array(0);
     var url = home_path+"/User/get_follow_list.html?type="+tab;
     $http.get(url).success(function(res){
       if(res.error === 0 && res.items.length > 0){
@@ -687,23 +695,40 @@ m_index.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
 });
 m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
   $scope.interface_color = 'primary';
+  $scope.interface_mainBg = "bg_day";
+  $scope.interface_sideBarBg = "sidebar-bg-1";
   $scope.modifyTheme = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
     hMessage('主题定制中，请耐心等候...');
   }
   $scope.modifyColor = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
-    //hMessage('颜色定制中，请耐心等候...');
+    //修改主题颜色
+    $http.get(home_path+"/User/modify_interface_color.html?interface_color="+$scope.interface_color).success(function(res){
+      hMessage(res.msg);
+    });
     $rootScope.interface_color = $scope.interface_color;
     ipCookie('interface_color',$scope.interface_color);
   }
   $scope.modifySidebarBg = function(option){
+    $http.get(home_path+"/User/modify_bg.html?type=sidebar&select="+$scope.interface_sideBarBg).success(function(res){
+      if(res.error === 0){
+        $rootScope.sideBarBg = res.url;
+        hMessage(res.msg);
+      }
+      else hMessage(res.msg);
+    });
     $("#setting_interface_modal_"+option).modal('toggle');
-    hMessage('边栏背景定制中，请耐心等候...');
   }
   $scope.modifyMainBg = function(option){
+    $http.get(home_path+"/User/modify_bg.html?type=mainBg&select="+$scope.interface_mainBg).success(function(res){
+      if(res.error === 0){
+        $rootScope.mainBg = res.url;
+        hMessage(res.msg);
+      }
+      else hMessage(res.msg);
+    });
     $("#setting_interface_modal_"+option).modal('toggle');
-    hMessage('主页背景定制中，请耐心等候...');
   }
 });
 m_index.controller('c_setting_privacy_modal',function($scope,$http){
@@ -782,7 +807,116 @@ m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval)
     }
   }
 });
-
+/**setting_push*/
+m_index.controller('c_setting_push',function($scope,$rootScope,$http){
+  $rootScope.user_config.push_comment = $rootScope.user_config.push_comment=='1'?true:false;
+  $rootScope.user_config.push_at = $rootScope.user_config.push_at=='1'?true:false;
+  $rootScope.user_config.push_whisper = $rootScope.user_config.push_whisper=='1'?true:false;
+  $rootScope.user_config.push_notice = $rootScope.user_config.push_notice=='1'?true:false;
+ 
+  $scope.savePush = function(){
+    $http({
+        method:'POST',
+        url:home_path+"/User/modify_push.html",
+        data:{
+          'comment_on':$rootScope.user_config.push_comment?1:0,
+          'at_on':$rootScope.user_config.push_at?1:0,
+          'whisper_on':$rootScope.user_config.push_whisper?1:0,
+          'notice_on':$rootScope.user_config.push_notice?1:0
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+        }else{hMessage(res.msg);}
+      });
+  }
+});
+/**setting_privacy*/
+m_index.controller('c_setting_privacy',function($scope,$rootScope,$http){
+  $rootScope.user_config.privacy_followable = $rootScope.user_config.privacy_followable=='1'?true:false;
+  $rootScope.user_config.privacy_visitable = $rootScope.user_config.privacy_visitable=='1'?true:false;
+  $rootScope.user_config.privacy_essay_comment = $rootScope.user_config.privacy_essay_comment=='1'?true:false;
+  $rootScope.user_config.privacy_piece_comment = $rootScope.user_config.privacy_piece_comment=='1'?true:false;
+  $scope.savePrivacy = function(){
+    $http({
+        method:'POST',
+        url:home_path+"/User/modify_privacy.html",
+        data:{
+          'followable':$rootScope.user_config.privacy_followable?1:0,
+          'visitable':$rootScope.user_config.privacy_visitable?1:0,
+          'essay_comment':$rootScope.user_config.privacy_essay_comment?1:0,
+          'piece_comment':$rootScope.user_config.privacy_piece_comment?1:0
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+        }else{hMessage(res.msg);}
+      });
+  }
+});
+//comment box
+m_index.controller('c_message_comment',function($scope,$rootScope,$http){
+  $scope.show_piece_text = "查看碎片";
+  $scope.show_original_piece = false;
+  $scope.showPiece = function(){
+    if(!$scope.show_original_piece)
+      {$scope.show_original_piece = true;$scope.show_piece_text = "收起碎片";}
+    else
+       {$scope.show_original_piece = false;$scope.show_piece_text = "查看碎片";}
+  }
+  $scope.showMsgDetail = function(msg_obj_type,msg_obj_id){
+    $scope.current_cmt = null;
+    console.log(msg_obj_type+","+msg_obj_id);
+    //获取评论详情
+    if(msg_obj_type == 'essay')var url = home_path+"/Comment/ng_get_essay_comment.html?cmt_id="+msg_obj_id;
+    else if(msg_obj_type == 'piece')var url = home_path+"/Comment/ng_get_piece_comment.html?cmt_id="+msg_obj_id;
+    $http.get(url).success(function(res){
+      console.log(res);
+      if(res.error === 0){$scope.current_cmt = res.comment;$("#msgDetailModal_"+msg_obj_type).modal('toggle');}
+      else hMessage(res.msg);
+    });
+  }
+});
+//controller of tag
+m_index.controller('c_tag',function($scope,$rootScope,$state,$http){
+  $rootScope.tag_tab = "essay";
+  $rootScope.tag_tip = true;
+  $http.get(home_path+"/User/get_user_tag.html?type=essay").success(function(res){
+    if(res.error === 0){
+      $rootScope.tag_items = res.items;
+      if(res.items.length > 0)$rootScope.tag_tip = false;
+    }
+  });
+  $state.go("tag_essay");
+  $scope.tagSwitchTab = function(tab,id){
+    $rootScope.tag_tab = tab;
+    $http.get(home_path+"/User/get_user_tag.html?type="+tab).success(function(res){
+      if(res.error === 0){
+        $rootScope.tag_items = res.items;
+        if(res.items.length > 0)$rootScope.tag_tip = false;
+        else $rootScope.tag_tip = true;
+      }
+    });
+    $state.go("tag_"+tab);
+  }
+  $scope.newTagModal = function(type){
+    $("#tag_new_modal").modal('toggle');
+  }
+  $scope.newTag = function(type){
+    $("#tag_new_modal").modal('toggle');
+    hMessage('创建成功！');
+  }
+  //移除标签
+  $scope.removeTag = function(tag_id){
+    $("#tag_"+tag_id).remove();
+    hMessage('移除成功！');
+  }
+});
+m_index.controller('c_tag_essay',function($scope,$rootScope,$http){
+ //
+});
 
 /*Factory*/
 m_index.factory('Piece', function($http) {

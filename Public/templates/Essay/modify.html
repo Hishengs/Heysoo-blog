@@ -1,4 +1,4 @@
-<div class="essay-modify" ng-controller="c_modify">
+<div class="essay-modify y-full" ng-controller="c_modify">
 <div class="essay-edit-header"></div>
 <form class="hs-form essay-edit-form">
 	<div class="hs-input-group hs-input-group-primary">
@@ -21,9 +21,9 @@
 
 	<textarea id="modify-editor" name="content"></textarea>
 	<div class="essay-edit-footer">
-		<div class="essay-edit-footer-note"><i class="icon-tag"></i> 转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传</div>
+		<div class="essay-edit-footer-note"><i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传</div>
 		<div class="essay-edit-footer-operation"></div>
-		<button class="hs-btn hs-btn-primary essay-submit" type="button" ng-click="postModify()">保 存</button>
+		<button class="hs-btn hs-btn-{{interface_color}}  essay-submit" type="button" ng-click="postModify()">保 存</button>
 	</div>
 </form>
 </div>

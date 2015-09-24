@@ -1,28 +1,15 @@
 /*angular config*/
 /*Config*/
-var tpl_piece_url = public_path+'/templates/Piece/index.html';
-var tpl_edit_url = public_path+'/templates/Essay/edit.html';
-var tpl_essay_url = public_path+'/templates/Essay/index.html';
-var tpl_view_url = public_path+'/templates/Essay/view.html';
+var tpl_piece_url = public_path+'/templates/Piece';
+var tpl_essay_url = public_path+'/templates/Essay';
 var tpl_index_url = public_path+'/templates/Index/index.html';
-var tpl_cmt_url = public_path+'/templates/Piece/comment.html';
-var tpl_modify_url = public_path+'/templates/Essay/modify.html';
-var tpl_message_url = public_path+'/templates/message/message.html';
-var tpl_tag_url = public_path+'/templates/tag.html';
-var tpl_setting_url = public_path+'/templates/setting/setting.html';
+var tpl_message_url = public_path+'/templates/message';
+var tpl_tag_url = public_path+'/templates/tag';
 var tpl_search_url = public_path+'/templates/search.html';
-var tpl_comment_url = public_path+'/templates/message/comment.html';
-var tpl_whisper_url = public_path+'/templates/message/whisper.html';
-var tpl_at_url = public_path+'/templates/message/at.html';
-var tpl_notice_url = public_path+'/templates/message/notice.html';
-var tpl_profile_url = public_path+'/templates/setting/profile.html';
-var tpl_interface_url = public_path+'/templates/setting/interface.html';
-var tpl_push_url = public_path+'/templates/setting/push.html';
-var tpl_privacy_url = public_path+'/templates/setting/privacy.html';
-var tpl_follow_url = public_path+'/templates/follow/follow.html';
-var tpl_followed_url = public_path+'/templates/follow/followed.html';
-var tpl_following_url = public_path+'/templates/follow/following.html';
+var tpl_setting_url = public_path+'/templates/setting';
+var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
+
 m_index.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
@@ -67,6 +54,8 @@ m_index.config(['$httpProvider',function($httpProvider){
     return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
   }];
 }]);
+
+
 //stateProvider
 m_index.config(['$stateProvider',function($stateProvider){
     $stateProvider.state('home',{
@@ -74,27 +63,27 @@ m_index.config(['$stateProvider',function($stateProvider){
     }).state('piece',{
         url:'/piece/page/:page',
         views:{
-            'content':{templateUrl:tpl_piece_url}
+            'content':{templateUrl:tpl_piece_url+"/index.html"}
         }
     }).state('edit',{
         url:'/edit',
         views:{
-            'content':{templateUrl:tpl_edit_url}
+            'content':{templateUrl:tpl_essay_url+"/edit.html"}
         }
     }).state('essay',{
         url:'/essay/page/:page',
         views:{
-            'content':{templateUrl:tpl_essay_url}
+            'content':{templateUrl:tpl_essay_url+"/index.html"}
         }
     }).state('view',{
         url:'/view/:id',
         views:{
-            'content':{templateUrl:tpl_view_url}
+            'content':{templateUrl:tpl_essay_url+"/view.html"}
         }
     }).state('comment',{
         url:'/comment/:id',
         views:{
-            'mask':{templateUrl:tpl_cmt_url}
+            'mask':{templateUrl:tpl_piece_url+"/comment.html"}
         }
     }).state('setting_profile_userName',{
         url:'/modifyUserName',
@@ -105,46 +94,64 @@ m_index.config(['$stateProvider',function($stateProvider){
     }).state('modify',{
         url:'/modify/type/:type/id/:id',
         views:{
-            'content':{templateUrl:tpl_modify_url}
+            'content':{templateUrl:tpl_essay_url+"/modify.html"}
         }
     }).state('message',{
         url:'/message',
         views:{
-            'content':{templateUrl:tpl_message_url}
+            'content':{templateUrl:tpl_message_url+"/message.html"}
         }
     }).state('msg_comment',{
         url:'/comment',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_comment_url}
+            'message':{templateUrl:tpl_message_url+"/comment.html"}
         }
     }).state('msg_at',{
         url:'/at',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_at_url}
+            'message':{templateUrl:tpl_message_url+"/at.html"}
         }
     }).state('msg_whisper',{
         url:'/whisper',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_whisper_url}
+            'message':{templateUrl:tpl_message_url+"/whisper.html"}
         }
     }).state('msg_notice',{
         url:'/notice',
         parent:'message',
         views:{
-            'message':{templateUrl:tpl_notice_url}
+            'message':{templateUrl:tpl_message_url+"/notice.html"}
         }
     }).state('tag',{
         url:'/tag',
         views:{
-            'content':{templateUrl:tpl_tag_url}
+            'content':{templateUrl:tpl_tag_url+"/tag.html"}
+        }
+    }).state('tag_essay',{
+        url:'/essay',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/essay_tag.html"}
+        }
+    }).state('tag_piece',{
+        url:'/piece',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/piece_tag.html"}
+        }
+    }).state('tag_friend',{
+        url:'/friend',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/friend_tag.html"}
         }
     }).state('setting',{
         url:'/setting',
         views:{
-            'content':{templateUrl:tpl_setting_url}
+            'content':{templateUrl:tpl_setting_url+"/setting.html"}
         }
     }).state('search',{
         url:'/search',
@@ -155,46 +162,42 @@ m_index.config(['$stateProvider',function($stateProvider){
         url:'/profile',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_profile_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/profile.html"}
         }
     }).state('setting_interface',{
         url:'/interface',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_interface_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/interface.html"}
         }
     }).state('setting_push',{
         url:'/push',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_push_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/push.html"}
         }
     }).state('setting_privacy',{
         url:'/privacy',
         parent:'setting',
         views:{
-            'v_setting':{templateUrl:tpl_privacy_url}
+            'v_setting':{templateUrl:tpl_setting_url+"/privacy.html"}
         }
     }).state('follow',{
         url:'/follow',
         views:{
-            'content':{templateUrl:tpl_follow_url}
+            'content':{templateUrl:tpl_follow_url+"/follow.html"}
         }
     }).state('follow_followed',{
         url:'/followed',
         parent:'follow',
         views:{
-            'follow':{templateUrl:tpl_followed_url}
+            'follow':{templateUrl:tpl_follow_url+"/followed.html"}
         }
     }).state('follow_following',{
         url:'/following',
         parent:'follow',
         views:{
-            'follow':{templateUrl:tpl_following_url}
+            'follow':{templateUrl:tpl_follow_url+"/following.html"}
         }
     });
 }]);
-//deal unsafe:javascript:...
-/*m_index.config(function($compileProvider){
-      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
-});*/

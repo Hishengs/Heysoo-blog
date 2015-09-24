@@ -1,0 +1,9 @@
+<div class="tag-tip center-tip" ng-show="tag_tip"><i class="hs-icon-warning"></i> 暂无可用的好友标签，你可以&nbsp;<a href="javascript:;" class="plain-link">创建一个</a></div>
+<ul class="hs-list tag-list">
+    <li id="tag_{{item.tag_id}}" ng-repeat="item in tag_items" style="margin:10px 0;">
+        <a href="javascript:;" ng-click=":;" style="display:inline-block;">{{item.tag_name}}</a>
+        <a href="javascript:;" class="plain-link" ng-click="removeTag(item.tag_id)" style="float:right;">
+	移除标签
+        </a>
+    </li>
+</ul>

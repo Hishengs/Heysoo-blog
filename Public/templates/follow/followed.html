@@ -1,11 +1,9 @@
 <div class="follow-tip center-tip" ng-show="follow_tip_show"><i class="hs-icon-warning"></i> 暂无人关注我</div>
 <ul class="hs-list followed-list">
-    <li class="following-list-item" id="{{item.follow_id}}" ng-repeat="item in follow_items">
-    <span><a href="javascript:;" ng-click="viewUser(item.username)">{{item.username}}</a></span>
-        <span class="follow-item-right">
-        <a href="javascript:;" ng-click="remvoeFollow('followed',item.follow_id)"><span class="hs-badge hs-badge-warning">
-        移除关注<i class="hs-icon-close"></i>
-        </span></a>
-        </span>
+    <li id="{{item.follow_id}}" ng-repeat="item in follow_items" style="margin:10px 0;">
+        <a href="javascript:;" ng-click="viewUser(item.username)" style="display:inline-block;">{{item.username}}</a>
+        <a href="javascript:;" class="plain-link" ng-click="remvoeFollow('followed',item.follow_id)" style="float:right;">
+	移除关注
+        </a>
     </li>
 </ul>

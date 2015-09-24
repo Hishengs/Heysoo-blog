@@ -101,6 +101,7 @@ KindEditor.plugin('image', function(K) {
 			yesBtn : {
 				name : self.lang('yes'),
 				click : function(e) {
+
 					// Bugfix: http://code.google.com/p/kindeditor/issues/detail?id=319
 					if (dialog.isLoading) {
 						return;
@@ -179,6 +180,7 @@ KindEditor.plugin('image', function(K) {
 				panel : K('.tab2', div)
 			});
 			tabs.select(tabIndex);
+			$("input.qiniu_token").attr('value',qiniu_token);//更新token，否则html重置后input的value会丢失，就不能继续上传图片了
 		} else if (showRemote) {
 			K('.tab1', div).show();
 		} else if (showLocal) {
@@ -193,8 +195,8 @@ KindEditor.plugin('image', function(K) {
 			width: 60,
 			afterUpload : function(data) {
 				dialog.hideLoading();
-				if (data.error === 0) {
-					console.log(data.error+","+data.url);
+				if (data.error === 0) {//上传成功后
+					//console.log(data.error+","+data.url);
 					var url = data.url;
 					if (formatUploadUrl) {
 						url = K.formatUrl(url, 'absolute');
@@ -330,7 +332,7 @@ KindEditor.plugin('image', function(K) {
 	};
 	self.clickToolbar(name, self.plugin.image.edit);
 });
-
+var qiniu_token = "";
 getQiniuToken(get_token_path);
 
 function getQiniuToken(url){
@@ -340,7 +342,7 @@ function getQiniuToken(url){
 		data:{'type':'img'},
 		dataType:'json',
 		success:function(data){
-			console.log(data);
+			qiniu_token = data.token;
 			$("input.qiniu_token").attr('value',data.token);
 		},
 		error:function(XMLHttpRequest, textStatus, errorThrown){

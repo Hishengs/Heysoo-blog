@@ -1,0 +1,35 @@
+<div class="hs-panel hs-panel-{{interface_color}} y-full" ng-controller="c_tag">
+  <div class="hs-panel-hd text-center">
+  <big><b>标签</b></big>[暂未实现]
+  <button type="button" class="hs-btn hs-btn-default hs-btn-{{interface_color}}" ng-click="newTagModal(tag_tab)" style="float:right;">新建标签</button>
+  </div>
+  <div class="hs-panel-bd">
+    <div class="hs-btn-group hs-btn-group-justify">
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='essay'}" ng-click="tagSwitchTab('essay',1)">文章标签</button>
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='piece'}" ng-click="tagSwitchTab('piece',1)">碎片标签</button>
+      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='friend'}" ng-click="tagSwitchTab('friend',1)">好友标签</button>
+      <!-- <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='other'}" ng-click="tagSwitchTab('other',1)">其他</button> -->
+    </div>
+    <div class="tag-view" ui-view="tag"></div>
+  </div>
+
+ <div class="hs-modal hs-modal-no-btn" tabindex="-1" id="tag_new_modal">
+	  <div class="hs-modal-dialog">
+	    <div class="hs-modal-hd">新建标签{{tag_tab}}
+	    <!-- <p ng-show="{{tag_tab=='essay'}}">新建文章标签</p>
+	    <p ng-show="{{tag_tab=='piece'}}">新建碎片标签</p>
+	    <p ng-show="{{tag_tab=='friend'}}">新建好友标签</p> -->
+	      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+	    </div>
+	    <div class="hs-modal-bd">
+	      <form class="hs-form">
+	        <div class="hs-input-group">
+	                  <span class="hs-input-group-label"><i class="hs-icon-tag"></i> 标签名</span>
+	                  <input type="text" class="hs-form-field" name="new_tag" placeholder="标签名" ng-model="new_tag">
+	                </div>
+	                <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="newTag('essay')">创建</button>
+	    </form>
+	    </div>
+	  </div>
+</div>
+</div>

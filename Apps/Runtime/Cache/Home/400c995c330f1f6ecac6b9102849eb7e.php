@@ -4,24 +4,32 @@
 <base href="/heysoo/">
 <meta charset="UTF-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="icon" type="image/png" href="/heysoo/Public/img/favicon.ico">
 <title><?php echo ((isset($user['username'] ) && ($user['username'] !== ""))?($user['username'] ):"我的主页"); ?></title>
 <link rel="stylesheet" href="/heysoo/Public/bower/fontawesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/heysoo/Public/bower/lightbox2/dist/css/lightbox.css"/>
 <link rel="stylesheet" href="/heysoo/Public/css/dist/plugins.css"/>
 <link rel="stylesheet" href="/heysoo/Public/css/dist/index.css"/>
 <style type="text/css">
 	#left-panel{ background-image: url('/heysoo/Public/img/login_bg.png');}
-	body{ background-image: url("/heysoo/Public/img/<?php echo ($user_config['bg_img']); ?>.png");}
+	body,#right-panel,.y-full{ background-image: url({{mainBg}});}
 </style>
 </head>
 <body>
+
 <div id="mask" ng-show="mask_show">
 	<div ui-view="mask"></div>
 </div>
 <div id="hMessage-mask"></div>
 
 <div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
+<div class="navigator" style="position:fixed;top:0;width:100%;z-index:1200;">
+	<div class="hs-btn-group hs-btn-group-justify">
+	    <button type="button" class="hs-btn hs-btn-msg hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-home"></i> Heysoo </button>
+	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
+	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
+	</div>
+</div>
 <div class="user-avatar">
 <img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80" title="点击修改头像" >
 </div>

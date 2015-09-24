@@ -2,7 +2,7 @@ var progress_bar = $.AMUI.progress;//进度条
 //发布
 var editOpts = {
     width:'100%',
-    height:'400px',
+    height:'680px',
     basePath:editor_basePath,
     themeType:'simple',
     items:[ '|','forecolor', 'hilitecolor', 'fontname' ,'bold', 
@@ -40,6 +40,7 @@ var pieceCmtOptions  = {
 jQuery(function($) {
 	//初始化
 	init();
+	hideControlPanel();
 });
 //初始化函数
 function init(){
