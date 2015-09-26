@@ -696,7 +696,7 @@ m_index.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
 m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
   $scope.interface_color = 'primary';
   $scope.interface_mainBg = "bg_day";
-  $scope.interface_sideBarBg = "sidebar-bg-1";
+  $scope.interface_sideBarBg = "bg_sidebar_qiuqian";
   $scope.modifyTheme = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
     hMessage('主题定制中，请耐心等候...');

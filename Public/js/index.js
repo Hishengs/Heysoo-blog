@@ -40,7 +40,6 @@ var pieceCmtOptions  = {
 jQuery(function($) {
 	//初始化
 	init();
-	hideControlPanel();
 });
 //初始化函数
 function init(){
