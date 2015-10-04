@@ -2,16 +2,3 @@
 *{font-family:'microsoft yahei'; font-size:14px;}
 html,body{height: 100%;}
 div.bg{width:auto; height:100%; margin:0 auto;}
-div.register-panel{ opacity:0.95; text-align:center; width:500px; min-height:100%; height: auto; background-color:#6fc6f8; box-shadow:0px 2px 5px rgba(0,0,0,0.5); margin:0 auto; padding:0;}
-img.avatar-img{ width:80px; height:80px; border-radius:40px; margin:40px 210px 15px 210px; box-shadow:0px 2px 5px rgba(255,255,255,0.8); }
-img.avatar-img:hover{ box-shadow:0px 5px 10px rgba(255,255,255,0.8); }
-div.logo-panel{opacity:0.95; text-align:center; background-color:#6fc6f8; border-bottom:2px solid #fff; margin:0 auto; }
-h3{ color:#fff; }
-div.title{ text-align:center; color:#fff; font-size:26px; margin-bottom:10px; font-weight: bold;}
-form.register-form{width:100%; margin-top:30px; }
-div.register-panel form input{ display:block;  margin:0 auto; border-radius:0; border: 0;}
-button.login,button.register{ width:240px; margin:20px auto; border-radius:0;}
-button.login{opacity:0; height:10px; }
-button.login:hover{opacity:1; height:auto; }
-form.register-form div.hs-input-group{margin: 15px auto; width:240px;}
-form.register-form div.hs-input-group input,form.register-form div.hs-input-group select{ border-radius: 0;}

@@ -15,15 +15,15 @@
 		<select class="hs-select hs-select-{{interface_color}} type" name="type" title="发布类型" placeholder="发布类型" ng-model="edit_type">
 			<option value="piece">碎片</option>
 			<option value="essay">文章</option>
-			<option value="diary">日记</option>
+			<!-- <option value="diary">日记</option> -->
 		</select>
 	</div>
 
 	<div class="hs-input-group hs-input-group-{{interface_color}}">
-		<span class="hs-input-group-label">可见性 <i class="hs-icon-eye"></i></span>
+		<span class="hs-input-group-label">可见 <i class="hs-icon-eye"></i></span>
 		<select class="hs-select hs-select-{{interface_color}} visible" name="visible" title="可见性" placeholder="可见性" ng-model="edit_visible">
 			<option value="1">所有人可见</option>
-			<option value="2">好友可见</option>
+			<!-- <option value="2">好友(互相关注)可见</option> -->
 			<option value="0">仅自己可见</option>
 		</select>
 	</div>

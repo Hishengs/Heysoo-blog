@@ -1,161 +1,70 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+/**
+ * Deal with essay
+ * Author:Hisheng
+ * Last modify date:2015/09/30
+ */
 class EssayController extends Controller {
 	private $essay_model;
-    private $page_size = 10;
+    private $page_size;
+    private $user_id;
 	
-    //构造函数
     function __construct(){
         parent::__construct();
+        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));
         $this->essay_model = D('Essay');
+        $this->page_size = C('ESSAY_LOAD_NUM_PER_PAGE');
+        $this->user_id = $_SESSION['USER_ID'];
     }
     
     public function index(){
-      if($_SESSION['LOGIN_STATUS']){
-        C('LAYOUT_ON',TRUE);//开启模板布局
-        $cdt['userName'] = $_SESSION['USER_NAME'];
-        $essays = $this->essay_model->where($cdt)->order('date desc')->limit(10)->select();
-        $totalCount = $this->essay_model->where($cdt)->count();
-        $totalPage = $totalCount/$this->page_size;
-        $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
-        ->assign('totalPage',$totalPage);
-        if($essays != false){
-            for ($i=0; $i < count($essays); $i++) { 
-                $essays[$i]['tag'] = explode(" ", $essays[$i]['tag']);
-            }
-            $this->assign('essays',$essays);
-            $result = $this->fetch("index");
-        }else{
-            $result = array('empty'=>1);
-        }
-        $user_info = A('User')->get_user_info(session('USER_NAME'));
-        $essay_nums = A('Essay')->get_essay_nums(session('USER_NAME'));
-        $diary_nums = A('Diary')->get_diary_nums(session('USER_NAME'));
-        $piece_nums = A('Piece')->get_piece_nums(session('USER_NAME'));
-        $this->assign('essays',$essays)->assign('user',$user_info)->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
-        $this->display();
-      }else $this->error('尚未登录，无法操作！',U("Action/login"));
+      echo "Hello,".C('SITE_LANG.SITE_NAME');
     }
-    public function get_essay_page(){
-      if($_SESSION['LOGIN_STATUS']){
-        C('LAYOUT_ON',FALSE);//关闭模板布局
-        $user_id = I('get.user_id');
-        if(empty($user_id))
-            $user_id = $_SESSION['USER_ID'];
-        //$essays = $this->essay_model->where($cdt)->order('date desc')->limit($this->page_size)->select();
-        $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->
-        field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,left(hs_essay.content,200),hs_essay.visible')
-        ->order('hs_essay.date desc')->limit($this->page_size)->select();
-        $totalCount = $this->essay_model->where("user_id=".$user_id)->count();
-        $totalPage = $totalCount/$this->page_size;
-        $this->assign('totalCount',$totalCount)->assign('pageSize',$this->page_size)
-        ->assign('totalPage',$totalPage);
-        if($essays != false){
-            for ($i=0; $i < count($essays); $i++) { 
-                $essays[$i]['tag'] = explode(" ", $essays[$i]['tag']);
-            }
-            $this->assign('essays',$essays);
-            $result = $this->fetch("index");
-        }else{
-            $result = array('empty'=>1);
-        }
-        $this->ajaxReturn($result,'json');
-      }else $this->error('尚未登录，无法操作！',U("Action/login"));
-    }
-    //文章浏览
-    public function view(){
-        C('LAYOUT_ON',FALSE);
-        $id = I('get.id');
-        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
-        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
-        $essay['tag'] = explode(" ", $essay['tag']);
-        //获取评论信息
-        $comments = A('Comment')->get_essay_comments($essay['essay_id']);
-        $comments_num = count($comments);
-        $this->assign('essay',$essay)->assign('comments',$comments)->assign('comments_num',$comments_num);
-        $result = $this->fetch();
-        $this->ajaxReturn($result,'json');
-    }
-    //获取文章数量
+    //get the number of user's essays
     public function get_essay_nums($user_id,$cdt=null){
         $cdt['user_id'] = $user_id;
         return $this->essay_model->where($cdt)->count();
     }
-    //加载更多
-    public function load_more(){
-        //
+    //deal essay post request
+    public function ng_essay_post($title,$tag='文章',$content,$visible){
+        $str_num = A('Action')->str_length($content);
+        $current_str_num = $str_num['cn']+$str_num['en'];
+        if(empty($title))$this->ajaxReturn(array('error'=>1,'msg'=>'文章标题不能为空！'),'json');      
+        else if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>'文章内容不能为空！'),'json');
+        else if($current_str_num > 10000)$this->ajaxReturn(array('error'=>1,'msg'=>'文章总字数不能超过1万个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
+        else
+        {
+            $userName = $_SESSION['USER_NAME'];
+            $post_date = date("Y-m-d H:i:s");
+            $data = array('user_id'=>$this->user_id,'title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
+            $result = $this->essay_model->add($data);
+            if($result != false){
+                if($visible == 1){
+                    $content = "我发布了一篇文章：<a href='javascript:view(1,$result);'>$title</a>";
+                    A('Piece')->ng_piece_post('文章',$content,1,false);
+                }
+                $this->ajaxReturn(array('error'=>0,'id'=>$result,'msg'=>C('SITE_LANG.POST_SUCCESS')),'json');
+            }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.POST_FAILED')),'json');
+        }
     }
-    //获取文章编辑页面
-    public function get_edit_page(){
-        return $this->fetch("Essay/edit");
-    }
-    public function edit_page(){
-        C('LAYOUT_ON',TRUE);
-        $user_info = A('User')->get_user_info(session('USER_NAME'));
-        $essay_nums = A('Essay')->get_essay_nums(session('USER_NAME'));
-        $diary_nums = A('Diary')->get_diary_nums(session('USER_NAME'));
-        $piece_nums = A('Piece')->get_piece_nums(session('USER_NAME'));
-        $this->assign('user',$user_info)->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
-        $this->display("edit");
-    }
-    //发布文章
-    public function essay_post($title,$tag,$content,$visible,$ext=null){
-        $userName = $_SESSION['USER_NAME'];
-        $user_id = $_SESSION['USER_ID'];
-        $post_date = date("Y-m-d H:i:s");
-        $data = array('user_id'=>$user_id,'title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
-        $result = $this->essay_model->add($data);
-        if($result != false){
-            if($visible == 1){
-                $content = "我发布了一篇文章：<a href='javascript:viewEssay($result);'>$title</a>";
-                A('Piece')->piece_post('文章',$content,1);
-            }
-            $this->success('发布成功！',U("Essay/index"));
-        }else $this->error("发布失败，请稍后重试！");
-    }
-    public function ng_essay_post($title,$tag='碎片',$content,$visible){
-        $userName = $_SESSION['USER_NAME'];
-        $user_id = $_SESSION['USER_ID'];
-        $post_date = date("Y-m-d H:i:s");
-        $data = array('user_id'=>$user_id,'title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
-        $result = $this->essay_model->add($data);
-        if($result != false){
-            /*if($visible == 1){
-                $content = "我发布了一篇文章：<a href='javascript:viewEssay($result);'>$title</a>";
-                A('Piece')->piece_post('文章',$content,1);
-            }*/
-            $this->ajaxReturn(array('error'=>0,'msg'=>'发布成功！'),'json');
-        }else $this->ajaxReturn(array('error'=>1,'msg'=>'发布失败！'),'json');
-    }
-    //删除文章
+    //delete essay
     public function ng_delete($id){
         if($this->essay_model->where("essay_id=".$id)->limit(1)->delete() != false)
-            $this->ajaxReturn(array('error'=>0,'msg'=>'删除成功！'),'json');
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.DELETE_SUCCESS')),'json');
         else
-            $this->ajaxReturn(array('error'=>1,'msg'=>'删除失败！'),'json');
-    }
-    //修改文章
-    public function modify(){
-        C('LAYOUT_ON',TRUE);
-        $id = I('get.id');
-        $userName = $_SESSION['USER_NAME'];
-        $user_id = $_SESSION['USER_ID'];
-        $cdt['essay_id'] = $id;
-        $cdt['username'] = $userName;
-        $essay = $this->essay_model->where($cdt)->find();
-        $this->assign('essay',$essay);
-        $this->display("modify");
+            $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
     }
     public function do_modify($id,$title,$tag,$content,$visible){
         $last_modify_date = date("Y-m-d H:i:s");
         $data = array('title'=>$title,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'last_modify_date'=>$last_modify_date);
         if($this->essay_model->where("essay_id=".$id)->save($data) != false)
-            $this->ajaxReturn(array('error'=>0,'msg'=>'修改成功！'),'json');
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.MODIFY_SUCCESS')),'json');
         else
-            $this->ajaxReturn(array('error'=>1,'msg'=>'修改失败！'),'json');
+            $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
     }
-    //处理分页
+    //deal pagination
     public function deal_pagination($pageNumber,$pageSize){
         $cdt['userName'] = $_SESSION['USER_NAME'];
         $essays = $this->essay_model->where($cdt)->order('date desc')->limit($pageNumber*$pageSize,$pageSize)->select();
@@ -172,68 +81,45 @@ class EssayController extends Controller {
         $response['html'] = $html;
         $this->ajaxReturn($response,'json');
     }
-    public function load_essays_html(){
-        $page = I('get.page');
-        $type = I('get.type');
-        if($type=='init'){
-            $response['error'] = 2;
-            $this->ajaxReturn($response,'json');
-        }
-        else{
-            C('LAYOUT_ON',FALSE);
-            $user_id = $_SESSION['USER_ID'];
-            //$essays = $this->essay_model->where($cdt)->order('date desc')->limit($page*$this->page_size,$this->page_size)->select();
-            $essays = $this->essay_model->join('hs_user ON hs_user.id='.$user_id.' AND hs_essay.user_id='.$user_id)->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
-            for ($i=0; $i < count($essays); $i++) { 
-                    $essays[$i]['tag'] = explode(" ", $essays[$i]['tag']);
-                }
-            $this->assign('essays',$essays);
-            $html = $this->fetch("essays");
-            $response['error'] = 0;
-            $response['html'] = $html;
-            $this->ajaxReturn($response,'json');
-        }
-    }
-    //发布文章评论
+    //post essay comment
     public function post_comment(){
-        if(C('ESSAY_COMMENT_ON')){//评论功能是否开启
+        if(C('ESSAY_COMMENT_ON')){//check if essay comment open
             $essay_id = I('post.essay_id');
             $comment_content = I('post.comment_content','','');
-            $user_id = $_SESSION['USER_ID'];
             $comment_date = date("Y-m-d H:i:s");
-            $data = array('user_id'=>$user_id,'essay_id'=>$essay_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
+            $data = array('user_id'=>$this->user_id,'essay_id'=>$essay_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
             $comment_model = D("Comment");
-            if($comment_model->add($data) != false){
-                $msg_content = A('User')->get_name_by_id($user_id)['username'].' 评论了你的文章';
-                A('Message')->msg_push('comment',1,'essay',$essay_id,$comment_date,$user_id,1000,$msg_content);
+            $res = $comment_model->add($data);
+            if($res != false){
+                $msg_content = ' 评论了你的文章';
+                A('Message')->msg_push('comment',1,'essay',$res,$comment_date,$this->user_id,1000,$msg_content);
                 $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
-                    'content'=>$comment_content),'msg'=>'评论成功！'),'json');
+                    'content'=>$comment_content),'msg'=>C('SITE_LANG.COMMENT_SUCCESS')),'json');
             }
-            else $this->ajaxReturn(array('error'=>1,'msg'=>'评论失败'),'json');
-        }else $this->ajaxReturn(array('error'=>2,'msg'=>'评论功能已关闭'),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.COMMENT_FAILED')),'json');
+        }else $this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.COMMENT_CLOSED')),'json');
     } 
     //
     public function ng_get_essay_page($page=null){
         if($_SESSION['LOGIN_STATUS']){
             $page = $page?$page-1:0;
-            $user_id = $_SESSION['USER_ID'];
-            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$user_id)
+            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$this->user_id)
             ->field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,LEFT(hs_essay.content,1000) as content,hs_essay.visible')
             ->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
             $response = array('error'=>0,'items'=>$essays,'page'=>$page+1);
             $this->ajaxReturn($response,'json');
         }else{
-            $response = array('error'=>1,'msg'=>'尚未登录，无法操作！');
+            $response = array('error'=>1,'msg'=>C('SITE_LANG.LOGIN_ALERT'));
             $this->ajaxReturn($response,'json');
         }
     }
+    //view page of essay
     public function ng_view(){
         $id = I('get.id');
         $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
-        //$essay['tag'] = explode(" ", $essay['tag']);
-        $essay_comment_on = C('ESSAY_COMMENT_ON');//是否开启评论
-        //获取评论信息
+        $essay_comment_on = C('ESSAY_COMMENT_ON');//check if essay comment open
+        //get essay comments
         $comments = A('Comment')->get_essay_comments($essay['essay_id']);
         $comments_num = count($comments);
         $res = array('essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on);

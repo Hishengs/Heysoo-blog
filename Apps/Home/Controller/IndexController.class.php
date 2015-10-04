@@ -1,136 +1,57 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+/**
+ * This is the enterance of the whole application.
+ * Author:Hisheng
+ * Last modify date:2015/9/28
+ */
 class IndexController extends Controller {
-	private $login_status = false;
 	private $piece_model;
-    private $piece_nums = 10;
+    private $user_id;
+    private $piece_nums_per_page;//piece number every page shows
+
+    function __construct(){
+        parent::__construct();
+        //check login status,redirect to the login page if not logined
+        if(empty($_SESSION['USER_ID']))redirect(U('Action/login'));
+        $this->piece_model = D("Piece");
+        $this->piece_nums_per_page = C('PIECE_LOAD_NUM_PER_PAGE');
+        $this->user_id = $_SESSION['USER_ID'];
+    }
 
     public function index(){
-        if(A('Auth')->is_login()){
-            $this->piece_model = D("Piece");
-            $cdt['visible'] = 1;
-
-            $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
-            $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
-            $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
-          
-            $this->assign('user',$user_info)
-            ->assign(array('essay_nums'=>$essay_nums,'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums));
-    	//获取用户配置
-            $user_config = A('User')->get_user_config($_SESSION['USER_ID']);
-            
-            $this->assign('user_config',$user_config);
-            $this->display();
-    	}else{
-            $this->redirect("Action/login");
-        }
+        $this->assign('userName',$_SESSION['USER_NAME']);
+        $this->display();
     }
-
+    //get index page
     public function ng_index(){
-        if(session('LOGIN_STATUS')){
-            $page = I('get.index_page');
-            $page = $page?$page-1:0;
-            $this->piece_model = D("Piece");
-            $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')
-            ->order('hs_piece.date desc')->limit($page*$this->piece_nums,$this->piece_nums)->select();
-            $this->ajaxReturn($pieces,'json');
-        }else{
-            $this->redirect("Action/login");
-        }
-    }
-    public function get_index_page(){
-        if($_SESSION['LOGIN_STATUS']){
-        //set_history_url(U('Index/index'));
-        C('LAYOUT_ON',FALSE);//关闭模板布局
-        $this->piece_model = D('Piece');
-        $cdt['visible'] = 1;
-        //$pieces = $this->piece_model->where($cdt)->order('date desc')->limit(15)->select();
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible='.$cdt['visible'])->order('hs_piece.date desc')->limit($this->piece_nums)->select();
-        for ($i=0; $i < count($pieces); $i++) { 
-                $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
-            }
-        $this->assign('pieces',$pieces);
-        $result = $this->fetch("index");
-        $this->ajaxReturn($result,'json');
-      }else $this->error('尚未登录，无法操作！',U("Index/login"));
-    }
-    //view页面
-    /*public function view(){
-        $type = I('get.type');
-        $id = I('get.id');
-        switch ($type) {
-            case 'essay':
-                $this->assign('view',$this->getEssay($id));
-                break;
-            
-            default:
-                # code...
-                break;
-        }
-        $this->display(":view");
-    }
-    public function get_view_page(){
-        C('LAYOUT_ON',FALSE);//关闭模板布局
-        $type = I('get.type');
-        $id = I('get.id');
-        switch ($type) {
-            case 'essay':
-                $this->assign('view',$this->getEssay($id));
-                break;
-            
-            default:
-                $this->assign('view',$this->getEssay($id));
-                break;
-        }
-        $result = $this->fetch(":view");
-        $this->ajaxReturn($result,'json');
-    }*/
-    //获取文章
-   public function getEssay($id){
-        $cdt['id'] = $id;
-        return D('Essay')->where($cdt)->limit(1)->find();
-   }
-   //加载碎片
-   public function load_pieces(){
-        C('LAYOUT_ON',FALSE);
-        $startNum = I('get.startNum');
-        $piece_model = D('Piece');
-        //$pieces = $piece_model->where("visible=1")->limit($startNum,10)->order("date desc")->select();
-        $pieces = $piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,10)->select();
-        if($pieces != false){
-            for ($i=0; $i < count($pieces); $i++) { 
-                $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
-            }
-            $this->assign('pieces',$pieces);
-            $response['error'] = 0;
-            $response['html'] = $this->fetch("explore");
-        }else
-            $response['error'] = 1;
-        $this->ajaxReturn($response,'json');
-   }
-   public function angular_test(){
-        C('LAYOUT_ON',FALSE);
-        $this->display(":view");
-   }
-   public function update_pieces(){
-        $startNum = I('get.startNum');
-        $this->piece_model = D('Piece');
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.visible=1')->order('hs_piece.date desc')->limit($startNum,$this->piece_nums)->select();
-        for ($i=0; $i < count($pieces); $i++) { 
-                $pieces[$i]['tag'] = explode(" ", $pieces[$i]['tag']);
-        }
+        $page = I('get.index_page');//The request page number
+        $page = $page?$page-1:0;
+        /**
+         * 1.我的动态
+         * 2.我关注的人的动态
+         * 3.公开的
+         * 4.按时间排序
+         */
+        $sql = "SELECT u.id,u.userName,u.avatar,p.piece_id,p.date,p.tag,p.content from hs_user as u,hs_piece as p 
+        where p.visible=1 AND u.id=p.user_id AND p.user_id in (SELECT followed_id as id from hs_follow where follower_id=".$this->user_id." 
+        union SElECT id from hs_user where id=".$this->user_id.") order by p.date desc limit ".$page*$this->piece_nums_per_page.
+        ",".$this->piece_nums_per_page;
+        $pieces = $this->piece_model->query($sql);
         $this->ajaxReturn($pieces,'json');
-   }
+    }
+   //init the sidebar panel
    public function ng_init_side_panel(){
-        $user_info = A('User')->get_user_info(session('USER_ID'));
-        $essay_nums = A('Essay')->get_essay_nums(session('USER_ID'));
-        $diary_nums = A('Diary')->get_diary_nums(session('USER_ID'));
-        $piece_nums = A('Piece')->get_piece_nums(session('USER_ID'));
-        //获取未读消息
+        $user_info = A('User')->get_user_info($this->user_id);
+        $essay_nums = A('Essay')->get_essay_nums($this->user_id);
+        $diary_nums = A('Diary')->get_diary_nums($this->user_id);
+        $piece_nums = A('Piece')->get_piece_nums($this->user_id);
+        //get unread messages
         $unread_msg_num = A('Message')->get_unread_msg_num();
         $response = array('error'=>0,'user'=>$user_info,'essay_nums'=>$essay_nums,
             'diary_nums'=>$diary_nums,'piece_nums'=>$piece_nums,'unread_msg_num'=>$unread_msg_num);
         $this->ajaxReturn($response,'json');
    }
 }
+

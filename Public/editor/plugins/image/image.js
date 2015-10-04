@@ -180,7 +180,8 @@ KindEditor.plugin('image', function(K) {
 				panel : K('.tab2', div)
 			});
 			tabs.select(tabIndex);
-			$("input.qiniu_token").attr('value',qiniu_token);//更新token，否则html重置后input的value会丢失，就不能继续上传图片了
+			getQiniuToken(get_token_path);
+			//$("input.qiniu_token").attr('value',qiniu_token);//更新token，否则html重置后input的value会丢失，就不能继续上传图片了
 		} else if (showRemote) {
 			K('.tab1', div).show();
 		} else if (showLocal) {

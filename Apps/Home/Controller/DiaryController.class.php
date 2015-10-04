@@ -5,9 +5,9 @@ class DiaryController extends Controller {
 	private $diary_model;
     private $page_size = 10;
 	
-    //构造函数
     function __construct(){
         parent::__construct();
+        if(empty($_SESSION['USER_ID']))exit(C('LOGIN_ALERT'));//check login
         $this->diary_model = D('Diary');
     }
 

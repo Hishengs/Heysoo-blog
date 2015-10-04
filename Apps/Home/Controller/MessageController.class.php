@@ -2,20 +2,22 @@
 namespace Home\Controller;
 use Think\Controller;
 /**
- * 消息处理，推送类
+ * deal message
+ * Author:Hisheng
+ * Last modify date:2015/09/28
  */
 class MessageController extends Controller {
 	private $msg_model;
 	
-    //构造函数
     function __construct(){
         parent::__construct();
+        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
         $this->msg_model = D('Message');
     }
     public function index(){
-    	//
+    	echo "Hello,".C('SITE_LANG.SITE_NAME');
     }
-    //push a message
+    //push a message into database
     public function msg_push($msg_type='system',$msg_type_id=0,$msg_obj_type=null,$msg_obj_id=null,$msg_date,$msg_sender_id,
     	$msg_receiver_id,$msg_content,$msg_link=null){
     	$data = array('msg_type'=>$msg_type,'msg_type_id'=>$msg_type_id,'msg_obj_type'=>$msg_obj_type,
@@ -25,11 +27,11 @@ class MessageController extends Controller {
     	if($this->msg_model->add($data) != false)return true;
     	else return false;
     }
-    //pop message
+    //pop a message 
     public function msg_pop($msg_id){
-    	$response = $this->msg_model->where('msg_id='.$msg_id)->find();
-    	if($response != false)$this->ajaxReturn(array('error'=>0,'data'=>$response),'json');
-    	else $this->ajaxReturn(array('error'=>1,'msg'=>''),'json');
+    	$res = $this->msg_model->where('msg_id='.$msg_id)->find();
+    	if($res != false)$this->ajaxReturn(array('error'=>0,'data'=>$res),'json');
+    	else $this->ajaxReturn(array('error'=>1,'msg'=>C('MSG_GET_FAILED')),'json');
     }
     //get messages list
     public function get_msg_list(){

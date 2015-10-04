@@ -2,54 +2,61 @@
 namespace Home\Controller;
 use Think\Controller;
 use Org\Qiniu;
+/**
+ * Deal with all action request
+ * Author:Hisheng
+ * Last modify date:2015/10/01
+ */
 class ActionController extends Controller {
 	
     private $user_model;
-    //构造函数
+    
     function __construct(){
         parent::__construct();
+        //if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
         $this->user_model = D('User');
         $this->user_config_model = D('UserConfig');
     }
 
     public function index(){
-      //
+      echo "Hello,".C('SITE_LANG.SITE_NAME');
     }
-    //判断是否登录
+    //check if user has logined
     private function isLogined(){
         return $_SESSION['LOGIN_STATUS'];
     }
+    //show login page
     public function login() {
-        C('LAYOUT_ON',FALSE);//关闭模板布局
-        $this->assign('verify_code_on',C('LOGIN_VERIFY_CODE_ON'));//是否开启验证码
+        C('LAYOUT_ON',FALSE);//close layout
+        $this->assign('verify_code_on',C('LOGIN_VERIFY_CODE_ON'));//whether open login verify code 
         $this->display(":login");
     }
-    //处理登录请求
+    //deal login request
     public function do_login(){
         if(IS_POST){
             $userName = I('post.userName');
-            if(empty($userName))$this->error('用户名不能为空');
+            if(empty($userName))$this->error(C('SITE_LANG.USER_NAME_EMPTY_TIP'));
             $passwd = I('post.passwd');
-            if(empty($passwd))$this->error('密码不能为空');
-            if(C('LOGIN_VERIFY_CODE_ON')){//开启验证码验证
+            if(empty($passwd))$this->error(C('SITE_LANG.USER_PASSWD_EMPTY_TIP'));
+            if(C('LOGIN_VERIFY_CODE_ON')){//whether open login verify code
               $verify_code = I('post.verify_code');
-              if(empty($verify_code))$this->error('验证码不能为空！');
-              if(!$this->check_verify_code($verify_code))$this->error('验证码错误！');
+              if(empty($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_EMPTY_TIP'));
+              if(!$this->_check_verify_code($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_ERROR'));
             }
             $cdt['userName'] = $userName;
             $result = $this->user_model->where($cdt)->find();
             if(!empty($result)){
-                //对密码混淆加密
+                //password encryption
                 $salt = $result['salt'];
-                $crypt_times = $result['crypt_times'];//加密次数
-                for($i=0;$i<$crypt_times;$i++){
+                $encrypt_times = $result['encrypt_times'];//encrypt times
+                for($i=0;$i<$encrypt_times;$i++){
                   $passwd = md5($passwd.$salt);
                 }
                 if($result['passwd'] == $passwd){
-                    //记录登录信息
+                    //keep a record of user info
                     date_default_timezone_set("Asia/Hong_Kong");
-                    $user_ip = $this->get_user_ip();
-                    $data = array('ip'=>$user_ip,'city'=>$this->get_user_city($user_ip),'last_login_date'=>date('Y-m-d H:i:s'),'is_login'=>1);
+                    $user_ip = $this->_get_user_ip();
+                    $data = array('ip'=>$user_ip,'city'=>$this->_get_user_city($user_ip),'last_login_date'=>date('Y-m-d H:i:s'),'is_login'=>1);
                     $cdt = array('userName'=>$userName);
                     $this->user_model->where($cdt)->save($data);
                     $_SESSION['USER_NAME'] = $userName;
@@ -57,116 +64,116 @@ class ActionController extends Controller {
                     $_SESSION['USER_ID'] = $result['id'];
                     setcookie("userName",$result['userName'],time()+30*24*3600,"/");
                     C('LAYOUT_ON',TRUE);
-                    $this->success('登录成功！',U('Index/index'));
-                }else $this->error('密码错误！');
-            }else $this->error('用户名不存在！');
+                    //$this->success(C('SITE_LANG.LOGIN_SUCCESS_TIP'),U('Index/index'));
+                    redirect(U('Index/index'));
+                }else $this->error(C('SITE_LANG.USER_PASSWD_ERROR'));
+            }else $this->error(C('SITE_LANG.USER_NAME_NOT_EXIST'));
         }
     }
+    //show register page
     public function register() {
-        C('LAYOUT_ON',FALSE);//关闭模板布局
+        C('LAYOUT_ON',FALSE);//close layout
         $this->assign('register_verify_code_on',C('REGISTER_VERIFY_CODE_ON'))->assign('register_invite_code_on',C('REGISTER_INVITE_CODE_ON'));
         $this->display(":register");
     }
-    //处理注册请求
+    //deal register request
     public function do_register(){
-        if(C('REGISTER_VERIFY_CODE_ON')){//开启验证码验证
+        if(C('REGISTER_VERIFY_CODE_ON')){//check if register verify code open
             $verify_code = I('post.verify_code');
-            if(empty($verify_code))$this->error('验证码不能为空！');
-            if(!$this->check_verify_code($verify_code))$this->error('验证码错误！');
+            if(empty($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_EMPTY_TIP'));
+            if(!$this->_check_verify_code($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_ERROR'));
         }
         $userName = I('post.userName');
-        $str_length = $this->str_length($userName);
-        if($str_length['total'] >15 || $str_length['ch']>0)$this->error('请检查你的用户名格式，只能使用中文，英文和数字的组合且不能超过15个字符！');
+        $str_length = $this->str_length($userName);//count username length
+        if($str_length['total_strs'] >15)$this->error(C('SITE_LANG.USER_NAME_FORMAT_ERROR'));
         $passwd = I('post.passwd');
         $email = I('post.email');
         if(!empty($userName) && !empty($passwd) && !empty($email)){
-          //判断用户是否存在
+          //check if username is existed
           $cdt['userName'] = $userName;
-          if($this->user_model->where($cdt)->find() != false)$this->error('用户已存在，请直接登录！');
+          if($this->user_model->where($cdt)->find() != false)$this->error(C('SITE_LANG.USER_NAME_EXISTED'));
           else{
-            //判断邮箱格式
-            if(!$this->check_email($email))$this->error('邮箱格式不正确！');
-            //判断密码格式，位数等
-            if(strlen($passwd) < 6)$this->error('请设置至少6位的密码！');
-            //判断邮箱存在否
+            //check email format
+            if(!$this->check_email($email))$this->error(C('SITE_LANG.EMAIL_FORMAT_ERROR'));
+            //check password format and length
+            if(strlen($passwd) < 6)$this->error(C('SITE_LANG.USER_PASSWD_LENGTH_ERROR'));
+            //check if email is existed
             $cdt = array('email'=>$email);
-            if($this->user_model->where($cdt)->find() != false)$this->error('该邮箱已注册过，请直接登录！');
-            //对密码混淆加密
+            if($this->user_model->where($cdt)->find() != false)$this->error(C('SITE_LANG.EMAIL_EXISTED'));
+            //password encryption
             $salt = $this->get_random_str(6);
-            $crypt_times = rand(1,10);//加密次数
-            for($i=0;$i<$crypt_times;$i++){
+            $encrypt_times = rand(1,10);//encrypy times
+            for($i=0;$i<$encrypt_times;$i++){
               $passwd = md5($passwd.$salt);
             }
             $register_date = date('Y-m-d H:i:s');
-            $data = array('userName'=>$userName,'passwd'=>$passwd,'email'=>$email,'salt'=>$salt,'crypt_times'=>$crypt_times,'register_date'=>$register_date);
+            $data = array('userName'=>$userName,'passwd'=>$passwd,'email'=>$email,'salt'=>$salt,'encrypt_times'=>$encrypt_times,'register_date'=>$register_date);
             $res = $this->user_model->data($data)->add();
             if($res !== false){
-              //同时创建配置
+              //create user configuration at the same time
               $user_config_data = array('user_id'=>$res);
               $this->user_config_model->add($user_config_data);
-              $this->success('注册成功！',U('Action/login'));
+              $this->success(C('SITE_LANG.REGISTER_SUCCESS'),U('Action/login'));
             }
-            else $this->error('注册失败，请稍后重试！');
+            else $this->error(C('SITE_LANG.REGISTER_FAILED'));
           }
-        }else $this->error('请填写完整的注册信息！');
+        }else $this->error(C('SITE_LANG.REGISTER_FORM_NOT_COMPLETE'));
 
     }
-    //获取指定位数随机字符串
-    function get_random_str($bit){
+    //get random str of $bit bits
+    public function get_random_str($bit){
         $str="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $key = "";
         for($i=0;$i<$bit;$i++)
-         {
-             $key .= $str{mt_rand(0,32)};    
-         }
-         return $key;
+          $key .= $str{mt_rand(0,32)};    
+        return $key;
     }
-    //注销
-    function logout(){
-      $user_id = $_SESSION['USER_ID'];
+    //deal logout
+    public function logout(){
         unset($_SESSION['USER_NAME']);
         unset($_SESSION['USER_ID']);
         $_SESSION['LOGIN_STATUS'] = false;
-       /* $data['is_login'] = 0;
-        $this->user_model->where('id='.$user_id)->save($data);*/
-        $this->success('注销成功！',U("Action/login"),2);
+        //$this->success(C('SITE_LANG.LOGOUT_SUCCESS'),U("Action/login"),2);
+        redirect(U("Action/login"));
     }
-    //生成验证码
+    //create verify code
     public function create_verify_code(){
         $cdt = array('length'=>4,'fontSize'=>16,'imageH'=>40,'imageW'=>240,'useZh'=>true,'fontttf'=>'lthj.ttf');
         $verify = new \Think\Verify($cdt);
         $verify->entry();
     }
-    //验证验证码
-    public function check_verify_code($code){
+    //check verify code
+    private function _check_verify_code($code){
         $verify = new \Think\Verify();
         return $verify->check($code);
     }
-    //验证邮箱格式
+    //check email format
     public function check_email($email){
       $patten="/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
       if(preg_match($patten,$email))return true;
       else return false;
     }
-    //验证用户名格式
+    //check username format
     public function check_username(){
       //
     }
-    //计算中文，英文字符个数
+    //count str length,include english,chinese,number,punctuation str length,etc
     public function str_length($str){
+      $str = strip_tags(preg_replace("@\s@is",'',$str));//remove spacing,newline and html tags
+      $str = str_replace('&nbsp;', '', $str);//remove 'spacing' of html
       preg_match_all("/[0-9]{1}/",$str,$num);  
       preg_match_all("/[a-zA-Z]{1}/",$str,$en);  
       $length = strlen(preg_replace('/[\x00-\x7F]/', '', $str));
-      $zh = intval($length / 3);
-      $en = count($en[0]);
-      $num = count($num[0]);
-      $total = strlen($str);
-      $ch = $total - ($zh*3 + $en + $num);
-      $total = $zh + $en + $num + $ch;
-      return array('total'=>$total,'zh'=>$zh,'en'=>$en,'num'=>$num,'ch'=>$ch);
+      $cn = intval($length / 3);//length of Chinese str
+      $en = count($en[0]);//length of English str
+      $num = count($num[0]);//length of number
+      $total_bytes = strlen($str);//total bytes
+      $en_punctuation = $total_bytes - ($cn*3 + $en + $num);//the other un-Chinese punctuation str
+      $total_strs = $cn + $en + $num + $en_punctuation;//total str
+      return array('total_bytes'=>$total_bytes,'total_strs'=>$total_strs,'cn'=>$cn,'en'=>$en,'num'=>$num,'en_punctuation'=>$en_punctuation);
     }
-    /*获取客户端IP*/
-    public function get_user_ip(){
+    /*get client ip*/
+    private function _get_user_ip(){
       global $ip;
       if (getenv("HTTP_CLIENT_IP"))
       $ip = getenv("HTTP_CLIENT_IP");
@@ -177,10 +184,10 @@ class ActionController extends Controller {
       else $ip = "0.0.0.0";
       return $ip;
     }
-    /*根据IP判断所在城市*/
-    public function get_user_city($ip = ''){
-        if(empty($ip)){
-            $ip = $this->get_user_ip();
+    /*get user city by ip*/
+    private function _get_user_city($ip = ''){
+        /*if(empty($ip)){
+            $ip = $this->_get_user_ip();
         }
         $res = @file_get_contents('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' . $ip);
         if(empty($res)){ return false; }
@@ -194,49 +201,38 @@ class ActionController extends Controller {
         }else{
             return false;
         }
-        return $json['city'];
+        return $json['city'];*/
+        $ip_info =  $this->_get_location_info();
+        return $ip_info['content']['address'];
     }
-    //获取编辑页面
-    public function get_edit_page(){
-      C('LAYOUT_ON',FALSE);//关闭模板布局
-      $type = I("get.type");
-      $page = NULL;
-      switch ($type) {
-        case 'essay':
-          $page = A('Essay')->get_edit_page();
-          break;
-        
-        default:
-          $page = A('Essay')->get_edit_page();
-          break;
-      }
-      $this->ajaxReturn($page,'json');
-    }
-    //获取七牛token
+    //get Qiniu token
     public function get_qiniu_token(){
+      if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
       if(isset($_SESSION['USER_ID'])){
-        $callbackUrl = C('SITE_PREFIX').U("Action/qiniu_callback");//回调地址
-        $param = array('scope'=>C('QINIU_BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl);
+        $upload_type = I('get.upload_type');
+        $upload_type = $upload_type?$upload_type:'essay';
+        $saveKey = $upload_type.'_'.$_SESSION['USER_ID'].'_'.md5(date("Y-m-d H:i:s").C('SITE_PREFIX'));
+        $callbackUrl = C('SITE_PREFIX').U("Action/qiniu_callback");//callback url
+        $param = array('scope'=>C('QINIU_BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl,'saveKey'=>$saveKey);
         $auth = new \Think\Upload\Driver\Qiniu\QiniuStorage();
         $token = $auth->getToken(C('QINIU_SK'),C('QINIU_AK'),$param);
         $response = array('status'=>'success','token'=>$token);
         $this->ajaxReturn($response,'json');
-       }else $this->error('请先登录后再操作！',U('Action/login'));
+       }else $this->error(C('SITE_LANG.LOGIN_ALERT'),U('Action/login'));
     }
-    //七牛回调
+    //deal callback of Qiniu
     public function qiniu_callback(){
+      if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
       $upload_ret = base64_decode($_GET['upload_ret']);
-      $upload_ret = json_decode($upload_ret,true); //将json数据转换为数组
-
+      $upload_ret = json_decode($upload_ret,true); //tranform json to array
       if(!empty($upload_ret['key']))
-        //echo json_encode(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']));
         $this->ajaxReturn(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']),'json');
       else
-        //echo json_encode(array('error'=>1,'message'=>'图片上传出错！'));
-        $this->ajaxReturn(array('error'=>1,'message'=>'图片上传出错！'),'json');
+        $this->ajaxReturn(array('error'=>1,'message'=>C('SITE_LANG.IMAGE_UPLOAD_ERROR')),'json');
     }
-    //处理文章，碎片，日记等的发布
+    //deal piece,essay,diary post request
     public function ng_deal_post(){
+        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
         $visible = I('post.visible');
         $title = I('post.title');
         $tag = I('post.tag');
@@ -253,29 +249,31 @@ class ActionController extends Controller {
                 A('Diary')->ng_diary_post($title,$tag,$content,$visible);
                 break;
             default:
-                $this->error('请求失败！');
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
         }
     }
+    //deal piece,essay,diary modify request
     public function ng_modify(){
         $id = I('get.id');
         $type = I('get.type');
         switch ($type) {
             case 'piece':
-                A('Piece')->get_piece($id);
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
             case 'essay':
                 A('Essay')->get_essay($id);
                 break;
             case 'diary':
-                $this->ajaxReturn(array('error'=>1,'msg'=>'请求失败！'),'json');
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
             default:
-                $this->ajaxReturn(array('error'=>1,'msg'=>'请求失败！'),'json');
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
         }
     }
     public function ng_deal_modify(){
+        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
         $id = I('post.id');
         $visible = I('post.visible');
         $title = I('post.title');
@@ -284,62 +282,62 @@ class ActionController extends Controller {
         $type = I('post.type');
         switch ($type) {
             case 'piece':
-                A('Piece')->do_modify($id,$tag,$content,$visible);
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
             case 'essay':
                 A('Essay')->do_modify($id,$title,$tag,$content,$visible);
                 break;
             case 'diary':
-                A('Diary')->do_modify($id,$title,$tag,$content,$visible);
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
             default:
-                $this->error('请求失败！');
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
         }
     }
-    //处理标签
-    public function tag(){
-      $tag = I('get.tag');
-      $response = $this->fetch(":tag");
-      $this->ajaxReturn($response,'json');
-    }
-    //删除操作
+    //deal piece,essay,diary delete
     public function ng_delete(){
-      $type = I('get.type');
-      $id = I('get.id');
-      switch ($type) {
-        case 'essay':
-          A('Essay')->ng_delete($id);
-          break;
-        
-        case 'diary':
-          A('Diary')->delete($id);
-          break;
-
-        case 'piece':
-          A('Piece')->ng_delete($id);
-          break;
-
-        default:
-          $this->error('请求失败！');
-          break;
-      }
+        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
+        $type = I('get.type');
+        $id = I('get.id');
+        switch ($type) {
+          case 'essay':
+            A('Essay')->ng_delete($id);
+            break;
+          case 'diary':
+            $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
+            break;
+          case 'piece':
+            A('Piece')->ng_delete($id);
+            break;
+          default:
+            $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
+            break;
+        }
     }
+    //deal page pagination
     public function ng_paginator(){
+      if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
       $type = I('get.type');
       $page = I('get.page');
       switch ($type) {
         case 'piece':
           A('Piece')->ng_get_piece_page($page);
           break;
-        
         case 'essay':
           A('Essay')->ng_get_essay_page($page);
           break;
-
         default:
-          //
+          $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
           break;
       }
+    }
+    private function _get_location_info(){
+      $ak = C('BAIDU_MAP_API_AK');
+      $ip = $this->_get_user_ip();
+      $url = "http://api.map.baidu.com/location/ip?ak=".$ak."&ip=".$ip;
+      $res = @file_get_contents($url);
+      $res = json_decode($res,true);
+      return $res;
     }
 }

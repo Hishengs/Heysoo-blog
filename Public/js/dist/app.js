@@ -25,7 +25,7 @@ var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
 
 m_index.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
     //deal unsafe:javascript:...
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
@@ -91,6 +91,8 @@ m_index.config(['$stateProvider',function($stateProvider){
         }
     }).state('view',{
         url:'/view/:id',
+        params:{id:null},
+        controller:'c_view',
         views:{
             'content':{templateUrl:tpl_essay_url+"/view.html"}
         }
@@ -217,8 +219,7 @@ m_index.config(['$stateProvider',function($stateProvider){
 }]);
 
 /*controller of angular*/
-m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCookie){
-  //$state.go('root');
+m_index.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie){
     $rootScope.avatar = public_path+"/img/me.jpg";
     
     //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
@@ -226,11 +227,12 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     $rootScope.mask_show = false;
     //获取用户配置
     $http.get(home_path+"/User/ng_get_user_config.html").success(function(res){
-      if(res.error === 0)
-      $rootScope.user_config = res.user_config;
-      $rootScope.interface_color = res.user_config.interface_color?res.user_config.interface_color:ipCookie('interface_color');//主题颜色
-      $rootScope.mainBg = res.user_config.main_bg;//主页背景
-      $rootScope.sideBarBg = res.user_config.sidebar_bg; //边栏背景
+      if(res.error === 0){
+        $rootScope.user_config = res.user_config;
+        $rootScope.interface_color = res.user_config.interface_color?res.user_config.interface_color:ipCookie('interface_color');//主题颜色
+        $rootScope.mainBg = res.user_config.main_bg;//主页背景
+        $rootScope.sideBarBg = res.user_config.sidebar_bg; //边栏背景
+      }else hMessage(res.msg);
     });
     $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
@@ -241,11 +243,8 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
       $('button.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
-      //$scope.indexLoadMoreBtn = '<i class="hs-icon-spinner"></i> 加载中...';
-      url = home_path+"/Index/ng_index.html?index_page="+$scope.index_page;
-      $http.get(url).success(function(res){
+      $http.get(home_path+"/Index/ng_index.html?index_page="+$scope.index_page).success(function(res){
         $('button.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
-        //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
         if(res.length < 1){hMessage('沒有更多了！');return;}
         for (var i = 0; i < res.length; i++) {
             $scope.index_items.push(res[i]);
@@ -283,20 +282,21 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
     }
     //文章详情页
     $scope.getViewPage = function(id){
-      url = home_path+"/Essay/ng_view.html?id="+id;
+      $state.go('view',{id:id});
+      /*url = home_path+"/Essay/ng_view.html?id="+id;
       progress_bar.start();
       $http.get(url).success(function(res){
             $scope.essay = res.essay;
             $scope.comments = res.comments;
-            if(res.comments.length < 1)$scope.essay_comments_tip_show = true;
-            else $scope.essay_comments_tip_show = false;
+            if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
+            else $rootScope.essay_comments_tip_show = false;
             $scope.essay_comment_on = res.essay_comment_on;
             $scope.avatar_path = public_path+"/img/me.jpg";
             $state.go('view',{id:id});
             $(document).scrollTop(0);
             setLightBox();
             progress_bar.done();
-      });
+      });*/
     }
     //删除
     $scope.deleteItem = function(type,id){
@@ -372,6 +372,21 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$http,Piece,ipCoo
       window.open(url);
     }
 });
+m_index.controller('c_view',function($scope,$rootScope,$http,$stateParams){
+  url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
+      progress_bar.start();
+      $http.get(url).success(function(res){
+            $scope.essay = res.essay;
+            $scope.comments = res.comments;
+            if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
+            else $rootScope.essay_comments_tip_show = false;
+            $scope.essay_comment_on = res.essay_comment_on;
+            $scope.avatar_path = public_path+"/img/me.jpg";
+            $(document).scrollTop(0);
+            setLightBox();
+            progress_bar.done();
+      });
+});
 //边栏管理
 m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
   //ng_init_side_panel
@@ -410,7 +425,6 @@ m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
       else timer += 1000;//若有新消息，则延缓读取
       timer = timer<30000?60000:timer;//如果timer小于一半，则重置timer
       $rootScope.unread_msg_num = res.unread_msg_num;
-      console.log("timer:"+timer);
     });
   },timer);
 });
@@ -432,11 +446,13 @@ m_index.controller('c_edit',function($scope,$state,$http){
           'content':$scope.edit_content
         }
       }).success(function(res){
-        console.log(res);
         if(res.error === 0){
           hMessage(res.msg);
           edit_post.html('');
-          $state.go($scope.edit_type);
+          if($scope.edit_type == 'essay')
+            $state.go('view',{id:res.id});
+          else
+            {$state.go('home');}
         }else{hMessage(res.msg);}
       });
     }
@@ -531,7 +547,6 @@ m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
   var url = home_path+"/Action/ng_modify.html";
   $http.get(url,{params:{'type':$rootScope.type,'id':$rootScope.id}}).success(function(res){
       if(res.error === 0){
-        console.log(res);
         modify_editor.html(res.items.content);
         $scope.essay_title = res.items.title;
         $scope.essay_tag = res.items.tag;
@@ -558,7 +573,7 @@ m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
     });
   }
 })
-m_index.controller('c_essay_cmt',function($scope,$state,$http){
+m_index.controller('c_essay_cmt',function($scope,$rootScope,$state,$http){
   //文章评论
   $scope.postEssayCmt = function(essay_id){
     $("button.post-essay-comment-btn").html('<i class="hs-icon-spinner"></i> 发布中...');
@@ -583,6 +598,7 @@ m_index.controller('c_essay_cmt',function($scope,$state,$http){
             '评论于 <time datetime="">'+res.comment.date+'</time></div></header>'+
             '<div class="hs-comment-bd">'+res.comment.content+'</div></div></article></li>';
             $("div.comment-tip").remove();
+            $rootScope.essay_comments_tip_show = false;
             $("div.essay-comments").children("ul").prepend(html);
           }else{
             hMessage(res.msg);
@@ -696,7 +712,7 @@ m_index.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
 m_index.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
   $scope.interface_color = 'primary';
   $scope.interface_mainBg = "bg_day";
-  $scope.interface_sideBarBg = "bg_sidebar_qiuqian";
+  $scope.interface_sideBarBg = "bg_sidebar_lake";
   $scope.modifyTheme = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
     hMessage('主题定制中，请耐心等候...');
@@ -743,7 +759,6 @@ m_index.controller('c_reset_passwd',function($scope,$http){
   $scope.resetPasswd = function(){
     if($scope.old_passwd === '' || $scope.new_passwd === ''){hMessage('密码不能为空！');return;}
     else if($scope.old_passwd === $scope.new_passwd){hMessage('新旧密码不能一样！');return;}
-    console.log('old password:'+$scope.old_passwd+',new password:'+$scope.new_passwd);
     var url = home_path+"/User/reset_passwd.html";
     $http({
           method:'POST',
@@ -766,21 +781,25 @@ m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval)
   $scope.new_avatar = null;
   $scope.uploadAvatarBtn = "上传";
   //获取并设置七牛token
-  $http.get(get_token_path+"?type=img").success(function(res){
+  $http.get(get_token_path+"?upload_type=avatar").success(function(res){
     $scope.upload_avatar_token = res.token;
   });
   
   $scope.uploadAvatar = function(){
+    //获取并设置七牛token
+    $http.get(get_token_path+"?upload_type=avatar").success(function(res){
+      $scope.upload_avatar_token = res.token;
+    });
     var uploadable = true;
     var checkTime=200;
     //先检查文件，判空，类型和大小
     var imgFile = document.getElementById("new_avatar").files[0];
     if(imgFile == null){hMessage('请先选择图片！');uploadable = false;}else{
-        console.log(imgFile);
         if(imgFile.type != "image/jpeg" && imgFile.type != "image/jpg" && imgFile.type != "image/png" && uploadable){hMessage('请选择正确的图片格式：jpeg,jpg,png！'); uploadable = false;}
         var imgSize = imgFile.size / (1024*1024);
         if(imgSize > 2 && uploadable){hMessage('上传图片请限制在2M以内！'); uploadable = false;}
     }
+
    //执行上传操作
       if(uploadable){
         $(".upload-avatar-form").submit();
@@ -792,9 +811,11 @@ m_index.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval)
             if(callback.error == 0){
               $rootScope.avatar = callback.url;
               $scope.uploadAvatarBtn = "上传成功！";
+              hMessage('上传成功！');
               //同步数据库
               var url = home_path+"/User/updateAvatar.html?new_avatar="+$rootScope.avatar;
               $http.get(url).success(function(res){
+                $scope.uploadAvatarBtn = "上传";
                 if(res.error == 0){
                         console.log('同步成功！');
                   }else console.log('同步失败！');
@@ -825,7 +846,6 @@ m_index.controller('c_setting_push',function($scope,$rootScope,$http){
           'notice_on':$rootScope.user_config.push_notice?1:0
         }
       }).success(function(res){
-        console.log(res);
         if(res.error === 0){
           hMessage(res.msg);
         }else{hMessage(res.msg);}
@@ -849,7 +869,6 @@ m_index.controller('c_setting_privacy',function($scope,$rootScope,$http){
           'piece_comment':$rootScope.user_config.privacy_piece_comment?1:0
         }
       }).success(function(res){
-        console.log(res);
         if(res.error === 0){
           hMessage(res.msg);
         }else{hMessage(res.msg);}
@@ -868,12 +887,10 @@ m_index.controller('c_message_comment',function($scope,$rootScope,$http){
   }
   $scope.showMsgDetail = function(msg_obj_type,msg_obj_id){
     $scope.current_cmt = null;
-    console.log(msg_obj_type+","+msg_obj_id);
     //获取评论详情
     if(msg_obj_type == 'essay')var url = home_path+"/Comment/ng_get_essay_comment.html?cmt_id="+msg_obj_id;
     else if(msg_obj_type == 'piece')var url = home_path+"/Comment/ng_get_piece_comment.html?cmt_id="+msg_obj_id;
     $http.get(url).success(function(res){
-      console.log(res);
       if(res.error === 0){$scope.current_cmt = res.comment;$("#msgDetailModal_"+msg_obj_type).modal('toggle');}
       else hMessage(res.msg);
     });

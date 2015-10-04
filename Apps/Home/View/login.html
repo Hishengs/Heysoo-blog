@@ -6,12 +6,12 @@
 <title>登录</title>
 <link rel="stylesheet" href="__PUBLIC__/bower/amazeui/dist/css/amazeui.css"/>
 <link rel="stylesheet" href="__PUBLIC__/css/font-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="__PUBLIC__/css/login.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/login_register.css"/>
 <script src="__PUBLIC__/bower/jquery/dist/jquery.min.js"></script>
 </head>
 <style>
 body,div.login-panel{ background-image:url("__PUBLIC__/img/bg_night2.png"); }
-button.login,button.register,span.hs-input-group-label{background-image: url("__PUBLIC__/img/bg_night2.png");} 
+button.login,button.login_register,span.hs-input-group-label{background-image: url("__PUBLIC__/img/bg_night2.png");} 
 span.hs-input-group-label{ background:transparent;}
 </style>
 <script>
@@ -66,7 +66,7 @@ span.hs-input-group-label{ background:transparent;}
 <button type="submit" class="hs-btn hs-btn-primary hs-btn-block login">登   录</button>
 </form>
 <div class="operation">
-<button type="button" class="hs-btn hs-btn-primary hs-btn-block register" onclick="window.location.href='{:U('Action/register')}'">注  册</button>
+<button type="button" class="hs-btn hs-btn-primary hs-btn-block login_register" onclick="window.location.href='{:U('Action/register')}'">注  册</button>
 <!--<button type="button" class="btn btn-primary btn-block passwd-forgot">忘记密码</button>
 <input type="checkbox" class="passwd-remember" name="passwd-remember"> 记住密码-->
 </div>

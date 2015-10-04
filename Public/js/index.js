@@ -1,4 +1,5 @@
 var progress_bar = $.AMUI.progress;//进度条
+var site_prefix = "http://localhost";
 //发布
 var editOpts = {
     width:'100%',
@@ -8,7 +9,7 @@ var editOpts = {
     items:[ '|','forecolor', 'hilitecolor', 'fontname' ,'bold', 
 	'italic', 'underline', '|', 'justifyleft', 'justifycenter', 'justifyright',
 	'justifyfull', '|', 'subscript',
-	'superscript', 'removeformat', '|', 'image', 'multiimage',
+	'superscript', 'removeformat', '|', 'image', 
 	'emoticons','|', 'link', 'unlink', 'fullscreen',
 	'preview', '|'
 	],
@@ -198,4 +199,10 @@ function updatePieceCmt(piece_id){
 		}
 	});
 }
-
+//go to view page
+function view(typeId,id){
+	//window.location.href = site_prefix+"/heysoo/#/view/"+id;
+	var current_url = window.location.href.split('#')[0];
+	//console.log(current_url);
+	window.location.href = current_url+"#/view/"+id;
+}

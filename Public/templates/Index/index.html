@@ -1,7 +1,7 @@
 <div class="pieces" ng-controller="c_piece">
 <div class="piece" id="{{ piece.piece_id }}" ng-repeat="piece in index_items">
 <div class="piece-left">
-<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" ng-src="{{avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
+<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
 </div>
 <div class="piece-right">
 <div class="bg"></div><div class="piece-triangle"></div>

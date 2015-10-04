@@ -24,5 +24,9 @@ return array(
 		'URL_MODEL' => 2,
 		'ESSAY_COMMENT_ON' => true,
 		'PIECE_COMMENT_ON' => true,
-		'QINIU_RES_URL' => 'https://dn-lanbaidiao.qbox.me/'
+		'QINIU_RES_URL' => 'https://dn-lanbaidiao.qbox.me/',
+		'PIECE_LOAD_NUM_PER_PAGE' => 10,
+		'ESSAY_LOAD_NUM_PER_PAGE' => 10,
+		'LOAD_EXT_CONFIG' => 'lang',
+		'BAIDU_MAP_API_AK' => 'Zam5C9aBBGepyAEvTLN566X4'
 		);

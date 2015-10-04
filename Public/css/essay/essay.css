@@ -20,7 +20,7 @@ div.input-group{margin: 10px auto;}
 div.input-group input,div.input-group select{ border-radius: 0;}
 span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #dff0d8; color: #000; */}
 /*css for essay comment*/
-div.essay-comments{width: 750px; background: #fff;margin: 20px auto; padding: 20px;}
+div.essay-comments{width: 800px; background: #fff;margin: 20px auto; padding: 20px;}
 article.essay-comment{ width: 100%; margin: 15px auto;}
 
 /*css for essay view*/

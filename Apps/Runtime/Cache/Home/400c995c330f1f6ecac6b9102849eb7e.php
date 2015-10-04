@@ -6,7 +6,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="icon" type="image/png" href="/heysoo/Public/img/favicon.ico">
-<title><?php echo ((isset($user['username'] ) && ($user['username'] !== ""))?($user['username'] ):"我的主页"); ?></title>
+<title><?php echo ((isset($userName ) && ($userName !== ""))?($userName ):"我的主页"); ?></title>
 <link rel="stylesheet" href="/heysoo/Public/bower/fontawesome/css/font-awesome.min.css"/>
 <link rel="stylesheet" href="/heysoo/Public/css/dist/plugins.css"/>
 <link rel="stylesheet" href="/heysoo/Public/css/dist/index.css"/>
@@ -30,7 +30,7 @@
 
 <div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
 <div class="user-avatar">
-<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80" title="点击修改头像" >
+<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80">
 </div>
 <div class="userName">{{user_info.username}}</div>
 <div class="user-signature">{{user_info.signature}}</div>
@@ -48,8 +48,9 @@
 <!-- <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Diary/get_diary_page');?>","content",3)><i class="hs-icon-calendar"></i> 我的日记({{diary_nums}})</button> -->
 
 </div>
+
 <div class="hs-btn-group hs-btn-group-justify setting">
-<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="hs-icon-off"></i> 退出</button>
+<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="hs-icon-power-off"></i> 退出</button>
 <button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
 <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
 <button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>

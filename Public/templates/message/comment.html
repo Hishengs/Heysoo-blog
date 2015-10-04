@@ -11,7 +11,7 @@
 <div class="hs-modal hs-modal-no-btn" tabindex="-1" id="msgDetailModal_essay">
 	<div class="hs-modal-dialog">
 		<div class="hs-modal-hd">文章评论<a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a></div><hr/>
-		<div><a href="javascript:;" class="plain-link">{{current_cmt.username}}</a> {{current_cmt.comment_date}} 发布于 <a href="javascript:;" class="plain-link">《{{current_cmt.title}}》</a></div><hr/>
+		<div><a href="javascript:;" class="plain-link">{{current_cmt.username}}</a> {{current_cmt.comment_date}} 发布于 <a href="javascript:view(1,{{current_cmt.essay_id}});" class="plain-link">《{{current_cmt.title}}》</a></div><hr/>
 		<div class="hs-modal-bd" ng-bind-html="current_cmt.comment_content | trustHtml"></div>
 	</div>
 </div>

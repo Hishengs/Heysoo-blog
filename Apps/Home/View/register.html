@@ -6,10 +6,12 @@
 <!-- <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.min.css"/> -->
 <link rel="stylesheet" href="__PUBLIC__/bower/amazeui/dist/css/amazeui.css"/>
 <link rel="stylesheet" href="__PUBLIC__/css/font-awesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="__PUBLIC__/css/register.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/login_register.css"/>
 </head>
 <style>
-body{ background-image:url("__PUBLIC__/img/login_bg.jpg"); }
+body,div.register-panel{ background-image:url("__PUBLIC__/img/bg_night2.png"); }
+button.register,button.register_login,span.hs-input-group-label{background-image: url("__PUBLIC__/img/bg_night2.png");} 
+span.hs-input-group-label{ background:transparent;}
 </style>
 <body>
 
@@ -60,7 +62,7 @@ body{ background-image:url("__PUBLIC__/img/login_bg.jpg"); }
 </if>
 
 <button type="submit" class="hs-btn hs-btn-primary hs-btn-block register">注  册</button>
-<button type="button" class="hs-btn hs-btn-primary hs-btn-block login" onclick="window.location.href='{:U('Action/login')}'">登  录</button>
+<button type="button" class="hs-btn hs-btn-primary hs-btn-block register_login" onclick="window.location.href='{:U('Action/login')}'">登  录</button>
 </form>
 </div>
 </div>
