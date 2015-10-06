@@ -10,12 +10,14 @@ use Think\Controller;
  */
 class PieceController extends Controller {
 	private $piece_model;
+    private $piece_comment_model;
     private $page_size;
     private $user_id;
 	
     function __construct(){
         parent::__construct();
         $this->piece_model = D('Piece');
+        $this->piece_comment_model = D('PieceComment');
         $this->page_size = C('PIECE_LOAD_NUM_PER_PAGE');
         $this->user_id = $_SESSION['USER_ID'];
     }
@@ -61,20 +63,24 @@ class PieceController extends Controller {
     //delete piece
     public function ng_delete($piece_id){
         if($this->piece_model->where("piece_id=".$piece_id)->limit(1)->delete() != false)
+        {
+            $this->piece_comment_model->where('piece_id='.$piece_id)->delete();
             $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.DELETE_SUCCESS')),'json');
+        }
         else
             $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
     }
     //post piece comment
     public function post_comment(){
-        if(C('PIECE_COMMENT_ON')){
-            $piece_id = I('post.piece_id');
+        $piece_id = I('post.piece_id');
+        $user_id = $this->get_piece_info_by_id($piece_id)['user_id'];
+        $user_config = A('User')->get_user_config($user_id);
+        if(C('PIECE_COMMENT_ON') && $user_config['privacy_piece_comment'] == 1){
             $comment_content = I('post.comment_content','','');
             $msg_receiver_id = I('post.obj_id');
             $comment_date = date("Y-m-d H:i:s");
             $data = array('user_id'=>$this->user_id,'piece_id'=>$piece_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
-            $comment_model = D("PieceComment");
-            $res = $comment_model->add($data);
+            $res = $this->piece_comment_model->add($data);
             if($res != false){
                 //生成消息
                 //$userName = A('User')->get_name_by_id($this->user_id);
@@ -89,9 +95,8 @@ class PieceController extends Controller {
     //get piece comment
     public function get_piece_comment(){
         $piece_id = I('get.piece_id');
-        $comment_model = D("PieceComment");
         $cdt['piece_id'] = $piece_id;
-        $comments = $comment_model->field('hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
+        $comments = $this->piece_comment_model->field('hs_user.userName,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
         ->join('hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id='.$piece_id)->order('hs_piece_comment.comment_date desc')->select();
         if($comments != false){
             $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
@@ -120,5 +125,9 @@ class PieceController extends Controller {
         join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.piece_id='.$id)->find(); 
         $this->ajaxReturn(array('error'=>0,'items'=>$piece),'json');
     }
-    
+    //get piece info by id
+    public function get_piece_info_by_id($piece_id){
+        $piece = $this->piece_model->where('piece_id='.$piece_id)->limit(1)->find();
+        return $piece;
+    }
 }

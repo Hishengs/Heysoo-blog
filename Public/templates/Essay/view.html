@@ -1,5 +1,5 @@
 <div class="view" ng-controller="c_view">
-<div class="view-wrapper">
+<div class="view-wrapper" ng-hide="essay_view_tip_show">
 <div class="view-panel">
 	<h3 class="view-title">{{essay.title}}</h3>
 	<div class="view-info">
@@ -21,15 +21,30 @@
 <!-- 发布评论 -->
 <div class="post-comment" ng-controller="c_essay_cmt" ng-show="essay_comment_on">
 <form class="hs-form essay-comment-form" id="essay-comment-form">
-<textarea class="post-comment-edit" name="comment-content" class="post-comment-edit"></textarea>
+<textarea class="post-comment-edit" name="comment-content"></textarea>
 <button type="button" ng-click="postEssayCmt(essay.essay_id)" class="hs-btn hs-btn-{{interface_color}} post-essay-comment-btn">发布评论</button>
 </form>
+<!--回复评论-->
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="essay-comment-reply-modal">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">回复评论
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <div class="hs-modal-bd">
+      <form class="hs-form" id="essay-reply-comment-form">
+        <textarea class="reply-comment-edit" name="reply-comment-content"></textarea>
+		<button type="button" ng-click="replyEssayCmt(essay.essay_id)" class="hs-btn hs-btn-block hs-btn-{{interface_color}} reply-essay-comment-btn">回复</button>
+    </form>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <div class="essay-comment-on-tip hs-alert hs-alert-danger" ng-hide="essay_comment_on" data-hs-alert><i class="hs-icon-warning"></i> 评论功能已关闭</div>
 
 <!-- 评论区 -->
-<div class="essay-comments" ng-hide="essay_comments_tip_show">
+<div class="essay-comments" id="essay-comment-lists" name="essay-comment-lists" ng-hide="essay_comments_tip_show">
 <ul class="hs-comments-list hs-comments-list-flip">
 
 <li class="hs-comment" ng-repeat="comment in comments">
@@ -44,6 +59,9 @@
       <div class="hs-comment-meta"> <!-- 评论元数据 -->
         <a href="javascript:;" class="hs-comment-author">{{comment.username}}</a> <!-- 评论者 -->
         评论于 <time datetime="">{{comment.comment_date}}</time>
+        <span class="essay-comment-right" style="float:right;">
+        <a href="javascript:;" ng-click="showEssayReplyCmtModal(comment.user_id,comment.comment_id)">回复</a>
+        </span>
       </div>
     </header>
 
@@ -60,7 +78,10 @@
 
 </div>
 
+<div class="essay-visible-tip hs-alert hs-alert-danger" style="text-align:center;" ng-show="essay_view_tip_show" ng-bind-html="essay_view_tip | trustHtml" data-hs-alert> </div>
+
 </div>
 <script type="text/javascript">
     window.essay_editor = KindEditor.create('.post-comment-edit',essayCmtOptions);
+    window.essay_reply_editor = KindEditor.create('.reply-comment-edit',essayReplyCmtOptions);
 </script>

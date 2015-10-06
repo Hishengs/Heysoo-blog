@@ -84,3 +84,20 @@ hr{margin:8px 0;}
 .text-center{text-align: center;}
 .text-left{text-align: left;}
 .text-right{text-align: right;}
+
+.hs-btn-transparent {
+  background: transparent;color: #888;border:1px solid #bbb;
+}
+a.hs-btn-transparent:visited {
+  color: #999;
+  opacity: 1.0;
+}
+.hs-btn-transparent:hover,
+.hs-btn-transparent:focus,
+.hs-btn-transparent:active
+{
+  opacity: 0.8;
+  color: #999;
+}
+.hs-panel-transparent .hs-panel-hd{color: #888;}
+

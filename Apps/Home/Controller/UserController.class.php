@@ -40,9 +40,9 @@ class UserController extends Controller {
     //get user info
     public function get_user_info($user_id,$cdt=null){
         $cdt['id'] = $user_id;
-        return $this->user_model->where($cdt)->find();
+        return $this->user_model->where($cdt)->limit(1)->find();
     }
-    //get user info async
+    //get user info async 
     public function ng_get_user_info(){
         $cdt['id'] = $this->user_id;
         $response = $this->user_model->where($cdt)->find();
@@ -156,8 +156,9 @@ class UserController extends Controller {
             if(empty($new_userName))$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.USER_NAME_EMPTY_TIP')));
             else {
                 $data = array('userName'=>$new_userName);
-                if($this->user_model->where('id='.$this->user_id)->save($data) !== false)$this->ajaxReturn(array('error'=>0),'json');
-                else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
+                if($this->user_model->where($data)->find() !== NULL)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.USER_NAME_EXISTED')),'json');
+                else if($this->user_model->where('id='.$this->user_id)->save($data) !== false)$this->ajaxReturn(array('error'=>0),'json');
+                else $this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
             }
     }
     public function modify_signature(){

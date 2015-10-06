@@ -2,10 +2,10 @@
   <div class="hs-panel-hd text-center"><big><b>消息</b></big></div>
   <div class="hs-panel-bd">
     <div class="hs-btn-group hs-btn-group-justify">
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='comment'}" ng-click="msgSwitchTab('comment',1)">评论</button>
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='at'}" ng-click="msgSwitchTab('at',3)">@我</button>
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='whisper'}" ng-click="msgSwitchTab('whisper',2)">私信</button>
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='notice'}" ng-click="msgSwitchTab('notice',4)">通知</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='comment'}" ng-click="msgSwitchTab('comment',1)">评论</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='at'}" ng-click="msgSwitchTab('at',3)">@我</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='whisper'}" ng-click="msgSwitchTab('whisper',2)">私信</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': msg_tab=='notice'}" ng-click="msgSwitchTab('notice',4)">通知</button>
     </div>
     <div class="msg-view" ui-view="message">
       

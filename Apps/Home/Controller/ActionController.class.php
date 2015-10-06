@@ -243,7 +243,8 @@ class ActionController extends Controller {
                 A('Piece')->ng_piece_post($tag,$content,$visible);
                 break;
             case 'essay':
-                A('Essay')->ng_essay_post($title,$tag,$content,$visible);
+                $post_piece = I('post.post_piece');
+                A('Essay')->ng_essay_post($title,$tag,$content,$visible,$post_piece);
                 break;
             case 'diary':
                 A('Diary')->ng_diary_post($title,$tag,$content,$visible);
@@ -285,7 +286,8 @@ class ActionController extends Controller {
                 $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');
                 break;
             case 'essay':
-                A('Essay')->do_modify($id,$title,$tag,$content,$visible);
+                $post_piece = I('post.post_piece');
+                A('Essay')->do_modify($id,$title,$tag,$content,$visible,$post_piece);
                 break;
             case 'diary':
                 $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.REQUEST_FAILED')),'json');

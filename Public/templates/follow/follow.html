@@ -2,8 +2,8 @@
   <div class="hs-panel-hd text-center"><big><b>关注</b></big></div>
   <div class="hs-panel-bd">
     <div class="hs-btn-group hs-btn-group-justify">
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': follow_tab=='followed'}" ng-click="followSwitchTab('followed')">关注我的</button>
-      <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': follow_tab=='following'}" ng-click="followSwitchTab('following')">我关注的</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': follow_tab=='followed'}" ng-click="followSwitchTab('followed')">关注我的</button>
+      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': follow_tab=='following'}" ng-click="followSwitchTab('following')">我关注的</button>
     </div>
     <div class="follow-view" ui-view="follow">
       

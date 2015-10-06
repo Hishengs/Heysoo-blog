@@ -20,7 +20,7 @@ class CommentController extends Controller {
     //get essay comments by essay id
     public function get_essay_comments($essay_id){
         $result = $this->comment_model->join("hs_user ON hs_user.id=hs_comment.user_id AND hs_comment.essay_id=".$essay_id)
-        ->field('hs_user.userName,hs_user.id,hs_user.avatar,hs_comment.comment_date,hs_comment.comment_content')
+        ->field('hs_user.userName,hs_user.id,hs_user.avatar,hs_comment.comment_id,hs_comment.user_id,hs_comment.comment_date,hs_comment.comment_content')
         ->order("hs_comment.comment_date desc")->select();
         return $result;
     }

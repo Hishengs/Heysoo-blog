@@ -22,7 +22,9 @@ gulp.task('plugins-concat', function() {
   gulp.src(['./bower/jquery/dist/jquery.min.js',
     './bower/amazeui/dist/js/amazeui.min.js',
     './editor/kindeditor.js',
-    './editor/lang/zh_CN.js'])
+    './editor/lang/zh_CN.js',
+    './bower/jquery.caret/dist/jquery.caret-1.5.2.min.js',
+    './bower/jquery.atwho/dist/js/jquery.atwho.min.js'])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));
@@ -35,7 +37,7 @@ gulp.task('index-css', function() {
     .pipe(gulp.dest('./css/dist/'));
 });
 gulp.task('plugins-css', function() {
-  gulp.src(['./bower/amazeui/dist/css/amazeui.css'])
+  gulp.src(['./bower/amazeui/dist/css/amazeui.css','./bower/jquery.atwho/dist/css/jquery.atwho.min.css'])
     .pipe(concat('plugins.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));

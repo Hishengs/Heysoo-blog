@@ -2,7 +2,7 @@
 <div class="msg-list" ng-hide="msg_tip_show">
       <div class="msg-item hs-panel hs-panel-default" ng-repeat="msg in msgs">
         <div class="hs-panel-hd">{{msg.msg_date}}<span class="hs-badge hs-badge-warning" ng-show="{{msg.msg_is_read==0}}" style="float:right;">新消息</span></div>
-        <div class="hs-panel-bd"><a href="javascript:;">{{senders[$index]['username']}}</a>&nbsp;{{msg.msg_content}}<a class="msg-see-more" href="javascript:;" ng-click="showMsgDetail(msg.msg_obj_type,msg.msg_obj_id)">查看详情</a></div>
+        <div class="hs-panel-bd"><a href="javascript:;">{{senders[$index]['username']}}</a>&nbsp;<span ng-bind-html="msg.msg_content | trustHtml"></span><a class="msg-see-more" href="javascript:;" ng-click="showMsgDetail(msg.msg_obj_type,msg.msg_obj_id)">查看详情</a></div>
       </div>
 </div>
 <div class="msg-tip center-tip" ng-show="msg_tip_show"><i class="hs-icon-warning"></i> 暂无评论</div>

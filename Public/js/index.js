@@ -23,9 +23,21 @@ var essayCmtOptions  = {
 		height:'180px',
 		minHeight:'180px',
 		resizeType:0,
-		items:['emoticons', 'link'],
+		items:['emoticons', 'link','image'],
 		themeType : 'simple'
 			}; 
+var essayReplyCmtOptions  = {
+		basePath:editor_basePath,
+		width:'520px',
+		minWidth:'380px',
+		maxWidth:'520px',
+		height:'180px',
+		minHeight:'180px',
+		resizeType:0,
+		items:['emoticons', 'link','image'],
+		themeType : 'simple'
+			}; 
+
 //碎片评论配置
 var pieceCmtOptions  = {
 		basePath:editor_basePath,

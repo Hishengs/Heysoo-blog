@@ -373,9 +373,12 @@ m_index.controller('c_index',function($scope,$rootScope,$state,$stateParams,$htt
     }
 });
 m_index.controller('c_view',function($scope,$rootScope,$http,$stateParams){
+  $scope.essay_view_tip_show = false;
+  $rootScope.reply_to_id = $rootScope.parent_cmt_id = null;
   url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
       progress_bar.start();
       $http.get(url).success(function(res){
+        if(res.error === 0){
             $scope.essay = res.essay;
             $scope.comments = res.comments;
             if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
@@ -385,7 +388,21 @@ m_index.controller('c_view',function($scope,$rootScope,$http,$stateParams){
             $(document).scrollTop(0);
             setLightBox();
             progress_bar.done();
+          }else{
+            $scope.essay = $scope.comments = [];
+            $rootScope.essay_comments_tip_show = true;
+            $scope.essay_comment_on = false;
+            $scope.essay_view_tip = "<i class='hs-icon-warning'></i> "+res.msg;
+            $scope.essay_view_tip_show = true;
+            progress_bar.done();
+          }
       });
+      //打开回复处理框
+      $scope.showEssayReplyCmtModal = function(reply_to_id,parent_cmt_id){
+        $rootScope.reply_to_id = reply_to_id;
+        $rootScope.parent_cmt_id = parent_cmt_id;
+        $('#essay-comment-reply-modal').modal('toggle');
+      }
 });
 //边栏管理
 m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
@@ -432,8 +449,10 @@ m_index.controller('c_sidePanel',function($http,$rootScope,$scope){
 m_index.controller('c_edit',function($scope,$state,$http){
     $scope.edit_visible = "1";
     $scope.edit_type = "piece";
+    $scope.post_piece_check = true;
     var url = home_path+"/Action/ng_deal_post.html";
     $scope.editPost = function(){
+      console.log($scope.post_piece_check);
       $scope.edit_content = edit_post.html();
       $http({
         method:'POST',
@@ -443,9 +462,11 @@ m_index.controller('c_edit',function($scope,$state,$http){
           'tag':$scope.edit_tag,
           'type':$scope.edit_type,
           'visible':$scope.edit_visible,
-          'content':$scope.edit_content
+          'content':$scope.edit_content,
+          'post_piece':$scope.post_piece_check
         }
       }).success(function(res){
+        console.log(res);
         if(res.error === 0){
           hMessage(res.msg);
           edit_post.html('');
@@ -532,6 +553,7 @@ m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
           url:home_path+"/Piece/post_comment.html",
           data:{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content}
         }).success(function(res){
+          console.log(res);
           if(res.error === 0){
             //清空编辑器
         piece_cmt_editor.html('');
@@ -544,6 +566,7 @@ m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
 })
 //文章修改
 m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
+  $scope.post_piece_check = false;
   var url = home_path+"/Action/ng_modify.html";
   $http.get(url,{params:{'type':$rootScope.type,'id':$rootScope.id}}).success(function(res){
       if(res.error === 0){
@@ -561,7 +584,8 @@ m_index.controller('c_modify',function($scope,$rootScope,$state,$http){
           url:home_path+"/Action/ng_deal_modify.html",
           data:{
             'type':$rootScope.type,'id':$rootScope.id,'content':content,
-            'title':$scope.essay_title,'tag':$scope.essay_tag,'visible':$scope.essay_visible
+            'title':$scope.essay_title,'tag':$scope.essay_tag,'visible':$scope.essay_visible,
+            'post_piece':$scope.post_piece_check
           }
         }).success(function(res){
           if(res.error === 0){
@@ -592,10 +616,13 @@ m_index.controller('c_essay_cmt',function($scope,$rootScope,$state,$http){
             //将新评论插入评论列表
             var html = '<li class="hs-comment">'+
             '<article class="hs-comment essay-comment"><a href="">'+
-            '<img class="hs-comment-avatar comment-user-avatar" src="'+public_path+'/img/me.jpg" alt=""/></a>'+
+            '<img class="hs-comment-avatar comment-user-avatar" src="'+$rootScope.avatar+'" alt=""/></a>'+
             '<div class="hs-comment-main"><header class="hs-comment-hd">'+
             '<div class="hs-comment-meta"><a href="#link-to-user" class="hs-comment-author">'+res.comment.user+'</a>'+
-            '评论于 <time datetime="">'+res.comment.date+'</time></div></header>'+
+            ' 评论于 <time datetime="">'+res.comment.date+'</time>'+
+            '<span class="essay-comment-right" style="float:right;">'+
+            '<a href="javascript:;" ng-click="showEssayReplyCmtModal(res.user_id,res.comment_id)">回复</a>'+
+            '</span></div></header>'+
             '<div class="hs-comment-bd">'+res.comment.content+'</div></div></article></li>';
             $("div.comment-tip").remove();
             $rootScope.essay_comments_tip_show = false;
@@ -603,6 +630,47 @@ m_index.controller('c_essay_cmt',function($scope,$rootScope,$state,$http){
           }else{
             hMessage(res.msg);
             $("button.post-essay-comment-btn").html('发布评论');
+          }
+    });
+  }
+  //回复文章评论
+  $scope.replyEssayCmt = function(essay_id){
+    $("button.reply-essay-comment-btn").html('<i class="hs-icon-spinner"></i> 发布中...');
+    essay_reply_editor.sync(); //同步编辑器内容
+    var reply_content = $("#essay-reply-comment-form").children("textarea[name='reply-comment-content']").val();
+    $http({
+          method:'POST',
+          url:home_path+"/Essay/essay_comment_reply.html",
+          data:{'essay_id':essay_id,'replyTo_id':$rootScope.reply_to_id,
+          'parent_cmt_id':$rootScope.parent_cmt_id,'reply_content':reply_content}
+        }).success(function(res){
+          if(res.error === 0){
+            //清空编辑器
+            essay_reply_editor.html('');
+            hMessage(res.msg);
+            $("button.reply-essay-comment-btn").html('发布评论');
+            //将新评论插入评论列表
+            var html = '<li class="hs-comment">'+
+            '<article class="hs-comment essay-comment"><a href="">'+
+            '<img class="hs-comment-avatar comment-user-avatar" src="'+public_path+'/img/me.jpg" alt=""/></a>'+
+            '<div class="hs-comment-main"><header class="hs-comment-hd">'+
+            '<div class="hs-comment-meta"><a href="#link-to-user" class="hs-comment-author">'+res.comment.user+'</a>'+
+            '评论于 <time datetime="">'+res.comment.date+'</time>'+
+            '<span class="essay-comment-right" style="float:right;">'+
+            '<a href="javascript:;" ng-click="showEssayReplyCmtModal(res.user_id,res.comment_id)">回复</a>'+
+            '</span></div></header>'+
+            '<div class="hs-comment-bd">'+res.comment.content+'</div></div></article></li>';
+            $("div.comment-tip").remove();
+            $rootScope.essay_comments_tip_show = false;
+            $("div.essay-comments").children("ul").prepend(html);
+            $('#essay-comment-reply-modal').modal('toggle');
+            //$state.go('view',{id:essay_id});
+            $state.reload();
+            window.location.hash="#essay-comment-lists";
+          }else{
+            hMessage(res.msg);
+            $("button.reply-essay-comment-btn").html('发布评论');
+            $('#essay-comment-reply-modal').modal('toggle');
           }
     });
   }

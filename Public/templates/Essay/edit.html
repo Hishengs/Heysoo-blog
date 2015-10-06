@@ -31,7 +31,9 @@
 	<textarea id="essay-editor" name="content" ng-model="edit_content"></textarea>
 	<div class="essay-edit-footer">
 		<div class="essay-edit-footer-note"><i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传</div>
-		<div class="essay-edit-footer-operation"></div>
+		<div class="essay-edit-footer-operation">
+			<input type="checkbox" name="post-piece-check" ng-model="post_piece_check">&nbsp;同时发布动态
+		</div>
 		<button class="hs-btn hs-btn-{{interface_color}} essay-submit" type="button" ng-click="editPost()">发 布</button>
 	</div>
 </form>
