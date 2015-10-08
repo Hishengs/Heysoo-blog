@@ -47,7 +47,7 @@ var pieceCmtOptions  = {
 		height:'330px',
 		minHeight:'330px',
 		resizeType:0,
-		items:['emoticons', 'link'],
+		items:['emoticons', 'link','image'],
 		themeType : 'simple'
 			}; 
 jQuery(function($) {
@@ -186,7 +186,7 @@ function tag(tag){
 }
 
 //获取碎片评论
-function updatePieceCmt(piece_id){
+/*function updatePieceCmt(piece_id){
 	$("div.piece-comment-tip").html('<i class="icon-spinner"></i> 获取评论...');
 	$.ajax({
 		url:home_path+"/Piece/get_piece_comment.html",
@@ -210,11 +210,14 @@ function updatePieceCmt(piece_id){
 			console.log(XMLHttpRequest);
 		}
 	});
-}
+}*/
 //go to view page
 function view(typeId,id){
 	//window.location.href = site_prefix+"/heysoo/#/view/"+id;
 	var current_url = window.location.href.split('#')[0];
 	//console.log(current_url);
 	window.location.href = current_url+"#/view/"+id;
+}
+function showModal(target){
+	$('#'+target).modal('toggle');
 }

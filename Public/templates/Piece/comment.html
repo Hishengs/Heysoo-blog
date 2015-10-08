@@ -2,7 +2,7 @@
 <div class="piece-comment-view">
 <div class="piece-comment-piece">
 <div class="piece-comment-piece-info">
-<a class="user" href="javascript:;">{{cmt_obj.username}}</a>
+<a class="user" href="javascript:viewUser({{cmt_obj.id}});">{{cmt_obj.username}}</a>
 <span class="date"> &nbsp;发布于 {{cmt_obj.date}}</span>
 </div>
 <div class="piece-comment-piece-content" ng-bind-html="cmt_obj.content | trustHtml"></div>
@@ -10,20 +10,35 @@
 <i class="hs-icon-tag"></i> <a class="tag" href="javascript:;">{{cmt_obj.tag}}</a>
 </div>
 </div><hr>
+<div class="piece-comment-tip" ng-bind-html="piece_comment_tip | trustHtml" ng-show="piece_comment_tip_show"></div>
 <div class="piece-comment-list">
 
-<div class="piece-comment-tip">
+<!-- 评论 -->
+<div class="piece-comment-item" ng-repeat="piece_comment in piece_comments">
+<div class="piece-comment-item-info">
+<a class="piece-comment-user" href="javascript:viewUser({{piece_comment.user_id}});">{{piece_comment.username}}</a>&nbsp;
+<span class="piece-comment-date"><i class="hs-icon hs-icon-clock-o"></i> {{piece_comment.comment_date}}</span>
+<span class="piece-comment-reply" style="float:right;">
+	<a href="javascript:void(0);" ng-click="replyPieceCmt(piece_comment.user_id,piece_comment.username)">回复</a>
+</span>
+</div>
+<div class="piece-comment-item-content" ng-bind-html="piece_comment.comment_content | trustHtml"></div>
+<div class="piece-comment-item-footer"></div>
 </div>
 
 </div>
 </div>
 <div class="piece-comment-post">
 <div class="piece-comment-post-header">
-<i class="hs-icon-coffee"></i> 评论碎片<a class="closeCmt" href="javascript:;" ng-click="closeCmt();">关闭</a>
+<span class="piece-comment-post-tip" ng-bind-html="piece_comment_post_tip | trustHtml">
+</span>
+<i class="hs-icon hs-icon-close close-piece-reply" ng-click="closeReply()" ng-show="close_reply"></i>
+<a class="closeCmt" href="javascript:;" ng-click="closeCmt();">关闭</a>
 </div>
 <form class="hs-form piece-comment-post-form">
+<input name="piece_comment_reply_to_id" style="display:none;" ng-model="piece_comment_reply_to_id"/>
 <textarea class="piece-comment-edit" id="piece_cmt_editor" name="piece-comment-edit"></textarea>
-<button type="button" ng-click="postPieceCmt()" class="hs-btn hs-btn-primary post-piece-comment-btn">发 布</button>
+<button type="button" ng-click="postPieceCmt()" class="hs-btn hs-btn-{{interface_color}} post-piece-comment-btn">发 布</button>
 </form>
 </div>
 </div>

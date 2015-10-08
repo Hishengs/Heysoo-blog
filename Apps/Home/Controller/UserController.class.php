@@ -229,4 +229,19 @@ class UserController extends Controller {
             if($res !== false)$this->ajaxReturn(array('error'=>0,'items'=>$res),'json');
             else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }
+    //create invite code
+    public function create_invite_code(){
+        $invite_code = A('Action')->get_random_str(6);
+        $cdt['invite_code'] = $invite_code;
+        //make sure invite code is unique
+        while($this->user_model->where($cdt)->find()){
+            $invite_code = A('Action')->get_random_str(6);
+            $cdt['invite_code'] = $invite_code;
+        }
+        $data = array('invite_code'=>$invite_code);
+        if($this->user_model->where('id='.$this->user_id)->save($data) !== false)
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.MODIFY_SUCCESS'),'invite_code'=>$invite_code),'json');
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
+    }
+    
 }

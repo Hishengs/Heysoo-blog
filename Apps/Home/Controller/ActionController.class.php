@@ -100,6 +100,18 @@ class ActionController extends Controller {
             //check if email is existed
             $cdt = array('email'=>$email);
             if($this->user_model->where($cdt)->find() != false)$this->error(C('SITE_LANG.EMAIL_EXISTED'));
+            //check if invite code open
+            if(C('REGISTER_INVITE_CODE_ON')){
+              $invite_code = I('post.invite_code');
+              if(!empty($invite_code)){
+                $cdt = array();
+                $cdt['invite_code'] = $invite_code; 
+                $res = $this->user_model->where($cdt)->field('id')->find();
+                if($res){
+                  $this->update_invite_code($res['id']);//update invite code
+                }else $this->error(C('SITE_LANG.INVITE_CODE_ERROR'));
+              }else $this->error(C('SITE_LANG.INVITE_CODE_EMPTY'));
+            }
             //password encryption
             $salt = $this->get_random_str(6);
             $encrypt_times = rand(1,10);//encrypy times
@@ -342,4 +354,18 @@ class ActionController extends Controller {
       $res = json_decode($res,true);
       return $res;
     }
+    //update user invite code
+    public function update_invite_code($user_id){
+        $invite_code = $this->get_random_str(6);
+        $cdt['invite_code'] = $invite_code;
+        //make sure invite code is unique
+        while($this->user_model->where($cdt)->find()){
+            $invite_code = $this->get_random_str(6);
+            $cdt['invite_code'] = $invite_code;
+        }
+        $data = array('invite_code'=>$invite_code);
+        if($this->user_model->where('id='.$user_id)->save($data) !== false)
+            return true;
+        else return false;
+    }    
 }

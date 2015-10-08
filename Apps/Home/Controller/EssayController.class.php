@@ -114,14 +114,18 @@ class EssayController extends Controller {
             $str_num = A('Action')->str_length($comment_content);
             $current_str_num = $str_num['cn']+$str_num['en'];
             if($current_str_num < 1){$this->ajaxReturn(array('error'=>1,'msg'=>'评论内容不能为空！'),'json');}
+            else if($current_str_num > 500)
+                $this->ajaxReturn(array('error'=>1,'msg'=>'评论总字数不能超过500个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
             $comment_date = date("Y-m-d H:i:s");
             $data = array('user_id'=>$this->user_id,'essay_id'=>$essay_id,'comment_date'=>$comment_date,'comment_content'=>$comment_content);
             $res = $this->comment_model->add($data);
             if($res != false){
-                $essay_info = $this->get_essay_info_by_essay_id($essay_id);
-                $essay_user_id = $essay_info['user_id'];
-                $msg_content = ' 评论了你的文章 <a href="javascript:view(1,'.$essay_id.');">'.$essay_info['title'].'</a>';
-                A('Message')->msg_push('comment',1,'essay',$res,$comment_date,$this->user_id,$essay_user_id,$msg_content);
+                if($user_id != $this->user_id){//评论自己的文章不需要消息提醒
+                    $essay_info = $this->get_essay_info_by_essay_id($essay_id);
+                    $essay_user_id = $essay_info['user_id'];
+                    $msg_content = ' 评论了你的文章 <a href="javascript:view(1,'.$essay_id.');">'.$essay_info['title'].'</a>';
+                    A('Message')->msg_push('comment',1,'essay',$res,$comment_date,$this->user_id,$essay_user_id,$msg_content);
+                }
                 $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
                     'content'=>$comment_content),'msg'=>C('SITE_LANG.COMMENT_SUCCESS'),
                 'user_id'=>$this->user_id,'comment_id'=>$res),'json');
@@ -142,14 +146,18 @@ class EssayController extends Controller {
             $str_num = A('Action')->str_length($reply_content);
             $current_str_num = $str_num['cn']+$str_num['en'];
             if($current_str_num < 1){$this->ajaxReturn(array('error'=>1,'msg'=>'评论内容不能为空！'),'json');}
+            else if($current_str_num > 500)
+                $this->ajaxReturn(array('error'=>1,'msg'=>'评论总字数不能超过500个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
             $reply_content = '回复 <a href="javascript:viewUser('.$replyTo_id.');">'.$user_info['username'].'</a> : '.$reply_content;
             $comment_date = date("Y-m-d H:i:s");
             $data = array('parent_comment_id'=>$parent_cmt_id,'user_id'=>$this->user_id,'essay_id'=>$essay_id,'reply_to_id'=>$replyTo_id,'comment_date'=>$comment_date,'comment_content'=>$reply_content);
             $res = $this->comment_model->add($data);
             if($res != false){
-                $essay_info = $this->get_essay_info_by_essay_id($essay_id);
-                $msg_content = ' 回复了你在文章 <a href="javascript:view(1,'.$essay_id.');">'.$essay_info['title'].'</a> 的评论';
-                A('Message')->msg_push('comment',1,'essay',$res,$comment_date,$this->user_id,$replyTo_id,$msg_content);
+                if($replyTo_id != $this->user_id){//回复自己不需要消息提醒
+                    $essay_info = $this->get_essay_info_by_essay_id($essay_id);
+                    $msg_content = ' 回复了你在文章 <a href="javascript:view(1,'.$essay_id.');">'.$essay_info['title'].'</a> 的评论';
+                    A('Message')->msg_push('comment',1,'essay',$res,$comment_date,$this->user_id,$replyTo_id,$msg_content);
+                }
                 $this->ajaxReturn(array('error'=>0,'comment'=>array('user'=>$_SESSION['USER_NAME'],'date'=>$comment_date,
                     'content'=>$reply_content),'msg'=>C('SITE_LANG.COMMENT_SUCCESS'),
                 'user_id'=>$this->user_id,'comment_id'=>$res),'json');
@@ -175,19 +183,23 @@ class EssayController extends Controller {
         $id = I('get.id');
         $essay = $this->essay_model->field('hs_user.userName,hs_essay.user_id,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content,hs_essay.visible')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
-        if($essay['visible'] == 1 || ($essay['visible'] == 0 && $essay['user_id'] == $this->user_id)){
-            //check if essay comment open
-            $user_config = A('User')->get_user_config($essay['user_id']);
-            $privacy_essay_comment = $user_config['privacy_essay_comment']==1?true:false;
-            $essay_comment_on = $privacy_essay_comment && C('ESSAY_COMMENT_ON');
-            //get essay comments
-            $comments = A('Comment')->get_essay_comments($essay['essay_id']);
-            $comments_num = count($comments);
-            $res = array('error'=>0,'essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on);
-            $this->ajaxReturn($res,'json');
-        }else if($essay['visible'] == 0 && $essay['user_id'] != $this->user_id)
-        $this->ajaxReturn(array('error'=>1,'msg'=>'你无查看此文章的权限！'),'json');
-        else $this->ajaxReturn(array('error'=>2,'msg'=>'查询失败！'),'json');
+        if($essay === false){$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');}
+        else if($essay == NULL){$this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.ESSAY_NOT_EXIST')),'json');}
+        else{
+            if($essay['visible'] == 0 && $essay['user_id'] != $this->user_id)
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.ESSAY_VIEW_ACCESS_DENIED')),'json');
+            else if($essay['visible'] == 1 || ($essay['visible'] == 0 && $essay['user_id'] == $this->user_id)){
+                //check if essay comment open
+                $user_config = A('User')->get_user_config($essay['user_id']);
+                $privacy_essay_comment = $user_config['privacy_essay_comment']==1?true:false;
+                $essay_comment_on = $privacy_essay_comment && C('ESSAY_COMMENT_ON');
+                //get essay comments
+                $comments = A('Comment')->get_essay_comments($essay['essay_id']);
+                $comments_num = count($comments);
+                $res = array('error'=>0,'essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on);
+                $this->ajaxReturn($res,'json');
+            }
+        }
     }
     //get message of one essay
     public function get_essay($id){

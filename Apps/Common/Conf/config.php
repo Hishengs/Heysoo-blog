@@ -15,7 +15,7 @@ return array(
 		'LAYOUT_NAME' => 'layout',
 		'LOGIN_VERIFY_CODE_ON' => false, //是否开启登录验证码验证
 		'REGISTER_VERIFY_CODE_ON' => true, //是否开启注册验证码验证
-		'REGISTER_INVITE_CODE_ON' => false, //是否开启邀请码注册
+		'REGISTER_INVITE_CODE_ON' => true, //是否开启邀请码注册
 		'URL_ROUTER_ON'   => true,
 		'QINIU_SK' => 'BylB8ABOnBdhzwcsUOC2kp2teC9jHMAGzmIii5Dv',
 		'QINIU_AK' => 'EWNeHQINB7Lm-Xa9sYFrU5K_RBBoTOWNFpEF4T0h',

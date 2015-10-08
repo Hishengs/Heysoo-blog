@@ -295,6 +295,8 @@ m_index.controller('c_paginator',function($scope,$rootScope,$state,$http){
 //碎片
 m_index.controller('c_piece',function($scope,$rootScope,$state,$http){
   $scope.showCmt = function(id,piece_id,user_id){
+    $rootScope.piece_comments = [];
+    $rootScope.piece_comment_tip_show = true;
     $rootScope.piece_id = piece_id;
     $rootScope.piece_user_id = user_id;
     $rootScope.cmt_obj_id = id;
@@ -302,26 +304,29 @@ m_index.controller('c_piece',function($scope,$rootScope,$state,$http){
     $("body").css('overflow-y','hidden');
     $state.go('comment');
     $rootScope.mask_show = true;
-    updatePieceCmt(piece_id);
+    $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-spinner"></i> 正在获取评论...';
+    //get comments of pieces
+    $http.get(home_path+"/Piece/get_piece_comment.html?piece_id="+piece_id).success(function(res){
+      if(res.error === 0){
+        $rootScope.piece_comments = res.comments;
+        $rootScope.piece_comment_tip = '';
+        $rootScope.piece_comment_tip_show = false;
+      }else {
+        $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
+        $rootScope.piece_comment_tip_show = true;
+      }
+    });
+    //updatePieceCmt(piece_id);
   }
 })
 m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
+  $scope.close_reply = false;
+  $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 评论碎片';
   $scope.closeCmt = function(){
     $("body").css('overflow-y','auto');
     $rootScope.mask_show = false;
     $state.go('home');
   }
-  //点击元素以外隐藏
-    /*$(document).one('click',function(e){
-    var target = $(e.target); 
-    if(target.closest("#piece-comment").length == 0){ 
-      console.log('关闭评论');
-      $("body").css('overflow-y','auto');
-      $rootScope.mask_show = false;
-      $state.go('home');
-    } 
-    e.stopImmediatePropagation();//阻止事件向上冒泡
-  });*/
   //提交评论
   $scope.postPieceCmt = function(){
     var piece_id = $rootScope.piece_id;
@@ -331,17 +336,43 @@ m_index.controller('c_comment',function($scope,$rootScope,$state,$http){
     $http({
           method:'POST',
           url:home_path+"/Piece/post_comment.html",
-          data:{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content}
+          data:{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content,'reply_to_id':$scope.piece_comment_reply_to_id}
         }).success(function(res){
-          console.log(res);
           if(res.error === 0){
             //清空编辑器
-        piece_cmt_editor.html('');
-        $("button.post-piece-comment-btn").html('发 布');
-              hMessage(res.msg);
-              updatePieceCmt(piece_id);
-          }else{hMessage(res.msg);}
+            piece_cmt_editor.html('');
+            $("button.post-piece-comment-btn").html('发 布');
+            $http.get(home_path+"/Piece/get_piece_comment.html?piece_id="+piece_id).success(function(res){
+              if(res.error === 0){
+                $rootScope.piece_comments = res.comments;
+                $rootScope.piece_comment_tip = '';
+                $rootScope.piece_comment_tip_show = false;
+              }else {
+                $rootScope.piece_comment_tip_show = true;
+                $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
+              }
+            });
+            hMessage(res.msg);
+            $("button.post-piece-comment-btn").html('发布');
+            //updatePieceCmt(piece_id);
+          }else{
+            $("button.post-piece-comment-btn").html('发布');
+            hMessage(res.msg);
+          }
     });
+  }
+  //评论回复
+  $scope.replyPieceCmt = function(reply_obj_id,reply_obj_name){
+    $scope.close_reply = true;
+    $scope.piece_comment_reply_to_id = reply_obj_id;
+    $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 回复 '+reply_obj_name;
+    //console.log('reply_obj_id:'+reply_obj_id+',reply_obj_name:'+reply_obj_name);
+  }
+  //关闭评论回复
+  $scope.closeReply = function(){
+    $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 评论碎片';
+    $scope.piece_comment_reply_to_id = null;
+    $scope.close_reply = false;
   }
 })
 //文章修改
@@ -472,6 +503,18 @@ m_index.controller('c_message',function($scope,$state,$http){
     });
     $state.go("msg_"+tab);
   }
+  //删除消息
+  $scope.deleteMsg = function(type,msg_id){
+    if(confirm('你确定要删除？')){
+        var url = home_path+"/Message/delete_msg.html";
+          $http.get(url,{params:{'type':type,'msg_id':msg_id}}).success(function(res){
+              if(res.error === 0){
+                $("#msg-"+type+"-"+msg_id).remove();
+                hMessage(res.msg);
+              }else{hMessage(res.msg);}
+          });
+      }
+  }
 });
 //设置控制器
 m_index.controller('c_setting',function($scope,$state,$http){
@@ -514,12 +557,19 @@ m_index.controller('c_follow',function($scope,$rootScope,$state,$http){
 });
 /**setting*/
 m_index.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
+  $scope.invite_code = $rootScope.user_info.invite_code;
+
   $scope.modifyProfile = function(option){
     $("#setting_profile_modal_"+option).modal('toggle');
-    //hMessage("你即将修改："+option);
-    /*$state.go('setting_profile_'+option);
-    $rootScope.mask_show = true;
-    setTimeout(function(){$rootScope.mask_show = false;},2000);*/
+  }
+  //生成邀请码
+  $scope.createInviteCode = function(){
+    $http.get(home_path+"/User/create_invite_code.html").success(function(res){
+      if(res.error === 0){
+        $scope.invite_code = res.invite_code;
+        //hMessage(res.msg);
+      }else hMessage(res.msg);
+    });
   }
 })
 m_index.controller('c_setting_interface',function($scope,$rootScope,$http,$state){

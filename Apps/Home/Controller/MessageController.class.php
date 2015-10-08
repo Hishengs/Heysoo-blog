@@ -73,4 +73,13 @@ class MessageController extends Controller {
         /*if($res != false)$this->ajaxReturn(array('error'=>0));
         else $this->ajaxReturn(array('error'=>1));*/
     }
+    //delete a message
+    public function delete_msg(){
+        $type = I('get.type');
+        $id = I('get.msg_id');
+        $cdt = array('msg_type'=>$type,'msg_id'=>$id);
+        if($this->msg_model->where($cdt)->delete() !== false){
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.DELETE_SUCCESS')),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
+    }
 }
