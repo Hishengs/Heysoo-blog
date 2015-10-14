@@ -20,6 +20,7 @@ return array(
 			'LOGOUT_SUCCESS'=>'注销成功！',
 			'IMAGE_UPLOAD_ERROR'=>'图片上传出错！',
 			'QUERY_FAILED'=>'查询失败！',
+			'QUERY_SECCESS'=>'查询成功！',
 			'MODIFY_SUCCESS'=>'修改成功！',
 			'MODIFY_FAILED'=>'修改失败，请稍后重试！',
 			'SAVE_FAILED'=>'保存失败，请稍后重试！',

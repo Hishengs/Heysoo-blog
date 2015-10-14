@@ -230,6 +230,8 @@ m_index.controller('c_edit',function($scope,$state,$http){
     $scope.edit_visible = "1";
     $scope.edit_type = "piece";
     $scope.post_piece_check = true;
+    $scope.edit_song_key = '';
+    $scope.songs = new Array();
     var url = home_path+"/Action/ng_deal_post.html";
     $scope.editPost = function(){
       console.log($scope.post_piece_check);
@@ -257,7 +259,23 @@ m_index.controller('c_edit',function($scope,$state,$http){
         }else{hMessage(res.msg);}
       });
     }
+    //查找音乐
+    $scope.searchSong = function(){
+      $url = home_path+'/Essay/song_search.html?s_key='+$scope.edit_song_key;
+      $http.get($url).success(function(res){
+        console.log(res);
+        $scope.songs = res.songs;
+        //$('#edit_song_search_modal').modal('toggle');
+      });
+    }
+    //往编辑器插入音乐
+    $scope.insertMusicBox = function(song_id){
+      music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+      edit_post.appendHtml(music_frame);
+      $('#edit_song_search_modal').modal('toggle');
+    }
 });
+
 //管理分頁
 var paginator_index = 1;
 var num_per_page = 10;

@@ -11,12 +11,14 @@ class EssayController extends Controller {
     private $page_size;
     private $user_id;
     private $comment_model;
+    private $song_model;
 	
     function __construct(){
         parent::__construct();
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));
         $this->essay_model = D('Essay');
         $this->comment_model = D("Comment");
+        $this->song_model = D("Song");
         $this->page_size = C('ESSAY_LOAD_NUM_PER_PAGE');
         $this->user_id = $_SESSION['USER_ID'];
     }
@@ -206,5 +208,15 @@ class EssayController extends Controller {
         $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,hs_essay.tag,hs_essay.content')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         $this->ajaxReturn(array('error'=>0,'items'=>$essay),'json');
+    }
+    //search songs
+    public function song_search(){
+        $s_key = I('get.s_key');
+        //$sql = 'SELECT * FROM hs_song WHERE song_name LIKE %'.$s_key.'% OR song_singer LIKE %'.$s_key.'%';
+        //$res = $this->song_model->query($sql);
+        $res = $this->song_model->where("song_name LIKE '%".$s_key."%' OR song_singer LIKE '%".$s_key."%'")->select();
+        if($res){
+            $this->ajaxReturn(array('error'=>0,'songs'=>$res,'msg'=>C('SITE_LANG.QUERY_SECCESS')),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }
 }

@@ -28,6 +28,14 @@
 		</select>
 	</div>
 
+	<div class="hs-input-group hs-input-group-{{interface_color}}">
+	  <span class="hs-input-group-label">歌曲 <i class="hs-icon-music"></i></span>
+	  <input type="text" class="hs-form-field tag" name="tag" title="歌曲" placeholder="请输入歌曲名，歌手名查找" ng-model="edit_song_key">
+	  <span class="hs-input-group-btn">
+        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#edit_song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
+      </span>
+	</div>
+
 	<textarea id="essay-editor" name="content" ng-model="edit_content"></textarea>
 	<div class="essay-edit-footer">
 		<div class="essay-edit-footer-note"><i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传</div>
@@ -37,7 +45,23 @@
 		<button class="hs-btn hs-btn-{{interface_color}} essay-submit" type="button" ng-click="editPost()">发 布</button>
 	</div>
 </form>
+
+<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="edit_song_search_modal">
+  <div class="hs-modal-dialog">
+    <div class="hs-modal-hd">查找结果
+      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
+    </div>
+    <div class="hs-modal-bd" style="max-height:550px; overflow:auto;">
+	    <ul class="hs-list">
+			<li ng-repeat="song in songs"><a href="javascript:void(0);" ng-click="insertMusicBox(song.song_id)">{{song.song_singer}}:{{song.song_name}}</a></li>
+		</ul>
+    </div>
+  </div>
 </div>
+
+</div>
+
+
 
 <script>
 window.edit_post = KindEditor.create('#essay-editor',editOpts);
