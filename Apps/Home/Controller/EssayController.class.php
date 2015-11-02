@@ -215,7 +215,7 @@ class EssayController extends Controller {
         //$sql = 'SELECT * FROM hs_song WHERE song_name LIKE %'.$s_key.'% OR song_singer LIKE %'.$s_key.'%';
         //$res = $this->song_model->query($sql);
         $res = $this->song_model->where("song_name LIKE '%".$s_key."%' OR song_singer LIKE '%".$s_key."%'")->select();
-        if($res){
+        if($res !== false){
             $this->ajaxReturn(array('error'=>0,'songs'=>$res,'msg'=>C('SITE_LANG.QUERY_SECCESS')),'json');
         }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }

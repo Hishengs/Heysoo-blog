@@ -35,13 +35,14 @@ div.setting p button{ margin:0; border:0;}
 div.post-group{margin: 5px auto;}
 
 div.essays,div.pieces,div.diarys{ max-width: 1000px; margin: 0 auto;}
-div.essay,div.diary,div.piece{ padding:20px; width:auto; }
+div.diary,div.piece{ padding:20px; width:auto; }
 div.essay-left,div.diary-left,div.piece-left{  float:left; margin:10px 10px 0px 0px; text-align: center;}
 div.essay-date,div.diary-date,div.piece-date{ width: 80px; height: 80px; background-color: #fff; border-radius:40px; box-shadow:0px 1px 2px rgba(0,0,0,0.5); padding: 15px 20px 20px 15px;}
 div.essay-date:hover,div.diary-date:hover,div.piece-date:hover{ box-shadow:0px 5px 10px rgba(0,0,0,0.5); }
 div.date-md{font-size: 18px; font-weight: bold;}
 div.date-y{ font-size: 14px;}
-div.essay-right,div.diary-right,div.piece-right{ position:relative; margin-left:100px; width:auto; background-color:#fff; box-shadow:0px 1px 2px rgba(0,0,0,0.5); padding:15px; color:#555; }
+
+div.diary-right,div.piece-right{ position:relative; margin-left:100px; width:auto; background-color:#fff; box-shadow:0px 1px 2px rgba(0,0,0,0.5); padding:15px; color:#555; }
 div.essay-right div.essay-content,div.diary-right div.diary-content{margin:0px 0px 10px 0px; font-size: 1.6rem;}
 div.piece-right div.piece-content{margin:15px 0; font-size:1.6rem;}
 div.essay-right:hover,div.diary-right:hover,div.piece-right:hover{ /* box-shadow:0px 2px 20px rgba(0,0,0,0.5); */}

@@ -452,6 +452,8 @@ m_index.controller('c_edit',function($scope,$state,$http){
     $scope.post_piece_check = true;
     $scope.edit_song_key = '';
     $scope.songs = new Array();
+    $scope.song_search_tip_show = false;
+    $scope.song_search_tip = '查询中...';
     var url = home_path+"/Action/ng_deal_post.html";
     $scope.editPost = function(){
       console.log($scope.post_piece_check);
@@ -481,10 +483,16 @@ m_index.controller('c_edit',function($scope,$state,$http){
     }
     //查找音乐
     $scope.searchSong = function(){
+      $scope.songs = new Array();
       $url = home_path+'/Essay/song_search.html?s_key='+$scope.edit_song_key;
       $http.get($url).success(function(res){
-        console.log(res);
-        $scope.songs = res.songs;
+        if(res.songs.length){
+          $scope.songs = res.songs;
+          var songs_num = res.songs.length;
+          $scope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
+          $scope.song_search_tip_show = true;
+        }
+        else {$scope.song_search_tip_show = true;$scope.song_search_tip = '无相关歌曲';}
         //$('#edit_song_search_modal').modal('toggle');
       });
     }

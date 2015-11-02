@@ -1,4 +1,6 @@
 /*css for essay index*/
+div.essay{ padding:20px; width:auto; }
+div.essay-right{position:relative; margin-left:100px; width:auto; background-color:#fff; padding:15px; color:#555;}
 div.essays{ max-width: 1000px; margin: 0 auto;}
 div.essay-content a{ color: #696969; }
 div.essay-content a:hover{ color: #333; }

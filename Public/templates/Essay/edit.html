@@ -53,6 +53,7 @@
     </div>
     <div class="hs-modal-bd" style="max-height:550px; overflow:auto;">
 	    <ul class="hs-list">
+	    	<li ng-show="song_search_tip_show"><a href="javascript:;" ng-bind="song_search_tip"></a></li>
 			<li ng-repeat="song in songs"><a href="javascript:void(0);" ng-click="insertMusicBox(song.song_id)">{{song.song_singer}}:{{song.song_name}}</a></li>
 		</ul>
     </div>

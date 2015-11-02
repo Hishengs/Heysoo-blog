@@ -6,7 +6,7 @@ return array(
 		'DB_HOST'   => 'localhost', // 服务器地址
 		'DB_NAME'   => 'heysoo', // 数据库名
 		'DB_USER'   => 'root', // 用户名
-		'DB_PWD'    => '123456', // 密码
+		'DB_PWD'    => '8355189', // 密码
 		'DB_PORT'   => 3306, // 端口
 		'DB_PREFIX' => 'hs_', // 数据库表前缀
 		'DB_CHARSET'=> 'utf8', // 字符集
@@ -17,8 +17,8 @@ return array(
 		'REGISTER_VERIFY_CODE_ON' => true, //是否开启注册验证码验证
 		'REGISTER_INVITE_CODE_ON' => true, //是否开启邀请码注册
 		'URL_ROUTER_ON'   => true,
-		'QINIU_SK' => 'yourqiniusk',
-		'QINIU_AK' => 'yourqiniuak',
+		'QINIU_SK' => 'BylB8ABOnBdhzwcsUOC2kp2teC9jHMAGzmIii5Dv',
+		'QINIU_AK' => 'EWNeHQINB7Lm-Xa9sYFrU5K_RBBoTOWNFpEF4T0h',
 		'QINIU_BUCKET' => 'blueandwhite',
 		'SITE_PREFIX' => 'http://localhost',
 		'URL_MODEL' => 2,
@@ -28,5 +28,5 @@ return array(
 		'PIECE_LOAD_NUM_PER_PAGE' => 10,
 		'ESSAY_LOAD_NUM_PER_PAGE' => 10,
 		'LOAD_EXT_CONFIG' => 'lang',
-		'BAIDU_MAP_API_AK' => 'yourbaiduak'
+		'BAIDU_MAP_API_AK' => 'Zam5C9aBBGepyAEvTLN566X4'
 		);
