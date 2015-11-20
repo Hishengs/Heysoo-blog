@@ -14,7 +14,7 @@ gulp.task('index', function() {
     .pipe(gulp.dest('./js/dist/'));
 });
 gulp.task('angular-concat', function() {
-  gulp.src(['./bower/angular/angular.min.js','./bower/angular-ui-router/release/angular-ui-router.min.js','./bower/ng-infinite-scroll/ng-infinite-scroll.min.js','./bower/angular-cookie/angular-cookie.min.js'])
+  gulp.src(['./bower/angular/angular.min.js','./bower/angular-ui-router/release/angular-ui-router.min.js','./bower/angular-cookie/angular-cookie.min.js'])
     .pipe(concat('angular.js'))
     .pipe(gulp.dest('./js/dist/'));
 });
@@ -22,9 +22,7 @@ gulp.task('plugins-concat', function() {
   gulp.src(['./bower/jquery/dist/jquery.min.js',
     './bower/amazeui/dist/js/amazeui.min.js',
     './editor/kindeditor.js',
-    './editor/lang/zh_CN.js',
-    './bower/jquery.caret/dist/jquery.caret-1.5.2.min.js',
-    './bower/jquery.atwho/dist/js/jquery.atwho.min.js'])
+    './editor/lang/zh_CN.js'])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));

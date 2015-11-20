@@ -1,28 +1,21 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh" ng-app="Index" ng-controller="c_index">
 <head>
-<base href="/heysoo/">
-<meta charset="UTF-8">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link rel="icon" type="image/png" href="/heysoo/Public/img/favicon.ico">
-<title><?php echo ((isset($userName ) && ($userName !== ""))?($userName ):"我的主页"); ?></title>
-<link rel="stylesheet" href="/heysoo/Public/bower/fontawesome/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="/heysoo/Public/css/dist/plugins.css"/>
-<link rel="stylesheet" href="/heysoo/Public/css/dist/index.css"/>
-<style type="text/css">
-	#left-panel{ background-image: url({{sideBarBg}}?imageView2/2/w/400);}
-	body,#right-panel,.y-full{ background-image: url({{mainBg}});}
-</style>
+	<base href="/heysoo/">
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="icon" type="image/png" href="/heysoo/Public/img/favicon.ico">
+	<title><?php echo ((isset($userName ) && ($userName !== ""))?($userName ):"我的主页"); ?></title>
+	<link rel="stylesheet" href="/heysoo/Public/css/dist/plugins.css"/>
+	<link rel="stylesheet" href="/heysoo/Public/css/dist/index.css"/>
+	<style type="text/css">
+		#left-panel{ background-image: url({{sideBarBg}}?imageView2/2/w/400);}
+		body,#right-panel,.y-full{ background-image: url({{mainBg}});}
+	</style>
 </head>
 <body>
-<!-- <div class="navigator" style="position:fixed;top:0;width:100%;z-index:1200;">
-	<div class="hs-btn-group hs-btn-group-justify">
-	    <button type="button" class="hs-btn hs-btn-msg hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-home"></i> Heysoo </button>
-	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
-	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click=""><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
-	</div>
-</div> -->
+
 <div id="mask" ng-show="mask_show">
 	<div ui-view="mask"></div>
 </div>
@@ -42,9 +35,9 @@
     <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showFollow()"><i class="hs-icon-user"></i> 关注</button>
 </div>
 
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="hs-icon-random"></i> 首页</button>
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('piece')"><i class="hs-icon-fire"></i> 我的碎片({{piece_nums}})</button>
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('essay')"><i class="hs-icon-font"></i> 我的文章({{essay_nums}})</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="hs-icon-home"></i> 首页</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('piece')"><i class="hs-icon-paper-plane"></i> 我的碎片({{piece_nums}})</button>
+<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('essay')"><i class="hs-icon-reorder"></i> 我的文章({{essay_nums}})</button>
 <!-- <button class="hs-btn hs-btn-primary hs-btn-block" onclick=getPage("<?php echo U('Diary/get_diary_page');?>","content",3)><i class="hs-icon-calendar"></i> 我的日记({{diary_nums}})</button> -->
 
 </div>
@@ -78,5 +71,5 @@
 <script src="/heysoo/Public/js/dist/plugins.js"></script>
 <script src="/heysoo/Public/js/dist/angular.js"></script>
 <script src="/heysoo/Public/js/dist/index.js"></script>
-<script src="/heysoo/Public/js/dist/app.js"></script> 
+<script src="/heysoo/Public/js/dist/app.js"></script>
 </html>
