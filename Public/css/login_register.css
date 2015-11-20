@@ -1,27 +1,26 @@
 @CHARSET "UTF-8";
+/*common*/
 html,body{height: 100%;}
-*{font-family:'microsoft yahei'; font-size:14px;}
+*{font-family:'microsoft yahei'; font-size:14px;color: #fff;}
 div.bg{width:auto; height:100%; margin:0 auto;}
-div.login-panel{ opacity:0.95; text-align:center; width:600px; height:100%; background-color:#6fc6f8; box-shadow:0px 5px 10px rgba(0,0,0,0.5); margin:0 auto; padding:0;}
-img.avatar-img{ width:80px; height:80px; border-radius:40px; /* margin:50px 210px 20px 210px; */ margin: 20px auto; box-shadow:0px 2px 5px rgba(0,0,0,0.8); }
-img.avatar-img:hover{ box-shadow:0px 5px 10px rgba(0,0,0,0.8); }
-div.logo-panel{opacity:0.95; text-align:center; background-color:#6fc6f8; border-bottom:2px solid #fff; margin:0 auto; }
-h3{ color:#fff; }
+
 div.title{ text-align:center; color:#fff; font-size:26px; margin-bottom:10px; font-weight: bold;}
+img.avatar-img{ margin: 20px auto; width:80px; height:80px; }
+img.avatar-img:hover{width:80px; height:80px; border-radius:40px; box-shadow:0px 5px 10px rgba(0,0,0,0.8); }
+
+div.login-panel,div.register-panel{text-align:center; width:30%; height:100%; box-shadow:0px 5px 10px rgba(0,0,0,0.5); margin:0 auto; padding:0;}
 form.login-form,form.register-form{width:100%; margin-top:30px; }
-div.login-panel form input{ display:block; width:240px; margin:0 auto; border-radius:0; border: #337ab7;}
-button.login,button.register{ width:240px; margin:20px auto; border-radius:0;}
+div.login-panel form input,div.register-panel form input{ display:block; margin:0 auto; border-radius:0;}
+form.login-form div.hs-input-group,form.register-form div.hs-input-group{margin: 20px auto; width: 40%;}
+
 div.operation{ opacity:0; height:10px;}
 div.operation:hover{ opacity:1; height:auto;}
-div.operation button{ width:240px; margin:10px auto; border-radius:0; }
-form.login-form div.hs-input-group{margin: 20px auto; width:240px;}
-div.hs-input-group input,div.hs-input-group select{ border-radius: 0;}
-span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #337ab7; */ color: #fff; border: 0;}
-div.slogan{ color: #fff;}
+div.operation button{ width:40%; margin:10px auto; border-radius:0; color: #fff;}
 
-/*css for register*/
-div.register-panel{ opacity:0.95; text-align:center; width:500px; min-height:100%; height: auto; background-color:#6fc6f8; box-shadow:0px 2px 5px rgba(0,0,0,0.5); margin:0 auto; padding:0;}
-div.register-panel form input{ display:block;  margin:0 auto; border-radius:0; border: 0;}
-button.login_register,button.register_login{opacity:0; height:10px; width: 240px; margin: 20px auto;}
-button.login_register:hover,button.register_login:hover{opacity:1; height:auto; }
-form.register-form div.hs-input-group{margin: 15px auto; width:240px;}
+div.verify-code img{width: 40%; height: 36px;}
+
+button.login,button.register{ width:40%; margin:20px auto; border-radius:0; color: #fff;}
+
+/*login**/
+
+/*register*/
