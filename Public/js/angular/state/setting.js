@@ -1,0 +1,32 @@
+heysoo.config(['$stateProvider',function($stateProvider){
+	$stateProvider.state('setting',{
+        url:'/setting',
+        views:{
+            'content':{templateUrl:tpl_setting_url+"/setting.html"}
+        }
+    }).state('setting_profile',{
+        url:'/profile',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_setting_url+"/profile.html"}
+        }
+    }).state('setting_interface',{
+        url:'/interface',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_setting_url+"/interface.html"}
+        }
+    }).state('setting_push',{
+        url:'/push',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_setting_url+"/push.html"}
+        }
+    }).state('setting_privacy',{
+        url:'/privacy',
+        parent:'setting',
+        views:{
+            'v_setting':{templateUrl:tpl_setting_url+"/privacy.html"}
+        }
+    });
+}]);

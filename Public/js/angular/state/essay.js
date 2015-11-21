@@ -1,0 +1,31 @@
+heysoo.config(['$stateProvider',function($stateProvider){
+	$stateProvider.state('edit',{
+        url:'/edit',
+        views:{
+            'content':{templateUrl:tpl_essay_url+"/edit.html"}
+        }
+    }).state('essay',{
+        url:'/essay/page/:page',
+        views:{
+            'content':{templateUrl:tpl_essay_url+"/index.html"}
+        }
+    }).state('view',{
+        url:'/view/:id',
+        params:{id:null},
+        controller:'c_view',
+        views:{
+            'content':{templateUrl:tpl_essay_url+"/view.html"}
+        }
+    }).state('setting_profile_userName',{
+        url:'/modifyUserName',
+        //parent:'setting',
+        views:{
+            'mask':{templateUrl:tpl_action_url+"/setting/modifyUserName.html"}
+        }
+    }).state('modify',{
+        url:'/modify/type/:type/id/:id',
+        views:{
+            'content':{templateUrl:tpl_essay_url+"/modify.html"}
+        }
+    });
+}]);

@@ -11,6 +11,7 @@ a.tag:hover{ color: #4862a3;}
 #left-panel{ z-index:333; position:relative; background-color:#f5f5f5; width:20%; height:100%;  box-shadow:0px 2px 5px rgba(0,0,0,0.5); float:left; top:0; left:0; position:fixed; }
 #left-panel:hover{ box-shadow:0px 5px 20px rgba(0,0,0,0.5); }
 #left-panel button{ margin: 8px auto; height: 40px;}
+#left-panel img.user-avatar{margin: 20px auto; width:80px; height:80px; border-radius:40px;}
 div.post-group{ width: 100%;}
 div.post-group button{}
 
@@ -21,7 +22,7 @@ div.post-group button{}
 div.content-view{ min-height: 100vh; height: 100%; position: relative;}
 /*control panel*/
 div.user-avatar{width: 100%; margin: 0 auto; text-align: center;}
-img.user-avatar{ width:80px; height:80px; border-radius:40px; margin: 20px auto; box-shadow:0px 1px 2px rgba(0,0,0,0.5); }
+img.user-avatar{ width:60px; height:60px; border-radius:30px; margin: 0 auto; box-shadow:0px 1px 2px rgba(0,0,0,0.5); }
 img.user-avatar:hover{  box-shadow:0px 5px 10px rgba(0,0,0,0.5) }
 div.user-signature{ text-align:center; color:#fff; margin-bottom:20px; width: auto; margin: 0 auto; padding: 0 20px;}
 div.userName{ text-align:center; color:#fff; font-size:16px; margin-bottom:10px}
@@ -102,3 +103,18 @@ a.hs-btn-transparent:visited {
 }
 .hs-panel-transparent .hs-panel-hd{color: #888;}
 
+/**align*/
+.text-align{text-align: center;}
+/**float*/
+.f-right{float: right;}
+.f-left{float: left;}
+
+/**margin*/
+.m-top-20{margin-top: 20px;}
+.m-bottom-20{margin-bottom: 20px;}
+.m-left-20{margin-left: 20px;}
+.m-right-20{margin-right: 20px;}
+.m-left-15{margin-left: 15px;}
+.m-right-15{margin-right: 15px;}
+.m-0-auto{margin: 0 auto;}
+.m-10-auto{margin: 10px auto;}

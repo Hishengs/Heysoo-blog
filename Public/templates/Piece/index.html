@@ -1,30 +1,69 @@
 <div class="pieces" ng-hide="res_empty">
-<div class="piece" id="{{piece.piece_id}}" ng-repeat="piece in items">
-<div class="piece-left">
-<div class="essay-date">
-<div class="date-y">年</div>
-<div class="date-md">月日</div>
-</div>
-</div>
-<div class="piece-right">
-<div class="bg"></div><div class="piece-triangle"></div>
-<div class="piece-info">
-<span class="piece-author"><a href="javascript:;">{{piece.username}}</a> &nbsp; &nbsp;发布于</span>
-<span class="piece-date"> <i class="hs-icon-time" title="发布时间"></i> {{piece.date | date:'shortDate'}}</span>
-</div>
-<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
-<div class="piece-footer"><i class="hs-icon-tag"></i>  
-<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
-<if condition="$piece['visible'] eq 0">
-  <i class="hs-icon-eye-close" title="私密"></i>
-</if>
- <span class="piece-operation">
- <button type="button" style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="deleteItem('piece',piece.piece_id)">删除</button>
- <!-- <i class="hs-icon-remove piece-remove" title="删除，请谨慎" ng-click="deleteItem('piece',piece.piece_id)"></i> -->
- </span>
-</div>
-</div>
-</div>
+<div class="piece" ng-controller="c_piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in items">
+		<div class="piece-left">
+			<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank">
+			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
+		</div>
+		<div class="piece-right">
+			<div class="bg"></div>
+			<div class="piece-triangle"></div>
+			<div class="piece-info">
+				<span class="piece-user"><a href="javascript:;" ng-click="viewUser(piece.username)" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
+			</div>
+			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
+			<div class="piece-footer"><i class="hs-icon-tag"></i> 
+				<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
+				<span class="piece-footer-right">
+					<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片">
+					<i class="hs-icon-trash" ng-if="piece.user_id == user_info.id"></i>
+					</a>
+					<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" class="m-left-15" title="查看碎片评论">
+					<i class="hs-icon-comment-o"></i>
+					</a>
+				</span>
+			</div>
+		</div>
+		<!-- 碎片评论 -->
+		<div class="piece-comment" id="piece-comment-{{ piece.piece_id }}">
+			<div class="hs-input-group">
+				<input type="text" class="hs-form-field" placeholder="在此输入评论内容" title="在此输入评论内容" ng-model="postedComment.comment_content">
+				<span class="hs-input-group-btn">
+					<button class="hs-btn hs-btn-default" ng-click="postComment(piece.piece_id,piece.user_id)">
+						<i class="hs-icon-arrow-right"></i>
+					</button>
+				</span>
+			</div>
+			<div class="piece_comment_tip text-align m-top-20 m-bottom-20" ng-bind-html="piece_comment_tip | trustHtml" ng-show="piece_comment_tip_show"></div>
+			<ul class="hs-list piece-comment-list">
+				<li ng-repeat="comment in piece_comments">
+					<article class="hs-comment">
+						<a href="javascript:void(0);"><img ng-src="{{comment.avatar}}?imageView2/1/w/50/h/50" alt="" class="hs-comment-avatar"></a>
+						<div class="hs-comment-main">
+							<header class="hs-comment-hd">
+								<div class="hs-comment-meta">
+									<a href="javascript:void(0);" class="hs-comment-author">{{comment.username}}</a>
+									评论于 {{comment.comment_date}}
+									<span class="f-right">
+										<button class="hs-btn hs-btn-default" title="删除该评论" ng-click="deleteComment(piece.piece_id,comment.comment_id)" ng-if="user_info.id == comment.user_id">
+											<i class="hs-icon-trash"></i>
+										</button>
+										<!-- 回复 -->
+										<button class="hs-btn hs-btn-default" ng-click="replyComment(comment.user_id,comment.username)" ng-if="user_info.id != comment.user_id">
+											<i class="hs-icon-reply"></i>
+										</button>
+									</span>
+								</div>
+							</header>
+							<div class="hs-comment-bd" ng-bind-html="comment.comment_content | trustHtml">
+							</div>
+						</div>
+					</article>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 </div>
 
 <div class="pieces-empty-tip center-tip" ng-show="res_empty"><i class="hs-icon-warning"></i> 你还没有发布过碎片哦~</div>

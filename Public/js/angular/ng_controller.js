@@ -1,35 +1,70 @@
-/*controller of angular*/
-heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie){
-    $rootScope.avatar = public_path+"/img/me.jpg";
-    
-    //$scope.indexLoadMoreBtn = '<i class="hs-icon-arrow-down"></i> 加载更多';
-    //$scope.datas = new Piece();
+//边栏管理
+heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
+  var url = home_path+"/Index/ng_init_side_panel.html";
+  $http.get(url).success(function(res){
+    if(res.error === 0){
+      $rootScope.avatar = res.user.avatar;
+      $rootScope.user_info = res.user;
+      $rootScope.essay_nums = res.essay_nums;
+      $rootScope.piece_nums = res.piece_nums;
+      $rootScope.diary_nums = res.diary_nums;
+      $rootScope.unread_msg_num = res.unread_msg_num;
+    }
+  });
+  //靠近左侧显示
+  $('body').mousemove(function(e) { 
+    var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
+    if(xx <= 20){
+      $("#content").css('padding-left','400px');
+      $("#left-panel").fadeIn(500);
+    }
+  }); 
+  //双击隐藏
+  $scope.toggleSidePanel = function(){
+    $("#left-panel").fadeOut(500,function(){
+    $("#content").css('padding-left',0);
+    });
+  }
+  //设置定时器，定时获取未读消息数目#每1分钟
+  var timer = 60000;
+  setInterval(function(){
+    var url = home_path+"/Message/ng_get_unread_msg_num.html";
+    $http.get(url).success(function(res){
+      if(res.unread_msg_num < 1 || $rootScope.unread_msg_num === res.unread_msg_num)timer -= 1000;//若没有新消息或者新消息条目没变化，则加快读取
+      else timer += 1000;//若有新消息，则延缓读取
+      timer = timer<30000?60000:timer;//如果timer小于一半，则重置timer
+      $rootScope.unread_msg_num = res.unread_msg_num;
+    });
+  },timer);
+});
+heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie,User){
     $rootScope.mask_show = false;
+    $rootScope.style = {};
     //获取用户配置
-    $http.get(home_path+"/User/ng_get_user_config.html").success(function(res){
+    User.getUserConfig().success(function(res){
       if(res.error === 0){
         $rootScope.user_config = res.user_config;
         $rootScope.interface_color = res.user_config.interface_color?res.user_config.interface_color:ipCookie('interface_color');//主题颜色
         $rootScope.mainBg = res.user_config.main_bg;//主页背景
         $rootScope.sideBarBg = res.user_config.sidebar_bg; //边栏背景
+        $rootScope.style.sidebar_bg = {'background-image': 'url('+$rootScope.sideBarBg+'?imageView2/2/w/400)'};
+        $rootScope.style.main_bg = {'background-image': 'url('+$rootScope.mainBg+')'};
       }else hMessage(res.msg);
     });
     $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
       $scope.index_page = 2;
     });
-    setLightBox();
     $state.go('home');
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
       $('button.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
       $http.get(home_path+"/Index/ng_index.html?index_page="+$scope.index_page).success(function(res){
         $('button.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
-        if(res.length < 1){hMessage('沒有更多了！');return;}
+        if(!res.length){hMessage('沒有更多了！');return;}
         for (var i = 0; i < res.length; i++) {
             $scope.index_items.push(res[i]);
         }
-        //setLightBox();
         $scope.index_page++;
     });
     }
@@ -56,7 +91,8 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
             progress_bar.done();
         });
     }
-    $scope.edit = function(){
+    //发布
+    $scope.showPublish = function(){
       $scope.edit_post_path = home_path+"/Action/deal_post.html";
       $state.go('edit');
     }
@@ -152,138 +188,6 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
       window.open(url);
     }
 });
-heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
-  $scope.essay_view_tip_show = false;
-  $rootScope.reply_to_id = $rootScope.parent_cmt_id = null;
-  url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
-      progress_bar.start();
-      $http.get(url).success(function(res){
-        if(res.error === 0){
-            $scope.essay = res.essay;
-            $scope.comments = res.comments;
-            if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
-            else $rootScope.essay_comments_tip_show = false;
-            $scope.essay_comment_on = res.essay_comment_on;
-            $scope.avatar_path = public_path+"/img/me.jpg";
-            $(document).scrollTop(0);
-            setLightBox();
-            progress_bar.done();
-          }else{
-            $scope.essay = $scope.comments = [];
-            $rootScope.essay_comments_tip_show = true;
-            $scope.essay_comment_on = false;
-            $scope.essay_view_tip = "<i class='hs-icon-warning'></i> "+res.msg;
-            $scope.essay_view_tip_show = true;
-            progress_bar.done();
-          }
-      });
-      //打开回复处理框
-      $scope.showEssayReplyCmtModal = function(reply_to_id,parent_cmt_id){
-        $rootScope.reply_to_id = reply_to_id;
-        $rootScope.parent_cmt_id = parent_cmt_id;
-        $('#essay-comment-reply-modal').modal('toggle');
-      }
-});
-//边栏管理
-heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
-  //ng_init_side_panel
-  //$scope.avatar = $rootScope.avatar;
-  var url = home_path+"/Index/ng_init_side_panel.html";
-  $http.get(url).success(function(res){
-    if(res.error === 0){
-      $rootScope.avatar = res.user.avatar;
-      $rootScope.user_info = res.user;
-      $rootScope.essay_nums = res.essay_nums;
-      $rootScope.piece_nums = res.piece_nums;
-      $rootScope.diary_nums = res.diary_nums;
-      $rootScope.unread_msg_num = res.unread_msg_num;
-    }
-  });
-  //靠近左侧显示
-  $('body').mousemove(function(e) { 
-    var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
-    if(xx <= 20){
-      $("#content").css('padding-left','400px');
-      $("#left-panel").fadeIn(500);
-    }
-  }); 
-  //双击隐藏
-  $scope.toggleSidePanel = function(){
-    $("#left-panel").fadeOut(500,function(){
-    $("#content").css('padding-left',0);
-    });
-  }
-  //设置定时器，定时获取未读消息数目#每1分钟
-  var timer = 60000;
-  setInterval(function(){
-    var url = home_path+"/Message/ng_get_unread_msg_num.html";
-    $http.get(url).success(function(res){
-      if(res.unread_msg_num < 1 || $rootScope.unread_msg_num === res.unread_msg_num)timer -= 1000;//若没有新消息或者新消息条目没变化，则加快读取
-      else timer += 1000;//若有新消息，则延缓读取
-      timer = timer<30000?60000:timer;//如果timer小于一半，则重置timer
-      $rootScope.unread_msg_num = res.unread_msg_num;
-    });
-  },timer);
-});
-//文章，碎片，日记发布
-heysoo.controller('c_edit',function($scope,$state,$http){
-    $scope.edit_visible = "1";
-    $scope.edit_type = "piece";
-    $scope.post_piece_check = true;
-    $scope.edit_song_key = '';
-    $scope.songs = new Array();
-    $scope.song_search_tip_show = false;
-    $scope.song_search_tip = '查询中...';
-    var url = home_path+"/Action/ng_deal_post.html";
-    $scope.editPost = function(){
-      console.log($scope.post_piece_check);
-      $scope.edit_content = edit_post.html();
-      $http({
-        method:'POST',
-        url:url,
-        data:{
-          'title':$scope.edit_title,
-          'tag':$scope.edit_tag,
-          'type':$scope.edit_type,
-          'visible':$scope.edit_visible,
-          'content':$scope.edit_content,
-          'post_piece':$scope.post_piece_check
-        }
-      }).success(function(res){
-        console.log(res);
-        if(res.error === 0){
-          hMessage(res.msg);
-          edit_post.html('');
-          if($scope.edit_type == 'essay')
-            $state.go('view',{id:res.id});
-          else
-            {$state.go('home');}
-        }else{hMessage(res.msg);}
-      });
-    }
-    //查找音乐
-    $scope.searchSong = function(){
-      $scope.songs = new Array();
-      $url = home_path+'/Essay/song_search.html?s_key='+$scope.edit_song_key;
-      $http.get($url).success(function(res){
-        if(res.songs.length){
-          $scope.songs = res.songs;
-          var songs_num = res.songs.length;
-          $scope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
-          $scope.song_search_tip_show = true;
-        }
-        else {$scope.song_search_tip_show = true;$scope.song_search_tip = '无相关歌曲';}
-        //$('#edit_song_search_modal').modal('toggle');
-      });
-    }
-    //往编辑器插入音乐
-    $scope.insertMusicBox = function(song_id){
-      music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
-      edit_post.appendHtml(music_frame);
-      $('#edit_song_search_modal').modal('toggle');
-    }
-});
-
 //管理分頁
 var paginator_index = 1;
 var num_per_page = 10;
@@ -318,88 +222,37 @@ heysoo.controller('c_paginator',function($scope,$rootScope,$state,$http){
     });
   }
 });
-//碎片
-heysoo.controller('c_piece',function($scope,$rootScope,$state,$http){
-  $scope.showCmt = function(id,piece_id,user_id){
-    $rootScope.piece_comments = [];
-    $rootScope.piece_comment_tip_show = true;
-    $rootScope.piece_id = piece_id;
-    $rootScope.piece_user_id = user_id;
-    $rootScope.cmt_obj_id = id;
-    $rootScope.cmt_obj = $rootScope.index_items[id];
-    $("body").css('overflow-y','hidden');
-    $state.go('comment');
-    $rootScope.mask_show = true;
-    $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-spinner"></i> 正在获取评论...';
-    //get comments of pieces
-    $http.get(home_path+"/Piece/get_piece_comment.html?piece_id="+piece_id).success(function(res){
-      if(res.error === 0){
-        $rootScope.piece_comments = res.comments;
-        $rootScope.piece_comment_tip = '';
-        $rootScope.piece_comment_tip_show = false;
-      }else {
-        $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
-        $rootScope.piece_comment_tip_show = true;
-      }
-    });
-    //updatePieceCmt(piece_id);
-  }
-})
-heysoo.controller('c_comment',function($scope,$rootScope,$state,$http){
-  $scope.close_reply = false;
-  $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 评论碎片';
-  $scope.closeCmt = function(){
-    $("body").css('overflow-y','auto');
-    $rootScope.mask_show = false;
-    $state.go('home');
-  }
-  //提交评论
-  $scope.postPieceCmt = function(){
-    var piece_id = $rootScope.piece_id;
-    $("button.post-piece-comment-btn").html('<i class="icon-spinner"></i> 发布中...');
-    piece_cmt_editor.sync(); //同步编辑器内容
-    var content = $("form.piece-comment-post-form").children("textarea[name='piece-comment-edit']").val();
-    $http({
-          method:'POST',
-          url:home_path+"/Piece/post_comment.html",
-          data:{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content,'reply_to_id':$scope.piece_comment_reply_to_id}
-        }).success(function(res){
-          if(res.error === 0){
-            //清空编辑器
-            piece_cmt_editor.html('');
-            $("button.post-piece-comment-btn").html('发 布');
-            $http.get(home_path+"/Piece/get_piece_comment.html?piece_id="+piece_id).success(function(res){
-              if(res.error === 0){
-                $rootScope.piece_comments = res.comments;
-                $rootScope.piece_comment_tip = '';
-                $rootScope.piece_comment_tip_show = false;
-              }else {
-                $rootScope.piece_comment_tip_show = true;
-                $rootScope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
-              }
-            });
-            hMessage(res.msg);
-            $("button.post-piece-comment-btn").html('发布');
-            //updatePieceCmt(piece_id);
+heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
+  $scope.essay_view_tip_show = false;
+  $rootScope.reply_to_id = $rootScope.parent_cmt_id = null;
+  url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
+      progress_bar.start();
+      $http.get(url).success(function(res){
+        if(res.error === 0){
+            $scope.essay = res.essay;
+            $scope.comments = res.comments;
+            if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
+            else $rootScope.essay_comments_tip_show = false;
+            $scope.essay_comment_on = res.essay_comment_on;
+            $scope.avatar_path = public_path+"/img/me.jpg";
+            $(document).scrollTop(0);
+            setLightBox();
+            progress_bar.done();
           }else{
-            $("button.post-piece-comment-btn").html('发布');
-            hMessage(res.msg);
+            $scope.essay = $scope.comments = [];
+            $rootScope.essay_comments_tip_show = true;
+            $scope.essay_comment_on = false;
+            $scope.essay_view_tip = "<i class='hs-icon-warning'></i> "+res.msg;
+            $scope.essay_view_tip_show = true;
+            progress_bar.done();
           }
-    });
-  }
-  //评论回复
-  $scope.replyPieceCmt = function(reply_obj_id,reply_obj_name){
-    $scope.close_reply = true;
-    $scope.piece_comment_reply_to_id = reply_obj_id;
-    $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 回复 '+reply_obj_name;
-    //console.log('reply_obj_id:'+reply_obj_id+',reply_obj_name:'+reply_obj_name);
-  }
-  //关闭评论回复
-  $scope.closeReply = function(){
-    $scope.piece_comment_post_tip = '<i class="hs-icon-coffee"></i> 评论碎片';
-    $scope.piece_comment_reply_to_id = null;
-    $scope.close_reply = false;
-  }
+      });
+      //打开回复处理框
+      $scope.showEssayReplyCmtModal = function(reply_to_id,parent_cmt_id){
+        $rootScope.reply_to_id = reply_to_id;
+        $rootScope.parent_cmt_id = parent_cmt_id;
+        $('#essay-comment-reply-modal').modal('toggle');
+      }
 });
 //文章修改
 heysoo.controller('c_modify',function($scope,$rootScope,$state,$http){
@@ -512,6 +365,94 @@ heysoo.controller('c_essay_cmt',function($scope,$rootScope,$state,$http){
     });
   }
 });
+//碎片
+heysoo.controller('c_piece',function($scope,$state,Piece){
+  //删除碎片
+  $scope.deletePiece = function(piece_id){
+    if(confirm("你确定要删除该碎片?")){
+      Piece.delete(piece_id).success(function(res){
+        if(res.error === 0){
+          //移除该碎片
+          $("#piece-"+piece_id).remove();
+          hMessage(res.msg);
+        }else hMessage(res.msg);
+      });
+    }
+  }
+  $scope.piece_comments = {};
+  //更新评论
+  $scope.updateComment = function(piece_id){
+    Piece.getPieceComments(piece_id).success(function(res){
+      if(res.error === 0){
+        $scope.piece_comments = res.comments;
+        $scope.piece_comment_tip = '';
+        $scope.piece_comment_tip_show = false;
+      }else {
+        $scope.piece_comment_tip_show = true;
+        $scope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
+      }
+    });
+  }
+  //显示评论区
+  $scope.pieceCommentToggle = function(piece_id){
+    if($('#piece-comment-'+piece_id).css('display') == 'none'){
+      $scope.piece_comments = [];
+      $scope.piece_comment_tip_show = true;
+      $scope.piece_comment_tip = '<i class="hs-icon hs-icon-spinner"></i> 正在获取评论...';
+      //获取碎片评论
+      $scope.updateComment(piece_id);
+    }
+    $('#piece-comment-'+piece_id).slideToggle();
+  }
+  $scope.postedComment = {};//待发布的评论
+  $scope.postedComment.reply_to_id = null;
+  //评论
+  $scope.postComment = function(piece_id,piece_user_id){
+    if(!$scope.postedComment.comment_content){
+      hMessage("评论内容不能为空！");
+      return;
+    }
+    $scope.postedComment.piece_id = piece_id;
+    $scope.postedComment.obj_id = piece_user_id;
+    if($scope.postedComment.reply_to_id !== null){//如果是回复
+      if($scope.postedComment.comment_content.split(':') !== undefined)
+        $scope.postedComment.comment_content = $scope.postedComment.comment_content.split(':')[1];
+      else $scope.postedComment.reply_to_id = null;
+    }
+    console.log($scope.postedComment);
+    //{'obj_id':$rootScope.piece_user_id,'piece_id':piece_id,'comment_content':content,'reply_to_id':$scope.piece_comment_reply_to_id}
+    Piece.postComment($scope.postedComment).success(function(res){
+      if(res.error === 0){
+            //清空回复框
+            $scope.postedComment.comment_content = "";
+            $scope.postedComment.reply_to_id = null;
+            $("button.post-piece-comment-btn").html('发 布');
+            //更新评论
+            $scope.updateComment(piece_id);
+            //hMessage(res.msg);
+          }else{
+            hMessage(res.msg);
+          }
+    });
+  }
+  //回复评论
+  $scope.replyComment = function(comment_user_id,comment_user_name){
+    $scope.postedComment.comment_content = "@"+comment_user_name+" : ";
+    $scope.postedComment.reply_to_id = comment_user_id;
+  }
+  //删除评论
+  $scope.deleteComment = function(piece_id,comment_id){
+    if(confirm("确定删除该评论?")){
+      Piece.deleteComment(comment_id).success(function(res){
+        if(res.error === 0){
+          //更新评论
+          $scope.updateComment(piece_id);
+        }else hMessage(res.msg);
+      });
+    }
+  }
+});
+
 //消息控制器
 heysoo.controller('c_message',function($scope,$state,$http){
   $scope.msg_tab = 'comment';
@@ -542,11 +483,25 @@ heysoo.controller('c_message',function($scope,$state,$http){
       }
   }
 });
-//设置控制器
-heysoo.controller('c_setting',function($scope,$state,$http){
-  $scope.settingSwitchTab = function(tab){
-    $scope.setting_tab = tab;
-    $state.go("setting_"+tab);
+//comment box
+heysoo.controller('c_message_comment',function($scope,$rootScope,$http){
+  $scope.show_piece_text = "查看碎片";
+  $scope.show_original_piece = false;
+  $scope.showPiece = function(){
+    if(!$scope.show_original_piece)
+      {$scope.show_original_piece = true;$scope.show_piece_text = "收起碎片";}
+    else
+       {$scope.show_original_piece = false;$scope.show_piece_text = "查看碎片";}
+  }
+  $scope.showMsgDetail = function(msg_obj_type,msg_obj_id){
+    $scope.current_cmt = null;
+    //获取评论详情
+    if(msg_obj_type == 'essay')var url = home_path+"/Comment/ng_get_essay_comment.html?cmt_id="+msg_obj_id;
+    else if(msg_obj_type == 'piece')var url = home_path+"/Comment/ng_get_piece_comment.html?cmt_id="+msg_obj_id;
+    $http.get(url).success(function(res){
+      if(res.error === 0){$scope.current_cmt = res.comment;$("#msgDetailModal_"+msg_obj_type).modal('toggle');}
+      else hMessage(res.msg);
+    });
   }
 });
 //好友控制器
@@ -579,6 +534,71 @@ heysoo.controller('c_follow',function($scope,$rootScope,$state,$http){
           }else hMessage(res.msg);
       });
     }
+  }
+});
+//文章，碎片，日记发布
+heysoo.controller('c_edit',function($scope,$state,$http){
+    $scope.edit_visible = "1";
+    $scope.edit_type = "piece";
+    $scope.post_piece_check = true;
+    $scope.edit_song_key = '';
+    $scope.songs = new Array();
+    $scope.song_search_tip_show = false;
+    $scope.song_search_tip = '查询中...';
+    var url = home_path+"/Action/ng_deal_post.html";
+    $scope.editPost = function(){
+      console.log($scope.post_piece_check);
+      $scope.edit_content = edit_post.html();
+      $http({
+        method:'POST',
+        url:url,
+        data:{
+          'title':$scope.edit_title,
+          'tag':$scope.edit_tag,
+          'type':$scope.edit_type,
+          'visible':$scope.edit_visible,
+          'content':$scope.edit_content,
+          'post_piece':$scope.post_piece_check
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+          edit_post.html('');
+          if($scope.edit_type == 'essay')
+            $state.go('view',{id:res.id});
+          else
+            {$state.go('home');}
+        }else{hMessage(res.msg);}
+      });
+    }
+    //查找音乐
+    $scope.searchSong = function(){
+      $scope.songs = new Array();
+      $url = home_path+'/Essay/song_search.html?s_key='+$scope.edit_song_key;
+      $http.get($url).success(function(res){
+        if(res.songs.length){
+          $scope.songs = res.songs;
+          var songs_num = res.songs.length;
+          $scope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
+          $scope.song_search_tip_show = true;
+        }
+        else {$scope.song_search_tip_show = true;$scope.song_search_tip = '无相关歌曲';}
+        //$('#edit_song_search_modal').modal('toggle');
+      });
+    }
+    //往编辑器插入音乐
+    $scope.insertMusicBox = function(song_id){
+      music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+      edit_post.appendHtml(music_frame);
+      $('#edit_song_search_modal').modal('toggle');
+    }
+});
+//设置控制器
+heysoo.controller('c_setting',function($scope,$state,$http){
+  $scope.settingSwitchTab = function(tab){
+    $scope.setting_tab = tab;
+    $state.go("setting_"+tab);
   }
 });
 /**setting*/
@@ -797,27 +817,6 @@ heysoo.controller('c_setting_privacy',function($scope,$rootScope,$http){
           hMessage(res.msg);
         }else{hMessage(res.msg);}
       });
-  }
-});
-//comment box
-heysoo.controller('c_message_comment',function($scope,$rootScope,$http){
-  $scope.show_piece_text = "查看碎片";
-  $scope.show_original_piece = false;
-  $scope.showPiece = function(){
-    if(!$scope.show_original_piece)
-      {$scope.show_original_piece = true;$scope.show_piece_text = "收起碎片";}
-    else
-       {$scope.show_original_piece = false;$scope.show_piece_text = "查看碎片";}
-  }
-  $scope.showMsgDetail = function(msg_obj_type,msg_obj_id){
-    $scope.current_cmt = null;
-    //获取评论详情
-    if(msg_obj_type == 'essay')var url = home_path+"/Comment/ng_get_essay_comment.html?cmt_id="+msg_obj_id;
-    else if(msg_obj_type == 'piece')var url = home_path+"/Comment/ng_get_piece_comment.html?cmt_id="+msg_obj_id;
-    $http.get(url).success(function(res){
-      if(res.error === 0){$scope.current_cmt = res.comment;$("#msgDetailModal_"+msg_obj_type).modal('toggle');}
-      else hMessage(res.msg);
-    });
   }
 });
 //controller of tag

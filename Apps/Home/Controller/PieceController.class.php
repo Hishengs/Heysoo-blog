@@ -70,6 +70,18 @@ class PieceController extends Controller {
         else
             $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
     }
+    //delete piece
+    public function delete(){
+        $piece_id = I('post.piece_id');
+        $cdt = array('user_id'=>$this->user_id,'piece_id'=>$piece_id);
+        if($this->piece_model->where($cdt)->delete()){
+            //删除属于该碎片的所有评论
+            $cdt = array('piece_id'=>$piece_id);
+            $this->piece_comment_model->where($cdt)->delete();
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.DELETE_SUCCESS')),'json');
+        }
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
+    }
     //post piece comment
     public function post_comment(){
         $piece_id = I('post.piece_id');
@@ -86,7 +98,7 @@ class PieceController extends Controller {
                 $this->ajaxReturn(array('error'=>1,'msg'=>'评论总字数不能超过500个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
             if(!empty($reply_to_id)){
                 $reply_to_name = A('User')->get_user_info($reply_to_id)['username'];
-                $comment_content = '回复 '.'<a href="javascript:viewUser('.$reply_to_id.')">'.$reply_to_name.'</a> : '.$comment_content;
+                $comment_content = '@'.'<a href="javascript:viewUser('.$reply_to_id.')">'.$reply_to_name.'</a> : '.$comment_content;
             }
             //$msg_receiver_id = I('post.obj_id');
             $msg_receiver_id = $this->get_piece_info_by_id($piece_id)['user_id'];
@@ -117,7 +129,8 @@ class PieceController extends Controller {
     public function get_piece_comment(){
         $piece_id = I('get.piece_id');
         $cdt['piece_id'] = $piece_id;
-        $comments = $this->piece_comment_model->field('hs_user.username,hs_piece_comment.user_id,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
+        $comments = $this->piece_comment_model->
+        field('hs_user.username,hs_piece_comment.user_id,hs_user.avatar,hs_piece_comment.comment_id,hs_piece_comment.comment_date,hs_piece_comment.comment_content')
         ->join('hs_user ON hs_piece_comment.user_id=hs_user.id AND hs_piece_comment.piece_id='.$piece_id)->order('hs_piece_comment.comment_date desc')->select();
         if($comments != false){
             $this->ajaxReturn(array('error'=>0,'comments'=>$comments),'json');
@@ -142,7 +155,7 @@ class PieceController extends Controller {
     }
     //get message of one piece
     public function get_piece($id){
-        $piece = $this->piece_model->field('hs_user.userName,hs_piece.piece_id,hs_piece.date,hs_piece.tag,hs_piece.content')->
+        $piece = $this->piece_model->field('hs_user.userName,hs_piece.piece_id,hs_piece.user_id,hs_piece.date,hs_piece.tag,hs_piece.content')->
         join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.piece_id='.$id)->find(); 
         $this->ajaxReturn(array('error'=>0,'items'=>$piece),'json');
     }
@@ -150,5 +163,13 @@ class PieceController extends Controller {
     public function get_piece_info_by_id($piece_id){
         $piece = $this->piece_model->where('piece_id='.$piece_id)->limit(1)->find();
         return $piece;
+    }
+    //删除碎片评论
+    public function delete_comment(){
+        $comment_id = I('post.comment_id');
+        $cdt = array('user_id'=>$this->user_id,'comment_id'=>$comment_id);
+        if($this->piece_comment_model->where($cdt)->delete())
+            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.DELETE_SUCCESS')),'json');
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
     }
 }

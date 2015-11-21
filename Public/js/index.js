@@ -6,12 +6,11 @@ var editOpts = {
     height:'680px',
     basePath:editor_basePath,
     themeType:'simple',
-    items:[ '|','forecolor', 'hilitecolor', 'fontname' ,'bold', 
+    items:[ '|','bold', 
 	'italic', 'underline', '|', 'justifyleft', 'justifycenter', 'justifyright',
-	'justifyfull', '|', 'subscript',
-	'superscript', 'removeformat', '|', 'image', 
-	'emoticons','|', 'link', 'unlink', 'fullscreen',
-	'preview', '|'
+	'justifyfull', '|', 'removeformat', '|', 'image', 
+	'emoticons','|', 'link', 'fullscreen',
+	 '|'
 	],
 };
 //文章评论配置
@@ -185,32 +184,6 @@ function tag(tag){
 	});
 }
 
-//获取碎片评论
-/*function updatePieceCmt(piece_id){
-	$("div.piece-comment-tip").html('<i class="icon-spinner"></i> 获取评论...');
-	$.ajax({
-		url:home_path+"/Piece/get_piece_comment.html",
-		type:'GET',
-		data:{'piece_id':piece_id},
-		dataType:'json',
-		success:function(data){
-			if(data.error === 0){
-				//将评论插入评论列表
-				var html = '';
-				for (var i = 0;  i < data.comments.length; i++) {
-					html += '<div class="piece-comment-item"><div class="piece-comment-item-info">'+
-					'<a class="piece-comment-user" href="javascript:;">'+data.comments[i]['username']+'</a>&nbsp;<span class="piece-comment-date"><i class="icon-time"></i> '+data.comments[i]['comment_date']+'</span></div>'+
-					'<div class="piece-comment-item-content">'+data.comments[i]['comment_content']+'</div><div class="piece-comment-item-footer"></div></div>';
-				};
-				$("div.piece-comment-tip").remove();
-				$("div.piece-comment-list").prepend(html);
-			}else{ $("div.piece-comment-tip").html('<i class="icon-warning-sign"></i> '+data.msg);}
-		},
-		error:function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest);
-		}
-	});
-}*/
 //go to view page
 function view(typeId,id){
 	//window.location.href = site_prefix+"/heysoo/#/view/"+id;

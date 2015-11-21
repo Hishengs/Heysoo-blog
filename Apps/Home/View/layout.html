@@ -9,10 +9,6 @@
 	<title>{$userName | default="我的主页"}</title>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/plugins.css"/>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/index.css"/>
-	<style type="text/css">
-		#left-panel{ background-image: url({{sideBarBg}}?imageView2/2/w/400);}
-		body,#right-panel,.y-full{ background-image: url({{mainBg}});}
-	</style>
 </head>
 <body>
 
@@ -21,9 +17,11 @@
 </div>
 <div id="hMessage-mask"></div>
 
-<div id="left-panel" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
+<!-- 左边栏 -->
+<div id="left-panel" ng-style="style.sidebar_bg" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
+
 <div class="user-avatar">
-<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80">
+	<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80">
 </div>
 <div class="userName">{{user_info.username}}</div>
 <div class="user-signature">{{user_info.signature}}</div>
@@ -31,8 +29,8 @@
 
 <div class="hs-btn-group hs-btn-group-justify">
     <button type="button" class="hs-btn hs-btn-msg hs-btn-{{interface_color}}" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></button>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="edit()"><i class="hs-icon-edit"></i> 发布</button>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showFollow()"><i class="hs-icon-user"></i> 关注</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showPublish()"><i class="hs-icon-edit"></i> 发布</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showFollow()"><i class="hs-icon-eye"></i> 关注</button>
 </div>
 
 <button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" onclick="javascript:window.location.href='{:U('Index/index')}'"><i class="hs-icon-home"></i> 首页</button>
@@ -43,23 +41,24 @@
 </div>
 
 <div class="hs-btn-group hs-btn-group-justify setting">
-<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='{:U('Action/logout')}'"><i class="hs-icon-power-off"></i> 退出</button>
-<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
-<button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
-<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>
-<button class="hs-btn hs-btn-{{interface_color}}" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
-</div>
+	<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='{:U('Action/logout')}'"><i class="hs-icon-power-off"></i> 退出</button>
+	<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
+	<button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
+	<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>
+	<button class="hs-btn hs-btn-{{interface_color}}" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
 </div>
 
-<div id="right-panel">
-<div id="content">
-<div ui-view="content" class="content-view">
-<div ng-include="'__PUBLIC__/templates/Index/index.html'"></div>
 </div>
-</div>
+
+<div id="right-panel" ng-style="style.main_bg">
+	<div id="content">
+		<div ui-view="content" class="content-view">
+		<div ng-include="'__PUBLIC__/templates/Index/index.html'"></div>
+		</div>
+	</div>
 </div>
 <!-- 回到顶部 -->
-<a href="javascript:gotoTop();" id="backTop"><i class="hs-icon-arrow-up"></i> 回到顶部</a>
+<a href="javascript:gotoTop();" id="backTop" class="plain-link"><i class="hs-icon-arrow-circle-up hs-icon-md"></i></a>
 </body>
 <script>
 	var load_essays_path = "{:U('Essay/load_essays')}";

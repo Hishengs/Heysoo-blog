@@ -1,0 +1,26 @@
+heysoo.config(['$stateProvider',function($stateProvider){
+	$stateProvider.state('tag',{
+        url:'/tag',
+        views:{
+            'content':{templateUrl:tpl_tag_url+"/tag.html"}
+        }
+    }).state('tag_essay',{
+        url:'/essay',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/essay_tag.html"}
+        }
+    }).state('tag_piece',{
+        url:'/piece',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/piece_tag.html"}
+        }
+    }).state('tag_friend',{
+        url:'/friend',
+        parent:'tag',
+        views:{
+            'tag':{templateUrl:tpl_tag_url+"/friend_tag.html"}
+        }
+    });
+}]);

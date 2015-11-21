@@ -1,2 +1,2 @@
-var m_index = angular.module('Index',['ui.router','ipCookie']);
+var heysoo = angular.module('Index',['ui.router','ipCookie']);
 

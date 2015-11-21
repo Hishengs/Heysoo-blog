@@ -1,0 +1,13 @@
+heysoo.config(['$stateProvider',function($stateProvider){
+	$stateProvider.state('piece',{
+        url:'/piece/page/:page',
+        views:{
+            'content':{templateUrl:tpl_piece_url+"/index.html"}
+        }
+    }).state('comment',{
+        url:'/comment/:id',
+        views:{
+            'mask':{templateUrl:tpl_piece_url+"/comment.html"}
+        }
+    });
+}]);

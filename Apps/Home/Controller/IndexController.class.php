@@ -34,7 +34,7 @@ class IndexController extends Controller {
          * 3.公开的
          * 4.按时间排序
          */
-        $sql = "SELECT u.id,u.userName,u.avatar,p.piece_id,p.date,p.tag,p.content from hs_user as u,hs_piece as p 
+        $sql = "SELECT u.id,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_user as u,hs_piece as p 
         where p.visible=1 AND u.id=p.user_id AND p.user_id in (SELECT followed_id as id from hs_follow where follower_id=".$this->user_id." 
         union SElECT id from hs_user where id=".$this->user_id.") order by p.date desc limit ".$page*$this->piece_nums_per_page.
         ",".$this->piece_nums_per_page;
