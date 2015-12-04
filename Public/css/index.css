@@ -1,4 +1,18 @@
 @CHARSET "UTF-8";
+::selection {
+    background:#000;
+    color:#fff;
+}
+
+::-moz-selection {
+    background:#000;
+    color:#fff;
+}
+
+::-webkit-selection {
+    background:#000;
+    color:#fff;
+}
 html,body{font-size: 10px; }
 html{height:100%;}
 body{min-height: 100%;}
@@ -17,8 +31,29 @@ div.post-group button{}
 
 #mask,#hMessage-mask{width: 100%; height: 100%; position: fixed; top:0; left: 0; background: rgba(0,0,0,0.8); z-index: 999;}
 #hMessage-mask{display: none; }
-#right-panel{ width:100%; min-height: 100vh; height: 100%;}
-#content{ min-height: 100vh; height: 100%; width:auto; margin:0; padding-left:20%; }
+#right-panel{ width:100%; min-height: 100vh; height: 100%; /* padding-left:20%; */ position: relative;}
+
+#top-bar{height: 50px; line-height: 50px; background-color: #fff;position: fixed; left:0; top: 0;right: 0; box-shadow:0px 2px 5px rgba(0,0,0,0.5);z-index: 330;}
+#top-bar div.top-bar-wrapper{position: relative;}
+#top-bar div.top-bar-wrapper div.top-bar-left{position: absolute; left: 0;top: 0; display: inline-block;}
+#top-bar div.top-bar-wrapper div.top-bar-center{text-align: center; margin: 0 auto;}
+#top-bar div.top-bar-wrapper div.top-bar-right{position: absolute; right: 0;top: 0; display: inline-block;}
+#top-bar div.top-bar-wrapper div.top-bar-right img{width: 30px; height: 30px; border-radius: 15px;}
+/*发布器*/
+#publisher{display: none; background-color: #fff; box-shadow:0px 2px 5px rgba(0,0,0,0.5); overflow-y:auto; }
+div.publisher{width: 640px; margin: 20px auto;}
+div.publisher-main div.publisher-main-content{margin: 0;}
+div.publisher-main div.publisher-main-content textarea{width: 100%;}
+div.publisher-footer div.publisher-footer-toolbar{ height: 38px; line-height: 38px; border-left: 1px solid #ccc; border-right: 1px solid #ccc;}
+div.publisher-footer div.tag{margin: 0; height: 38px; line-height: 38px;}
+div.publisher-footer div.tag span{margin: 0px;}
+div.publisher-footer-toolbar div.emoji div.hs-dropdown-content{width: 500px; height: 200px;}
+div.publisher-footer-toolbar div.emoji img{width: 30px;height: 30px; padding: 2px;}
+div.publisher-footer-toolbar div.emoji img:hover{border: 1px solid #aaa;}
+div.publisher-footer-toolbar div.image div.hs-dropdown-content,
+div.publisher-footer-toolbar div.music div.hs-dropdown-content{width: 500px;}
+
+#content{ min-height: 100vh; height: 100%; width:auto; margin:0; padding-top: 60px;}
 div.content-view{ min-height: 100vh; height: 100%; position: relative;}
 /*control panel*/
 div.user-avatar{width: 100%; margin: 0 auto; text-align: center;}
@@ -118,3 +153,9 @@ a.hs-btn-transparent:visited {
 .m-right-15{margin-right: 15px;}
 .m-0-auto{margin: 0 auto;}
 .m-10-auto{margin: 10px auto;}
+
+/**display*/
+.dis-inline{display: inline;}
+.dis-block{display: block;}
+.dis-inline-block{display: inline-block;}
+.dis-table{display: table;}

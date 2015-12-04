@@ -3,21 +3,20 @@
 <form class="hs-form essay-edit-form">
 	<div class="hs-input-group hs-input-group-{{interface_color}}">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
-	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题，碎片无需填" placeholder="标题，碎片无需填" ng-model="edit_title">
+	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题，碎片无需填" placeholder="标题" ng-model="edit_title">
 	</div>
 	<div class="hs-input-group hs-input-group-{{interface_color}}">
 	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
 	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" ng-model="edit_tag">
 	</div>
 
-	<div class="hs-input-group hs-input-group-{{interface_color}}">
+	<!-- <div class="hs-input-group hs-input-group-{{interface_color}}">
 		<span class="hs-input-group-label">类型 <i class="hs-icon-bookmark"></i></span>
 		<select class="hs-select hs-select-{{interface_color}} type" name="type" title="发布类型" placeholder="发布类型" ng-model="edit_type">
 			<option value="piece">碎片</option>
 			<option value="essay">文章</option>
-			<!-- <option value="diary">日记</option> -->
 		</select>
-	</div>
+	</div> -->
 
 	<div class="hs-input-group hs-input-group-{{interface_color}}">
 		<span class="hs-input-group-label">可见 <i class="hs-icon-eye"></i></span>
@@ -35,8 +34,11 @@
         <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#edit_song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
       </span>
 	</div>
-
-	<textarea id="essay-editor" name="content" ng-model="edit_content"></textarea>
+	
+	<div class="essay-editor" id="essay-editor">
+		<textarea name="content" ng-model="edit_content"></textarea>
+	</div>
+	<!-- <textarea id="essay-editor" name="content" ng-model="edit_content"></textarea> -->
 	<div class="essay-edit-footer">
 		<div class="essay-edit-footer-note"><i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传</div>
 		<div class="essay-edit-footer-operation">
@@ -65,5 +67,18 @@
 
 
 <script>
-window.edit_post = KindEditor.create('#essay-editor',editOpts);
+//window.edit_post = KindEditor.create('#essay-editor',editOpts);
+//Markdown编辑器
+$(function(){
+	window.essay_editor = editormd("essay-editor", {
+	  path : public_path+"/editor/meditor/lib/",
+	  height:550,
+	  toolbarIcons:function(){
+	    return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
+	  },
+	  emoji:true,
+	  watch:false,
+	  placeholder:"在此输入内容"
+	});
+});
 </script>

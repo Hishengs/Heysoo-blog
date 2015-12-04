@@ -8,9 +8,9 @@
 * @version 4.1.10 (2013-11-23)
 *******************************************************************************/
 (function (window, undefined) {
-	if (window.KindEditor) {
-		return;
-	}
+if (window.KindEditor) {
+	return;
+}
 if (!window.console) {
 	window.console = {};
 }
@@ -319,9 +319,9 @@ _each(_CURSORMOVE_KEY_MAP, function(key, val) {
 	_CHANGE_KEY_MAP[key] = val;
 });
 function _bindEvent(el, type, fn) {
-	if (el.addEventListener){
+	if (el.addEventListener){//>=IE9
 		el.addEventListener(type, fn, _useCapture);
-	} else if (el.attachEvent){
+	} else if (el.attachEvent){//<IE9
 		el.attachEvent('on' + type, fn);
 	}
 }

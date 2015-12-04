@@ -12,19 +12,21 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
     }
   });
   //靠近左侧显示
-  $('body').mousemove(function(e) { 
+  /*$('body').mousemove(function(e) { 
     var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
     if(xx <= 20){
-      $("#content").css('padding-left','400px');
+      $("#right-panel").css('padding-left','20%');
+      $("#top-bar").css('left','20%');
       $("#left-panel").fadeIn(500);
     }
-  }); 
+  }); */
   //双击隐藏
-  $scope.toggleSidePanel = function(){
+  /*$scope.toggleSidePanel = function(){
     $("#left-panel").fadeOut(500,function(){
-    $("#content").css('padding-left',0);
+    $("#right-panel").css('padding-left',0);
+    $("#top-bar").css('left',0);
     });
-  }
+  }*/
   //设置定时器，定时获取未读消息数目#每1分钟
   var timer = 60000;
   setInterval(function(){
@@ -36,4 +38,21 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
       $rootScope.unread_msg_num = res.unread_msg_num;
     });
   },timer);
+  //显示发布器
+  $scope.togglePublisher = function(){
+    //动态创建一个编辑器
+    $(function(){
+      var editor = editormd("editormd", {
+              path : public_path+"/editor/meditor/lib/",
+              height:250,
+              toolbarIcons:function(){
+                return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
+              },
+              emoji:true,
+              watch:false,
+              placeholder:"在此输入内容"
+          });
+    });
+    $('#publisher').slideToggle();
+  }
 });
