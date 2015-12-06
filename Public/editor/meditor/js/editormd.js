@@ -2631,7 +2631,8 @@
                 
                 editor.css({
                     width    : $(window).width(),
-                    height   : $(window).height()
+                    height   : $(window).height(),
+                    'z-index'  : 9999
                 }).addClass(fullscreenClass);
 
                 this.resize();
@@ -2673,7 +2674,8 @@
 
             editor.css({
                 width    : editor.data("oldWidth"),
-                height   : editor.data("oldHeight")
+                height   : editor.data("oldHeight"),
+                'z-index'  : ''
             }).removeClass(fullscreenClass);
 
             this.resize();

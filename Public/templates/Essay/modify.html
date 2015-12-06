@@ -18,8 +18,19 @@
 			<option value="0">仅自己可见</option>
 		</select>
 	</div>
-
-	<textarea id="modify-editor" name="content"></textarea>
+	
+	<div class="hs-input-group hs-input-group-{{interface_color}}">
+	  <span class="hs-input-group-label">歌曲 <i class="hs-icon-music"></i></span>
+	  <input type="text" class="hs-form-field tag" name="tag" title="歌曲" placeholder="请输入歌曲名，歌手名查找" ng-model="edit_song_key">
+	  <span class="hs-input-group-btn">
+        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
+      </span>
+	</div>
+	
+	<div class="essay-modify-editor" id="essay-modify-editor">
+		<textarea name="content"></textarea>
+	</div>
+	<!-- <textarea id="modify-editor" name="content"></textarea> -->
 	<div class="essay-edit-footer m-top-20">
 		<div class="essay-edit-footer-note">
 			<i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 
@@ -34,5 +45,5 @@
 </div>
 
 <script>
-        window.modify_editor = KindEditor.create('#modify-editor',editOpts);
+    //window.modify_editor = KindEditor.create('#modify-editor',editOpts);
 </script>

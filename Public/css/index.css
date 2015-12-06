@@ -46,7 +46,7 @@ div.publisher-main div.publisher-main-content{margin: 0;}
 div.publisher-main div.publisher-main-content textarea{width: 100%;}
 div.publisher-footer div.publisher-footer-toolbar{ height: 38px; line-height: 38px; border-left: 1px solid #ccc; border-right: 1px solid #ccc;}
 div.publisher-footer div.tag{margin: 0; height: 38px; line-height: 38px;}
-div.publisher-footer div.tag span{margin: 0px;}
+div.publisher-footer div.tag span{margin: 0px; height: 36px;}
 div.publisher-footer-toolbar div.emoji div.hs-dropdown-content{width: 500px; height: 200px;}
 div.publisher-footer-toolbar div.emoji img{width: 30px;height: 30px; padding: 2px;}
 div.publisher-footer-toolbar div.emoji img:hover{border: 1px solid #aaa;}

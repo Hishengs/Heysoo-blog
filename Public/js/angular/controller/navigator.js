@@ -39,10 +39,10 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
     });
   },timer);
   //显示发布器
-  $scope.togglePublisher = function(){
+  $rootScope.togglePublisher = function(){
     //动态创建一个编辑器
     $(function(){
-      var editor = editormd("editormd", {
+      window.piece_editor = editormd("piece-editor", {
               path : public_path+"/editor/meditor/lib/",
               height:250,
               toolbarIcons:function(){
@@ -50,6 +50,8 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
               },
               emoji:true,
               watch:false,
+              htmlDecode:"script,a,img",
+              saveHTMLToTextarea:true,
               placeholder:"在此输入内容"
           });
     });

@@ -21,7 +21,10 @@
 <!-- 发布评论 -->
 <div class="post-comment" ng-controller="c_essay_cmt" ng-show="essay_comment_on">
 <form class="hs-form essay-comment-form" id="essay-comment-form">
-<textarea class="post-comment-edit" name="comment-content"></textarea>
+<div class="essay-comment-editor" id="essay-comment-editor">
+    <textarea name="comment-content"></textarea>
+</div>
+<!-- <textarea class="post-comment-edit" name="comment-content"></textarea> -->
 <button type="button" ng-click="postEssayCmt(essay.essay_id)" class="hs-btn hs-btn-{{interface_color}} post-essay-comment-btn">发布评论</button>
 </form>
 <!--回复评论-->
@@ -32,12 +35,30 @@
     </div>
     <div class="hs-modal-bd">
       <form class="hs-form" id="essay-reply-comment-form">
-        <textarea class="reply-comment-edit" name="reply-comment-content"></textarea>
+      <div class="essay-comment-reply-editor" id="essay-comment-reply-editor">
+        <textarea name="reply-comment-content"></textarea>
+      </div>
+        <!-- <textarea class="reply-comment-edit" name="reply-comment-content"></textarea> -->
 		<button type="button" ng-click="replyEssayCmt(essay.essay_id)" class="hs-btn hs-btn-block hs-btn-{{interface_color}} reply-essay-comment-btn">回复</button>
     </form>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  /*window.essay_comment_reply_editor = editormd("essay-comment-reply-editor", {//回复框
+      path : public_path+"/editor/meditor/lib/",
+      height:250,
+      toolbarIcons:function(){
+        return ["link","image","emoji","fullscreen"]
+      },
+      emoji:true,
+      watch:false,
+      htmlDecode:"script,a,img",
+      saveHTMLToTextarea:true,
+      placeholder:"在此输入内容",
+      value:''
+  });*/
+</script>
 
 </div>
 
@@ -74,7 +95,7 @@
 
 </div>
 
-<div class="essay-comments-tip hs-alert hs-alert-{{interface_color}}" ng-show="essay_comments_tip_show" data-hs-alert><i class="hs-icon-coffee"></i> 暂无评论，快来抢沙发吧~</div>
+<div class="essay-comments-tip hs-alert" ng-show="essay_comments_tip_show" data-hs-alert><i class="hs-icon-coffee"></i> 暂无评论，快来抢沙发吧~</div>
 
 </div>
 
@@ -82,6 +103,6 @@
 
 </div>
 <script type="text/javascript">
-    window.essay_editor = KindEditor.create('.post-comment-edit',essayCmtOptions);
-    window.essay_reply_editor = KindEditor.create('.reply-comment-edit',essayReplyCmtOptions);
+    //window.essay_editor = KindEditor.create('.post-comment-edit',essayCmtOptions);
+    //window.essay_reply_editor = KindEditor.create('.reply-comment-edit',essayReplyCmtOptions);
 </script>

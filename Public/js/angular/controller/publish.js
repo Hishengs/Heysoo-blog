@@ -1,16 +1,29 @@
 //文章，碎片，日记发布
-heysoo.controller('c_edit',function($scope,$state,$http){
+heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     $scope.edit_visible = "1";//可见性
     $scope.edit_type = "essay";
     $scope.post_piece_check = true;//是否同时发布碎片
     $scope.edit_song_key = '';//查找音乐的关键词
     $scope.songs = new Array();
     $scope.song_search_tip_show = false;
-    $scope.song_search_tip = '查询中...';
     var url = home_path+"/Action/ng_deal_post.html";//post url
+    //动态创建editor
+    window.essay_editor = editormd("essay-editor", {
+        path : public_path+"/editor/meditor/lib/",
+        height:550,
+        toolbarIcons:function(){
+          return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
+        },
+        emoji:true,
+        watch:false,
+        htmlDecode:"script,a,img",
+        saveHTMLToTextarea:true,
+        placeholder:"在此输入内容",
+        value:''
+    });
     $scope.editPost = function(){
       console.log($scope.post_piece_check);
-      $scope.edit_content = window.essay_editor.getPreviewedHTML();//获取markdown编辑器的html
+      $scope.edit_content = window.essay_editor.getHTML();//获取markdown编辑器的html
       /*$scope.edit_content = edit_post.html();*/
       $http({
         method:'POST',
@@ -38,23 +51,91 @@ heysoo.controller('c_edit',function($scope,$state,$http){
     }
     //查找音乐
     $scope.searchSong = function(){
-      $scope.songs = new Array();
-      $url = home_path+'/Essay/song_search.html?s_key='+$scope.edit_song_key;
-      $http.get($url).success(function(res){
+      $rootScope.song_search_tip = '查询中...';
+      $rootScope.current_editor = window.essay_editor;
+      $rootScope.search_songs = new Array();
+      Music.search($scope.edit_song_key).success(function(res){
         if(res.songs.length){
-          $scope.songs = res.songs;
+          $rootScope.search_songs = res.songs;
           var songs_num = res.songs.length;
-          $scope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
-          $scope.song_search_tip_show = true;
+          $rootScope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
+          $rootScope.song_search_tip_show = true;
         }
-        else {$scope.song_search_tip_show = true;$scope.song_search_tip = '无相关歌曲';}
-        //$('#edit_song_search_modal').modal('toggle');
+        else {$rootScope.song_search_tip_show = true;$rootScope.song_search_tip = '无相关歌曲';}
       });
     }
-    //往编辑器插入音乐
-    $scope.insertMusicBox = function(song_id){
-      music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
-      edit_post.appendHtml(music_frame);
-      $('#edit_song_search_modal').modal('toggle');
+})
+.controller('c_piece_publisher',function($scope,$rootScope,$state,$http,Music){
+    $scope.piece_visible = "1";//可见性
+    $scope.piece_type = "piece";
+    $scope.piece_tag = '';
+    $scope.edit_song_key = '';
+    $scope.post_piece_check = false;//是否同时发布碎片
+    //设置可见性
+    $scope.setPieceVisible = function(visible){
+      $scope.piece_visible = visible+'';
     }
+    //查找音乐
+    $scope.searchSong = function(){
+      $rootScope.song_search_tip = '查询中...';
+      $rootScope.current_editor = window.piece_editor;
+      $rootScope.search_songs = new Array();
+      Music.search($scope.edit_song_key).success(function(res){
+        if(res.songs.length){
+          $rootScope.search_songs = res.songs;
+          var songs_num = res.songs.length;
+          $rootScope.song_search_tip = '共找到 '+ songs_num +' 首相关歌曲';
+          $rootScope.song_search_tip_show = true;
+        }
+        else {$rootScope.song_search_tip_show = true;$rootScope.song_search_tip = '无相关歌曲';}
+      });
+    }
+    
+    $scope.postPiece = function(){
+      $scope.piece_content = window.piece_editor.getHTML();//获取markdown编辑器的html
+      /*console.log({
+          'title':'',
+          'tag':$scope.piece_tag,
+          'type':$scope.piece_type,
+          'visible':$scope.piece_visible,
+          'content':$scope.piece_content,
+          'post_piece':$scope.post_piece_check
+        });*/
+      $http({
+        method:'POST',
+        url:home_path+"/Action/ng_deal_post.html",
+        data:{
+          'title':'',
+          'tag':$scope.piece_tag,
+          'type':$scope.piece_type,
+          'visible':$scope.piece_visible,
+          'content':$scope.piece_content,
+          'post_piece':$scope.post_piece_check
+        }
+      }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+          hMessage(res.msg);
+          window.piece_editor.setValue('');//将编辑器内容置空
+          $rootScope.togglePublisher();
+          if($scope.piece_type == 'essay')
+            $state.go('view',{id:res.id});
+          else{
+            $http.get(home_path+"/Index/ng_index.html").success(function(res){
+              $rootScope.index_items = res;
+            });
+            $state.go('home');
+          }
+        }else{hMessage(res.msg);}
+      });
+    }
+})
+.controller('c_song_search',function($scope,$rootScope){
+  //往编辑器插入音乐
+  $scope.insertMusicBox = function(song_id){
+    music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+    //edit_post.appendHtml(music_frame);
+    $rootScope.current_editor.insertValue(music_frame);
+    $('#song_search_modal').modal('toggle');
+  }
 });

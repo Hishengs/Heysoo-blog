@@ -9,21 +9,21 @@ var minify = require('gulp-minify-css');
 // 创建 Compass 任务
 //----------------css-----------------------
 gulp.task('index-css', function() {
-  gulp.src(['./css/index.css','./css/piece/piece.css','./css/diary/diary.css','./css/essay/essay.css',
+  gulp.src(['./css/index.css','./css/piece/piece.css','./css/essay/essay.css',
     './css/message.css','./css/setting.css'])
     .pipe(concat('index.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
 });
 gulp.task('plugins-css', function() {
-  gulp.src(['./bower/amazeui/dist/css/amazeui.css','./bower/jquery.atwho/dist/css/jquery.atwho.min.css'])
+  gulp.src(['./bower/amazeui/dist/css/amazeui.css','./editor/meditor/css/editormd.min.css'])
     .pipe(concat('plugins.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
 });
 //--------------js---------------------------
 gulp.task('index', function() {
-  gulp.src(['./js/index.js'])
+  gulp.src(['./js/index.js','./js/to-markdown.js'])
     .pipe(concat('index.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));
@@ -36,8 +36,7 @@ gulp.task('angular', function() {
 gulp.task('plugins-js', function() {
   gulp.src(['./bower/jquery/dist/jquery.min.js',
     './bower/amazeui/dist/js/amazeui.min.js',
-    './editor/kindeditor.js',
-    './editor/lang/zh_CN.js'])
+    './editor/meditor/js/editormd.js'])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./js/dist/'));
@@ -74,7 +73,7 @@ gulp.task('ng-service', function() {
   gulp.src(['./js/angular/service/essay.js','./js/angular/service/user.js',
     './js/angular/service/piece.js','./js/angular/service/message.js','./js/angular/service/follow.js',
     './js/angular/service/publish.js','./js/angular/service/setting.js','./js/angular/service/tag.js',
-    './js/angular/service/search.js'])
+    './js/angular/service/search.js','./js/angular/service/music.js'])
     .pipe(concat('ng_service.js'))
     .pipe(gulp.dest('./js/angular/'));
 });

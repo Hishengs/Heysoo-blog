@@ -31,7 +31,7 @@
 	  <span class="hs-input-group-label">歌曲 <i class="hs-icon-music"></i></span>
 	  <input type="text" class="hs-form-field tag" name="tag" title="歌曲" placeholder="请输入歌曲名，歌手名查找" ng-model="edit_song_key">
 	  <span class="hs-input-group-btn">
-        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#edit_song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
+        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
       </span>
 	</div>
 	
@@ -48,37 +48,10 @@
 	</div>
 </form>
 
-<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="edit_song_search_modal">
-  <div class="hs-modal-dialog">
-    <div class="hs-modal-hd">查找结果
-      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
-    </div>
-    <div class="hs-modal-bd" style="max-height:550px; overflow:auto;">
-	    <ul class="hs-list">
-	    	<li ng-show="song_search_tip_show"><a href="javascript:;" ng-bind="song_search_tip"></a></li>
-			<li ng-repeat="song in songs"><a href="javascript:void(0);" ng-click="insertMusicBox(song.song_id)">{{song.song_singer}}:{{song.song_name}}</a></li>
-		</ul>
-    </div>
-  </div>
-</div>
-
 </div>
 
 
 
 <script>
 //window.edit_post = KindEditor.create('#essay-editor',editOpts);
-//Markdown编辑器
-$(function(){
-	window.essay_editor = editormd("essay-editor", {
-	  path : public_path+"/editor/meditor/lib/",
-	  height:550,
-	  toolbarIcons:function(){
-	    return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
-	  },
-	  emoji:true,
-	  watch:false,
-	  placeholder:"在此输入内容"
-	});
-});
 </script>
