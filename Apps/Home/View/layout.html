@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" ng-app="Index" ng-controller="c_index">
 <head>
-	<base href="/heysoo/">
+	<base href="/Heysoo/">
 	<meta charset="UTF-8">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -63,7 +63,8 @@
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
 		</div>
 		<div class="top-bar-right">
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息</a><!-- 消息 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息
+			<span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a><!-- 消息 -->
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</a><!-- 关注 -->
 			<div class="hs-dropdown m-left-15 dis-inline-block" data-hs-dropdown>
 				<a href="javascript:void(0);" class="plain-link m-right-20 hs-dropdown-toggle"><!-- 头像,个人中心 -->

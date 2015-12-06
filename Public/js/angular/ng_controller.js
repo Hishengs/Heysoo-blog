@@ -224,11 +224,12 @@ heysoo.controller('c_paginator',function($scope,$rootScope,$state,$http){
     if(action === 'prev'){
       if(paginator_index === 1){hMessage('当前已是第一页');return;}
       url = url_prefix+"?type="+type+"&page="+parseInt(paginator_index-1);
-    }else if(action === 'go'){
-      if(parseInt($scope.paginator_current_page.id) === paginator_index)return;
-      url = url_prefix+"?type="+type+"&page="+parseInt($scope.paginator_current_page.id);
     }else if(action === 'next'){
       url = url_prefix+"?type="+type+"&page="+parseInt(paginator_index+1);
+    }else{
+      console.log(action);
+      if(parseInt(action) === paginator_index)return;
+      url = url_prefix+"?type="+type+"&page="+parseInt(action);
     }
     $http.get(url).success(function(res){
       if(res.error === 0){

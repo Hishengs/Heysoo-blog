@@ -82,9 +82,8 @@ gulp.task('ng-service', function() {
 gulp.task('default', function() {
     gulp.run('index');
 });
-/*gulp.task('watch', function () {
-   gulp.watch('./js/angular/*.js', function (event) {
-     console.log('Event type: ' + event.type); // added, changed, or deleted
-     console.log('Event path: ' + event.path); // The path of the modified file
+gulp.task('watch', function () {
+   gulp.watch(['./css/*.css','./css/essay/*.css','./css/piece/*.css'], function (event) {
+     console.log('css changed!');
   });
-});*/
+});

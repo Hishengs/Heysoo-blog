@@ -5,10 +5,10 @@
 			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
 		</div>
 		<div class="piece-right">
-			<div class="bg"></div>
-			<div class="piece-triangle"></div>
+			<!-- <div class="bg"></div>
+			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
-				<span class="piece-user"><a href="javascript:;" ng-click="viewUser(piece.username)" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+				<span class="piece-user"><a href="javascript:;" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
 			</div>
 			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
@@ -45,13 +45,13 @@
 									<a href="javascript:void(0);" class="hs-comment-author">{{comment.username}}</a>
 									评论于 {{comment.comment_date}}
 									<span class="f-right">
-										<button class="hs-btn hs-btn-default" title="删除该评论" ng-click="deleteComment(piece.piece_id,comment.comment_id)" ng-if="user_info.id == comment.user_id">
+										<a href="javascript:void(0);" title="删除该评论" ng-click="deleteComment(piece.piece_id,comment.comment_id)" ng-if="user_info.id == comment.user_id">
 											<i class="hs-icon-trash"></i>
-										</button>
+										</a>
 										<!-- 回复 -->
-										<button class="hs-btn hs-btn-default" ng-click="replyComment(comment.user_id,comment.username)" ng-if="user_info.id != comment.user_id">
+										<a href="javascript:void(0);" ng-click="replyComment(comment.user_id,comment.username)" ng-if="user_info.id != comment.user_id">
 											<i class="hs-icon-reply"></i>
-										</button>
+										</a>
 									</span>
 								</div>
 							</header>
@@ -62,9 +62,13 @@
 				</li>
 			</ul>
 		</div>
+		<hr>
 	</div>
 </div>
-<button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block load-more index-load-more" ng-click="indexLoadMore();">
+<!-- <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block load-more index-load-more" ng-click="indexLoadMore();">
 <i class="hs-icon-arrow-down"></i> 加载更多
-</button>
-<!-- <a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a> -->
+</button> -->
+<div class="loadMore">
+	<a href="javascript:void(0);" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a>
+</div>
+

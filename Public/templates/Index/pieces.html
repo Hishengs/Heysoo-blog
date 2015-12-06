@@ -1,10 +1,10 @@
 <div infinite-scroll="datas.loadMore()" infinite-scroll-disabled='datas.busy' infinite-scroll-distance='1'>
   	<div class="piece" id="{{piece.piece_id}}" ng-repeat="piece in datas.pieces">
-	<div class="piece-left">
+	<!-- <div class="piece-left">
 	<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank"><img class="user-avatar" src="{{avatar}}" title="访问他/她的主页"/></a>
-	</div>
+	</div> -->
 	<div class="piece-right">
-	<div class="bg"></div><div class="piece-triangle"></div>
+	<!-- <div class="bg"></div><div class="piece-triangle"></div> -->
 	<div class="piece-info">
 	<span class="piece-author"><a class="piece-user" href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 	<span class="piece-date"><i class="icon-time"></i> {{piece.date}}</span>

@@ -5,8 +5,8 @@
 			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
 		</div>
 		<div class="piece-right">
-			<div class="bg"></div>
-			<div class="piece-triangle"></div>
+			<!-- <div class="bg"></div>
+			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
 				<span class="piece-user"><a href="javascript:;" ng-click="viewUser(piece.username)" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
@@ -70,11 +70,22 @@
 
 <div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
 <div class="hs-btn-group hs-btn-group-justify">
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','prev');">上一页</button>
-    <select class="hs-select" style="background:#0e90d2;color:#fff;border-color:#0e90d2;border-radius:0;" ng-options="option.name for option in paginator_pages" ng-model="paginator_current_page">
-    </select>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','go');">前往</button>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','next');">下一页</button>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','prev');"><i class="hs-icon-arrow-left"></i></button>
+    <div class="hs-dropdown hs-dropdown-up dis-inline-block" id="piece_pages_selections">
+		<button class="hs-btn hs-btn-{{interface_color}} hs-dropdown-toggle">
+			<i class="hs-icon-rocket"></i>
+		</button>
+		<ul class="hs-dropdown-content">
+			<li ng-repeat="option in paginator_pages"><a href="javascript:void(0);" ng-click="paginator('piece',option.id);">{{option.name}}</a></li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			$('#piece_pages_selections').dropdown();
+		});
+	</script>
+    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('piece','next');"><i class="hs-icon-arrow-right"></i></button>
 </div>
 </div>
+
 

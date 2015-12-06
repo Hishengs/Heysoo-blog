@@ -10,7 +10,7 @@ var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
 
 heysoo.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("");
     //deal unsafe:javascript:...
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|javascript):/);
