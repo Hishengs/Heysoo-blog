@@ -13,9 +13,9 @@ return array(
 		'DB_DEBUG'  =>  TRUE, // 数据库调试模式 开启后可以记录SQL日志 3.2.3新增
 		'LAYOUT_ON' => TRUE,//开启模板布局
 		'LAYOUT_NAME' => 'layout',
-		'LOGIN_VERIFY_CODE_ON' => false, //是否开启登录验证码验证
+		'LOGIN_VERIFY_CODE_ON' => true, //是否开启登录验证码验证
 		'REGISTER_VERIFY_CODE_ON' => false, //是否开启注册验证码验证
-		'REGISTER_INVITE_CODE_ON' => false, //是否开启邀请码注册
+		'REGISTER_INVITE_CODE_ON' => true, //是否开启邀请码注册
 		'QINIU_SK' => 'BylB8ABOnBdhzwcsUOC2kp2teC9jHMAGzmIii5Dv',
 		'QINIU_AK' => 'EWNeHQINB7Lm-Xa9sYFrU5K_RBBoTOWNFpEF4T0h',
 		'QINIU_BUCKET' => 'blueandwhite',

@@ -54,26 +54,31 @@
 	<div id="top-bar" ng-controller="c_sidePanel">
 		<div class="top-bar-wrapper">
 		<div class="top-bar-left">
-			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'"><i class="hs-icon-home"></i> 首页</a><!-- 首页 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('piece')"><i class="hs-icon-paper-plane"></i> 碎片</a><!-- 碎片 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('essay')"><i class="hs-icon-book"></i> 文章</a><!-- 文章 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-hide="device.isMobile"><i class="hs-icon-home"></i> 首页</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-show="device.isMobile"><i class="hs-icon-paper-plane"></i> Heysoo</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('piece')" ng-hide="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('essay')" ng-hide="device.isMobile"><i class="hs-icon-book"></i> 文章</a>
 		</div>
-		<div class="top-bar-center">
+		<div class="top-bar-center" ng-hide="device.isMobile">
 			<a href="javascript:void(0);" class="plain-link" ng-click="showPublish()"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
 		</div>
 		<div class="top-bar-right">
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()" ng-hide="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息
 			<span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a><!-- 消息 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</a><!-- 关注 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showSearch()" ng-hide="device.isMobile"><i class="hs-icon-search"></i> 搜索</a><!-- 关注 -->
 			<div class="hs-dropdown m-left-15 dis-inline-block" data-hs-dropdown>
 				<a href="javascript:void(0);" class="plain-link m-right-20 hs-dropdown-toggle"><!-- 头像,个人中心 -->
 					<img ng-src="{{avatar}}" alt="" class="avatar">
 					<i class="hs-icon-chevron-down m-left-15"></i>
 				</a>
 				<ul class="hs-dropdown-content">
+					<li><a href="javascript:void(0);" ng-click="showPublish()" ng-show="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a></li>
+					<li><a href="javascript:void(0);" ng-click="togglePublisher()" ng-show="device.isMobile"><i class="hs-icon-paint-brush"></i> 写碎片</a></li>
 					<li><a href="javascript:void(0);" ng-click="getPage('essay')"><i class="hs-icon-book"></i> 文章</a></li>
 					<li><a href="javascript:void(0);" ng-click="getPage('piece')"><i class="hs-icon-paper-plane"></i> 碎片</a></li>
+					<li><a href="javascript:void(0);" ng-click="showMessage()" ng-show="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a></li>
+					<li><a href="javascript:void(0);" ng-click="showSearch()" ng-show="device.isMobile"><i class="hs-icon-search"></i> 搜索</a></li>
 					<li><a href="javascript:void(0);" ng-click="showFollow()"><i class="hs-icon-eye"></i> 关注</a></li>
 					<li><a href="javascript:void(0);" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</a></li>
 					<li><a href="javascript:void(0);" ng-click="showSetting()"><i class="hs-icon-cog"></i> 设置</a></li>

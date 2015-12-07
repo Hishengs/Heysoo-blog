@@ -11,22 +11,8 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
       $rootScope.unread_msg_num = res.unread_msg_num;
     }
   });
-  //靠近左侧显示
-  /*$('body').mousemove(function(e) { 
-    var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
-    if(xx <= 20){
-      $("#right-panel").css('padding-left','20%');
-      $("#top-bar").css('left','20%');
-      $("#left-panel").fadeIn(500);
-    }
-  }); */
-  //双击隐藏
-  /*$scope.toggleSidePanel = function(){
-    $("#left-panel").fadeOut(500,function(){
-    $("#right-panel").css('padding-left',0);
-    $("#top-bar").css('left',0);
-    });
-  }*/
+  //检测是否是移动设备
+  $rootScope.device = isMobile();
   //设置定时器，定时获取未读消息数目#每1分钟
   var timer = 60000;
   setInterval(function(){
@@ -79,9 +65,9 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
     $state.go('home');
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
-      $('button.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
+      $('a.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
       $http.get(home_path+"/Index/ng_index.html?index_page="+$scope.index_page).success(function(res){
-        $('button.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
+        $('a.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
         if(!res.length){hMessage('沒有更多了！');return;}
         for (var i = 0; i < res.length; i++) {
             $scope.index_items.push(res[i]);
@@ -253,6 +239,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
   window.essay_comment_editor = editormd("essay-comment-editor", {//评论框
       path : public_path+"/editor/meditor/lib/",
       height:250,
+      width:'100%',
       toolbarIcons:function(){
         return ["link","image","emoji"]
       },
@@ -292,6 +279,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
     window.essay_comment_reply_editor = editormd("essay-comment-reply-editor", {//回复框
         path : public_path+"/editor/meditor/lib/",
         height:250,
+        width:'100%',
         toolbarIcons:function(){
           return ["link","image","emoji"]
         },
@@ -763,7 +751,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
 .controller('c_song_search',function($scope,$rootScope){
   //往编辑器插入音乐
   $scope.insertMusicBox = function(song_id){
-    music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width=280 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
     //edit_post.appendHtml(music_frame);
     $rootScope.current_editor.insertValue(music_frame);
     $('#song_search_modal').modal('toggle');

@@ -16,7 +16,7 @@
 html,body{font-size: 10px; }
 html{height:100%;}
 body{min-height: 100%;}
-div,p,span,a{ font-size: 1.4rem; font-family:'microsoft yahei',Lato,Helvetica,sambria,'Microsoft Jhenghei';}
+div,p,span,a{ font-size: 1.4rem; font-family:Lato,'microsoft yahei','宋体',Helvetica,sambria,'Microsoft Jhenghei';}
 #content img{max-width:740px; max-height: 600px;}
 
 #left-panel{ z-index:333; position:relative; background-color:#f5f5f5; width:20%; height:100%;  box-shadow:0px 2px 5px rgba(0,0,0,0.5); float:left; top:0; left:0; position:fixed; }
@@ -72,6 +72,8 @@ div.loadMore{width: 100%;text-align: center;margin: 20px 0;}
 button.load-more{width: 100%; max-width: 750px; margin:20px auto; border-radius: 0;}
 #backTop{text-decoration: none; position: fixed; right:20px; bottom:20px; display: none; z-index: 1000;}
 
+/**music iframe*/
+iframe.netease-music{max-width: 600px;min-width: 280px;}
 
 div.hs-input-group{ margin: 10px auto; font-size: 14px;}
 

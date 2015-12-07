@@ -20,13 +20,12 @@ button.login,button.register,span.hs-input-group-label{background-image: url("__
 <body>
 
 <div class="bg">
-
 	<div class="login-panel">
 		<div id="avatar">
 			<img class="avatar-img" src="__PUBLIC__/img/zebra.png"/>
 		</div>
 		<div class="title">Heysoo</div>
-		<div class="slogan">每个人就是一个世界</div>
+		<div class="slogan">{$slogan}</div>
 
 		<form action="{:U('Action/do_login')}" class="hs-form login-form" method="post">
 			<div class="hs-input-group hs-input-group-default">
@@ -56,7 +55,6 @@ button.login,button.register,span.hs-input-group-label{background-image: url("__
 			<button type="button" class="hs-btn hs-btn-default hs-btn-block register" onclick="window.location.href='{:U('Action/register')}'">注  册</button>
 		</div>
 	</div>
-
 </div>
 
 </body>

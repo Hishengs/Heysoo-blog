@@ -133,7 +133,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
 .controller('c_song_search',function($scope,$rootScope){
   //往编辑器插入音乐
   $scope.insertMusicBox = function(song_id){
-    music_frame = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=380 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width=280 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
     //edit_post.appendHtml(music_frame);
     $rootScope.current_editor.insertValue(music_frame);
     $('#song_search_modal').modal('toggle');

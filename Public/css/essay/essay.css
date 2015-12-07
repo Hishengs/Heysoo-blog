@@ -1,12 +1,13 @@
 /*css for essay index*/
 div.essay{ padding:20px; width:auto; }
-div.essay-right{position:relative; margin-left:100px; width:auto; padding:15px; color:#555;  background-color:#fff; /* box-shadow:0px 5px 10px rgba(0,0,0,0.5); */ }
+div.essay-right{position:relative; margin:0 auto; width:auto; padding:15px; color:#555;  background-color:#fff; /* box-shadow:0px 5px 10px rgba(0,0,0,0.5); */ }
 div.essays{ max-width: 1000px; margin: 0 auto;}
 div.essay-content a{ color: #696969; }
 div.essay-content a:hover{ color: #333; }
 h4.essay-title{ font-size: 2.2rem; font-weight: normal; color: #696969;}
 div.essay-footer a{ font-size: 1.4rem; color: #696969; text-decoration: none;}
 div.essay-footer a:hover,h4.essay-title:hover{ color: #333;}
+h4.essay-title{text-align: center;}
 /* span.essay-operation{ opacity: 0; float: right;}
 span.essay-operation:hover{ opacity: 1;} */
 div.essays-empty-tip{}
@@ -22,21 +23,21 @@ div.input-group{margin: 10px auto;}
 div.input-group input,div.input-group select{ border-radius: 0;}
 span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #dff0d8; color: #000; */}
 /*css for essay comment*/
-div.essay-comments{width: 800px; background: #fff;margin: 20px auto; padding: 20px;}
+div.essay-comments{width: 100%; background: #fff;margin: 20px auto; padding: 20px;}
 article.essay-comment{ width: 100%; margin: 15px auto;}
-
+div.essay-comments ul li article div.hs-comment-main div.hs-comment-bd img{width: 100%;}
 /*css for essay view*/
 div.post-comment{ margin: 20px auto; background:#fff; padding: 20px;}
 textarea.post-comment-edit{ height: 200px;}
 button.post-comment-btn{ margin-top:10px;}
-div.view-wrapper{width: 800px; margin: 0 auto;}
-div.essay-comments-tip,div.essay-comment-on-tip{text-align: center;}
+div.view-wrapper{max-width: 800px; margin: 0 auto;}
+div.essay-comments-tip,div.essay-comment-on-tip{text-align: center; margin-bottom: 20px;}
 div.view-panel{ min-height: 100%; height: auto; padding:20px; margin:0 auto; background-color: #fff; /* box-shadow:0px 2px 5px rgba(0,0,0,0.5); */}
 div.view-info{text-align: center;}
 div.view-info,div.view-footer{ margin:20px 0; font-size: 1.2rem; }
 div.view-info span{ margin-right: 10px;}
 div.view-content{ font-size: 1.5rem;}
-div.view-content img{ max-width: 740px;}
+div.view-content img{ width: 100%;}
 
 a.view-user,span.view-date,span.view-tag a{ color: #696969;}
 a.view-user:hover,span.view-tag a:hover{ color: #333;}

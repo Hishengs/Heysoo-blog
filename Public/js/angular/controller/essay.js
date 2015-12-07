@@ -7,6 +7,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
   window.essay_comment_editor = editormd("essay-comment-editor", {//评论框
       path : public_path+"/editor/meditor/lib/",
       height:250,
+      width:'100%',
       toolbarIcons:function(){
         return ["link","image","emoji"]
       },
@@ -46,6 +47,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
     window.essay_comment_reply_editor = editormd("essay-comment-reply-editor", {//回复框
         path : public_path+"/editor/meditor/lib/",
         height:250,
+        width:'100%',
         toolbarIcons:function(){
           return ["link","image","emoji"]
         },

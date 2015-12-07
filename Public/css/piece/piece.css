@@ -37,11 +37,12 @@ div.piece-comment ul.piece-comment-list li{padding:20px;}
 
 div.pieces{ max-width: 1000px; margin: 0 auto;}
 div.piece{ padding-top:20px; width:auto; }
-div.piece-left{  float:left; margin:10px 10px 0px 0px; text-align: center;}
-div.piece-left img.user-avatar{}
+div.piece-left{  float:left; margin:15px 20px 0px 10px; text-align: center;}
+div.piece-left img.user-avatar{ width:50px; height:50px; border-radius:25px; margin: 0 auto; box-shadow:0px 1px 2px rgba(0,0,0,0.5); }
+div.piece-left img.user-avatar:hover{  box-shadow:0px 5px 10px rgba(0,0,0,0.5) }
 div.piece-date{ width: 80px; height: 80px; background-color: #fff; border-radius:40px; box-shadow:0px 1px 2px rgba(0,0,0,0.5); padding: 15px 20px 20px 15px;}
 div.piece-date:hover{ box-shadow:0px 5px 10px rgba(0,0,0,0.5); }
-div.piece-right{ position:relative; margin-left:70px; width:auto; background-color:#fff;  padding:15px; color:#555; }
+div.piece-right{ position:relative; margin-left:60px; width:auto; background-color:#fff;  padding:15px; color:#555; }
 div.piece-right div.piece-content{margin:15px 0; font-size:1.4rem;}
 div.piece-right:hover{ /* box-shadow:0px 2px 20px rgba(0,0,0,0.5); */}
 div.piece-triangle{ position:absolute; left:-20px; top:30px; width:0; height:0; border-width:10px; border-color:transparent #FFFFFF transparent transparent; border-style:solid;} 

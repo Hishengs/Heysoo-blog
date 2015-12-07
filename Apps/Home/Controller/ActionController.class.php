@@ -28,7 +28,7 @@ class ActionController extends Controller {
     //show login page
     public function login() {
         C('LAYOUT_ON',FALSE);//close layout
-        $this->assign('verify_code_on',C('LOGIN_VERIFY_CODE_ON'));//whether open login verify code 
+        $this->assign('verify_code_on',C('LOGIN_VERIFY_CODE_ON'))->assign('slogan',C('SLOGAN')[rand(0,count(C('SLOGAN'))-1)]);
         $this->display(":login");
     }
     //deal login request
@@ -73,7 +73,7 @@ class ActionController extends Controller {
     //show register page
     public function register() {
         C('LAYOUT_ON',FALSE);//close layout
-        $this->assign('register_verify_code_on',C('REGISTER_VERIFY_CODE_ON'))->assign('register_invite_code_on',C('REGISTER_INVITE_CODE_ON'));
+        $this->assign('register_verify_code_on',C('REGISTER_VERIFY_CODE_ON'))->assign('register_invite_code_on',C('REGISTER_INVITE_CODE_ON'))->assign('slogan',C('SLOGAN')[rand(0,count(C('SLOGAN'))-1)]);
         $this->display(":register");
     }
     //deal register request

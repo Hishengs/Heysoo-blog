@@ -11,22 +11,8 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
       $rootScope.unread_msg_num = res.unread_msg_num;
     }
   });
-  //靠近左侧显示
-  /*$('body').mousemove(function(e) { 
-    var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
-    if(xx <= 20){
-      $("#right-panel").css('padding-left','20%');
-      $("#top-bar").css('left','20%');
-      $("#left-panel").fadeIn(500);
-    }
-  }); */
-  //双击隐藏
-  /*$scope.toggleSidePanel = function(){
-    $("#left-panel").fadeOut(500,function(){
-    $("#right-panel").css('padding-left',0);
-    $("#top-bar").css('left',0);
-    });
-  }*/
+  //检测是否是移动设备
+  $rootScope.device = isMobile();
   //设置定时器，定时获取未读消息数目#每1分钟
   var timer = 60000;
   setInterval(function(){

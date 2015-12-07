@@ -19,9 +19,9 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
     $state.go('home');
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
-      $('button.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
+      $('a.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
       $http.get(home_path+"/Index/ng_index.html?index_page="+$scope.index_page).success(function(res){
-        $('button.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
+        $('a.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
         if(!res.length){hMessage('沒有更多了！');return;}
         for (var i = 0; i < res.length; i++) {
             $scope.index_items.push(res[i]);

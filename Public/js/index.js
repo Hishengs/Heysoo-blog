@@ -187,10 +187,22 @@ function tag(tag){
 //go to view page
 function view(typeId,id){
 	//window.location.href = site_prefix+"/heysoo/#/view/"+id;
-	var current_url = window.location.href.split('#')[0];
+	//var current_url = window.location.href.split('Heysoo')[0];
 	//console.log(current_url);
-	window.location.href = current_url+"#/view/"+id;
+	window.location.href = window.location.origin+"/Heysoo/view/"+id;
 }
 function showModal(target){
 	$('#'+target).modal('toggle');
+}
+//检测是否是移动设备并给出设别宽高
+function isMobile(){
+	var device = {};
+	device.availWidth = window.screen.availWidth
+	device.availHeight = window.screen.availHeight;
+	device.innerHeight = window.innerHeight;
+	device.innerWidth = window.innerWidth;
+	if(device.availWidth < 1024 || device.innerWidth < 1024)device.isMobile = true;
+	else device.isMobile = false;
+	console.log(device);
+	return device;
 }
