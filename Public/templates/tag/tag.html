@@ -4,12 +4,11 @@
   <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="newTagModal(tag_tab)" style="float:right;">新建标签</button>
   </div>
   <div class="hs-panel-bd">
-    <div class="hs-btn-group hs-btn-group-justify">
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='essay'}" ng-click="tagSwitchTab('essay',1)">文章标签</button>
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='piece'}" ng-click="tagSwitchTab('piece',1)">碎片标签</button>
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='friend'}" ng-click="tagSwitchTab('friend',1)">好友标签</button>
-      <!-- <button type="button" class="hs-btn hs-btn-default" ng-class="{'hs-btn-{{interface_color}}': tag_tab=='other'}" ng-click="tagSwitchTab('other',1)">其他</button> -->
-    </div>
+    <ul class="hs-nav hs-nav-tabs hs-nav-justify">
+      <li ng-class="{'hs-active': tag_tab=='essay'}"><a href="javascript:void(0);" ng-click="tagSwitchTab('essay',1)">文章标签</a></li>
+      <li ng-class="{'hs-active': tag_tab=='piece'}"><a href="javascript:void(0);" ng-click="tagSwitchTab('piece',1)">碎片标签</a></li>
+      <li ng-class="{'hs-active': tag_tab=='friend'}"><a href="javascript:void(0);" ng-click="tagSwitchTab('friend',1)">好友标签</a></li>
+    </ul>
     <div class="tag-view" ui-view="tag"></div>
   </div>
 

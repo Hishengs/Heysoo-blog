@@ -25,7 +25,7 @@ span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color:
 /*css for essay comment*/
 div.essay-comments{width: 100%; background: #fff;margin: 20px auto; padding: 20px;}
 article.essay-comment{ width: 100%; margin: 15px auto;}
-div.essay-comments ul li article div.hs-comment-main div.hs-comment-bd img{width: 100%;}
+div.essay-comments ul li article div.hs-comment-main div.hs-comment-bd img{max-width: 100%;}
 /*css for essay view*/
 div.post-comment{ margin: 20px auto; background:#fff; padding: 20px;}
 textarea.post-comment-edit{ height: 200px;}
@@ -37,7 +37,7 @@ div.view-info{text-align: center;}
 div.view-info,div.view-footer{ margin:20px 0; font-size: 1.2rem; }
 div.view-info span{ margin-right: 10px;}
 div.view-content{ font-size: 1.5rem;}
-div.view-content img{ width: 100%;}
+div.view-content img{ max-width: 100%;}
 
 a.view-user,span.view-date,span.view-tag a{ color: #696969;}
 a.view-user:hover,span.view-tag a:hover{ color: #333;}
@@ -52,8 +52,7 @@ div.user-card-name{ font-size: 18px; margin-bottom: 10px;}
 
 div.essays{ max-width: 1000px; margin: 0 auto;}
 div.essay-left{  float:left; margin:10px 10px 0px 0px; text-align: center;}
-div.essay-date{ width: 80px; height: 80px; background-color: #fff; border-radius:40px; box-shadow:0px 1px 2px rgba(0,0,0,0.5); padding: 15px 20px 20px 15px;}
-div.essay-date:hover{ box-shadow:0px 5px 10px rgba(0,0,0,0.5); }
+div.essay-date{ font-size: 1.2rem; text-align: center; margin-bottom: 15px;}
 
 div.essay-right div.essay-content{margin:0px 0px 10px 0px; font-size: 1.6rem;}
 div.essay-right:hover{ /* box-shadow:0px 2px 20px rgba(0,0,0,0.5); */}

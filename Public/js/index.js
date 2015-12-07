@@ -49,6 +49,94 @@ var pieceCmtOptions  = {
 		items:['emoticons', 'link','image'],
 		themeType : 'simple'
 			}; 
+//文章发布
+var essay_editor_opt = {
+    path : public_path+"/editor/meditor/lib/",
+    height:550,
+    toolbarIcons:function(){
+      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+    },
+    emoji:true,
+    watch:false,
+    htmlDecode:"script,a,img",
+    saveHTMLToTextarea:true,
+    placeholder:"在此输入内容",
+    value:'',
+    imageUpload: true,
+    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+    imageUploadURL: "http://upload.qiniu.com/",
+};
+var essay_modify_editor_opt = {
+	path : public_path+"/editor/meditor/lib/",
+	height:550,
+	toolbarIcons:function(){
+	return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+	},
+	emoji:true,
+	watch:false,
+	htmlDecode:"script,a,img",
+	saveHTMLToTextarea:true,
+	placeholder:"在此输入内容",
+	onload:function(){
+		window.essay_modify_editor.setValue(toMarkdown(window.essay_modify_editor.getMarkdown()));
+	},
+	imageUpload: true,
+    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+    imageUploadURL: "http://upload.qiniu.com/",
+};
+var essay_comment_editor_opt = {//评论框
+	path : public_path+"/editor/meditor/lib/",
+	height:250,
+	width:'100%',
+	toolbarIcons:function(){
+	return ["link","image","emoji"]
+	},
+	emoji:true,
+	watch:false,
+	htmlDecode:"script,a,img",
+	saveHTMLToTextarea:true,
+	placeholder:"在此输入内容",
+	value:'',
+	imageUpload: true,
+	imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+	imageUploadURL: "http://upload.qiniu.com/",
+};
+var essay_comment_reply_editor_opt = {//回复框
+    path : public_path+"/editor/meditor/lib/",
+    height:250,
+    width:'100%',
+    toolbarIcons:function(){
+      return ["link","image","emoji"]
+    },
+    emoji:true,
+    watch:false,
+    htmlDecode:"script,a,img",
+    saveHTMLToTextarea:true,
+    placeholder:"在此输入内容",
+    value:'',
+    imageUpload: true,
+    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+    imageUploadURL: "http://upload.qiniu.com/",
+};
+//碎片发布
+var piece_editor_opt = {
+    path : public_path+"/editor/meditor/lib/",
+    height:250,
+    toolbarIcons:function(){
+      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+    },
+    emoji:true,
+    watch:false,
+    htmlDecode:"script,a,img",
+    saveHTMLToTextarea:true,
+    placeholder:"在此输入内容",
+    imageUpload: true,
+    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+    imageUploadURL: "http://upload.qiniu.com/",
+};
+var piece_comment_editor_opt = {};
+//音乐播放器的宽度
+var music_player_width = 260;
 jQuery(function($) {
 	//初始化
 	init();

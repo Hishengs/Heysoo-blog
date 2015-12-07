@@ -17,38 +17,6 @@
 </div>
 <div id="hMessage-mask"></div>
 
-<!-- 左边栏 -->
-<!-- <div id="left-panel" ng-style="style.sidebar_bg" ng-controller="c_sidePanel" ng-dblclick="toggleSidePanel()">
-
-<div class="user-avatar">
-	<img class="user-avatar hs-img" ng-src="{{avatar}}?imageView2/1/w/80/h/80">
-</div>
-<div class="userName">{{user_info.username}}</div>
-<div class="user-signature">{{user_info.signature}}</div>
-<div class="user-items">
-
-<div class="hs-btn-group hs-btn-group-justify">
-    <button type="button" class="hs-btn hs-btn-msg hs-btn-{{interface_color}}" ng-click="showMessage()"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></button>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showPublish()"><i class="hs-icon-edit"></i> 发布</button>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showFollow()"><i class="hs-icon-eye"></i> 关注</button>
-</div>
-
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" onclick="javascript:window.location.href='<?php echo U('Index/index');?>'"><i class="hs-icon-home"></i> 首页</button>
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('piece')"><i class="hs-icon-paper-plane"></i> 我的碎片({{piece_nums}})</button>
-<button class="hs-btn hs-btn-block hs-btn-{{interface_color}}" ng-click="getPage('essay')"><i class="hs-icon-book"></i> 我的文章({{essay_nums}})</button>
-
-</div>
-
-<div class="hs-btn-group hs-btn-group-justify setting">
-	<button class="hs-btn hs-btn-{{interface_color}}" onclick="window.location.href='<?php echo U('Action/logout');?>'"><i class="hs-icon-power-off"></i> 退出</button>
-	<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSetting()"><i class="hs-icon-wrench"></i> 设置</button>
-	<button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</button>
-	<button class="hs-btn hs-btn-{{interface_color}}" ng-click="showSearch()"><i class="hs-icon-search"></i> 搜索</button>
-	<button class="hs-btn hs-btn-{{interface_color}}" onclick="hideControlPanel();"><i class="hs-icon-arrow-left"></i> 收起</button>
-</div>
-
-</div> -->
-
 <div id="right-panel" ng-style="style.main_bg">
 	<!-- 顶部栏 -->
 	<div id="top-bar" ng-controller="c_sidePanel">
@@ -59,9 +27,10 @@
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('piece')" ng-hide="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a>
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('essay')" ng-hide="device.isMobile"><i class="hs-icon-book"></i> 文章</a>
 		</div>
-		<div class="top-bar-center" ng-hide="device.isMobile">
-			<a href="javascript:void(0);" class="plain-link" ng-click="showPublish()"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
+		<div class="top-bar-center">
+			<a href="javascript:void(0);" class="plain-link" ng-show="device.isMobile"><strong><?php echo ($userName); ?></strong></a>
+			<a href="javascript:void(0);" class="plain-link" ng-click="showPublish()" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
 		</div>
 		<div class="top-bar-right">
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()" ng-hide="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息
@@ -128,7 +97,7 @@
 								<div class="hs-input-group song-search">
 									<input type="text" class="hs-form-field" placeholder="在此输入歌曲/歌手名称" ng-model="edit_song_key">
 									<span class="hs-input-group-btn">
-										<button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', closeViaDimmer: 0, width: 500, height: 600}">搜索</button>
+										<button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', height: 500}">搜索</button>
 									</span>
 								</div>
 							</div>
@@ -170,12 +139,12 @@
 		</div>
 	</div>
 	<!-- 音乐查找的结果 -->
-	<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="song_search_modal" ng-controller="c_song_search">
+	<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="song_search_modal" ng-controller="c_song_search" style="max-width:450px;">
 	  <div class="hs-modal-dialog">
 	    <div class="hs-modal-hd">查找结果
 	      <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
 	    </div>
-	    <div class="hs-modal-bd" style="max-height:550px; overflow:auto;">
+	    <div class="hs-modal-bd" style="max-height:450px; overflow:auto;">
 		    <ul class="hs-list">
 		    	<li ng-show="song_search_tip_show"><a href="javascript:;" ng-bind="song_search_tip"></a></li>
 				<li ng-repeat="song in search_songs"><a href="javascript:void(0);" ng-click="insertMusicBox(song.song_id)">{{song.song_singer}}:{{song.song_name}}</a></li>
@@ -200,80 +169,3 @@
 <script src="/Heysoo/Public/js/dist/app.js"></script>
 <!-- <script src="/Heysoo/Public/editor/meditor/js/editormd.js"></script> -->
 </html>
-
-
-<!--
-<div class="hs-dropdown-content">
-							<ul class="hs-avg-sm-15">
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-4.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-5.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-6.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-7.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-8.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-9.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-10.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-11.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-12.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-13.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-14.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-15.png" alt=""></a></li>
-							</ul>
-							<ul class="hs-avg-sm-15">
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/1-16.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-4.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-5.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-6.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-7.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-8.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/2-9.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-4.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-5.png" alt=""></a></li>
-							</ul>
-							<ul class="hs-avg-sm-15">
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/3-6.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/4-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/4-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/4-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/5-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/5-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/5-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-0.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-4.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-5.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-6.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-7.png" alt=""></a></li>
-							</ul>
-							<ul class="hs-avg-sm-15">
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-8.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-9.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-10.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-11.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-12.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-13.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-14.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-15.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-16.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/6-17.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-0.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-1.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-2.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-3.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-4.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-5.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-6.png" alt=""></a></li>
-								<li><a href="javascript:void(0);"><img src="/Heysoo/Public/img/emoji/7-7.png" alt=""></a></li>
-							</ul>
-							</div>
--->

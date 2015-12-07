@@ -1,11 +1,10 @@
 <div class="hs-panel hs-panel-{{interface_color}} y-full" style="border:0;">
   <div class="hs-panel-hd text-center"><big><b>搜索结果</b></big>[暂未实现]</div>
   <div class="hs-panel-bd">
-    <div class="hs-btn-group hs-btn-group-justify">
-      <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-msg" onclick="javascript:;">相关碎片</button>
-      <button type="button" class="hs-btn hs-btn-default" onclick="javascript:;">相关文章</button>
-      <button type="button" class="hs-btn hs-btn-default" onclick="javascript:;">相关日记</button>
-      <button type="button" class="hs-btn hs-btn-default" onclick="javascript:;">其它</button>
-    </div>
+    <ul class="hs-nav hs-nav-tabs hs-nav-justify">
+      <li ng-class="{'hs-active': search_tab=='piece'}"><a href="javascript:void(0);" ng-click="searchSwitchTab('piece')">相关碎片</a></li>
+      <li ng-class="{'hs-active': search_tab=='essay'}"><a href="javascript:void(0);" ng-click="searchSwitchTab('essay')">相关文章</a></li>
+      <li ng-class="{'hs-active': search_tab=='user'}"><a href="javascript:void(0);" ng-click="searchSwitchTab('user')">相关用户</a></li>
+    </ul>
   </div>
 </div>

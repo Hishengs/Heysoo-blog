@@ -8,19 +8,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     $scope.song_search_tip_show = false;
     var url = home_path+"/Action/ng_deal_post.html";//post url
     //动态创建editor
-    window.essay_editor = editormd("essay-editor", {
-        path : public_path+"/editor/meditor/lib/",
-        height:550,
-        toolbarIcons:function(){
-          return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
-        },
-        emoji:true,
-        watch:false,
-        htmlDecode:"script,a,img",
-        saveHTMLToTextarea:true,
-        placeholder:"在此输入内容",
-        value:''
-    });
+    window.essay_editor = editormd("essay-editor", essay_editor_opt);
     $scope.editPost = function(){
       console.log($scope.post_piece_check);
       $scope.edit_content = window.essay_editor.getHTML();//获取markdown编辑器的html
@@ -133,7 +121,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
 .controller('c_song_search',function($scope,$rootScope){
   //往编辑器插入音乐
   $scope.insertMusicBox = function(song_id){
-    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width=280 height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width='+music_player_width+' height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
     //edit_post.appendHtml(music_frame);
     $rootScope.current_editor.insertValue(music_frame);
     $('#song_search_modal').modal('toggle');

@@ -1,14 +1,12 @@
 <div class="hs-panel hs-panel-{{interface_color}} y-full" ng-controller="c_setting" style="border:0;">
   <div class="hs-panel-hd text-center"><big><b>设置</b></big></div>
   <div class="hs-panel-bd">
-    <div class="hs-btn-group hs-btn-group-justify">
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': setting_tab=='profile'}" ng-click="settingSwitchTab('profile')">资料</button>
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': setting_tab=='interface'}" ng-click="settingSwitchTab('interface')">界面</button>
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': setting_tab=='push'}" ng-click="settingSwitchTab('push')">推送</button>
-      <button type="button" class="hs-btn" ng-class="{'hs-btn-{{interface_color}}': setting_tab=='privacy'}" ng-click="settingSwitchTab('privacy')">隐私</button>
-    </div>
-    <div class="setting-items" ui-view="v_setting">
-        
-    </div>
+    <ul class="hs-nav hs-nav-tabs hs-nav-justify">
+      <li ng-class="{'hs-active': setting_tab=='profile'}"><a href="javascript:void(0);" ng-click="settingSwitchTab('profile')">资料</a></li>
+      <li ng-class="{'hs-active': setting_tab=='interface'}"><a href="javascript:void(0);" ng-click="settingSwitchTab('interface')">界面</a></li>
+      <li ng-class="{'hs-active': setting_tab=='push'}"><a href="javascript:void(0);" ng-click="settingSwitchTab('push')">推送</a></li>
+      <li ng-class="{'hs-active': setting_tab=='privacy'}"><a href="javascript:void(0);" ng-click="settingSwitchTab('privacy')">隐私</a></li>
+    </ul>
+    <div class="setting-items" ui-view="v_setting"></div>
   </div>
 </div>

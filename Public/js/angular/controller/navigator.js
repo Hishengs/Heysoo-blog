@@ -27,20 +27,7 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
   //显示发布器
   $rootScope.togglePublisher = function(){
     //动态创建一个编辑器
-    $(function(){
-      window.piece_editor = editormd("piece-editor", {
-              path : public_path+"/editor/meditor/lib/",
-              height:250,
-              toolbarIcons:function(){
-                return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
-              },
-              emoji:true,
-              watch:false,
-              htmlDecode:"script,a,img",
-              saveHTMLToTextarea:true,
-              placeholder:"在此输入内容"
-          });
-    });
+    window.piece_editor = editormd("piece-editor", piece_editor_opt);
     $('#publisher').slideToggle();
   }
 });

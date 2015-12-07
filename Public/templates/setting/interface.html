@@ -1,25 +1,30 @@
 <div class="setting-interface" ng-controller="c_setting_interface">
 <ul class="hs-list">
-    	<li class=""><a href="javascript:;" ng-click="modifyInterface('theme')">布局
-    	<span class="setting-item-right">
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span></a>
-    	</li>
-    	<li class=""><a href="javascript:;" ng-click="modifyInterface('color')">颜色
-    	<span class="setting-item-right">
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span></a>
-    	</li>
-    	<li class=""><a href="javascript:;" ng-click="modifyInterface('sidebarbg')">边栏背景图
-    	<span class="setting-item-right">
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span></a>
-    	</li>
-    	<li class=""><a href="javascript:;" ng-click="modifyInterface('mainbg')">主页背景图
-    	<span class="setting-item-right">
-    	&nbsp;<i class="hs-icon-angle-right"></i>
-    	</span></a>
-    	</li>
+      <li class=""><a href="javascript:;" ng-click="modifyInterface('theme')">主题
+      <span class="setting-item-right">
+      &nbsp;<i class="hs-icon-angle-right"></i>
+      </span></a>
+      </li>
+    	<!-- <li class=""><a href="javascript:;" ng-click="modifyInterface('theme')">布局
+      <span class="setting-item-right">
+      &nbsp;<i class="hs-icon-angle-right"></i>
+      </span></a>
+      </li>
+      <li class=""><a href="javascript:;" ng-click="modifyInterface('color')">颜色
+      <span class="setting-item-right">
+      &nbsp;<i class="hs-icon-angle-right"></i>
+      </span></a>
+      </li>
+      <li class=""><a href="javascript:;" ng-click="modifyInterface('sidebarbg')">边栏背景图
+      <span class="setting-item-right">
+      &nbsp;<i class="hs-icon-angle-right"></i>
+      </span></a>
+      </li>
+      <li class=""><a href="javascript:;" ng-click="modifyInterface('mainbg')">主页背景图
+      <span class="setting-item-right">
+      &nbsp;<i class="hs-icon-angle-right"></i>
+      </span></a>
+      </li> -->
 </ul>
 </div>
 <!-- <div class="hs-alert hs-alert-warning">Tip:尚未实现</div> -->
@@ -28,15 +33,15 @@
 <div ng-controller="c_setting_interface_modal">
 <div class="hs-modal hs-modal-no-btn" tabindex="-1" id="setting_interface_modal_theme">
   <div class="hs-modal-dialog">
-    <div class="hs-modal-hd">选择布局
+    <div class="hs-modal-hd">选择主题
       <a href="javascript: void(0)" class="hs-close hs-close-spin" data-hs-modal-close>&times;</a>
     </div>
     <hr>
     <div class="hs-modal-bd">
       <form class="hs-form">
                  <select data-hs-selected>
-                      <option value="theme-1" selected>菜单居左(默认)</option>
-                      <option value="theme-2">菜单居右</option>
+                      <option value="day" selected>日间模式(默认)</option>
+                      <option value="night">夜间模式</option>
                 </select>
                 <hr>
                 <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifyTheme('theme')">保存</button>

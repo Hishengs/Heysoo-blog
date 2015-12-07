@@ -4,20 +4,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
   url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
   progress_bar.start();
   //动态创建editor
-  window.essay_comment_editor = editormd("essay-comment-editor", {//评论框
-      path : public_path+"/editor/meditor/lib/",
-      height:250,
-      width:'100%',
-      toolbarIcons:function(){
-        return ["link","image","emoji"]
-      },
-      emoji:true,
-      watch:false,
-      htmlDecode:"script,a,img",
-      saveHTMLToTextarea:true,
-      placeholder:"在此输入内容",
-      value:''
-  });
+  window.essay_comment_editor = editormd("essay-comment-editor", essay_comment_editor_opt);
 
   $http.get(url).success(function(res){
     if(res.error === 0){
@@ -44,20 +31,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
     $rootScope.reply_to_id = reply_to_id;
     $rootScope.parent_cmt_id = parent_cmt_id;
     $('#essay-comment-reply-modal').modal('toggle');
-    window.essay_comment_reply_editor = editormd("essay-comment-reply-editor", {//回复框
-        path : public_path+"/editor/meditor/lib/",
-        height:250,
-        width:'100%',
-        toolbarIcons:function(){
-          return ["link","image","emoji"]
-        },
-        emoji:true,
-        watch:false,
-        htmlDecode:"script,a,img",
-        saveHTMLToTextarea:true,
-        placeholder:"在此输入内容",
-        value:''
-    });
+    window.essay_comment_reply_editor = editormd("essay-comment-reply-editor", essay_comment_reply_editor_opt);
   }
 });
 //文章修改
@@ -73,24 +47,8 @@ heysoo.controller('c_modify',function($scope,$rootScope,$state,$http,Music){
         $scope.essay_visible = res.items.visible;
       }else{hMessage(res.msg);}
       //动态创建editor
-      window.essay_modify_editor = editormd("essay-modify-editor", {
-          path : public_path+"/editor/meditor/lib/",
-          height:550,
-          toolbarIcons:function(){
-            return ["bold","italic","quote","list-ul","list-ol","hr","link","image","emoji","watch","preview","fullscreen"]
-          },
-          emoji:true,
-          watch:false,
-          htmlDecode:"script,a,img",
-          saveHTMLToTextarea:true,
-          placeholder:"在此输入内容",
-          value:res.items.content?res.items.content:'',
-          onload:function(){
-            window.essay_modify_editor.setValue(toMarkdown(window.essay_modify_editor.getMarkdown()));
-            console.log('get markdown!');
-            //console.log(window.essay_modify_editor.getMarkdown());
-          }
-      });
+      essay_modify_editor_opt.value = res.items.content?res.items.content:'';
+      window.essay_modify_editor = editormd("essay-modify-editor", essay_modify_editor_opt);
       //window.essay_modify_editor.setValue(res.items.content?res.items.content:'');
   });
   //查找音乐
