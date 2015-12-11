@@ -1,0 +1,28 @@
+<!-- 个人页面 -->
+<div class="user" ng-controller="c_user">
+	<div class="user-avatar">
+		<img src="{{user.avatar}}" alt="头像">
+	</div>
+	<h4 class="username" ng-bind="user.username"></h4>
+	<div class="user-signature" ng-bind="user.signature"></div>
+	<div class="user-post">
+		<span class="piece"><i class="hs-icon-paper-plane"></i> 碎片 {{user.pieces_num}}</span>
+		&nbsp;|&nbsp;
+		<span class="essay"><i class="hs-icon-book"></i> 文章 {{user.essays_num}}</span>
+	</div>
+	<div class="user-follow">
+		<button class="hs-btn hs-btn-primary follow" ng-click="addFollow(user.id)" ng-hide="follow.is_followed || follow.is_self">添加关注</button>
+		<button class="hs-btn hs-btn-primary follow" ng-click="disFollow(user.id)" ng-show="follow.is_followed && !follow.is_self">取消关注</button>
+	</div>
+	<div class="user-posts-content">
+		<ul class="hs-nav hs-nav-tabs">
+			<li ng-class="{'hs-active':post_tab=='piece'}"><a href="javascript:void(0);" ng-click="switchPostTab('piece')">碎片</a></li>
+			<li ng-class="{'hs-active':post_tab=='essay'}"><a href="javascript:void(0);" ng-click="switchPostTab('essay')">文章</a></li>
+		</ul>
+		<div ng-include="tpl_url"></div>
+		<div class="load-more">
+			<a href="javascript:void(0);" ng-click="loadMore(user.id)"><i class="hs-icon-arrow-down"></i> 加载更多</a>
+		</div>
+	</div>
+	
+</div>

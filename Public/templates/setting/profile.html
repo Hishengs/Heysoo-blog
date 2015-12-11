@@ -2,7 +2,10 @@
 <div class="hs-panel hs-panel-default setting-user-avatar" ng-controller="c_modify_avatar">
     <div class="hs-panel-hd">头像
         <form class="hs-form upload-avatar-form" style="display:inline-block;float:right;" enctype="multipart/form-data" action="http://upload.qiniu.com/" method="post" target="upload_avatar_ifm">
-            <input style="display:inline-block;" type="file" name="file" id="new_avatar" ng-model="new_avatar">
+            <button class="avatar-select hs-btn hs-btn-{{interface_color}} hs-btn-xs">
+                <span id="avatar-file-name">选择头像</span>
+                <input type="file" name="file" class="new_avatar" id="new_avatar" ng-model="new_avatar">
+            </button>
             <input style="display:none" name="token" id="upload_avatar_token" ng-model="upload_avatar_token">
             <!-- <button style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="selectAvatar()" ng-bind="selectAvatarBtn"></button> -->
             <button type="button" style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="uploadAvatar()" ng-bind="uploadAvatarBtn"></button>

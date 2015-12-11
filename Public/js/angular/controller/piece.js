@@ -18,14 +18,18 @@ heysoo.controller('c_piece',function($scope,$state,Piece){
     Piece.getPieceComments(piece_id).success(function(res){
       if(res.error === 0){
         $scope.piece_comments = res.comments;
+        $scope.piece_comments_num = $scope.piece_comments.length;
+        console.log('piece_comments_num:',$scope.piece_comments_num);
         $scope.piece_comment_tip = '';
         $scope.piece_comment_tip_show = false;
       }else {
         $scope.piece_comment_tip_show = true;
+        $scope.piece_comments_num = '';
         $scope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
       }
     });
   }
+
   //显示评论区
   $scope.pieceCommentToggle = function(piece_id){
     if($('#piece-comment-'+piece_id).css('display') == 'none'){

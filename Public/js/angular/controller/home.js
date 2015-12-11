@@ -1,6 +1,7 @@
 heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie,User){
     $rootScope.mask_show = false;
     $rootScope.style = {};
+    $scope.index_empty = false;
     //获取用户配置
     User.getUserConfig().success(function(res){
       if(res.error === 0){
@@ -14,6 +15,8 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
     });
     $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
+      if($rootScope.index_items.length <= 0)$scope.index_empty = true;
+      else $scope.index_empty = false;
       $scope.index_page = 2;
     });
     $state.go('home');

@@ -1,0 +1,25 @@
+<div class="hs-panel hs-panel-{{interface_color}} y-full" ng-controller="c_search">
+  <div class="hs-panel-hd text-center"><big><b>搜索</b></big></div>
+  <div class="search-bar hs-input-group">
+  	<input type="text" class="hs-form-field search-key" ng-model="search_key" placeholder="在此输入关键词">
+  	<span class="hs-input-group-label">
+  	<select name="search_type" ng-model="search_type" data-hs-selected>
+  		<option value="1" selected="selected">碎片</option>
+  		<option value="2">文章</option>
+  		<option value="3">用户</option>
+  	</select>
+  	</span>
+  	<span class="hs-input-group-btn">
+  		<button class="hs-btn hs-btn-default" ng-click="search()">搜索</button>
+  	</span>
+  </div>
+  <div class="hs-panel-bd">
+    <ul class="hs-nav hs-nav-tabs hs-nav-justify">
+      <li ng-class="{'hs-active': search_tab=='piece'}"><a href="javascript:void(0);" ng-click="switchSearchTab('piece')">相关碎片</a></li>
+      <li ng-class="{'hs-active': search_tab=='essay'}"><a href="javascript:void(0);" ng-click="switchSearchTab('essay')">相关文章</a></li>
+      <li ng-class="{'hs-active': search_tab=='user'}"><a href="javascript:void(0);" ng-click="switchSearchTab('user')">相关用户</a></li>
+    </ul>
+    <div class="search-tip center-tip" ng-show="search_tip!==''" ng-bind-html="search_tip | trustHtml"></div>
+    <div class="search_result" ng-include="search_tpl_url"></div>
+  </div>
+</div>

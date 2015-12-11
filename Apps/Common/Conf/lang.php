@@ -8,7 +8,7 @@ return array(
 			'OLD_PASSWD_ERROR'=>'旧密码错误！',
 			'LOGIN_SUCCESS_TIP'=>'登录成功！',
 			'LOGIN_FAILED_TIP'=>'登录失败！',
-			'USER_NAME_NOT_EXIST'=>'用户名不存在！',
+			'USER_NOT_EXIST'=>'用户不存在！',
 			'USER_NAME_FORMAT_ERROR'=>'请检查你的用户名格式，只能使用中文，英文和数字的组合且不能超过15个字符！',
 			'USER_NAME_EXISTED'=>'用户已存在，请直接登录！',
 			'EMAIL_FORMAT_ERROR'=>'邮箱格式不正确！',

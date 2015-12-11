@@ -93,6 +93,7 @@ var essay_comment_editor_opt = {//评论框
 	},
 	emoji:true,
 	watch:false,
+	autoFocus:false,
 	htmlDecode:"script,a,img",
 	saveHTMLToTextarea:true,
 	placeholder:"在此输入内容",
@@ -291,6 +292,10 @@ function isMobile(){
 	device.innerWidth = window.innerWidth;
 	if(device.availWidth < 1024 || device.innerWidth < 1024)device.isMobile = true;
 	else device.isMobile = false;
-	console.log(device);
 	return device;
+}
+//检测输入是否为空
+function isEmpty(input){
+	var pattern = /^[\s,\n,\r,\t,\o]*$/gi;
+	return pattern.test(input);
 }

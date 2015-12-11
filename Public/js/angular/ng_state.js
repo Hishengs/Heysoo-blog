@@ -162,7 +162,15 @@ heysoo.config(['$stateProvider',function($stateProvider){
 	$stateProvider.state('search',{
         url:'/search',
         views:{
-            'content':{templateUrl:tpl_search_url}
+            'content':{templateUrl:tpl_search_url+"/search.html"}
+        }
+    });
+}]);
+heysoo.config(['$stateProvider',function($stateProvider){
+	$stateProvider.state('user',{
+        url:'/user/:user_id',
+        views:{
+            'content':{templateUrl:tpl_user_url+"/user.html"}
         }
     });
 }]);

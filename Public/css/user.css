@@ -1,0 +1,13 @@
+div.user{max-width: 1000px; padding-top: 20px; margin:0 auto;}
+div.user-avatar,div.user-signature,h4.username,div.user-post,div.user-follow{text-align: center;margin-bottom: 15px;}
+div.user div.user-avatar img{width: 60px; height: 60px; border-radius: 30px;}
+h4.username{margin:0;}
+div.user-posts-content{padding: 20px;}
+div.user-posts-content div.load-more{text-align: center;margin:20px 0;}
+
+div.user-item{padding-top:20px;position: relative;}
+div.user-item a.user-item-avatar{display: inline-block; margin-right: 10px;}
+div.user-item a img.user-item-avatar{width: 60px; height: 60px; border-radius: 30px;}
+div.user-item div.user-item-info{display: inline-block;}
+div.user-item div.user-item-follow{float: right;position: absolute;right: 10px; top: 50%;}
+div.user-item hr{margin-top: 20px;}

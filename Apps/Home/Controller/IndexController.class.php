@@ -33,12 +33,17 @@ class IndexController extends Controller {
          * 2.我关注的人的动态
          * 3.公开的
          * 4.按时间排序
+         * 关联的模型: hs_user,hs_piece,hs_piece_comment
          */
-        $sql = "SELECT u.id,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_user as u,hs_piece as p 
+        /*$sql = "SELECT u.id,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_user as u,hs_piece as p 
         where p.visible=1 AND u.id=p.user_id AND p.user_id in (SELECT followed_id as id from hs_follow where follower_id=".$this->user_id." 
         union SElECT id from hs_user where id=".$this->user_id.") order by p.date desc limit ".$page*$this->piece_nums_per_page.
-        ",".$this->piece_nums_per_page;
-        $pieces = $this->piece_model->query($sql);
+        ",".$this->piece_nums_per_page;*/
+        $sql2 = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_piece as p 
+        join hs_user as u on p.user_id=u.id left join hs_piece_comment as c on p.piece_id=c.piece_id where p.user_id=".$this->user_id.
+        " or p.user_id in (select f.followed_id from hs_follow as f where f.follower_id=".$this->user_id.") and p.visible=1 group by p.piece_id order by p.date desc limit ".
+        $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
+        $pieces = $this->piece_model->query($sql2);
         $this->ajaxReturn($pieces,'json');
     }
    //init the sidebar panel

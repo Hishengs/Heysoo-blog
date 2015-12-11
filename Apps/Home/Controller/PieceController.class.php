@@ -144,8 +144,12 @@ class PieceController extends Controller {
     public function ng_get_piece_page($page=null){
       if($_SESSION['LOGIN_STATUS']){
         $page = $page?$page-1:0;
-        $pieces = $this->piece_model->join('hs_user ON hs_user.id=hs_piece.user_id AND hs_piece.user_id='.$this->user_id)
-        ->order('hs_piece.date desc')->limit($page*$this->page_size,$this->page_size)->select();
+        $pieces = $this->piece_model->alias('p')->field('count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content')
+        ->join('hs_user as u ON u.id=p.user_id AND p.user_id='.$this->user_id)
+        ->join('hs_piece_comment as c on c.piece_id=p.piece_id','LEFT')
+        ->group('p.piece_id')
+        ->order('p.date desc')
+        ->limit($page*$this->page_size,$this->page_size)->select();
         $response = array('error'=>0,'items'=>$pieces,'page'=>$page+1);
         $this->ajaxReturn($response,'json');
       }else{

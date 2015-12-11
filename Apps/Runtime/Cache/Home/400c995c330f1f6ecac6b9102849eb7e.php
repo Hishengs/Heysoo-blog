@@ -17,7 +17,7 @@
 </div>
 <div id="hMessage-mask"></div>
 
-<div id="right-panel" ng-style="style.main_bg">
+<div id="right-panel">
 	<!-- 顶部栏 -->
 	<div id="top-bar" ng-controller="c_sidePanel">
 		<div class="top-bar-wrapper">

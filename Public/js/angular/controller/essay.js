@@ -15,7 +15,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
         $scope.essay_comment_on = res.essay_comment_on;
         $scope.avatar_path = public_path+"/img/me.jpg";
         $(document).scrollTop(0);
-        setLightBox();
+        window.scrollTo(0,0);
         progress_bar.done();
       }else{
         $scope.essay = $scope.comments = [];
@@ -53,6 +53,7 @@ heysoo.controller('c_modify',function($scope,$rootScope,$state,$http,Music){
   });
   //查找音乐
   $scope.searchSong = function(){
+    if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
     $rootScope.song_search_tip = '查询中...';
     $rootScope.current_editor = window.essay_modify_editor;
     $rootScope.search_songs = new Array();

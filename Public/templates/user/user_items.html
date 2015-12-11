@@ -1,0 +1,14 @@
+<div class="user-items">
+	<div class="user-item" ng-repeat="user in user_items">
+		<a href="javascript:void(0);" class="user-item-avatar" ui-sref="user({'user_id':user.id})"><img src="{{user.avatar}}" alt="" class="user-item-avatar"></a>
+		<div class="user-item-info">
+			<a href="javascript:void(0);" class="username" ui-sref="user({'user_id':user.id})" ng-bind-html="user.username | highLight:search_key | trustHtml"></a><br/>
+			<div class="user-item-signature" ng-bind-html="user.signature | highLight:search_key | trustHtml"></div>
+		</div>
+		<div class="user-item-follow">
+			<button class="hs-btn hs-btn-default hs-btn-xs" ng-click="addFollow(user.id,$index)" ng-show="!user.is_followed && user.id != user_info.id">添加关注</button>
+			<button class="hs-btn hs-btn-default hs-btn-xs" ng-click="disFollow(user.id,$index)" ng-show="user.is_followed && user.id != user_info.id">取消关注</button>
+		</div>
+		<hr>
+	</div>
+</div>

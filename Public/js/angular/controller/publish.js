@@ -39,6 +39,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     }
     //查找音乐
     $scope.searchSong = function(){
+      if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
       $rootScope.song_search_tip = '查询中...';
       $rootScope.current_editor = window.essay_editor;
       $rootScope.search_songs = new Array();
@@ -65,6 +66,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     }
     //查找音乐
     $scope.searchSong = function(){
+      if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
       $rootScope.song_search_tip = '查询中...';
       $rootScope.current_editor = window.piece_editor;
       $rootScope.search_songs = new Array();

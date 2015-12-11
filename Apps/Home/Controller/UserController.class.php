@@ -15,6 +15,8 @@ class UserController extends Controller {
     function __construct(){
         parent::__construct();
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));
+        $this->piece_nums_per_page = C('PIECE_LOAD_NUM_PER_PAGE');
+        $this->essay_nums_per_page = C('ESSAY_LOAD_NUM_PER_PAGE');
         $this->user_model = D('User');
         $this->user_config_model = D('UserConfig');
         $this->user_tag_model = D('Tag');
@@ -43,11 +45,18 @@ class UserController extends Controller {
         return $this->user_model->where($cdt)->limit(1)->find();
     }
     //get user info async 
+    //信息包括，用户名+用户id+用户签名+用户碎片数+文章数+碎片数
+    //如果是自己则不限制visible，否则限制visible为1，即只能是公开的信息
     public function ng_get_user_info(){
-        $cdt['id'] = $this->user_id;
-        $response = $this->user_model->where($cdt)->find();
-        if($response !== false)
-            $this->ajaxReturn(array('error'=>0,'items'=>$response),'json');
+        $user_id = I('get.user_id')?I('get.user_id'):$this->user_id;
+        $visible = $user_id == $this->user_id?'':'where visible=1';
+        $cdt = "u.id=".$user_id." AND esy.user_id=".$user_id." AND p.user_id=".$user_id;
+        $user = $this->user_model->alias('u')->field('u.id,u.userName,u.signature,u.avatar,essays_num,pieces_num')
+        ->join("left join (select user_id,count(piece_id) as pieces_num from hs_piece ".$visible." group by user_id) as p on p.user_id=u.id")
+        ->join("left join (select user_id,count(essay_id) as essays_num from hs_essay ".$visible." group by user_id) as esy on esy.user_id=u.id")
+        ->where('u.id='.$user_id)->find();
+        if($user !== false)
+            $this->ajaxReturn(array('error'=>0,'user'=>$user),'json');
         else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.OPERATION_FAILED')),'json');
     }
     //get user config
@@ -76,57 +85,7 @@ class UserController extends Controller {
         $cdt['userName'] = $userName;
         return $this->user_model->where($cdt)->field('id')->find();
     }
-    //deal follow by type
-    public function follow(){
-        $userName = I('get.userName');
-        $action = I('get.action');
-        $followed_id = $this->get_id_by_name($userName)['id'];//id of the followed
-        $follower_id = session('USER_ID');//id of follower
-        $follow_date = date('Y-m-d H:i:s');
-        if($action == 1){//follow 
-            $data = array('follower_id'=>$follower_id,'followed_id'=>$followed_id,'follow_date'=>$follow_date);
-            if($this->follow_model->add($data) != false)$status = 0;
-            else $status = 1;
-        }
-        else if($action == 0){//cancel follow
-            $cdt = array('follower_id'=>$follower_id,'followed_id'=>$followed_id);
-            if($this->follow_model->where($cdt)->delete() != false)$status = 0;
-            else $status = 1;
-        }
-        $this->ajaxReturn(array('error'=>$status));
-    }
-    //query if someone has been followed by me
-    public function has_followed(){
-        $userName = I('get.userName');
-        $followed_id = $this->get_id_by_name($userName)['id'];//id of the followed
-        $follower_id = session('USER_ID');//id of follower
-        $cdt = array('follower_id'=>$follower_id,'followed_id'=>$followed_id);
-        if($this->follow_model->where($cdt)->find() != false)$this->ajaxReturn(array('has_followed'=>1));
-        else $this->ajaxReturn(array('has_followed'=>0));
-    }
-    //get follow list by type
-    public function get_follow_list(){
-        $type = I('get.type');
-        if($type == 'following'){//people I am following...
-            $follower_id = session('USER_ID');
-            $cdt = array('hs_follow.follower_id'=>$follower_id);
-            $join_sql = 'hs_user on hs_user.id = hs_follow.followed_id';
-        }elseif ($type == 'followed') {//people who follow me
-            $followed_id = session('USER_ID');
-            $cdt = array('hs_follow.followed_id'=>$followed_id);
-            $join_sql = 'hs_user on hs_user.id = hs_follow.follower_id';
-        }
-        $res = $this->follow_model->join($join_sql)->where($cdt)->order('hs_follow.follow_date')->select();
-        if($res !== false)$this->ajaxReturn(array('error'=>0,'items'=>$res));
-        else $this->ajaxReturn(array('error'=>1,'items'=>array(),'msg'=>C('SITE_LANG.QUERY_FAILED')));
-    }
-    //remove follow
-    public function remove_follow(){
-        $type = I('post.type');
-        $follow_id = I('post.follow_id');
-        if($this->follow_model->where('follow_id='.$follow_id)->limit()->delete() != false)$this->ajaxReturn(array('error'=>0,'msg'=>'操作成功！'));
-        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.OPERATION_FAILED')));
-    }
+    
     //reset password
     public function reset_passwd(){
         $old_passwd = I('post.old_passwd');
@@ -242,6 +201,90 @@ class UserController extends Controller {
         if($this->user_model->where('id='.$this->user_id)->save($data) !== false)
             $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.MODIFY_SUCCESS'),'invite_code'=>$invite_code),'json');
         else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
+    }
+    //获取用户关注信息
+    public function get_follow_info(){
+        $user_id = I('get.user_id');
+        if($user_id !== $this->user_id){
+            $follow_model = D('Follow');
+            $cdt = array('follower_id'=>$this->user_id,'followed_id'=>$user_id);
+            if($follow_model->where($cdt)->find())$this->ajaxReturn(array('error'=>0,'follow'=>array('is_followed'=>true,'is_self'=>false)),'json');
+            else $this->ajaxReturn(array('error'=>0,'follow'=>array('is_followed'=>false,'is_self'=>false)),'json');
+        }else $this->ajaxReturn(array('error'=>0,'follow'=>array('is_followed'=>true,'is_self'=>true)),'json');
+        
+    }
+    //deal follow by type 添加/撤销关注
+    public function follow(){
+        //$userName = I('get.userName');
+        $followed_id = I('get.user_id');
+        $action = I('get.action');
+        //$followed_id = $this->get_id_by_name($userName)['id'];//id of the followed
+        $follower_id = session('USER_ID');//id of follower
+        $follow_date = date('Y-m-d H:i:s');
+        if($action == 'add'){//follow 
+            $data = array('follower_id'=>$follower_id,'followed_id'=>$followed_id,'follow_date'=>$follow_date);
+            if($this->follow_model->add($data) != false)$status = 0;
+            else $status = 1;
+        }
+        else if($action == 'dis'){//cancel follow
+            $cdt = array('follower_id'=>$follower_id,'followed_id'=>$followed_id);
+            if($this->follow_model->where($cdt)->delete() != false)$status = 0;
+            else $status = 1;
+        }
+        $this->ajaxReturn(array('error'=>$status));
+    }
+    //get follow list by type
+    public function get_follow_list(){
+        $type = I('get.type');
+        if($type == 'following'){//people I am following...
+            $follower_id = session('USER_ID');
+            $cdt = array('hs_follow.follower_id'=>$follower_id);
+            $join_sql = 'hs_user on hs_user.id = hs_follow.followed_id';
+        }elseif ($type == 'followed') {//people who follow me
+            $followed_id = session('USER_ID');
+            $cdt = array('hs_follow.followed_id'=>$followed_id);
+            $join_sql = 'hs_user on hs_user.id = hs_follow.follower_id';
+        }
+        $res = $this->follow_model->join($join_sql)->where($cdt)->order('hs_follow.follow_date')->select();
+        if($res !== false)$this->ajaxReturn(array('error'=>0,'items'=>$res));
+        else $this->ajaxReturn(array('error'=>1,'items'=>array(),'msg'=>C('SITE_LANG.QUERY_FAILED')));
+    }
+    //remove follow 移除关注
+    public function remove_follow(){
+        $type = I('post.type');
+        $follow_id = I('post.follow_id');
+        if($this->follow_model->where('follow_id='.$follow_id)->limit()->delete() != false)$this->ajaxReturn(array('error'=>0,'msg'=>'操作成功！'));
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.OPERATION_FAILED')));
+    }
+    //获取用户碎片
+    public function get_pieces(){
+        $user_id = I('post.user_id')?I('post.user_id'):$this->user_id;
+        $page = I('post.page');
+        $page = $page?$page-1:0;
+        $visible = $user_id==$this->user_id?'':' AND p.visible=1';
+        $piece_model = D('Piece');
+        $sql = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_piece as p 
+        join hs_user as u on p.user_id=u.id left join hs_piece_comment as c on p.piece_id=c.piece_id where p.user_id=".$user_id.$visible." group by p.piece_id order by p.date desc limit ".
+        $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
+        $pieces = $piece_model->query($sql);
+        /*$pieces = $piece_model->alias('p')->where('p.user_id='.$user_id.$visible)
+        ->field('u.id,u.userName,u.avatar,p.piece_id,p.date,p.tag,p.content')
+        ->join('hs_user as u on u.id=p.user_id')
+        ->order('p.date desc')->limit($page*$this->piece_nums_per_page,$this->piece_nums_per_page)->select();*/
+        if($pieces !== false)$this->ajaxReturn(array('error'=>0,'pieces'=>$pieces),'json');
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
+    }
+    //获取用户文章
+    public function get_essays(){
+        $user_id = I('post.user_id')?I('post.user_id'):$this->user_id;
+        $page = I('post.page');
+        $page = $page?$page-1:0;
+        $visible = $user_id==$this->user_id?'':' AND visible=1';
+        $essay_model = D('Essay');
+        $essays = $essay_model->where('user_id='.$user_id.$visible)
+        ->order('date desc')->limit($page*$this->essay_nums_per_page,$this->essay_nums_per_page)->select();
+        if($essays !== false)$this->ajaxReturn(array('error'=>0,'essays'=>$essays),'json');
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }
     
 }

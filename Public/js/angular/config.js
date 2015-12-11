@@ -4,10 +4,11 @@ var tpl_essay_url = public_path+'/templates/Essay';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_message_url = public_path+'/templates/message';
 var tpl_tag_url = public_path+'/templates/tag';
-var tpl_search_url = public_path+'/templates/search.html';
+var tpl_search_url = public_path+'/templates/search';
 var tpl_setting_url = public_path+'/templates/setting';
 var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
+var tpl_user_url = public_path+'/templates/user';
 
 heysoo.config(['$locationProvider', '$urlRouterProvider', '$compileProvider',function($locationProvider, $urlRouterProvider,$compileProvider) {
     $locationProvider.html5Mode(true);

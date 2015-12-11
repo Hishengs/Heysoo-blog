@@ -34,8 +34,8 @@ class ActionController extends Controller {
     //deal login request
     public function do_login(){
         if(IS_POST){
-            $userName = I('post.userName');
-            if(empty($userName))$this->error(C('SITE_LANG.USER_NAME_EMPTY_TIP'));
+            $email = I('post.email');
+            if(empty($email))$this->error(C('SITE_LANG.USER_NAME_EMPTY_TIP'));
             $passwd = I('post.passwd');
             if(empty($passwd))$this->error(C('SITE_LANG.USER_PASSWD_EMPTY_TIP'));
             if(C('LOGIN_VERIFY_CODE_ON')){//whether open login verify code
@@ -43,7 +43,7 @@ class ActionController extends Controller {
               if(empty($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_EMPTY_TIP'));
               if(!$this->_check_verify_code($verify_code))$this->error(C('SITE_LANG.VERIFY_CODE_ERROR'));
             }
-            $cdt['userName'] = $userName;
+            $cdt['email'] = $email;
             $result = $this->user_model->where($cdt)->find();
             if(!empty($result)){
                 //password encryption
@@ -57,17 +57,17 @@ class ActionController extends Controller {
                     date_default_timezone_set("Asia/Hong_Kong");
                     $user_ip = $this->_get_user_ip();
                     $data = array('ip'=>$user_ip,'city'=>$this->_get_user_city($user_ip),'last_login_date'=>date('Y-m-d H:i:s'),'is_login'=>1);
-                    $cdt = array('userName'=>$userName);
+                    $cdt = array('userName'=>$result['username']);
                     $this->user_model->where($cdt)->save($data);
-                    $_SESSION['USER_NAME'] = $userName;
+                    $_SESSION['USER_NAME'] = $result['username'];
                     $_SESSION['LOGIN_STATUS'] = true;
                     $_SESSION['USER_ID'] = $result['id'];
-                    setcookie("userName",$result['userName'],time()+30*24*3600,"/");
+                    setcookie("userName",$result['username'],time()+30*24*3600,"/");
                     C('LAYOUT_ON',TRUE);
                     //$this->success(C('SITE_LANG.LOGIN_SUCCESS_TIP'),U('Index/index'));
                     redirect(U('Index/index'));
                 }else $this->error(C('SITE_LANG.USER_PASSWD_ERROR'));
-            }else $this->error(C('SITE_LANG.USER_NAME_NOT_EXIST'));
+            }else $this->error(C('SITE_LANG.USER_NOT_EXIST'));
         }
     }
     //show register page

@@ -132,7 +132,12 @@ heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
   $http.get(get_token_path+"?upload_type=avatar").success(function(res){
     $scope.upload_avatar_token = res.token;
   });
-  
+  //定时获取文件名
+  var get_image_name = $interval(function(){
+    if(document.getElementById('new_avatar').files[0]){
+      document.getElementById('avatar-file-name').innerHTML = document.getElementById('new_avatar').files[0].name;
+    }
+  },200);
   $scope.uploadAvatar = function(){
     //获取并设置七牛token
     $http.get(get_token_path+"?upload_type=avatar").success(function(res){
@@ -174,6 +179,7 @@ heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
           }
       },checkTime);
     }
+    $interval.cancel(get_image_name);
   }
 });
 /**setting_push*/

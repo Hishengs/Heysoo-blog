@@ -10,7 +10,7 @@ var minify = require('gulp-minify-css');
 //----------------css-----------------------
 gulp.task('index-css', function() {
   gulp.src(['./css/index.css','./css/piece/piece.css','./css/essay/essay.css',
-    './css/message.css','./css/setting.css'])
+    './css/message.css','./css/setting.css','./css/user.css'])
     .pipe(concat('index.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
@@ -55,7 +55,7 @@ gulp.task('ng-controller', function() {
   gulp.src(['./js/angular/controller/navigator.js','./js/angular/controller/home.js','./js/angular/controller/essay.js',
     './js/angular/controller/piece.js','./js/angular/controller/message.js','./js/angular/controller/follow.js',
     './js/angular/controller/publish.js','./js/angular/controller/setting.js','./js/angular/controller/tag.js',
-    './js/angular/controller/search.js'])
+    './js/angular/controller/search.js','./js/angular/controller/user.js'])
     .pipe(concat('ng_controller.js'))
     .pipe(gulp.dest('./js/angular/'));
 });
@@ -64,7 +64,7 @@ gulp.task('ng-state', function() {
   gulp.src(['./js/angular/state/home.js','./js/angular/state/essay.js',
     './js/angular/state/piece.js','./js/angular/state/message.js','./js/angular/state/follow.js',
     './js/angular/state/publish.js','./js/angular/state/setting.js','./js/angular/state/tag.js',
-    './js/angular/state/search.js'])
+    './js/angular/state/search.js','./js/angular/state/user.js'])
     .pipe(concat('ng_state.js'))
     .pipe(gulp.dest('./js/angular/'));
 });
@@ -83,7 +83,12 @@ gulp.task('default', function() {
     gulp.run('index');
 });
 gulp.task('watch', function () {
-   gulp.watch(['./css/*.css','./css/essay/*.css','./css/piece/*.css'], function (event) {
-     console.log('css changed!');
+  //watch css
+  gulp.watch(['./css/*.css','./css/essay/*.css','./css/piece/*.css'], function (event) {
+      console.log('css changed!');
+  });
+  //watch js
+  gulp.watch(['./js/*.js','./js/angular/*.js','./js/angular/controller/*.js','./js/angular/service/*.js','./js/angular/state/*.js'], function (event) {
+      console.log('js changed!');
   });
 });

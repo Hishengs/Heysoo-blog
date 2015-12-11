@@ -1,34 +1,22 @@
-<foreach name="essays" item="essay">
-<div class="essay" id="{$essay['essay_id']}">
-<div class="essay-left">
-<div class="essay-date">
-<div class="date-y">{:date("Y",strtotime($essay['date']))}</div>
-<div class="date-md">{:date("m/d",strtotime($essay['date']))}</div>
+<div class="essays" ng-hide="res_empty">
+	<div class="essay" id="{{essay.essay_id}}" ng-repeat="essay in essay_items">
+		<div class="essay-right">
+			<div class="essay-info">
+				<a ng-click='getViewPage(essay.essay_id)' href="javascript:;"><h4 class="essay-title" ng-bind-html="essay.title | highLight:search_key | trustHtml"></h4></a>
+				<div class="essay-date">{{essay.date}}</div>
+				<div class="essay-id" style="display:none;">{{essay.essay_id}}</div>
+			</div>
+			<div class="essay-content" ng-bind-html="essay.content | subStr:200 | addStr:'...' | trustHtml"></div>
+			<div class="essay-footer"><i class="hs-icon-tag"></i> 
+				<a href="javascript:tag('{{essay.tag}}');" ng-bind-html="essay.tag | highLight:search_key | trustHtml"></a>&nbsp;
+				<i class="hs-icon-eye-slash" ng-show="essay.visible==0" title="不可见"></i> 
+				<span class="essay-operation f-right">
+					<a href="javascript:void(0);" class="plain-link" ng-click="modify('essay',essay.essay_id)"><i class="hs-icon-edit"></i></a>
+					<a href="javascript:void(0);" class="plain-link m-left-20" ng-click="deleteItem('essay',essay.essay_id)"><i class="hs-icon-trash"></i></a>
+				</span>
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-<div class="essay-right">
-<div class="bg"></div><div class="essay-triangle"></div>
-<div class="essay-info">
-<div class="essay-id" style="display:none;">{$essay['essay_id']}</div>
-<span class="essay-author"><a href="{:U('User/index',array('user'=>$piece['username']))}" target="_blank">{$essay.userName}  </a></span>
-</div>
-<div class="essay-content">
-<a href=javascript:getViewPage("{:U('Essay/view')}","content","essay",{$essay['essay_id']})><h4 class="essay-title">{$essay.title}</h4></a>
-{:mb_substr(strip_tags($essay['content']),0,300,'UTF-8')}... ...
-</div>
-<div class="essay-footer"><i class="icon-tag"></i> 
-<assign name="tags" value="$essay['tag']" /> 
-<foreach name="tags" item="tag" >
-<a href="javascript:tag('{$tag}');" style="text-decoration:none;">{$tag}</a>&nbsp;
-</foreach>
-<if condition="$essay['visible'] eq 0">
- &nbsp;<i class="icon-eye-close" title="私密"></i>
-</if>
-<span class="essay-operation">
- <i class="icon-edit essay-modify" title="修改" onclick=window.location.href="{:U('Essay/modify',array('id'=>$essay['essay_id']))}"></i>
- <i class="icon-remove essay-remove" title="删除，请谨慎" onclick="javascript:deleteItem('essay',{$essay['essay_id']});"></i>
- </span>
-</div>
-</div>
-</div>
-</foreach> 
+
+

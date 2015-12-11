@@ -13,6 +13,10 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
   });
   //检测是否是移动设备
   $rootScope.device = isMobile();
+  //监听窗口大小变化
+  window.onresize = function(){
+    $rootScope.device = isMobile();
+  }
   //设置定时器，定时获取未读消息数目#每1分钟
   var timer = 60000;
   setInterval(function(){

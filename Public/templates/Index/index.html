@@ -1,8 +1,9 @@
 <div class="pieces">
 	<div class="piece" ng-controller="c_piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in index_items">
 		<div class="piece-left">
-			<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank">
-			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
+			<a href="javascript:;" ui-sref="user({user_id:piece.user_id})">
+				<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/>
+			</a>
 		</div>
 		<div class="piece-right">
 			<!-- <div class="bg"></div>
@@ -19,7 +20,7 @@
 					<i class="hs-icon-trash" ng-if="piece.user_id == user_info.id"></i>
 					</a>
 					<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" class="m-left-15" title="查看碎片评论">
-					<i class="hs-icon-comment-o"></i>
+					<i class="hs-icon-comment-o"></i> {{piece.comments_num}}
 					</a>
 				</span>
 			</div>
@@ -65,10 +66,10 @@
 		<hr>
 	</div>
 </div>
-<!-- <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block load-more index-load-more" ng-click="indexLoadMore();">
-<i class="hs-icon-arrow-down"></i> 加载更多
-</button> -->
-<div class="loadMore">
+
+<div class="index-empty-tip center-tip" ng-show="index_empty"><i class="hs-icon-warning"></i> 空空如也，好冷好寂寞(*>﹏<*)<br />[相关的推荐及好友碎片将出现在这里]</div>
+
+<div class="loadMore" ng-hide="index_empty">
 	<a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a>
 </div>
 

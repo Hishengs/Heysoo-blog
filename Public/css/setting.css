@@ -6,3 +6,6 @@ div.setting-user-avatar{margin-top:20px;}
 span.setting-item-right{float: right;}
 div.setting-upload-avatar{display: inline-block; float: right;}
 div.setting-upload-avatar div{display: inline-block;}
+/*upload avatar*/
+button.avatar-select{position: relative;}
+input.new_avatar{position: absolute;top: 0;left: 0;opacity: 0;width: 100%;height: 100%;}

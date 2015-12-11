@@ -13,6 +13,10 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
   });
   //检测是否是移动设备
   $rootScope.device = isMobile();
+  //监听窗口大小变化
+  window.onresize = function(){
+    $rootScope.device = isMobile();
+  }
   //设置定时器，定时获取未读消息数目#每1分钟
   var timer = 60000;
   setInterval(function(){
@@ -34,6 +38,7 @@ heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
 heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie,User){
     $rootScope.mask_show = false;
     $rootScope.style = {};
+    $scope.index_empty = false;
     //获取用户配置
     User.getUserConfig().success(function(res){
       if(res.error === 0){
@@ -47,6 +52,8 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
     });
     $http.get(home_path+"/Index/ng_index.html").success(function(res){
       $rootScope.index_items = res;
+      if($rootScope.index_items.length <= 0)$scope.index_empty = true;
+      else $scope.index_empty = false;
       $scope.index_page = 2;
     });
     $state.go('home');
@@ -234,7 +241,7 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
         $scope.essay_comment_on = res.essay_comment_on;
         $scope.avatar_path = public_path+"/img/me.jpg";
         $(document).scrollTop(0);
-        setLightBox();
+        window.scrollTo(0,0);
         progress_bar.done();
       }else{
         $scope.essay = $scope.comments = [];
@@ -272,6 +279,7 @@ heysoo.controller('c_modify',function($scope,$rootScope,$state,$http,Music){
   });
   //查找音乐
   $scope.searchSong = function(){
+    if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
     $rootScope.song_search_tip = '查询中...';
     $rootScope.current_editor = window.essay_modify_editor;
     $rootScope.search_songs = new Array();
@@ -410,14 +418,18 @@ heysoo.controller('c_piece',function($scope,$state,Piece){
     Piece.getPieceComments(piece_id).success(function(res){
       if(res.error === 0){
         $scope.piece_comments = res.comments;
+        $scope.piece_comments_num = $scope.piece_comments.length;
+        console.log('piece_comments_num:',$scope.piece_comments_num);
         $scope.piece_comment_tip = '';
         $scope.piece_comment_tip_show = false;
       }else {
         $scope.piece_comment_tip_show = true;
+        $scope.piece_comments_num = '';
         $scope.piece_comment_tip = '<i class="hs-icon hs-icon-warning"></i> '+res.msg;
       }
     });
   }
+
   //显示评论区
   $scope.pieceCommentToggle = function(piece_id){
     if($('#piece-comment-'+piece_id).css('display') == 'none'){
@@ -602,6 +614,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     }
     //查找音乐
     $scope.searchSong = function(){
+      if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
       $rootScope.song_search_tip = '查询中...';
       $rootScope.current_editor = window.essay_editor;
       $rootScope.search_songs = new Array();
@@ -628,6 +641,7 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     }
     //查找音乐
     $scope.searchSong = function(){
+      if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
       $rootScope.song_search_tip = '查询中...';
       $rootScope.current_editor = window.piece_editor;
       $rootScope.search_songs = new Array();
@@ -824,7 +838,12 @@ heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
   $http.get(get_token_path+"?upload_type=avatar").success(function(res){
     $scope.upload_avatar_token = res.token;
   });
-  
+  //定时获取文件名
+  var get_image_name = $interval(function(){
+    if(document.getElementById('new_avatar').files[0]){
+      document.getElementById('avatar-file-name').innerHTML = document.getElementById('new_avatar').files[0].name;
+    }
+  },200);
   $scope.uploadAvatar = function(){
     //获取并设置七牛token
     $http.get(get_token_path+"?upload_type=avatar").success(function(res){
@@ -866,6 +885,7 @@ heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
           }
       },checkTime);
     }
+    $interval.cancel(get_image_name);
   }
 });
 /**setting_push*/
@@ -952,4 +972,164 @@ heysoo.controller('c_tag',function($scope,$rootScope,$state,$http){
 });
 heysoo.controller('c_tag_essay',function($scope,$rootScope,$http){
  //
+});
+heysoo.controller('c_search',function($scope,$http,Search,User){
+	$scope.search_type = '1';
+	$scope.search_key = "";
+	$scope.search_tip = '';
+	$scope.piece_items = [];//搜索结果
+	$scope.essay_items = [];
+	$scope.user_items = [];
+	$scope.search_tab = 'piece';
+	$scope.search_tpl_url = public_path+"/templates/piece/pieces.html";
+
+	$scope.switchSearchTab = function(tab){
+		$scope.search_tab = tab;
+		if(tab === 'piece')$scope.search_type='1';
+		else if(tab === 'essay')$scope.search_type='2';
+		else if(tab === 'user')$scope.search_type='3';
+		$scope.search();
+	}
+	$scope.search = function(){
+		if(isEmpty($scope.search_key)){$scope.search_tip = '<i class="hs-icon-warning"></i> 请输入关键词！';return;}
+		$scope.search_tip = '<i class="hs-icon-spinner"></i> 正在拼命搜索中...';
+		switch($scope.search_type){
+			case '1'://碎片
+			default:
+				$scope.search_tab = 'piece';
+				$scope.search_tpl_url = public_path+"/templates/piece/pieces.html";
+				Search.searchPiece($scope.search_key).success(function(res){
+					console.log(res);
+					if(res.error === 0){
+						$scope.piece_items = res.items;
+						$scope.search_tip = '';
+					}else {$scope.piece_items = [];$scope.search_tip = '<i class="hs-icon-warning"></i> '+res.msg;}
+				});
+				break;
+			case '2'://文章
+				$scope.search_tab = 'essay';
+				$scope.search_tpl_url = public_path+"/templates/essay/essays.html";
+				Search.searchEssay($scope.search_key).success(function(res){
+					console.log(res);
+					if(res.error === 0){
+						$scope.essay_items = res.items;
+						$scope.search_tip = '';
+					}else {$scope.essay_items = [];$scope.search_tip = '<i class="hs-icon-warning"></i> '+res.msg;}
+				});
+				break;
+			case '3'://用户
+				$scope.search_tab = 'user';
+				$scope.search_tpl_url = public_path+"/templates/user/user_items.html";
+				Search.searchUser($scope.search_key).success(function(res){
+					console.log(res);
+					if(res.error === 0){
+						$scope.user_items = res.items;
+						$scope.search_tip = '';
+					}else {$scope.user_items = [];$scope.search_tip = '<i class="hs-icon-warning"></i> '+res.msg;}
+				});
+				break;
+		}
+	}
+	//添加关注
+	$scope.addFollow = function(user_id,index){
+		User.addFollow(user_id).success(function(res){
+			if(res.error === 0){
+				hMessage('关注成功！');
+				$scope.user_items[index].is_followed = true;
+			}
+			else hMessage(res.msg);
+		});
+	}
+	//取消关注
+	$scope.disFollow = function(user_id,index){
+		User.disFollow(user_id).success(function(res){
+			if(res.error === 0){
+				hMessage('取消关注成功！');
+				$scope.user_items[index].is_followed = false;
+			}
+			else hMessage(res.msg);
+		});
+	}
+});
+heysoo.controller('c_user',function($scope,$http,$stateParams,User){
+	$scope.post_tab = 'piece';
+	$scope.user = {};
+	$scope.follow = {is_followed:false,is_self:false};
+	$scope.tpl_url = public_path+"/templates/Piece/pieces.html";
+	$scope.post_page = 1;
+	$scope.piece_items = [];
+	$scope.essay_items = [];
+	//获取用户信息
+	User.getUserInfo($stateParams.user_id).success(function(res){
+		if(res.error === 0){
+			$scope.user = res.user;
+		}else hMessage(res.msg);
+	});
+	//获取关注信息
+	User.getFollowInfo($stateParams.user_id).success(function(res){
+		if(res.error === 0){
+			$scope.follow = res.follow;
+		}else hMessage(res.msg);
+	});
+	
+	//添加关注
+	$scope.addFollow = function(user_id){
+		User.addFollow(user_id).success(function(res){
+			if(res.error === 0){hMessage('关注成功！');$scope.follow.is_followed=true;}
+			else hMessage(res.msg);
+		});
+	}
+	//取消关注
+	$scope.disFollow = function(user_id){
+		User.disFollow(user_id).success(function(res){
+			if(res.error === 0){hMessage('取消关注成功！');$scope.follow.is_followed=false;}
+			else hMessage(res.msg);
+		});
+	}
+	//获取用户的碎片
+	$scope.getUserPieces = function(user_id,post_page){
+		User.getPieces(user_id,post_page).success(function(res){
+			if(res.error === 0){
+				for (var i = 0,ilen=res.pieces.length; i < ilen; i++) {
+		            $scope.piece_items.push(res.pieces[i]);
+		        }
+			}
+		});
+	}
+	//获取用户的文章
+	$scope.getUserEssays = function(user_id,post_page){
+		User.getEssays(user_id,post_page).success(function(res){
+			console.log(res);
+			if(res.error === 0){
+				for (var i = 0,ilen=res.essays.length; i < ilen; i++) {
+		            $scope.essay_items.push(res.essays[i]);
+		        }
+			}
+		});
+	}
+	//获取碎片
+	$scope.getUserPieces($stateParams.user_id,$scope.post_page);
+	//加载更多
+	$scope.loadMore = function(user_id){
+		++$scope.post_page;
+		if($scope.post_tab == 'piece')$scope.getUserPieces(user_id,$scope.post_page);
+		else $scope.getUserEssays(user_id,$scope.post_page);
+	}
+	//切换tab
+	$scope.switchPostTab = function(tab){
+		$scope.post_tab = tab;
+		$scope.post_page=1;
+		
+		//更新
+		if($scope.post_tab=='piece'){
+			$scope.piece_items = [];
+			$scope.tpl_url = public_path+"/templates/Piece/pieces.html";
+			$scope.getUserPieces($scope.user.id,$scope.post_page);
+		}
+		else{
+			$scope.essay_items = [];
+			$scope.tpl_url = public_path+"/templates/Essay/essays.html";
+			$scope.getUserEssays($scope.user.id,$scope.post_page);
+		}
+	}
 });
