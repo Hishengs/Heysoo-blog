@@ -1,0 +1,29 @@
+{
+  "name": "heysoo",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-minify-css": "^1.2.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hishengs/Heysoo.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Hishengs <819537918@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hishengs/Heysoo/issues"
+  },
+  "homepage": "https://github.com/Hishengs/Heysoo#readme"
+}

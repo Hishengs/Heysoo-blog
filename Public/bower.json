@@ -1,0 +1,30 @@
+{
+  "name": "heysoo",
+  "homepage": "https://www.heysoo.com",
+  "authors": [
+    "Hishengs <819537918@qq.com>"
+  ],
+  "description": "blog",
+  "main": "../index.php",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "heysoo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amazeui": "~2.4.2",
+    "angular-cookie": "~4.0.9",
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4"
+  }
+}
