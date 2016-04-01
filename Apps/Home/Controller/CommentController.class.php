@@ -12,7 +12,7 @@ class CommentController extends Controller {
 	
     function __construct(){
         parent::__construct();
-        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
+        //if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//check login
         $this->comment_model = D('Comment');
         $this->piece_comment_model = D('PieceComment');
     }

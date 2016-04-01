@@ -1,5 +1,6 @@
 heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
   $scope.essay_view_tip_show = false;
+  $scope.is_logined = true;
   $rootScope.reply_to_id = $rootScope.parent_cmt_id = null;
   url = home_path+"/Essay/ng_view.html?id="+$stateParams.id;
   progress_bar.start();
@@ -9,10 +10,12 @@ heysoo.controller('c_view',function($scope,$rootScope,$http,$stateParams){
   $http.get(url).success(function(res){
     if(res.error === 0){
         $scope.essay = res.essay;
+        document.title = 'Heysoo-'+$scope.essay.title;//设置title
         $scope.comments = res.comments;
         if(res.comments.length < 1)$rootScope.essay_comments_tip_show = true;
         else $rootScope.essay_comments_tip_show = false;
         $scope.essay_comment_on = res.essay_comment_on;
+        $scope.is_logined = res.is_logined==1?true:false;
         $scope.avatar_path = public_path+"/img/me.jpg";
         $(document).scrollTop(0);
         window.scrollTo(0,0);

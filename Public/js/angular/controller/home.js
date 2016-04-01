@@ -1,4 +1,18 @@
 heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie,User){
+    //前端路由的统一管理
+    $rootScope.$on('$locationChangeStart', function(event){
+        if(!ipCookie('fingerprint')){
+          //如果未登录，除了注册登陆不允许跳转到别的地方
+          console.log(arguments);
+          var pattern1 = /\/(view|user)\/[\d]+/i;
+          var pattern2 = /\/Action\/register\.html/i;
+          if(!pattern1.test(arguments[1])){
+            redirect('login');
+          }else if(pattern2.test(arguments[1])){
+            redirect('register');
+          }
+        }
+    });
     $rootScope.mask_show = false;
     $rootScope.style = {};
     $scope.index_empty = false;
@@ -14,23 +28,31 @@ heysoo.controller('c_index',function($scope,$rootScope,$state,$stateParams,$http
       }else hMessage(res.msg);
     });
     $http.get(home_path+"/Index/ng_index.html").success(function(res){
-      $rootScope.index_items = res;
-      if($rootScope.index_items.length <= 0)$scope.index_empty = true;
-      else $scope.index_empty = false;
-      $scope.index_page = 2;
+      if(res.error === 0){
+        $rootScope.index_items = res.pieces;
+        if($rootScope.index_items.length <= 0)$scope.index_empty = true;
+        else $scope.index_empty = false;
+        $scope.index_page = 2;
+      }//else if(res.error === 4){hMessage(res.msg);window.location.href='';}
+      else hMessage(res.msg);
     });
-    $state.go('home');
+    //$state.go('home');
     //首頁加載更多按鈕
     $scope.indexLoadMore = function(){
       $('a.index-load-more').html('<i class="hs-icon-spinner"></i> 加载中...');
       $http.get(home_path+"/Index/ng_index.html?index_page="+$scope.index_page).success(function(res){
-        $('a.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
-        if(!res.length){hMessage('沒有更多了！');return;}
-        for (var i = 0; i < res.length; i++) {
-            $scope.index_items.push(res[i]);
+        if(res.error === 0){
+          if(!res.pieces.length){$('a.index-load-more').html('<i class="hs-icon-warning"></i> 没有更多了！');return;}
+          for (var i = 0; i < res.pieces.length; i++) {
+              $scope.index_items.push(res.pieces[i]);
+          }
+          $scope.index_page++;
+          $('a.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
+        }else {
+          hMessage(res.msg);
+          $('a.index-load-more').html('<i class="hs-icon-arrow-down"></i> 加载更多');
         }
-        $scope.index_page++;
-    });
+      });
     }
 
     $scope.getPage = function(page){

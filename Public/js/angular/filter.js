@@ -18,8 +18,8 @@ heysoo.filter('addStr', function () {
 heysoo.filter('highLight',function(){
     return function (input,key) {
         var pattern = eval("/("+key+")/gi");
-        console.log("pattern:",pattern);
-        console.log(input.replace(pattern,"<em class=\"search-highlight\">$1</em>"));
+        //console.log("pattern:",pattern);
+        //console.log(input.replace(pattern,"<em class=\"search-highlight\">$1</em>"));
         return input.replace(pattern,"<em class=\"search-highlight\">$1</em>");
     }
 });

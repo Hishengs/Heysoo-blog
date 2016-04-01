@@ -21,7 +21,7 @@
 		</ul>
 		<div ng-include="tpl_url"></div>
 		<div class="load-more">
-			<a href="javascript:void(0);" ng-click="loadMore(user.id)"><i class="hs-icon-arrow-down"></i> 加载更多</a>
+			<a href="javascript:void(0);" ng-click="loadMore(user.id)" ng-bind-html="load_more_tip_text | trustHtml"></a>
 		</div>
 	</div>
 	

@@ -1,14 +1,14 @@
 <div class="pieces" ng-hide="res_empty">
 <div class="piece" ng-controller="c_piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in items">
 		<div class="piece-left">
-			<a href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank">
+			<a href="javascript:;" ui-sref="user({user_id:piece.user_id})">
 			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
 		</div>
 		<div class="piece-right">
 			<!-- <div class="bg"></div>
 			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
-				<span class="piece-user"><a href="javascript:;" ng-click="viewUser(piece.username)" target="_blank" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+				<span class="piece-user"><a href="javascript:;" ui-sref="user({user_id:piece.user_id})" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
 			</div>
 			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>

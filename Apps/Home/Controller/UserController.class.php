@@ -14,7 +14,7 @@ class UserController extends Controller {
 	
     function __construct(){
         parent::__construct();
-        if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));
+        //if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));
         $this->piece_nums_per_page = C('PIECE_LOAD_NUM_PER_PAGE');
         $this->essay_nums_per_page = C('ESSAY_LOAD_NUM_PER_PAGE');
         $this->user_model = D('User');
@@ -205,6 +205,7 @@ class UserController extends Controller {
     //获取用户关注信息
     public function get_follow_info(){
         $user_id = I('get.user_id');
+        if(empty($this->user_id))$this->user_id = $user_id;//如果未登录
         if($user_id !== $this->user_id){
             $follow_model = D('Follow');
             $cdt = array('follower_id'=>$this->user_id,'followed_id'=>$user_id);

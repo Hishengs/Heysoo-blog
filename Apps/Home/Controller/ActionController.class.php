@@ -63,6 +63,7 @@ class ActionController extends Controller {
                     $_SESSION['LOGIN_STATUS'] = true;
                     $_SESSION['USER_ID'] = $result['id'];
                     setcookie("userName",$result['username'],time()+30*24*3600,"/");
+                    setcookie("fingerprint",md5($result['username'].$result['salt'].date()),time()+30*24*3600,"/");
                     C('LAYOUT_ON',TRUE);
                     //$this->success(C('SITE_LANG.LOGIN_SUCCESS_TIP'),U('Index/index'));
                     redirect(U('Index/index'));
@@ -145,6 +146,8 @@ class ActionController extends Controller {
         unset($_SESSION['USER_NAME']);
         unset($_SESSION['USER_ID']);
         $_SESSION['LOGIN_STATUS'] = false;
+        cookie('userName',null);
+        cookie('fingerprint',null);
         //$this->success(C('SITE_LANG.LOGOUT_SUCCESS'),U("Action/login"),2);
         redirect(U("Action/login"));
     }

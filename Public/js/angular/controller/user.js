@@ -2,10 +2,11 @@ heysoo.controller('c_user',function($scope,$http,$stateParams,User){
 	$scope.post_tab = 'piece';
 	$scope.user = {};
 	$scope.follow = {is_followed:false,is_self:false};
-	$scope.tpl_url = public_path+"/templates/Piece/pieces.html";
+	$scope.tpl_url = public_path+"/templates/piece/pieces.html";
 	$scope.post_page = 1;
 	$scope.piece_items = [];
 	$scope.essay_items = [];
+	$scope.load_more_tip_text = '<i class="hs-icon-arrow-down"></i> 加载更多';
 	//获取用户信息
 	User.getUserInfo($stateParams.user_id).success(function(res){
 		if(res.error === 0){
@@ -35,22 +36,38 @@ heysoo.controller('c_user',function($scope,$http,$stateParams,User){
 	}
 	//获取用户的碎片
 	$scope.getUserPieces = function(user_id,post_page){
+		$scope.load_more_tip_text = '<i class="hs-icon-spinner"></i> 加載中...';
 		User.getPieces(user_id,post_page).success(function(res){
 			if(res.error === 0){
-				for (var i = 0,ilen=res.pieces.length; i < ilen; i++) {
-		            $scope.piece_items.push(res.pieces[i]);
-		        }
+				if(res.pieces.length){
+					for (var i = 0,ilen=res.pieces.length; i < ilen; i++) {
+			            $scope.piece_items.push(res.pieces[i]);
+			        }
+			        $scope.load_more_tip_text = '<i class="hs-icon-arrow-down"></i> 加载更多';
+				}else{
+					if(post_page==1)
+						$scope.load_more_tip_text = '<i class="hs-icon-warning"></i> 暂无碎片！';
+					else $scope.load_more_tip_text = '<i class="hs-icon-warning"></i> 没有更多碎片了！';
+				}
 			}
 		});
 	}
 	//获取用户的文章
 	$scope.getUserEssays = function(user_id,post_page){
+		$scope.load_more_tip_text = '<i class="hs-icon-spinner"></i> 加載中...';
 		User.getEssays(user_id,post_page).success(function(res){
 			console.log(res);
 			if(res.error === 0){
-				for (var i = 0,ilen=res.essays.length; i < ilen; i++) {
-		            $scope.essay_items.push(res.essays[i]);
-		        }
+				if(res.essays.length){
+					for (var i = 0,ilen=res.essays.length; i < ilen; i++) {
+			            $scope.essay_items.push(res.essays[i]);
+			        }
+			        $scope.load_more_tip_text = '<i class="hs-icon-arrow-down"></i> 加载更多';
+				}else{
+					if(post_page==1)
+						$scope.load_more_tip_text = '<i class="hs-icon-warning"></i> 暂无文章！';
+					else $scope.load_more_tip_text = '<i class="hs-icon-warning"></i> 没有更多文章了！';
+				}
 			}
 		});
 	}
@@ -70,12 +87,12 @@ heysoo.controller('c_user',function($scope,$http,$stateParams,User){
 		//更新
 		if($scope.post_tab=='piece'){
 			$scope.piece_items = [];
-			$scope.tpl_url = public_path+"/templates/Piece/pieces.html";
+			$scope.tpl_url = public_path+"/templates/piece/pieces.html";
 			$scope.getUserPieces($scope.user.id,$scope.post_page);
 		}
 		else{
 			$scope.essay_items = [];
-			$scope.tpl_url = public_path+"/templates/Essay/essays.html";
+			$scope.tpl_url = public_path+"/templates/essay/essays.html";
 			$scope.getUserEssays($scope.user.id,$scope.post_page);
 		}
 	}

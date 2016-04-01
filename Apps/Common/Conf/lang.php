@@ -47,7 +47,7 @@ return array(
 			'ESSAY_NOT_EXIST'=>'不存在此文章，或已删除！',
 			'INVITE_CODE_ERROR'=>'邀请码错误或已过期！',
 			'INVITE_CODE_EMPTY'=>'邀请码不能为空！',
-			''=>'',
+			'ACCESS_DENIED'=>'没有权限！',
 			''=>'',
 			)
 );

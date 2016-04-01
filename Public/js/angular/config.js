@@ -1,6 +1,6 @@
 
-var tpl_piece_url = public_path+'/templates/Piece';
-var tpl_essay_url = public_path+'/templates/Essay';
+var tpl_piece_url = public_path+'/templates/piece';
+var tpl_essay_url = public_path+'/templates/essay';
 var tpl_index_url = public_path+'/templates/Index/index.html';
 var tpl_message_url = public_path+'/templates/message';
 var tpl_tag_url = public_path+'/templates/tag';

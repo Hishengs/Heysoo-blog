@@ -9,7 +9,7 @@
 			<!-- <div class="bg"></div>
 			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
-				<span class="piece-user"><a href="javascript:;" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
+				<span class="piece-user"><a href="javascript:void(0);" ui-sref="user({user_id:piece.user_id})" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
 				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
 			</div>
 			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
@@ -68,7 +68,6 @@
 </div>
 
 <div class="index-empty-tip center-tip" ng-show="index_empty"><i class="hs-icon-warning"></i> 空空如也，好冷好寂寞(*>﹏<*)<br />[相关的推荐及好友碎片将出现在这里]</div>
-
 <div class="loadMore" ng-hide="index_empty">
 	<a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a>
 </div>

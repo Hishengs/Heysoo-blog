@@ -1,5 +1,5 @@
 var progress_bar = $.AMUI.progress;//进度条
-var site_prefix = "http://localhost";
+//var site_prefix = "http://localhost";
 //发布
 var editOpts = {
     width:'100%',
@@ -275,10 +275,9 @@ function tag(tag){
 
 //go to view page
 function view(typeId,id){
-	//window.location.href = site_prefix+"/heysoo/#/view/"+id;
-	//var current_url = window.location.href.split('Heysoo')[0];
-	//console.log(current_url);
-	window.location.href = window.location.origin+"/Heysoo/view/"+id;
+	window.location.href = window.location.origin+"/view/"+id;
+	//console.log(site_prefix + "/view/"+id);
+	//window.location.href = site_prefix + "/view/"+id;
 }
 function showModal(target){
 	$('#'+target).modal('toggle');
@@ -298,4 +297,17 @@ function isMobile(){
 function isEmpty(input){
 	var pattern = /^[\s,\n,\r,\t,\o]*$/gi;
 	return pattern.test(input);
+}
+//跳转管理
+function redirect(action){
+	switch(action){
+		case 'login':
+			window.location.href = site_prefix+'/Action/login.html';
+			break;
+		case 'register':
+			window.location.href = site_prefix+'/Action/register.html';
+			break;
+		default:
+			break;
+	}
 }

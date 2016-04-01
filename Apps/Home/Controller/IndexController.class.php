@@ -10,18 +10,22 @@ class IndexController extends Controller {
 	private $piece_model;
     private $user_id;
     private $piece_nums_per_page;//piece number every page shows
+    private $auth; //认证类
 
     function __construct(){
         parent::__construct();
         //check login status,redirect to the login page if not logined
-        if(empty($_SESSION['USER_ID']))redirect(U('Action/login'));
+        //if(empty($_SESSION['USER_ID']))redirect(U('Action/login'));
+        //if(!preg_match("/\/view\/[\d]+/", $_SERVER['REQUEST_URI']))redirect(U('Action/login'));//除了文章浏览以外
         $this->piece_model = D("Piece");
         $this->piece_nums_per_page = C('PIECE_LOAD_NUM_PER_PAGE');
         $this->user_id = $_SESSION['USER_ID'];
+        //$this->auth = new \Think\Auth(); //初始化认证类
     }
 
     public function index(){
-        $this->assign('userName',$_SESSION['USER_NAME']);
+        if(!preg_match("/\/view\/[\d]+/", $_SERVER['REQUEST_URI']) && !preg_match("/\/user\/[\d]+/", $_SERVER['REQUEST_URI']) && empty($_SESSION['USER_ID']))redirect(U('Action/login'));//除了文章浏览以外
+        $this->assign('is_logined',empty($_SESSION['USER_ID'])?0:1);
         $this->display();
     }
     //get index page
@@ -44,7 +48,10 @@ class IndexController extends Controller {
         " or p.user_id in (select f.followed_id from hs_follow as f where f.follower_id=".$this->user_id.") and p.visible=1 group by p.piece_id order by p.date desc limit ".
         $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
         $pieces = $this->piece_model->query($sql2);
-        $this->ajaxReturn($pieces,'json');
+        if($pieces)
+            $this->ajaxReturn(array('pieces'=>$pieces,'error'=>0),'json');
+        else if($pieces == NULL)$this->ajaxReturn(array('pieces'=>$pieces,'error'=>2,'msg'=>'暂无记录！'),'json');
+        else $this->ajaxReturn(array('pieces'=>$pieces,'error'=>1,'msg'=>'查询失败！'),'json');
     }
    //init the sidebar panel
    public function ng_init_side_panel(){
