@@ -2,4 +2,5 @@
 /Core/
 /Apps/Runtime/
 /Public/bower/
+/Public/node_modules/
 /Apps/Runtime
