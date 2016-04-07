@@ -1,18 +1,48 @@
 heysoo.config(['$stateProvider',function($stateProvider){
 	$stateProvider.state('home',{
-        url:'/'
+        url:'/',
+        controller:'c_piece',
+        views:{
+            'content':{templateUrl:tpl_index_url+"/index.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/piece.js']);
+            }]
+        }
+    }).state('index',{
+        url:'/index',
+        controller:'c_piece',
+        views:{
+            'content':{templateUrl:tpl_index_url+"/index.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/piece.js']);
+            }]
+        }
     });
 }]);
 heysoo.config(['$stateProvider',function($stateProvider){
 	$stateProvider.state('edit',{
-        url:'/edit',
+        url:'/edit/:type/:action',
         views:{
             'content':{templateUrl:tpl_essay_url+"/edit.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/publish.js']);
+            }]
         }
     }).state('essay',{
         url:'/essay/page/:page',
         views:{
             'content':{templateUrl:tpl_essay_url+"/index.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/essay.js']);
+            }]
         }
     }).state('view',{
         url:'/view/:id',
@@ -20,6 +50,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         controller:'c_view',
         views:{
             'content':{templateUrl:tpl_essay_url+"/view.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/essay.js']);
+            }]
         }
     }).state('setting_profile_userName',{
         url:'/modifyUserName',
@@ -28,9 +63,14 @@ heysoo.config(['$stateProvider',function($stateProvider){
             'mask':{templateUrl:tpl_action_url+"/setting/modifyUserName.html"}
         }
     }).state('modify',{
-        url:'/modify/type/:type/id/:id',
+        url:'/edit/:type/:action/:id',
         views:{
-            'content':{templateUrl:tpl_essay_url+"/modify.html"}
+            'content':{templateUrl:tpl_essay_url+"/edit.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/publish.js']);
+            }]
         }
     });
 }]);
@@ -39,7 +79,12 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/piece/page/:page',
         views:{
             'content':{templateUrl:tpl_piece_url+"/index.html"}
-        }
+        }/*,
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/piece.js']);
+            }]
+        }*/
     }).state('comment',{
         url:'/comment/:id',
         views:{
@@ -52,12 +97,22 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/message',
         views:{
             'content':{templateUrl:tpl_message_url+"/message.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/message.js']);
+            }]
         }
     }).state('msg_comment',{
         url:'/comment',
         parent:'message',
         views:{
             'message':{templateUrl:tpl_message_url+"/comment.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/message.js']);
+            }]
         }
     }).state('msg_at',{
         url:'/at',
@@ -84,6 +139,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/follow',
         views:{
             'content':{templateUrl:tpl_follow_url+"/follow.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/follow.js']);
+            }]
         }
     }).state('follow_followed',{
         url:'/followed',
@@ -105,6 +165,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/setting',
         views:{
             'content':{templateUrl:tpl_setting_url+"/setting.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/setting.js']);
+            }]
         }
     }).state('setting_profile',{
         url:'/profile',
@@ -137,6 +202,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/tag',
         views:{
             'content':{templateUrl:tpl_tag_url+"/tag.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/tag.js']);
+            }]
         }
     }).state('tag_essay',{
         url:'/essay',
@@ -163,6 +233,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/search',
         views:{
             'content':{templateUrl:tpl_search_url+"/search.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/search.js']);
+            }]
         }
     });
 }]);
@@ -171,6 +246,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/user/:user_id',
         views:{
             'content':{templateUrl:tpl_user_url+"/user.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/user.js']);
+            }]
         }
     });
 }]);

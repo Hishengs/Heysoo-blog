@@ -3,7 +3,12 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/piece/page/:page',
         views:{
             'content':{templateUrl:tpl_piece_url+"/index.html"}
-        }
+        }/*,
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/piece.js']);
+            }]
+        }*/
     }).state('comment',{
         url:'/comment/:id',
         views:{

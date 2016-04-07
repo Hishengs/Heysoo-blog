@@ -1,9 +1,29 @@
-<div class="pieces">
-	<div class="piece" ng-controller="c_piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in index_items">
+<div class="pieces" ng-controller="c_piece">
+	<div class="piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in items">
 		<div class="piece-left">
-			<a href="javascript:;" ui-sref="user({user_id:piece.user_id})">
+			<a href="javascript:;" ng-if="user_info.id==piece.user_id">
 				<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/>
 			</a>
+			<div class="hs-dropdown" id="index-user-action-{{piece.id}}" ng-if="user_info.id!==piece.user_id" data-hs-dropdown>
+				<a href="javascript:;" class="hs-dropdown-toggle" id="index-user-avatar-{{piece.id}}">
+					<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/>
+				</a>
+				<ul class="hs-dropdown-content">
+					<li class="hs-dropdown-header">{{piece.username}}</li>
+					<li><a href="javascript:void(0);" ui-sref="user({user_id:piece.user_id})">
+					<i class="hs-icon-home"></i> 访问主页
+					</a></li>
+					<li><a href="javascript:void(0);">
+					<i class="hs-icon-eye"></i> 关注此君
+					</a></li>
+					<li><a href="javascript:void(0);">
+					<i class="hs-icon-eye-slash"></i> 取消关注
+					</a></li>
+					<li><a href="javascript:void(0);">
+					<i class="hs-icon-ban"></i> 屏蔽此人
+					</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="piece-right">
 			<!-- <div class="bg"></div>
@@ -72,3 +92,6 @@
 	<a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a>
 </div>
 
+<script>
+	setTimeout(function(){updateAmazeUIEvent();},1500);
+</script>

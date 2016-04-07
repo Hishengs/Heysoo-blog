@@ -38,8 +38,9 @@ class PieceController extends Controller {
         else{
             $userName = $_SESSION['USER_NAME'];
             $tag = $tag?$tag:'碎片';
+            $visible_tag = empty(I('post.visible_tag'))?'':I('post.visible_tag');
             $post_date = date("Y-m-d H:i:s");
-            $data = array('user_id'=>$this->user_id,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'date'=>$post_date);
+            $data = array('user_id'=>$this->user_id,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'visible_tag'=>$visible_tag,'date'=>$post_date);
             if($this->piece_model->add($data) != false){
                 if($ajax)
                     $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.POST_SUCCESS'),'str_num'=>$str_num),'json');
@@ -49,6 +50,23 @@ class PieceController extends Controller {
                     $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.POST_FAILED')),'json');
                 else return false;
             }
+        }
+    }
+    public function post(){ 
+        $content = I('post.content','','');
+        $str_num = A('Action')->str_length($content);
+        $current_str_num = $str_num['cn']+$str_num['en'];
+        if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_EMPTY_TIP')),'json');
+        if($current_str_num > 255)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_LENGTH_ERROR').$current_str_num,'str_num'=>$str_num),'json');
+        else{
+            $userName = $_SESSION['USER_NAME'];
+            $tag = I('post.tag')?I('post.tag'):'碎片';
+            $visible_tag = I('post.visible_tag')?I('post.visible_tag'):'';
+            $post_date = date("Y-m-d H:i:s");
+            $data = array('user_id'=>$this->user_id,'tag'=>$tag,'content'=>$content,'visible'=>I('post.visible'),'visible_tag'=>$visible_tag,'date'=>$post_date);
+            if($this->piece_model->add($data) != false){
+                $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.POST_SUCCESS'),'str_num'=>$str_num),'json');
+            }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.POST_FAILED')),'json');
         }
     }
     //modify piece
@@ -150,7 +168,8 @@ class PieceController extends Controller {
         ->group('p.piece_id')
         ->order('p.date desc')
         ->limit($page*$this->page_size,$this->page_size)->select();
-        $response = array('error'=>0,'items'=>$pieces,'page'=>$page+1);
+        $count = $this->piece_model->where('user_id='.$this->user_id)->count();
+        $response = array('error'=>0,'items'=>$pieces,'page'=>$page+1,'count'=>$count);
         $this->ajaxReturn($response,'json');
       }else{
         $response = array('error'=>1,'msg'=>C('SITE_LANG.LOGIN_ALERT'));

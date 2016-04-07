@@ -1,4 +1,4 @@
-heysoo.controller('c_search',function($scope,$http,Search,User){
+heysoo.register.controller('c_search',function($scope,$http,Search,User){
 	$scope.search_type = '1';
 	$scope.search_key = "";
 	$scope.search_tip = '';

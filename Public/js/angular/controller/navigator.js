@@ -1,5 +1,5 @@
 //边栏管理
-heysoo.controller('c_sidePanel',function($http,$rootScope,$scope){
+heysoo.register.controller('c_sidePanel',function($http,$rootScope,$scope){
   var url = home_path+"/Index/ng_init_side_panel.html";
   $http.get(url).success(function(res){
     if(res.error === 0){

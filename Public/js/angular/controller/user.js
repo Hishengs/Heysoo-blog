@@ -1,4 +1,5 @@
-heysoo.controller('c_user',function($scope,$http,$stateParams,User){
+heysoo.register.controller('c_user',['$scope','$http','$stateParams','User',
+	function($scope,$http,$stateParams,User){
 	$scope.post_tab = 'piece';
 	$scope.user = {};
 	$scope.follow = {is_followed:false,is_self:false};
@@ -96,4 +97,4 @@ heysoo.controller('c_user',function($scope,$http,$stateParams,User){
 			$scope.getUserEssays($scope.user.id,$scope.post_page);
 		}
 	}
-});
+}]);

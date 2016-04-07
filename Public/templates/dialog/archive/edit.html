@@ -1,0 +1,16 @@
+<!-- 编辑归档 -->
+<div id="archive-add-dialog">
+	<h4 class="dialog-title">{{title}}</h4>
+	<hr>
+	<form class="hs-form">
+		<div class="hs-form-group">
+	    	<label>归档名称</label>
+	    	<input type="text" placeholder="输入归档名称" ng-model="saved_archive.name">
+	    </div>
+	</form>
+	<div class="row">
+		<button class="hs-btn hs-btn-primary" ng-click="saveArchiveConfirm()">保存</button>
+		<button class="hs-btn hs-btn-danger" ng-click="deleteArchive()">删除归档</button>
+		<button class="hs-btn hs-btn-default" ng-click="cancel()">取消</button>
+	</div>
+</div>

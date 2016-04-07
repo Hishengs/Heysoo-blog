@@ -12,16 +12,60 @@ h4.essay-title{text-align: center;}
 span.essay-operation:hover{ opacity: 1;} */
 div.essays-empty-tip{}
 /*css for edit*/
-div.essay-edit,div.essay-modify{ max-width: 750px; margin: 0 auto; background: #fff; /* box-shadow:0px 5px 10px rgba(0,0,0,0.5); */ padding: 20px;}
+div.essay-edit,
+div.essay-modify
+{ max-width: 800px; min-height: 100vh; margin: 0 auto; background: #fff; /* box-shadow:0px 5px 10px rgba(0,0,0,0.5); */ padding: 20px;}
 div.essay-edit form div.essay-edit-footer{margin: 10px auto;}
 div.essay-edit form div.essay-edit-footer button{margin: 20px auto;}
 div.essay-edit-footer-note{font-size: 14px; color: #696969;}
+#essay-editor{margin-bottom: 0;}
 div.essay-edit form textarea{}
+div.essay-edit form input.title{
+	border-left:0px;border-top:0px;border-right:0px;border-bottom:1px solid #cdcdcd;
+	margin: 20px 0; 
+	text-align:center;
+	font-size: 1.6rem;
+}
+div.essay-edit form input.title:focus{
+	border-left:0px;border-top:0px;border-right:0px;border-bottom:1px solid #ccc;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0);
+}
+div.essay-edit div.archive{
+	margin: 20px 0px 0px;
+}
 div.essay-edit-header{margin: 10px auto;}
 div.essay-edit-header p{padding: 10px;}
-div.input-group{margin: 10px auto;}
+div.essay-edit form div.publisher-footer{
+	border-left:0px;border-right:0px;
+}
+
+/**文章侧边栏归档*/
+#archive-nav{
+	border-right: 1px solid #cdcdcd;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: 50px;
+	width: 150px;
+	z-index: 999;
+	overflow: auto;
+}
+#archive-nav > ul > li:first-child{
+	border-top: 0;
+}
+#archive-nav ul li{
+	text-align: center;
+}
+#archive-nav li.menu{
+	padding: 10px 0;
+	background-color: #f5f5f5;
+}
+/* #essay-editor{
+	border-top:0px;
+} */
+/* div.input-group{margin: 10px auto;}
 div.input-group input,div.input-group select{ border-radius: 0;}
-span.input-group-addon{margin: 10px auto; border-radius: 0; /* background-color: #dff0d8; color: #000; */}
+span.input-group-addon{margin: 10px auto; border-radius: 0; background-color: #dff0d8; color: #000;} */
 /*css for essay comment*/
 div.essay-comments{width: 100%; background: #fff;margin: 20px auto; padding: 20px;}
 article.essay-comment{ width: 100%; margin: 15px auto;}

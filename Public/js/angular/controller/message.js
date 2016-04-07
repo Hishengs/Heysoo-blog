@@ -1,5 +1,5 @@
 //消息控制器
-heysoo.controller('c_message',function($scope,$state,$http){
+heysoo.register.controller('c_message',function($scope,$state,$http){
   $scope.msg_tab = 'comment';
   //Tab切换
   $scope.msgSwitchTab = function(tab,id){
@@ -29,7 +29,7 @@ heysoo.controller('c_message',function($scope,$state,$http){
   }
 });
 //comment box
-heysoo.controller('c_message_comment',function($scope,$rootScope,$http){
+heysoo.register.controller('c_message_comment',function($scope,$rootScope,$http){
   $scope.show_piece_text = "查看碎片";
   $scope.show_original_piece = false;
   $scope.showPiece = function(){

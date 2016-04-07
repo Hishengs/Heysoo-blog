@@ -4,7 +4,8 @@
         <div class="hs-panel-hd">{{msg.msg_date}}
         <span class="msg-item-right" style="float:right;">
         <span class="hs-badge hs-badge-warning" ng-show="{{msg.msg_is_read==0}}" style="float:right;">新消息</span>
-        <button class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="deleteMsg('comment',msg.msg_id)">删除</button>
+        <!-- <button class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="deleteMsg('comment',msg.msg_id)">删除</button> -->
+        <a href="javascript:void(0);" ng-click="deleteMsg('comment',msg.msg_id)" class="plain-link">删除</a>
         </span>
         </div>
         <div class="hs-panel-bd"><a href="javascript:;">{{senders[$index]['username']}}</a>&nbsp;<span ng-bind-html="msg.msg_content | trustHtml"></span><a class="msg-see-more" href="javascript:;" ng-click="showMsgDetail(msg.msg_obj_type,msg.msg_obj_id)">查看详情</a></div>

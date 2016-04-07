@@ -1,4 +1,4 @@
-<div class="essays" ng-hide="res_empty">
+<div class="essays" ng-controller="c_essay">
 	<div class="essay" id="{{essay.essay_id}}" ng-repeat="essay in items">
 		<div class="essay-right">
 			<!-- <div class="bg"></div><div class="essay-triangle"></div> -->
@@ -18,26 +18,65 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="essays-empty-tip center-tip" ng-show="res_empty"><i class="hs-icon-warning"></i> 你还没有发布过文章哦~⊙﹏⊙‖</div>
-
-<div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
-<div class="hs-btn-group hs-btn-group-justify">
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('essay','prev');"><i class="hs-icon-arrow-left"></i></button>
-    <div class="hs-dropdown hs-dropdown-up dis-inline-block" id="essay_pages_selections">
-		<button class="hs-btn hs-btn-{{interface_color}} hs-dropdown-toggle">
-			<i class="hs-icon-rocket"></i>
-		</button>
-		<ul class="hs-dropdown-content">
-			<li ng-repeat="option in paginator_pages"><a href="javascript:void(0);" ng-click="paginator('essay',option.id);">{{option.name}}</a></li>
+	<!-- 侧边栏内容 -->
+	<div id="archive-nav">
+		<ul class="hs-list hs-text-truncate">
+			<li class="menu">
+				文章归档
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="selectArchive(0)">
+					无归档
+					<i class="hs-icon-check f-right" ng-show="selected_archive==0"></i>
+				</a>
+			</li>
+			<li ng-repeat="archive in archives">
+				<a href="javascript:void(0);" class="plain-link" ng-click="selectArchive(archive.id)">
+					{{archive.name}}
+					<i class="hs-icon-check f-right" ng-show="selected_archive=={{archive.id}}"></i>
+				</a>
+			</li>
+			<li class="menu">
+				排序
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="">默认</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="">时间轴</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="">卡片</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="">瀑布流</a>
+			</li>
 		</ul>
 	</div>
-	<script>
-		$(function(){
-			$('#essay_pages_selections').dropdown();
-		});
-	</script>
-    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="paginator('essay','next');"><i class="hs-icon-arrow-right"></i></button>
+
+
+<div class="essays-empty-tip center-tip" ng-show="res_empty"><i class="hs-icon-warning"></i> 这里空空如也~⊙﹏⊙‖</div>
+
+<div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
+	<div class="hs-btn-group hs-btn-group-justify">
+	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('prev');"><i class="hs-icon-arrow-left"></i></button>
+	    <div class="hs-dropdown hs-dropdown-up dis-inline-block" id="essay_pages_selections">
+			<button class="hs-btn hs-btn-{{interface_color}} hs-dropdown-toggle">
+				<i class="hs-icon-rocket"></i>
+			</button>
+			<ul class="hs-dropdown-content">
+				<li ng-repeat="option in paginator_pages"><a href="javascript:void(0);" ng-click="esy_paginator(option.id);">{{option.name}}</a></li>
+			</ul>
+		</div>
+		<script>
+			$(function(){
+				$('#essay_pages_selections').dropdown();
+			});
+		</script>
+	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button>
+	</div>
 </div>
+
 </div>
+

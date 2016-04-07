@@ -10,6 +10,7 @@ use Org\Qiniu;
 class ActionController extends Controller {
 	
     private $user_model;
+    private $user_config_model;
     
     function __construct(){
         parent::__construct();
@@ -61,7 +62,8 @@ class ActionController extends Controller {
                     $this->user_model->where($cdt)->save($data);
                     $_SESSION['USER_NAME'] = $result['username'];
                     $_SESSION['LOGIN_STATUS'] = true;
-                    $_SESSION['USER_ID'] = $result['id'];
+                    //$_SESSION['USER_ID'] = $result['id'];
+                    session('USER_ID',$result['id']);
                     setcookie("userName",$result['username'],time()+30*24*3600,"/");
                     setcookie("fingerprint",md5($result['username'].$result['salt'].date()),time()+30*24*3600,"/");
                     C('LAYOUT_ON',TRUE);

@@ -1,12 +1,12 @@
 //设置控制器
-heysoo.controller('c_setting',function($scope,$state,$http){
+heysoo.register.controller('c_setting',function($scope,$state,$http){
   $scope.settingSwitchTab = function(tab){
     $scope.setting_tab = tab;
     $state.go("setting_"+tab);
   }
 });
 /**setting*/
-heysoo.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
+heysoo.register.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
   $scope.invite_code = $rootScope.user_info.invite_code;
 
   $scope.modifyProfile = function(option){
@@ -22,13 +22,13 @@ heysoo.controller('c_setting_profile',function($scope,$rootScope,$http,$state){
     });
   }
 })
-heysoo.controller('c_setting_interface',function($scope,$rootScope,$http,$state){
+heysoo.register.controller('c_setting_interface',function($scope,$rootScope,$http,$state){
   $scope.modifyInterface = function(option){
     $("#setting_interface_modal_"+option).modal('toggle');
   }
 });
 //管理对话框
-heysoo.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
+heysoo.register.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
   $scope.new_username = $scope.new_signature = '';
   $scope.modifyUserName = function(option){
     $("#setting_profile_modal_"+option).modal('toggle');
@@ -57,7 +57,7 @@ heysoo.controller('c_setting_profile_modal',function($scope,$rootScope,$http){
     });
   }
 });
-heysoo.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
+heysoo.register.controller('c_setting_interface_modal',function($scope,$http,$rootScope,ipCookie){
   $scope.interface_color = 'primary';
   $scope.interface_mainBg = "bg_day";
   $scope.interface_sideBarBg = "bg_sidebar_lake";
@@ -95,14 +95,14 @@ heysoo.controller('c_setting_interface_modal',function($scope,$http,$rootScope,i
     $("#setting_interface_modal_"+option).modal('toggle');
   }
 });
-heysoo.controller('c_setting_privacy_modal',function($scope,$http){
+heysoo.register.controller('c_setting_privacy_modal',function($scope,$http){
   //
 });
-heysoo.controller('c_setting_push_modal',function($scope,$http){
+heysoo.register.controller('c_setting_push_modal',function($scope,$http){
   //
 });
 //reset password 重置密码
-heysoo.controller('c_reset_passwd',function($scope,$http){
+heysoo.register.controller('c_reset_passwd',function($scope,$http){
   $scope.old_passwd = $scope.new_passwd = '';
   $scope.resetPasswd = function(){
     if($scope.old_passwd === '' || $scope.new_passwd === ''){hMessage('密码不能为空！');return;}
@@ -121,7 +121,7 @@ heysoo.controller('c_reset_passwd',function($scope,$http){
   }
 });
 //modify user avatar 修改头像
-heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
+heysoo.register.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
   //$scope.selectAvatarBtn = "选择头像";
   $scope.selectAvatar = function(){
     document.getElementById("new_avatar").click();
@@ -183,7 +183,7 @@ heysoo.controller('c_modify_avatar',function($scope,$rootScope,$http,$interval){
   }
 });
 /**setting_push*/
-heysoo.controller('c_setting_push',function($scope,$rootScope,$http){
+heysoo.register.controller('c_setting_push',function($scope,$rootScope,$http){
   $rootScope.user_config.push_comment = $rootScope.user_config.push_comment=='1'?true:false;
   $rootScope.user_config.push_at = $rootScope.user_config.push_at=='1'?true:false;
   $rootScope.user_config.push_whisper = $rootScope.user_config.push_whisper=='1'?true:false;
@@ -207,7 +207,7 @@ heysoo.controller('c_setting_push',function($scope,$rootScope,$http){
   }
 });
 /**setting_privacy*/
-heysoo.controller('c_setting_privacy',function($scope,$rootScope,$http){
+heysoo.register.controller('c_setting_privacy',function($scope,$rootScope,$http){
   $rootScope.user_config.privacy_followable = $rootScope.user_config.privacy_followable=='1'?true:false;
   $rootScope.user_config.privacy_visitable = $rootScope.user_config.privacy_visitable=='1'?true:false;
   $rootScope.user_config.privacy_essay_comment = $rootScope.user_config.privacy_essay_comment=='1'?true:false;

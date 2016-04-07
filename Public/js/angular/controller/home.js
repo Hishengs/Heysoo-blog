@@ -209,3 +209,4 @@ heysoo.controller('c_paginator',function($scope,$rootScope,$state,$http){
     });
   }
 });
+angular.bootstrap(document.body,['Index']);

@@ -1,5 +1,5 @@
 //好友控制器
-heysoo.controller('c_follow',function($scope,$rootScope,$state,$http){
+heysoo.register.controller('c_follow',['$scope','$rootScope','$state','$http',function($scope,$rootScope,$state,$http){
   if($rootScope.follow_items.length < 1)$rootScope.follow_tip_show = true;
   else $rootScope.follow_tip_show = false;
   $scope.follow_tab = 'followed';
@@ -29,4 +29,4 @@ heysoo.controller('c_follow',function($scope,$rootScope,$state,$http){
       });
     }
   }
-});
+}]);

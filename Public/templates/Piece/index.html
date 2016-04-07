@@ -1,5 +1,5 @@
-<div class="pieces" ng-hide="res_empty">
-<div class="piece" ng-controller="c_piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in items">
+<div class="pieces" ng-hide="res_empty" ng-controller="c_piece">
+	<div class="piece" id="piece-{{ piece.piece_id }}" ng-repeat="piece in items">
 		<div class="piece-left">
 			<a href="javascript:;" ui-sref="user({user_id:piece.user_id})">
 			<img class="user-avatar" ng-src="{{piece.avatar}}?imageView2/1/w/80/h/80" title="访问他/她的主页"/></a>
@@ -63,7 +63,6 @@
 			</ul>
 		</div>
 	</div>
-
 </div>
 
 <div class="pieces-empty-tip center-tip" ng-show="res_empty"><i class="hs-icon-warning"></i> 你还没有发布过碎片哦~⊙﹏⊙‖</div>

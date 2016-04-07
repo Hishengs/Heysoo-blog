@@ -1,0 +1,26 @@
+<!-- 编辑归档 -->
+<div id="archive-list-dialog">
+	<h4 class="dialog-title">
+		{{title}}
+		<!-- <span class="f-right">
+			<a href="javascript:void(0);" class="plain-link" ng-click="addArchive()">新建归档</a>
+		</span> -->
+	</h4>
+	<hr>
+	<ul class="hs-list hs-list-static">
+		<li ng-repeat="archive in archives">
+			<a href="javascript:void(0);" class="plain-link" ng-dblclick="editArchive($index,archive.id)">
+				{{archive.name}}
+				<span class="f-right" ng-if="archive.id==1||archive.name=='默认'">
+					<i class="hs-icon-question-circle" title="默认归档不可删除和编辑"></i>
+				</span>
+			</a>
+		</li>
+	</ul>
+	<hr>
+	<div class="row">
+		<!-- <button class="hs-btn hs-btn-primary" ng-click="confirmSelect()">确定</button> -->
+		<button class="hs-btn hs-btn-primary" ng-click="addArchive()">新建归档</button>
+		<button class="hs-btn hs-btn-default" ng-click="cancel()">关闭</button>
+	</div>
+</div>

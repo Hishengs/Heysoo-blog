@@ -1,5 +1,5 @@
 //碎片服务
-heysoo.service('Piece',function($http){
+heysoo.service('Piece',['$http',function($http){
 	//获取主页的碎片信息
 	
 	//删除碎片
@@ -33,4 +33,4 @@ heysoo.service('Piece',function($http){
 			data:{comment_id:comment_id}
 		});
 	}
-});
+}]);

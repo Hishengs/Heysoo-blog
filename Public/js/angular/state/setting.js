@@ -3,6 +3,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/setting',
         views:{
             'content':{templateUrl:tpl_setting_url+"/setting.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/setting.js']);
+            }]
         }
     }).state('setting_profile',{
         url:'/profile',

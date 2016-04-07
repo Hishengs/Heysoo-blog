@@ -1,5 +1,5 @@
 //controller of tag
-heysoo.controller('c_tag',function($scope,$rootScope,$state,$http){
+heysoo.register.controller('c_tag',function($scope,$rootScope,$state,$http){
   $rootScope.tag_tab = "essay";
   $rootScope.tag_tip = true;
   $http.get(home_path+"/User/get_user_tag.html?type=essay").success(function(res){
@@ -33,6 +33,6 @@ heysoo.controller('c_tag',function($scope,$rootScope,$state,$http){
     hMessage('移除成功！');
   }
 });
-heysoo.controller('c_tag_essay',function($scope,$rootScope,$http){
+heysoo.register.controller('c_tag_essay',function($scope,$rootScope,$http){
  //
 });

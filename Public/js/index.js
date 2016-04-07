@@ -52,7 +52,7 @@ var pieceCmtOptions  = {
 //文章发布
 var essay_editor_opt = {
     path : public_path+"/editor/meditor/lib/",
-    height:550,
+    height:650,
     toolbarIcons:function(){
       return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
     },
@@ -65,10 +65,12 @@ var essay_editor_opt = {
     imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
+    fullScreen:true,
+    lineNumbers:false,
 };
 var essay_modify_editor_opt = {
 	path : public_path+"/editor/meditor/lib/",
-	height:550,
+	height:650,
 	toolbarIcons:function(){
 	return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
 	},
@@ -83,6 +85,7 @@ var essay_modify_editor_opt = {
 	imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
+    lineNumbers:false,
 };
 var essay_comment_editor_opt = {//评论框
 	path : public_path+"/editor/meditor/lib/",
@@ -225,7 +228,7 @@ function hMessage(msg){
 		var hMessage = $('<div id="hMessage ">'+msg+'</div>');
 		hMessage.css({
 			"position":"fixed",
-			"z-index":"1000",
+			"z-index":"9999999",
 			"left":"50%",
 			"top":"200px",
 			"margin-left":"-150px",
@@ -311,3 +314,43 @@ function redirect(action){
 			break;
 	}
 }
+//更新amazeui事件
+function updateAmazeUIEvent(){
+    var options = arguments[0]?arguments[0]:{dropdown:true};
+    if(options.dropdown){
+        $('[data-hs-dropdown]').dropdown();
+        console.log('更新amazeui-dropdown事件');
+    }
+}
+;(function(window){
+    var root = this;
+    var hs = function(){}
+    hs.isEmpty = function(obj){
+        var res = true;
+        var type = Object.prototype.toString.call(obj).slice(8,-1);//判断对象类型
+        switch(type){
+            case 'Null':
+            case 'Undefined':
+                res = true;
+                break;
+            case 'Object':
+                //return Object.getOwnPropertyNames(obj).length==0?true:false;
+                return !(Object.keys?Object.keys(obj).length>0:Object.getOwnPropertyNames(obj).length>0);
+                break;
+            case 'Array':
+                res = obj.length==0?true:false;
+                break;
+            case 'Boolean':
+                res = !obj;
+                break;
+            default:
+                //var whitespace = "[\\x20\\t\\r\\n\\f]";
+                //var rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" );
+                res = obj.toString().replace(/^\s+/ig,'').replace(/\s+$/ig,'').length==0?true:false;//去掉前后空格
+                break;
+        }
+        return res;
+    }
+    hs.VERSION = '1.0.0';
+    root.hs = hs;
+})();

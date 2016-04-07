@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" ng-app="Index" ng-controller="c_index">
+<html lang="zh">
 <head>
 	<base href="/">
 	<meta charset="UTF-8">
@@ -9,11 +9,12 @@
 	<title>{$userName | default="我的主页"}</title>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/plugins.css"/>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/index.css"/>
+	<!-- <script data-main="__PUBLIC__/js/boot.js" src="__PUBLIC__/bower/requirejs/require.js"></script> -->
 </head>
 <script>
 	var site_prefix = "http://localhost/Heysoo";
 </script>
-<body>
+<body ng-controller="c_index">
 
 <div id="mask" ng-show="mask_show">
 	<div ui-view="mask"></div>
@@ -28,18 +29,18 @@
 		<div class="top-bar-left">
 			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-hide="device.isMobile"><i class="hs-icon-home"></i> 首页</a>
 			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-show="device.isMobile"><i class="hs-icon-paper-plane"></i> Heysoo</a>
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('piece')" ng-hide="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a>
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="getPage('essay')" ng-hide="device.isMobile"><i class="hs-icon-book"></i> 文章</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="piece({page:1})" ng-hide="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="essay({page:1})" ng-hide="device.isMobile"><i class="hs-icon-book"></i> 文章</a>
 		</div>
 		<div class="top-bar-center">
 			<a href="javascript:void(0);" class="plain-link" ng-show="device.isMobile"><strong>{$userName}</strong></a>
-			<a href="javascript:void(0);" class="plain-link" ng-click="showPublish()" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
+			<a href="javascript:void(0);" class="plain-link" ui-sref="edit({action:'new',type:'essay'})" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
 		</div>
 		<div class="top-bar-right">
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()" ng-hide="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息
 			<span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a><!-- 消息 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showSearch()" ng-hide="device.isMobile"><i class="hs-icon-search"></i> 搜索</a><!-- 关注 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="search" ng-hide="device.isMobile"><i class="hs-icon-search"></i> 搜索</a><!-- 关注 -->
 			<div class="hs-dropdown m-left-15 dis-inline-block" data-hs-dropdown>
 				<a href="javascript:void(0);" class="plain-link m-right-20 hs-dropdown-toggle"><!-- 头像,个人中心 -->
 					<img ng-src="{{avatar}}" alt="" class="avatar">
@@ -48,10 +49,10 @@
 				<ul class="hs-dropdown-content">
 					<li><a href="javascript:void(0);" ng-click="showPublish()" ng-show="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a></li>
 					<li><a href="javascript:void(0);" ng-click="togglePublisher()" ng-show="device.isMobile"><i class="hs-icon-paint-brush"></i> 写碎片</a></li>
-					<li><a href="javascript:void(0);" ng-click="getPage('essay')" ng-show="device.isMobile"><i class="hs-icon-book"></i> 文章</a></li>
-					<li><a href="javascript:void(0);" ng-click="getPage('piece')" ng-show="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a></li>
+					<li><a href="javascript:void(0);" ui-sref="essay({page:1})" ng-show="device.isMobile"><i class="hs-icon-book"></i> 文章</a></li>
+					<li><a href="javascript:void(0);" ui-sref="piece({page:1})" ng-show="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a></li>
 					<li><a href="javascript:void(0);" ng-click="showMessage()" ng-show="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a></li>
-					<li><a href="javascript:void(0);" ng-click="showSearch()" ng-show="device.isMobile"><i class="hs-icon-search"></i> 搜索</a></li>
+					<li><a href="javascript:void(0);" ui-sref="search" ng-show="device.isMobile"><i class="hs-icon-search"></i> 搜索</a></li>
 					<li><a href="javascript:void(0);" ng-click="showFollow()"><i class="hs-icon-eye"></i> 关注</a></li>
 					<li><a href="javascript:void(0);" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</a></li>
 					<li><a href="javascript:void(0);" ng-click="showSetting()"><i class="hs-icon-cog"></i> 设置</a></li>
@@ -68,9 +69,8 @@
 				</div>
 				<div class="publisher-main">
 					<div class="publisher-main-content" id="piece-editor">
-						<textarea name="content" ng-model="piece_content"></textarea>
+						<textarea name="content" ng-model="post.content"></textarea>
 					</div>
-					
 				</div>
 				<div class="publisher-footer">
 					<div class="publisher-footer-toolbar">
@@ -98,7 +98,7 @@
 								<i class="hs-icon-music"></i>
 							</a>
 							<div class="hs-dropdown-content">
-								<div class="hs-input-group song-search">
+								<div class="hs-input-group song-search" style="min-width:400px;">
 									<input type="text" class="hs-form-field" placeholder="在此输入歌曲/歌手名称" ng-model="edit_song_key">
 									<span class="hs-input-group-btn">
 										<button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', height: 500}">搜索</button>
@@ -111,24 +111,67 @@
 								<i class="hs-icon-eye"></i>
 							</a>
 							<ul class="hs-dropdown-content">
+								<li class="hs-dropdown-header">设置可见性</li><hr>
 								<li>
 									<a href="javascript:void(0);" ng-click="setPieceVisible(1)">
-									<i class="hs-icon-unlock"></i> 所有人可见(默认)  
-									<i class="hs-icon-check" ng-show="piece_visible == '1'"></i>
+									公开 
+									<i class="hs-icon-check f-right" ng-show="post.visible == '1'"></i>
 									</a>
 								</li>
 								<li>
 									<a href="javascript:void(0);" ng-click="setPieceVisible(0)">
-									<i class="hs-icon-lock"></i> 仅自己可见  
-									<i class="hs-icon-check" ng-show="piece_visible == '0'"></i>
+									仅自己可见  
+									<i class="hs-icon-check f-right" ng-show="post.visible == '0'"></i>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" ng-click="setPieceVisible(2)">
+									选中可见  
+									<i class="hs-icon-check f-right" ng-show="post.visible == '2'"></i>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" ng-click="setPieceVisible(3)">
+									选中不可见 
+									<i class="hs-icon-check f-right" ng-show="post.visible == '3'"></i>
+									</a>
+								</li>
+								<hr ng-show="selected_tags">
+								<li ng-show="selected_tags">
+									<a href="javascript:void(0);">
+									{{selected_tags}}
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="hs-dropdown hs-dropdown-up dis-inline-block m-left-20" data-hs-dropdown>
+							<a href="javascript:void(0);" class="plain-link hs-dropdown-toggle" title="时光胶囊">
+								<i class="hs-icon-paper-plane"></i>
+							</a>
+							<ul class="hs-dropdown-content">
+								<li class="hs-dropdown-header">
+									时光胶囊
+									<i class="hs-icon-question-circle f-right" data-hs-popover="{content: '时光胶囊是一种与自己对话的方式，你可以将某些想在将来对自己说的话丢进胶囊里，胶囊将会在设定的日期里开启', trigger: 'hover focus'}"></i>
+								</li>
+								<hr>
+								<li>
+									<a href="javascript:void(0);" ng-click="setTimeCapsule()">
+									设为时光胶囊 
+									<i class="hs-icon-check f-right" ng-show="post.is_capsule"></i>
+									</a>
+								</li>
+								<hr>
+								<li>
+									<a href="javascript:void(0);">
+									<input type="number" class="capsule_days dis-inline-block" style="width:60px;" ng-model="post.capsule_days" min="1" ng-disabled="!post.is_capsule"> 天后开启
 									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 					<div class="hs-input-group tag">
-						<span class="hs-input-group-label"><i class="hs-icon hs-icon-tag"></i></span>
-						<input type="text" class="hs-form-field" placeholder="在此输入标签" ng-model="piece_tag">
+						<!-- <span class="hs-input-group-label"><i class="hs-icon hs-icon-tag"></i></span> -->
+						<input type="text" class="hs-form-field" placeholder="在此输入标签" ng-model="post.tag">
 						<span class="hs-input-group-btn">
 							<button class="hs-btn hs-btn-default" type="button" ng-click="postPiece()">发布</button>
 						</span>
@@ -139,9 +182,7 @@
 	</div>
 
 	<div id="content">
-		<div ui-view="content" class="content-view">
-		<div ng-include="'__PUBLIC__/templates/Index/index.html'"></div>
-		</div>
+		<div ui-view="content" class="content-view"></div>
 	</div>
 	<!-- 音乐查找的结果 -->
 	<div class="hs-modal hs-modal-no-btn" tabindex="-1" id="song_search_modal" ng-controller="c_song_search" style="max-width:450px;">
@@ -167,6 +208,7 @@
 	var editor_basePath = "__PUBLIC__/editor/";
 	var get_token_path = "{:U('Action/get_qiniu_token')}";
 	var home_path = "__MODULE__";
+	console.log(public_path);
 </script>
 <script src="__PUBLIC__/js/dist/plugins.js"></script>
 <script src="__PUBLIC__/js/dist/angular.js"></script>

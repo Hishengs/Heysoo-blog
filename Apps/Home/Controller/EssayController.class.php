@@ -12,6 +12,8 @@ class EssayController extends Controller {
     private $user_id;
     private $comment_model;
     private $song_model;
+    private $archive_model;
+    private $visible_tag_model;
 	
     function __construct(){
         parent::__construct();
@@ -21,6 +23,8 @@ class EssayController extends Controller {
         $this->song_model = D("Song");
         $this->page_size = C('ESSAY_LOAD_NUM_PER_PAGE');
         $this->user_id = $_SESSION['USER_ID'];
+        $this->archive_model = D('Archive');
+        $this->visible_tag_model = D('VisibleTag');
     }
     
     public function index(){
@@ -32,24 +36,38 @@ class EssayController extends Controller {
         return $this->essay_model->where($cdt)->count();
     }
     //deal essay post request 处理文章发布
-    public function ng_essay_post($title,$tag,$content,$visible,$post_piece=false){
+    public function post(){
+        if(!IS_POST)return;
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//如果未登录
+        $content = I('post.content','','');
+        $post_piece = I('post.piece_check');
+        $visible_tag = empty(I('post.visible_tag'))?'':I('post.visible_tag');
         $str_num = A('Action')->str_length($content);
         $current_str_num = $str_num['cn']+$str_num['en'];
-        if(empty($title))$this->ajaxReturn(array('error'=>1,'msg'=>'文章标题不能为空！'),'json');      
+        if(empty(I('post.title')))$this->ajaxReturn(array('error'=>1,'msg'=>'文章标题不能为空！'),'json');      
         else if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>'文章内容不能为空！'),'json');
         else if($current_str_num > 10000)$this->ajaxReturn(array('error'=>1,'msg'=>'文章总字数不能超过1万个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
         else
         {
             $userName = $_SESSION['USER_NAME'];
             $post_date = date("Y-m-d H:i:s");
-            if(empty($tag))$tag='文章';
-            $data = array('user_id'=>$this->user_id,'title'=>$title,'tag'=>$tag,'content'=>$content,'userName'=>$userName,'visible'=>$visible,'date'=>$post_date);
+            $tag = !empty(I('post.tag'))?I('post.tag'):'文章';
+            $data = array(
+                'user_id'=>$this->user_id,
+                'title'=>I('post.title'),
+                'tag'=>$tag,
+                'content'=>$content,
+                'userName'=>$userName,
+                'visible'=>I('post.visible'),
+                'visible_tag'=>$visible_tag,
+                'archive'=>I('post.archive'),
+                'date'=>$post_date
+            );
             $result = $this->essay_model->add($data);
             if($result != false){
                 $post_piece = $post_piece=="false"?false:true;
-                if($visible == 1 && $post_piece){
-                    $content = "我发布了一篇文章：<a href='javascript:view(1,$result);'>$title</a>";
+                if(I('post.visible') !== 0 && $post_piece){
+                    $content = "我发布了一篇文章：<a href='javascript:view(1,$result);'>".I('post.title')."</a>";
                     A('Piece')->ng_piece_post('文章',$content,1,false);
                 }
                 $this->ajaxReturn(array('error'=>0,'id'=>$result,'msg'=>C('SITE_LANG.POST_SUCCESS')),'json');
@@ -80,26 +98,40 @@ class EssayController extends Controller {
         if($this->essay_model->where($cdt)->find())return true;
         else return false;
     }
-    public function do_modify($essay_id,$title,$tag,$content,$visible,$post_piece=false){
+    public function update(){
         /*
         /*0.需要登陆且是文章发布者
         /*1.修改该文章
         */
+        //$essay_id,$title,$tag,$content,$visible,$post_piece=false
+        if(!IS_POST)return;
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//如果未登录
+
+        $essay_id = I('post.id');
         if(!$this->is_essay_author($essay_id))exit(C('SITE_LANG.ACCESS_DENIED'));//is the author of essay
-        $last_modify_date = date("Y-m-d H:i:s");
-        $data = array('title'=>$title,'tag'=>$tag,'content'=>$content,'visible'=>$visible,'last_modify_date'=>$last_modify_date);
-        $res = $this->essay_model->where("essay_id=".$essay_id)->save($data);
-        if($res != false){
-            $post_piece = $post_piece=="false"?false:true;
-            if($visible == 1 && $post_piece){
-                $content = "我修改了文章：<a href='javascript:view(1,$essay_id);'>$title</a>";
-                A('Piece')->ng_piece_post('文章修改',$content,1,false);
+        $content = I('post.content','','');
+        $post_piece = I('post.piece_check');
+        $str_num = A('Action')->str_length($content);
+        $current_str_num = $str_num['cn']+$str_num['en'];
+        if(empty(I('post.title')))$this->ajaxReturn(array('error'=>1,'msg'=>'文章标题不能为空！'),'json');      
+        else if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>'文章内容不能为空！'),'json');
+        else if($current_str_num > 10000)$this->ajaxReturn(array('error'=>1,'msg'=>'文章总字数不能超过1万个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
+        else{
+            $last_modify_date = date("Y-m-d H:i:s");
+            $data = array('title'=>I('post.title'),'tag'=>I('post.tag'),'content'=>$content,'visible'=>I('post.visible'),
+                'visible_tag'=>I('post.visible_tag'),'archive'=>I('post.archive'),'last_modify_date'=>$last_modify_date);
+            $res = $this->essay_model->where("essay_id=".$essay_id)->save($data);
+            if($res != false){
+                $post_piece = $post_piece=="false"?false:true;
+                if(I('post.visible') !== 0 && $post_piece){
+                    $content = "我修改了文章：<a href='javascript:view(1,$essay_id);'>".I('post.title')."</a>";
+                    A('Piece')->ng_piece_post('文章修改',$content,1,false);
+                }
+                $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.MODIFY_SUCCESS')),'json');
             }
-            $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.MODIFY_SUCCESS')),'json');
+            else
+                $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
         }
-        else
-            $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.MODIFY_FAILED')),'json');
     }
     //deal pagination 处理文章列表的分页
     public function deal_pagination($pageNumber,$pageSize){
@@ -107,7 +139,7 @@ class EssayController extends Controller {
         $essays = $this->essay_model->where($cdt)->order('date desc')->limit($pageNumber*$pageSize,$pageSize)->select();
         for ($i=0; $i < count($essays); $i++) { 
                 $essays[$i]['tag'] = explode(" ", $essays[$i]['tag']);
-            }
+        }
         $this->assign("essays",$essays);
         $totalCount = $this->essay_model->where($cdt)->count();
         $totalPage = $totalCount/$this->page_size;
@@ -187,17 +219,19 @@ class EssayController extends Controller {
         }else $this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.COMMENT_CLOSED')),'json');
     }
     public function ng_get_essay_page($page=null){
-        //if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//如果未登录
-        if($_SESSION['LOGIN_STATUS']){
-            $page = $page?$page-1:0;
-            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.user_id='.$this->user_id)
+        if(IS_POST){
+            //$page = $page?$page-1:0;
+            $page = I('post.page')?I('post.page')-1:0;
+            $cdt['hs_essay.user_id'] = $this->user_id;
+
+            if(!empty(I('post.archive_id')))$cdt['hs_essay.archive'] = I('post.archive_id');//归档
+
+            $essays = $this->essay_model->join('hs_user ON hs_user.id=hs_essay.user_id')
+            ->where($cdt)
             ->field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,LEFT(hs_essay.content,1000) as content,hs_essay.visible')
             ->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
-            $response = array('error'=>0,'items'=>$essays,'page'=>$page+1);
-            $this->ajaxReturn($response,'json');
-        }else{
-            $response = array('error'=>1,'msg'=>C('SITE_LANG.LOGIN_ALERT'));
-            $this->ajaxReturn($response,'json');
+            $count = $this->essay_model->where($cdt)->count();
+            $this->ajaxReturn(array('error'=>0,'items'=>$essays,'page'=>$page+1,'count'=>$count),'json');
         }
     }
     //view page of essay
@@ -235,10 +269,19 @@ class EssayController extends Controller {
         }
     }
     //get message of one essay
-    public function get_essay($id){
+    public function get_essay(){
+        IF(!IS_POST)return;
+        $id = I('post.id');
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//如果未登录
-        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,hs_essay.tag,hs_essay.content')->
-        join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
+        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,hs_essay.visible_tag,hs_essay.archive,hs_essay.tag,hs_essay.content')
+        ->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
+        if(!empty($essay['visible_tag'])){
+            $cdt['id'] = array('in',$essay['visible_tag']);
+            $visible_tags = $this->visible_tag_model->where($cdt)->getField('name',true);
+            $visible_tags = implode('#', $visible_tags);
+            $essay['selected_tags'] = '#'.$visible_tags;
+        }else $essay['selected_tags'] = '';
+        //关联可见性标签
         $this->ajaxReturn(array('error'=>0,'items'=>$essay),'json');
     }
     //search songs 查找歌曲
@@ -248,6 +291,16 @@ class EssayController extends Controller {
         $res = $this->song_model->where("song_name LIKE '%".$s_key."%' OR song_singer LIKE '%".$s_key."%'")->select();
         if($res !== false){
             $this->ajaxReturn(array('error'=>0,'songs'=>$res,'msg'=>C('SITE_LANG.QUERY_SECCESS')),'json');
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
+    }
+    //获取编辑初始化信息
+    public function get_edit_init_info(){
+        $res = [];
+        $cdt['creator'] = array('in',session('USER_ID').',0');
+        $archives = $this->archive_model->where($cdt)->select();
+        $res['archive'] = $archives;
+        if($archives !== false){
+            $this->ajaxReturn(array('error'=>0,'data'=>$res,'msg'=>C('SITE_LANG.QUERY_SECCESS')),'json');
         }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }
 }

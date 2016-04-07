@@ -1,0 +1,25 @@
+<!-- 添加可见性标签 -->
+<div id="visible-tag-add-dialog">
+	<h4 class="dialog-title">{{title}}</h4>
+	<hr>
+	<form class="hs-form">
+		<div class="hs-form-group">
+	    	<label>标签名称</label>
+	    	<input type="text" placeholder="输入标签名称" ng-model="added_tag.name">
+	    </div>
+	</form>
+	<ul class="hs-list hs-list-static">
+		<li ng-repeat="friend in friends">
+			<a href="javascript:void(0);" class="plain-link" ng-click="selectFriend($index,friend.id)">
+				{{friend.name}}
+				<span class="f-right">
+					<i class="hs-icon-check" class="friend-{{friend.id}}" ng-show="friend.checked"></i>
+				</span>
+			</a>
+		</li>
+	</ul>
+	<div class="row">
+		<button class="hs-btn hs-btn-primary" ng-click="addTagConfirm()">确定</button>
+		<button class="hs-btn hs-btn-default" ng-click="cancel()">取消</button>
+	</div>
+</div>

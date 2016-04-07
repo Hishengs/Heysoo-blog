@@ -3,12 +3,22 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/message',
         views:{
             'content':{templateUrl:tpl_message_url+"/message.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/message.js']);
+            }]
         }
     }).state('msg_comment',{
         url:'/comment',
         parent:'message',
         views:{
             'message':{templateUrl:tpl_message_url+"/comment.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/message.js']);
+            }]
         }
     }).state('msg_at',{
         url:'/at',

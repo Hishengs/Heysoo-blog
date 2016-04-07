@@ -1,5 +1,5 @@
 /*deal with search engine*/
-heysoo.service('Search',function($http){
+heysoo.service('Search',['$http',function($http){
 	//搜索文章
 	this.searchEssay = function(search_key){
 		return $http({
@@ -24,4 +24,4 @@ heysoo.service('Search',function($http){
 			data:{'search_key':search_key}
 		});
 	}
-});
+}]);

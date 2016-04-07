@@ -3,6 +3,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/tag',
         views:{
             'content':{templateUrl:tpl_tag_url+"/tag.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/tag.js']);
+            }]
         }
     }).state('tag_essay',{
         url:'/essay',

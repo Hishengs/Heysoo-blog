@@ -607,6 +607,19 @@ heysoo.controller('c_edit',function($scope,$rootScope,$state,$http,Music){
     $scope.songs = new Array();
     $scope.song_search_tip_show = false;
     var url = home_path+"/Action/ng_deal_post.html";//post url
+    //-------------- 获取初始化信息 --------------
+    $http({
+        method:'POST',
+        url:home_path+'/Essay/get_edit_init_info.html',
+        data:{}
+    }).success(function(res){
+        console.log(res);
+        if(res.error === 0){
+            console.log('成功获取编辑初始化信息');
+            $scope.archiveItems = res.data.archive;
+            console.log($scope.archiveItems);
+        }else{hMessage(res.msg);}
+    });
     //动态创建editor
     window.essay_editor = editormd("essay-editor", essay_editor_opt);
     $scope.editPost = function(){

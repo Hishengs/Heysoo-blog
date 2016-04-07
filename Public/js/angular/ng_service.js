@@ -1,6 +1,6 @@
 
 //用户相关的服务
-heysoo.service('User',function($http){
+heysoo.service('User',['$http',function($http){
 	//获取用户相关配置项
 	this.getUserConfig = function(){
 		return $http({
@@ -52,9 +52,9 @@ heysoo.service('User',function($http){
 			data:{'user_id':user_id,'page':page}
 		});
 	}
-});
+}]);
 //碎片服务
-heysoo.service('Piece',function($http){
+heysoo.service('Piece',['$http',function($http){
 	//获取主页的碎片信息
 	
 	//删除碎片
@@ -88,14 +88,14 @@ heysoo.service('Piece',function($http){
 			data:{comment_id:comment_id}
 		});
 	}
-});
+}]);
 
 
 
 
 
 /*deal with search engine*/
-heysoo.service('Search',function($http){
+heysoo.service('Search',['$http',function($http){
 	//搜索文章
 	this.searchEssay = function(search_key){
 		return $http({
@@ -120,9 +120,9 @@ heysoo.service('Search',function($http){
 			data:{'search_key':search_key}
 		});
 	}
-});
+}]);
 //Netease Music Service
-heysoo.service('Music',function($http){
+heysoo.service('Music',['$http',function($http){
 	//查找歌曲
 	this.search = function(key){
 		return $http({
@@ -130,4 +130,4 @@ heysoo.service('Music',function($http){
 			method:'GET'
 		});
 	}
-});
+}]);

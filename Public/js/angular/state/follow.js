@@ -3,6 +3,11 @@ heysoo.config(['$stateProvider',function($stateProvider){
         url:'/follow',
         views:{
             'content':{templateUrl:tpl_follow_url+"/follow.html"}
+        },
+        resolve:{
+            deps: ['$ocLazyLoad',function($ocLazyLoad){
+                return $ocLazyLoad.load([public_path+'/js/angular/controller/follow.js']);
+            }]
         }
     }).state('follow_followed',{
         url:'/followed',

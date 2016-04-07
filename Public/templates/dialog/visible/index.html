@@ -1,0 +1,31 @@
+<!-- 编辑可见性 -->
+<div id="visible-tag-select-dialog">
+	<h4 class="dialog-title">{{title}}</h4>
+	<hr>
+	<div class="hs-panel hs-panel-default">
+		<div class="hs-panel-hd">
+			<strong>{{visible_type}}</strong>
+			<span class="f-right">
+				<!-- <button class="hs-btn hs-btn-primary hs-btn-xs" ng-click=""><i class="hs-icon-plus"></i></button> -->
+				<a href="javascript:void(0);" class="plain-link" ng-click="addVisibleTag()">新建标签</a>
+			</span>
+		</div>
+		<!-- <div class="hs-panel-bd">
+		</div> -->
+		<ul class="hs-list hs-list-static">
+			<li ng-repeat="tag in tags">
+				<a href="javascript:void(0);" class="plain-link" ng-click="selectTag($index,tag.id)" ng-dblclick="editVisibleTag($index,tag.id)">
+					{{tag.name}}
+					<span class="f-right">
+						<i class="hs-icon-check" class="tag-{{tag.id}}" ng-show="tag.checked"></i>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<hr>
+	<div class="row">
+		<button class="hs-btn hs-btn-primary" ng-click="confirmSelect()">确定</button>
+		<button class="hs-btn hs-btn-default" ng-click="cancel()">取消</button>
+	</div>
+</div>

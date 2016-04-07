@@ -1,5 +1,5 @@
 //用户相关的服务
-heysoo.service('User',function($http){
+heysoo.service('User',['$http',function($http){
 	//获取用户相关配置项
 	this.getUserConfig = function(){
 		return $http({
@@ -51,4 +51,4 @@ heysoo.service('User',function($http){
 			data:{'user_id':user_id,'page':page}
 		});
 	}
-});
+}]);

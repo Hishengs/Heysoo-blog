@@ -1,14 +1,21 @@
-<div class="essay-edit y-full" ng-controller="c_edit">
+<div class="essay-edit" ng-controller="c_edit" id="edit">
 <div class="essay-edit-header"></div>
 <form class="hs-form essay-edit-form">
-	<div class="hs-input-group hs-input-group-{{interface_color}}">
+	<!-- <div class="hs-input-group hs-input-group-{{interface_color}}">
 	  <span class="hs-input-group-label">标题 <i class="hs-icon-font"></i></span>
-	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题，碎片无需填" placeholder="标题" ng-model="edit_title">
-	</div>
-	<div class="hs-input-group hs-input-group-{{interface_color}}">
-	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
-	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" ng-model="edit_tag">
-	</div>
+	  <input type="text" class="form-control title" aria-describedby="basic-addon1" name="title" title="标题，碎片无需填" placeholder="标题" ng-model="post.title">
+	</div> -->
+	
+	<input type="text" class="form-control title simple title" name="title" title="标题，碎片无需填" placeholder="在此输入标题" ng-model="post.title">
+	
+	<!-- <div class="hs-input-group hs-input-group-{{interface_color}}">
+		<span class="hs-input-group-label">归档 <i class="hs-icon-folder-open"></i></span>
+		<select class="hs-select hs-select-{{interface_color}} hs-form-field archive" name="archive" title="归档" ng-model="post.archive" ng-options="archive.id as archive.name for archive in archiveItems">
+		</select>
+		<span class="hs-input-group-btn">
+			<button class="hs-btn hs-btn-default" type="button" ng-click="editArchive()">编辑</button>
+		</span>
+	</div> -->
 
 	<!-- <div class="hs-input-group hs-input-group-{{interface_color}}">
 		<span class="hs-input-group-label">类型 <i class="hs-icon-bookmark"></i></span>
@@ -16,35 +23,163 @@
 			<option value="piece">碎片</option>
 			<option value="essay">文章</option>
 		</select>
-	</div> -->
+	</div>  -->
+
+	<!-- <div class="hs-input-group hs-input-group-{{interface_color}}">
+	  <span class="hs-input-group-label">标签 <i class="hs-icon-tag"></i></span>
+	  <input type="text" class="form-control tag" aria-describedby="basic-addon1" name="tag" title="标签" placeholder="标签" ng-model="post.tag">
+	</div>
 
 	<div class="hs-input-group hs-input-group-{{interface_color}}">
 		<span class="hs-input-group-label">可见 <i class="hs-icon-eye"></i></span>
-		<select class="hs-select hs-select-{{interface_color}} visible" name="visible" title="可见性" placeholder="可见性" ng-model="edit_visible">
-			<option value="1">所有人可见</option>
-			<!-- <option value="2">好友(互相关注)可见</option> -->
-			<option value="0">仅自己可见</option>
+		<select class="hs-select hs-select-{{interface_color}} hs-form-field visible" name="visible" title="可见性" placeholder="可见性" ng-model="post.visible" ng-change="onVisibleChange()">
+			<option value="1"><i class="hs-icon-unlock"></i> 公开</option>
+			<option value="0"><i class="hs-icon-lock"></i> 仅自己可见</option>
+			<option value="2"><i class="hs-icon-check"></i> 选中可见</option>
+			<option value="3"><i class="hs-icon-remove"></i> 选中不可见</option>
 		</select>
-	</div>
-
-	<div class="hs-input-group hs-input-group-{{interface_color}}">
-	  <span class="hs-input-group-label">歌曲 <i class="hs-icon-music"></i></span>
-	  <input type="text" class="hs-form-field tag" name="tag" title="歌曲" placeholder="请输入歌曲名，歌手名查找" ng-model="edit_song_key">
-	  <span class="hs-input-group-btn">
-        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', height: 500}">搜索</button>
-      </span>
+		<span class="hs-input-group-btn" ng-show="selected_tags">
+			<span class="hs-badge" ng-repeat="tag in selected_tags">{{tag.name}}</span>
+			<button class="hs-btn hs-btn-default" type="button" style="max-width:400px;min-width:20px;">{{selected_tags?selected_tags:'未选分组'}}</button>
+		</span>
 	</div>
 	
+	<div class="hs-input-group hs-input-group-{{interface_color}}">
+	  <span class="hs-input-group-label">音乐 <i class="hs-icon-music"></i></span>
+	  <input type="text" class="hs-form-field tag" name="tag" title="歌曲" placeholder="请输入音乐名，歌手名查找" ng-model="edit_song_key">
+	  <span class="hs-input-group-btn">
+	        <button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', height: 500}">搜索</button>
+	      </span>
+	</div> -->
+	
 	<div class="essay-editor" id="essay-editor">
-		<textarea name="content" ng-model="edit_content"></textarea>
+		<textarea name="content" ng-model="post.content"></textarea>
 	</div>
 	<!-- <textarea id="essay-editor" name="content" ng-model="edit_content"></textarea> -->
-	<div class="essay-edit-footer">
+	<!-- <div class="essay-edit-footer">
 		<div class="essay-edit-footer-note"><i  class="hs-icon-info" title="转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 压缩 后上传"></i>  转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传</div>
 		<div class="essay-edit-footer-operation">
-			<input type="checkbox" name="post-piece-check" ng-model="post_piece_check">&nbsp;同时发布动态
+			<input type="checkbox" name="post-piece-check" ng-model="post.post_piece">&nbsp;同时发布动态
 		</div>
 		<button class="hs-btn hs-btn-{{interface_color}} essay-submit" type="button" ng-click="editPost()">发 布</button>
+		<button class="hs-btn hs-btn-primary essay-submit" type="button" ng-click="editPost()">发 布</button>
+	</div> -->
+	<div class="publisher-footer">
+		<div class="publisher-footer-toolbar">
+			<div class="hs-dropdown hs-dropdown-up dis-inline-block m-left-20 music" id="essay-edit-music" data-hs-dropdown>
+				<a href="javascript:void(0);" class="plain-link hs-dropdown-toggle" title="音乐">
+					<i class="hs-icon-music"></i>
+				</a>
+				<div class="hs-dropdown-content">
+					<div class="hs-input-group song-search" style="min-width:400px;">
+						<input type="text" class="hs-form-field" placeholder="在此输入歌曲/歌手名称" ng-model="edit_song_key">
+						<span class="hs-input-group-btn">
+							<button class="hs-btn hs-btn-default" type="button" ng-click="searchSong()" data-hs-modal="{target: '#song_search_modal', height: 500}">搜索</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="hs-dropdown hs-dropdown-up dis-inline-block m-left-20" id="essay-edit-visible" data-hs-dropdown>
+				<a href="javascript:void(0);" class="plain-link hs-dropdown-toggle" title="可见性">
+					<i class="hs-icon-eye"></i>
+				</a>
+				<ul class="hs-dropdown-content">
+					<li class="hs-dropdown-header">
+						设置可见性
+					</li><hr>
+					<li>
+						<a href="javascript:void(0);" ng-click="setPieceVisible(1)">
+						公开 
+						<i class="hs-icon-check f-right" ng-show="post.visible == '1'"></i>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" ng-click="setPieceVisible(0)">
+						仅自己可见  
+						<i class="hs-icon-check f-right" ng-show="post.visible == '0'"></i>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" ng-click="setPieceVisible(2)">
+						选中可见  
+						<i class="hs-icon-check f-right" ng-show="post.visible == '2'"></i>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);" ng-click="setPieceVisible(3)">
+						选中不可见 
+						<i class="hs-icon-check f-right" ng-show="post.visible == '3'"></i>
+						</a>
+					</li>
+					<hr ng-show="selected_tags">
+					<li ng-show="selected_tags">
+						<a href="javascript:void(0);">
+						{{selected_tags}}
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="hs-dropdown hs-dropdown-up dis-inline-block m-left-20" id="essay-edit-archive" data-hs-dropdown>
+				<a href="javascript:void(0);" class="plain-link hs-dropdown-toggle" title="归档">
+					<i class="hs-icon-folder-open"></i>
+				</a>
+				<ul class="hs-dropdown-content">
+					<li class="hs-dropdown-header">
+						归档
+					</li>
+					<hr>
+					<li ng-repeat="archive in archiveItems">
+						<a href="javascript:void(0);" ng-click="setArchive($index,archive.id)">
+							{{archive.name}}
+							<i class="hs-icon-check f-right" ng-show="post.archive=={{archive.id}}"></i>
+						</a>
+					</li>
+					<hr>
+					<li><a href="javascript:void(0);" ng-click="editArchive()">编辑归档</a></li>
+				</ul>
+			</div>
+			<div class="hs-dropdown hs-dropdown-up dis-inline-block m-left-20" id="essay-edit-archive" data-hs-dropdown>
+				<a href="javascript:void(0);" class="plain-link hs-dropdown-toggle" title="归档">
+					<i class="hs-icon-gear"></i>
+				</a>
+				<ul class="hs-dropdown-content">
+					<li class="hs-dropdown-header">
+						设置
+					</li>
+					<hr>
+					<li>
+						<a href="javascript:void(0);" ng-click="setPieceCheck()">
+							同时发布碎片
+							<i class="hs-icon-check f-right" ng-show="post.piece_check"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<i class="hs-icon-question-circle f-right m-right-20" id="essay-edit-tip"></i>
+			<!-- <script>
+				$('#essay-edit-tip').popover({
+					content: '转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传'
+				});
+				$('#essay-edit-visible').children('a.hs-dropdown-toggle').on('click', function(e) {
+				    $('#essay-edit-visible').dropdown('toggle');
+				    return false;
+			    });
+			    $('#essay-edit-music').children('a.hs-dropdown-toggle').on('click', function(e) {
+				    $('#essay-edit-music').dropdown('toggle');
+				    return false;
+			    });
+			    $('#essay-edit-archive').children('a.hs-dropdown-toggle').on('click', function(e) {
+				    $('#essay-edit-archive').dropdown('toggle');
+				    return false;
+			    });
+			</script> -->
+		</div>
+		<div class="hs-input-group tag">
+			<input type="text" class="hs-form-field" placeholder="在此输入标签" ng-model="post.tag">
+			<span class="hs-input-group-btn">
+				<button class="hs-btn hs-btn-default" type="button" ng-click="editPost()">{{action=='new'?'发布':'保存'}}</button>
+			</span>
+		</div>
 	</div>
 </form>
 
@@ -53,5 +188,8 @@
 
 
 <script>
-//window.edit_post = KindEditor.create('#essay-editor',editOpts);
+	setTimeout(function(){updateAmazeUIEvent();},1500);
+	$('#essay-edit-tip').popover({
+		content: '转载的文章请在底部注明转载出处或链接，图片如若超过大小请在线进行 <a href="http://www.secaibi.com/tools/" target="_blank">压缩</a> 后上传'
+	});
 </script>

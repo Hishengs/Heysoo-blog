@@ -25,6 +25,10 @@
     "amazeui": "~2.4.2",
     "angular-cookie": "~4.0.9",
     "angular-ui-router": "~0.2.15",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "ng-dialog": "~0.5.6",
+    //"requirejs": "~2.1.22",
+    "oclazyload": "ocLazyLoad#~1.0.9",
+    "underscore": "~1.8.3"
   }
 }

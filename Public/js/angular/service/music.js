@@ -1,5 +1,5 @@
 //Netease Music Service
-heysoo.service('Music',function($http){
+heysoo.service('Music',['$http',function($http){
 	//查找歌曲
 	this.search = function(key){
 		return $http({
@@ -7,4 +7,4 @@ heysoo.service('Music',function($http){
 			method:'GET'
 		});
 	}
-});
+}]);
