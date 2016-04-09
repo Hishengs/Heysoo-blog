@@ -416,7 +416,7 @@ class ActionController extends Controller {
         //首先确认该邮箱是否存在
         $cdt['email'] = I('post.email');
         $is_exist = $this->user_model->where($cdt)->find();
-        if($is_exist !== false){
+        if($is_exist){
             //生成token = md5(邮箱+当前时间戳+随机字符串)
             $token = md5(I('post.email').time().$this->get_random_str(8));
             $url = 'http://www.heysoo.com/Action/reset_password.html?t='.$token.'&email='.I('post.email');
