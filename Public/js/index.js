@@ -58,7 +58,7 @@ var essay_editor_opt = {
     },
     emoji:true,
     watch:false,
-    htmlDecode:"script,a,img",
+    htmlDecode:"script,img",
     saveHTMLToTextarea:true,
     placeholder:"在此输入内容",
     value:'',
@@ -76,7 +76,7 @@ var essay_modify_editor_opt = {
 	},
 	emoji:true,
 	watch:false,
-	htmlDecode:"script,a,img",
+	htmlDecode:"script,img",
 	saveHTMLToTextarea:true,
 	placeholder:"在此输入内容",
 	onload:function(){
@@ -86,6 +86,22 @@ var essay_modify_editor_opt = {
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
     lineNumbers:false,
+};
+//碎片发布
+var piece_editor_opt = {
+    path : public_path+"/editor/meditor/lib/",
+    height:250,
+    toolbarIcons:function(){
+      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+    },
+    emoji:true,
+    watch:false,
+    htmlDecode:"script,img",
+    saveHTMLToTextarea:true,
+    placeholder:"在此输入内容",
+    imageUpload: true,
+    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+    imageUploadURL: "http://upload.qiniu.com/",
 };
 var essay_comment_editor_opt = {//评论框
 	path : public_path+"/editor/meditor/lib/",
@@ -97,7 +113,7 @@ var essay_comment_editor_opt = {//评论框
 	emoji:true,
 	watch:false,
 	autoFocus:false,
-	htmlDecode:"script,a,img",
+	htmlDecode:"script,img",
 	saveHTMLToTextarea:true,
 	placeholder:"在此输入内容",
 	value:'',
@@ -114,26 +130,10 @@ var essay_comment_reply_editor_opt = {//回复框
     },
     emoji:true,
     watch:false,
-    htmlDecode:"script,a,img",
+    htmlDecode:"script,img",
     saveHTMLToTextarea:true,
     placeholder:"在此输入内容",
     value:'',
-    imageUpload: true,
-    imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-    imageUploadURL: "http://upload.qiniu.com/",
-};
-//碎片发布
-var piece_editor_opt = {
-    path : public_path+"/editor/meditor/lib/",
-    height:250,
-    toolbarIcons:function(){
-      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
-    },
-    emoji:true,
-    watch:false,
-    htmlDecode:"script,a,img",
-    saveHTMLToTextarea:true,
-    placeholder:"在此输入内容",
     imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
