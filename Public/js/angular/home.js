@@ -187,6 +187,15 @@ heysoo.controller('c_index',['$scope','$rootScope','$state','$stateParams','$htt
     $rootScope.$on('updateHomePageContent',function(event,mass){
         $scope.updateHomePageContent();
     });
+    //------------ 延迟加载其他文件 -----------------
+    $ocLazyLoad.load([public_path+'/editor/meditor/js/editormd.min.js',
+      public_path+'/js/to-markdown.min.js',
+      public_path+'/editor/meditor/css/editormd.min.css',
+      public_path+'/bower/ng-dialog/css/ngDialog.css',
+      public_path+'/bower/amazeui/dist/js/amazeui.min.js']).then(function () {
+        console.log('成功延迟加载所需文件！');
+        var progress_bar = $.AMUI.progress;//全局进度条，依赖amazeui.min.js
+    }, function (e){});
 }])
 //管理分頁
 .controller('c_paginator',['$scope','$rootScope','$state','$http',function($scope,$rootScope,$state,$http){

@@ -1,4 +1,3 @@
-var progress_bar = $.AMUI.progress;//进度条
 //var site_prefix = "http://localhost";
 //发布
 var editOpts = {
@@ -67,6 +66,7 @@ var essay_editor_opt = {
     imageUploadURL: "http://upload.qiniu.com/",
     fullScreen:true,
     lineNumbers:false,
+    qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 var essay_modify_editor_opt = {
 	path : public_path+"/editor/meditor/lib/",
@@ -86,6 +86,7 @@ var essay_modify_editor_opt = {
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
     lineNumbers:false,
+    qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 //碎片发布
 var piece_editor_opt = {
@@ -102,6 +103,7 @@ var piece_editor_opt = {
     imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
+    qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 var essay_comment_editor_opt = {//评论框
 	path : public_path+"/editor/meditor/lib/",
@@ -120,6 +122,7 @@ var essay_comment_editor_opt = {//评论框
 	imageUpload: true,
 	imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
 	imageUploadURL: "http://upload.qiniu.com/",
+	qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 var essay_comment_reply_editor_opt = {//回复框
     path : public_path+"/editor/meditor/lib/",
@@ -137,6 +140,7 @@ var essay_comment_reply_editor_opt = {//回复框
     imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
+    qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 var piece_comment_editor_opt = {};
 //音乐播放器的宽度

@@ -16,8 +16,10 @@ gulp.task('index-css', function() {
     .pipe(gulp.dest('./css/dist/'));
 });
 gulp.task('plugins-css', function() {
-  gulp.src(['./bower/amazeui/dist/css/amazeui.css','./editor/meditor/css/editormd.min.css',
-    './bower/ng-dialog/css/ngDialog.css'])
+  gulp.src(['./bower/amazeui/dist/css/amazeui.css',
+    //'./editor/meditor/css/editormd.min.css',//延迟加载
+    //'./bower/ng-dialog/css/ngDialog.css' //延迟加载
+    ])
     .pipe(concat('plugins.css'))
     .pipe(minify())
     .pipe(gulp.dest('./css/dist/'));
@@ -31,15 +33,17 @@ gulp.task('index', function() {
 });
 gulp.task('angular', function() {
   gulp.src(['./bower/angular/angular.min.js','./bower/angular-ui-router/release/angular-ui-router.min.js',
-    './bower/angular-cookie/angular-cookie.min.js','./bower/ng-dialog/js/ngDialog.min.js','./bower/ocLazyLoad/dist/ocLazyLoad.min.js'])
+    './bower/angular-cookie/angular-cookie.min.js',
+    './bower/ng-dialog/js/ngDialog.min.js',
+    './bower/ocLazyLoad/dist/ocLazyLoad.min.js'])
     .pipe(concat('angular.js'))
     .pipe(gulp.dest('./js/dist/'));
 });
 gulp.task('plugins-js', function() {
   gulp.src(['./bower/jquery/dist/jquery.min.js',
-    './bower/amazeui/dist/js/amazeui.min.js',
-    './editor/meditor/js/editormd.js',
-    './js/to-markdown.js',
+    //'./bower/amazeui/dist/js/amazeui.min.js',//延迟加载
+    //'./editor/meditor/js/editormd.js',//延迟加载
+    //'./js/to-markdown.js',
     './bower/underscore/underscore-min.js'])
     .pipe(concat('plugins.js'))
     .pipe(uglify())

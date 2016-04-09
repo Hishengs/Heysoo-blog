@@ -3108,18 +3108,20 @@
         image : function() {
             this.executePlugin("imageDialog", "image-dialog/image-dialog");
             //获取设置七牛token
-            var request = new XMLHttpRequest();
-            request.open("GET",get_token_path);
-            request.onreadystatechange = function(){
-                if(request.readyState === 4 && request.status === 200){
-                    var res = JSON.parse(request.responseText);
-                    var tokens = document.querySelectorAll(".qiniu_token");
-                    for(var i=0,ilen=tokens.length;i<ilen;i++){
-                        tokens[i].setAttribute("value",res.token);
+            if(this.settings.qiniu.uploadUrl){
+                var request = new XMLHttpRequest();
+                request.open("GET",this.settings.qiniu.get_token_path);
+                request.onreadystatechange = function(){
+                    if(request.readyState === 4 && request.status === 200){
+                        var res = JSON.parse(request.responseText);
+                        var tokens = document.querySelectorAll(".qiniu_token");
+                        for(var i=0,ilen=tokens.length;i<ilen;i++){
+                            tokens[i].setAttribute("value",res.token);
+                        }
                     }
                 }
+                request.send();
             }
-            request.send();
         },
         
         code : function() {

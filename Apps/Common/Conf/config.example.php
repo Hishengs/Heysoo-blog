@@ -16,10 +16,15 @@ return array(
 	'LOGIN_VERIFY_CODE_ON' => false, //是否开启登录验证码验证
 	'REGISTER_VERIFY_CODE_ON' => false, //是否开启注册验证码验证
 	'REGISTER_INVITE_CODE_ON' => false, //是否开启邀请码注册
-	'QINIU_SK' => 'BylB8ABOnBdhzwcsUOC2kp2teC9jHMAGzmIii5Dv',
-	'QINIU_AK' => 'EWNeHQINB7Lm-Xa9sYFrU5K_RBBoTOWNFpEF4T0h',
-	'QINIU_BUCKET' => 'blueandwhite',
-	'SITE_PREFIX' => 'http://localhost',
+	'QINIU' => array(
+		//'BUCKET' => 'blueandwhite',
+		//'BUCKET_URL_PREFIX' => 'https://dn-lanbaidiao.qbox.me/',
+		'BUCKET' => 'static',
+		'BUCKET_URL_PREFIX' => 'https://dn-static-heysoo.qbox.me/',
+		'SK' => 'BylB8ABOnBdhzwcsUOC2kp2teC9jHMAGzmIii5Dv',
+		'AK' => 'EWNeHQINB7Lm-Xa9sYFrU5K_RBBoTOWNFpEF4T0h',
+	),
+	'SITE_PREFIX' => 'http://localhost:8080',
 	'URL_MODEL' => 2,
 	'ESSAY_COMMENT_ON' => true,
 	'PIECE_COMMENT_ON' => true,

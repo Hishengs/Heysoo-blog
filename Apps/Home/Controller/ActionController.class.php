@@ -235,11 +235,11 @@ class ActionController extends Controller {
       if(isset($_SESSION['USER_ID'])){
         $upload_type = I('get.upload_type');
         $upload_type = $upload_type?$upload_type:'essay';
-        $saveKey = $upload_type.'_'.$_SESSION['USER_ID'].'_'.md5(date("Y-m-d H:i:s").C('SITE_PREFIX'));
+        $saveKey = 'img/'.$upload_type.'_'.$_SESSION['USER_ID'].'_'.time().'_'.md5(time().C('SITE_PREFIX').$this->get_random_str(8));
         $callbackUrl = C('SITE_PREFIX').U("Action/qiniu_callback");//callback url
-        $param = array('scope'=>C('QINIU_BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl,'saveKey'=>$saveKey);
+        $param = array('scope'=>C('QINIU.BUCKET'),'deadline'=>3600+time(),'returnUrl'=>$callbackUrl,'saveKey'=>$saveKey);
         $auth = new \Think\Upload\Driver\Qiniu\QiniuStorage();
-        $token = $auth->getToken(C('QINIU_SK'),C('QINIU_AK'),$param);
+        $token = $auth->getToken(C('QINIU.SK'),C('QINIU.AK'),$param);
         $response = array('status'=>'success','token'=>$token);
         $this->ajaxReturn($response,'json');
        }else $this->error(C('SITE_LANG.LOGIN_ALERT'),U('Action/login'));
@@ -250,7 +250,7 @@ class ActionController extends Controller {
       $upload_ret = base64_decode($_GET['upload_ret']);
       $upload_ret = json_decode($upload_ret,true); //tranform json to array
       if(!empty($upload_ret['key']))
-        $this->ajaxReturn(array('error'=>0,'url'=>'https://dn-lanbaidiao.qbox.me/'.$upload_ret['key']),'json');
+        $this->ajaxReturn(array('error'=>0,'url'=>C('QINIU.BUCKET_URL_PREFIX').$upload_ret['key']),'json');
       else
         $this->ajaxReturn(array('error'=>1,'message'=>C('SITE_LANG.IMAGE_UPLOAD_ERROR')),'json');
     }
