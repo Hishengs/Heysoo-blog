@@ -39,7 +39,8 @@
             if (editor.find("." + dialogName).length < 1)
             {
                 var guid   = (new Date).getTime();
-                var action = settings.imageUploadURL + (settings.imageUploadURL.indexOf("?") >= 0 ? "&" : "?") + "guid=" + guid;
+                //var action = settings.imageUploadURL + (settings.imageUploadURL.indexOf("?") >= 0 ? "&" : "?") + "guid=" + guid;
+                var action = settings.imageUploadURL;
 
                 if (settings.crossDomainUpload)
                 {
