@@ -389,25 +389,22 @@ class ActionController extends Controller {
     }
     public function do_reset_password(){
         //验证token是否有效且未过期
-        if(!empty(I('post.id'))){
-            //缓存的token是否存在
-            if(!empty(S($_SESSION['USER_ID'].'_reset_password_token')) && S($_SESSION['USER_ID'].'_reset_password_token') == I('post.token')){
-                //重置密码
-                $cdt['email'] = I('post.email');
-                $cdt['id'] = I('post.id');
-                $passwd = I('post.passwd');
-                $passwdAgain = I('post.passwdAgain');
-                if($passwd !== $passwdAgain)$this->error('两次输入的密码不一致！');
-                $user = $this->user_model->where($cdt)->find();
-                for($i=0;$i<$user['encrypt_times'];$i++){
-                    $passwd = md5($passwd.$user['salt']);
-                }
-                $data['passwd'] = $passwd;
-                if($this->user_model->where($cdt)->save($data) !== false)
-                    $this->success('密码重置成功，请使用新密码登陆！',U('Action/login'));
-                else $this->error('密码重置失败！请稍后重试！');
-            }else $this->error('该重置链接已失效！请重新发送重置邮件！');
-        }else $this->error('无效的重置链接！请重新发送重置邮件！');
+        //缓存的token是否存在
+        if(!empty(S(I('post.email').'_reset_password_token')) && S(I('post.email').'_reset_password_token') == I('post.token')){
+            //重置密码
+            $cdt['email'] = I('post.email');
+            $passwd = I('post.passwd');
+            $passwdAgain = I('post.passwdAgain');
+            if($passwd !== $passwdAgain)$this->error('两次输入的密码不一致！');
+            $user = $this->user_model->where($cdt)->find();
+            for($i=0;$i<$user['encrypt_times'];$i++){
+                $passwd = md5($passwd.$user['salt']);
+            }
+            $data['passwd'] = $passwd;
+            if($this->user_model->where($cdt)->save($data) !== false)
+                $this->success('密码重置成功，请使用新密码登陆！',U('Action/login'));
+            else $this->error('密码重置失败！请稍后重试！');
+        }else $this->error('该重置链接已失效！请重新发送重置邮件！');
     }
     //发送重置邮件页面 
     public function forgot_password(){
@@ -419,12 +416,12 @@ class ActionController extends Controller {
         $cdt['email'] = I('post.email');
         $is_exist = $this->user_model->where($cdt)->find();
         if($is_exist !== false){
-            //生成token = md5(邮箱+用户id+当前时间戳+随机字符串)
-            $token = md5(I('post.email').$_SESSION['USER_ID'].time().$this->get_random_str(8));
-            $url = 'http://www.heysoo.com/Action/do_reset_password.html?t='.$token.'&id='.$_SESSION['USER_ID'].'&email='.I('post.email');
+            //生成token = md5(邮箱+当前时间戳+随机字符串)
+            $token = md5(I('post.email').time().$this->get_random_str(8));
+            $url = 'http://www.heysoo.com/Action/do_reset_password.html?t='.$token.'&email='.I('post.email');
             //将token存入缓存，并设置有效时间为2个小时
-            S($_SESSION['USER_ID'].'_reset_password_token',NULL);//如果存在同名缓存，则先删除
-            S($_SESSION['USER_ID'].'_reset_password_token',$token,array('type'=>'file','expire'=>2*60*60));
+            S(I('post.email').'_reset_password_token',NULL);//如果存在同名缓存，则先删除
+            S(I('post.email').'_reset_password_token',$token,array('type'=>'file','expire'=>2*60*60));
             //发送邮件
             $message = '如果是您本人发送的重置密码邮件，请点击 <a href="'.$url.
             '" target="_blank">此处</a> 重置您的密码；如果不是您本人所为，请及时修改密码，您的密码存在泄露的风险！(From Heysoo)';
@@ -432,7 +429,6 @@ class ActionController extends Controller {
             $header .= "Return-Path: <Heysoo@heysoo.com>\n";     //防止被当做垃圾邮件，但在sina邮箱里不起作用
             $header .= "MIME-Version: 1.0\n";
             $header .= "Content-type: text/html; charset=utf-8\n";    //邮件内容为utf-8编码
-            $header .= "Content-Transfer-Encoding: 8bit\r\n";    //注意header的结尾，只有这个后面有\r
             if(mail(I('post.email'),'Heysoo密码重置',$message,$header))
                 $this->success('邮件已发出，请注意查收！(有效期2小时)','',2);
             else $this->error('邮件发送失败！');
