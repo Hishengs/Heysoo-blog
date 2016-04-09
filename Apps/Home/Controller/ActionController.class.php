@@ -385,7 +385,8 @@ class ActionController extends Controller {
         $id = I('get.id');
         $email = I('get.email');
         $token = I('get.t');
-        $this->display(':resetPassword')->assign('id',$id)->assign('email',$email)->assign('token',$token);
+        $this->assign('id',$id)->assign('email',$email)->assign('token',$token);
+        $this->display(':resetPassword');
     }
     public function do_reset_password(){
         //验证token是否有效且未过期
