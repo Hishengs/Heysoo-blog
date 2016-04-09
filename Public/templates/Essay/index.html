@@ -60,9 +60,9 @@
 
 <div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="res_empty">
 	<div class="hs-btn-group hs-btn-group-justify">
-	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('prev');"><i class="hs-icon-arrow-left"></i></button>
+	    <button type="button" class="hs-btn hs-btn-transparent" ng-click="esy_paginator('prev');"><i class="hs-icon-arrow-left"></i></button>
 	    <div class="hs-dropdown hs-dropdown-up dis-inline-block" id="essay_pages_selections">
-			<button class="hs-btn hs-btn-{{interface_color}} hs-dropdown-toggle">
+			<button class="hs-btn hs-btn-transparent hs-dropdown-toggle">
 				<i class="hs-icon-rocket"></i>
 			</button>
 			<ul class="hs-dropdown-content">
@@ -74,7 +74,8 @@
 				$('#essay_pages_selections').dropdown();
 			});
 		</script>
-	    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button>
+	    <!-- <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button> -->
+	    <button type="button" class="hs-btn hs-btn-transparent" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button>
 	</div>
 </div>
 
