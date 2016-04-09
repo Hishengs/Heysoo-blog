@@ -17,9 +17,14 @@
 html{height:100%;}
 body{min-height: 100%;}
 div,p,span,a{ font-size: 1.4rem; font-family:Lato,'microsoft yahei','宋体',Helvetica,sambria,'Microsoft Jhenghei';} */
+@font-face {
+   font-family: 'fzssjt'; /*方正宋三简体*/
+   src: url('http://dn-static-heysoo.qbox.me/fonts/fz/fzssjt.ttf') format('truetype');
+}
 
 html,body,p,div,span,a,li,ul,b,strong{
-  font-family: 'museo-slab','宋体','Helvetica',sans-serif;
+  /* 'Helvetica','STSong','华文宋体', */
+  font-family: Helvetica,'宋体','Microsoft Yahei',sans-serif;
 }
 #left-panel{ z-index:333; position:relative; background-color:#f5f5f5; width:20%; height:100%;  box-shadow:0px 2px 5px rgba(0,0,0,0.5); float:left; top:0; left:0; position:fixed; }
 #left-panel:hover{ box-shadow:0px 5px 20px rgba(0,0,0,0.5); }

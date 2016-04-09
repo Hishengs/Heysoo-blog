@@ -48,7 +48,7 @@ class IndexController extends Controller {
         " or p.user_id in (select f.followed_id from hs_follow as f where f.follower_id=".$this->user_id.") and p.visible=1 group by p.piece_id order by p.date desc limit ".
         $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
         $pieces = $this->piece_model->query($sql2);
-        if($pieces)
+        if($pieces !== false)
             $this->ajaxReturn(array('pieces'=>$pieces,'error'=>0),'json');
         else if($pieces == NULL)$this->ajaxReturn(array('pieces'=>$pieces,'error'=>2,'msg'=>'暂无记录！'),'json');
         else $this->ajaxReturn(array('pieces'=>$pieces,'error'=>1,'msg'=>'查询失败！'),'json');

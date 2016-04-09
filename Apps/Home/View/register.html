@@ -56,13 +56,13 @@ button.register,button.login,span.hs-input-group-label{background-image: url("__
 			</if>
 
 			<if condition="$register_verify_code_on eq true">
-			<div class="hs-input-group hs-input-group-default">
-			<span class="hs-input-group-label"><i class="hs-icon-hand-o-down"></i></span>
-			<input class="verify-code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
-			</div>
-			<div class="verify-code">
-				<img class="verify-code-img" src="{:U('Action/create_verify_code')}" title="点击更换验证码" onclick=javascript:this.src="{:U('Action/create_verify_code')}">
-			</div>
+				<div class="hs-input-group hs-input-group-default">
+				<span class="hs-input-group-label"><i class="hs-icon-hand-o-down"></i></span>
+				<input class="verify-code form-control" name="verify_code"  type="text" placeholder="填写以下验证码" title="验证码">
+				</div>
+				<div class="verify-code">
+					<img class="verify-code-img" src="{:U('Action/create_verify_code')}" title="点击更换验证码" onclick=javascript:this.src="{:U('Action/create_verify_code')}">
+				</div>
 			</if>
 
 			<button type="submit" class="hs-btn hs-btn-default hs-btn-block register">注  册</button>
