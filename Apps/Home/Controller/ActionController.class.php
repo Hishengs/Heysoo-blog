@@ -384,7 +384,7 @@ class ActionController extends Controller {
     public function reset_password(){
         $id = I('get.id');
         $email = I('get.email');
-        $token = I('get.token');
+        $token = I('get.t');
         $this->display(':resetPassword')->assign('id',$id)->assign('email',$email)->assign('token',$token);
     }
     public function do_reset_password(){
@@ -418,7 +418,7 @@ class ActionController extends Controller {
         if($is_exist !== false){
             //生成token = md5(邮箱+当前时间戳+随机字符串)
             $token = md5(I('post.email').time().$this->get_random_str(8));
-            $url = 'http://www.heysoo.com/Action/do_reset_password.html?t='.$token.'&email='.I('post.email');
+            $url = 'http://www.heysoo.com/Action/reset_password.html?t='.$token.'&email='.I('post.email');
             //将token存入缓存，并设置有效时间为2个小时
             S(I('post.email').'_reset_password_token',NULL);//如果存在同名缓存，则先删除
             S(I('post.email').'_reset_password_token',$token,array('type'=>'file','expire'=>2*60*60));
