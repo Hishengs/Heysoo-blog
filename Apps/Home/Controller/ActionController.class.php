@@ -428,8 +428,12 @@ class ActionController extends Controller {
             //发送邮件
             $message = '如果是您本人发送的重置密码邮件，请点击 <a href="'.$url.
             '" target="_blank">此处</a> 重置您的密码；如果不是您本人所为，请及时修改密码，您的密码存在泄露的风险！(From Heysoo)';
-            $headers = "MIME-Version: 1.0" . "\r\n"."Content-type:text/html;charset=iso-8859-1" . "\r\n".'From: <Heysoo@heysoo.com>' . "\r\n";
-            if(mail(I('post.email'),'Heysoo密码重置',$message,$headers))
+            $header = "From: Heysoo <Heysoo@heysoo.com>\n";
+            $header .= "Return-Path: <Heysoo@heysoo.com>\n";     //防止被当做垃圾邮件，但在sina邮箱里不起作用
+            $header .= "MIME-Version: 1.0\n";
+            $header .= "Content-type: text/html; charset=utf-8\n";    //邮件内容为utf-8编码
+            $header .= "Content-Transfer-Encoding: 8bit\r\n";    //注意header的结尾，只有这个后面有\r
+            if(mail(I('post.email'),'Heysoo密码重置',$message,$header))
                 $this->success('邮件已发出，请注意查收！(有效期2小时)','',2);
             else $this->error('邮件发送失败！');
         }else $this->error(C('SITE_LANG.EMAIL_NOT_EXIST'));
