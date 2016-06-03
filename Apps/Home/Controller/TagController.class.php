@@ -50,8 +50,8 @@ class TagController extends Controller {
             $data = array('name'=>I('post.name'),'friends'=>I('post.friends'),'updated_at'=>date("Y-m-d H:i:s"));
             $result = $this->visible_tag_model->where($cdt)->save($data);
             if($result !== false)
-                $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.POST_SUCCESS')),'json');
-            else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.POST_FAILED')),'json');
+                $this->ajaxReturn(array('error'=>0,'msg'=>C('SITE_LANG.UPDATE_SUCCESS')),'json');
+            else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.UPDATE_FAILED')),'json');
         }
     }
     //获取用户标签列表

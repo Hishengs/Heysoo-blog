@@ -30,19 +30,29 @@
 			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
 				<span class="piece-user"><a href="javascript:void(0);" ui-sref="user({user_id:piece.user_id})" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
-				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
+				<span class="piece-date" title="{{piece.date}}">{{piece.date | transferPostDate}}</span>
 			</div>
-			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
+			<div class="piece-content">
+				<!-- <div id="img-preview-{{piece.piece_id}}" class="img-preview" ng-click="imgViewToggle(piece.piece_id)" ng-bind-html="piece.content | imgView:1 | trustHtml"></div>
+				<div id="img-view-{{piece.piece_id}}" class="img-view" ng-bind-html="piece.content | imgView:2 | trustHtml"></div> -->
+				<div class="text-content" ng-bind-html="piece.content | trustHtml"></div>
+			</div>
 			<div class="piece-footer"><i class="hs-icon-tag"></i> 
 				<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
-				<span class="piece-footer-right">
+				<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片" ng-if="piece.user_id == user_info.id">
+					<i class="hs-icon-trash"></i> 删除
+				</a>&nbsp;
+				<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" title="查看碎片评论">
+					<i class="hs-icon-comment-o"></i> 评论({{piece.comments_num}})
+				</a>
+				<!-- <span class="piece-footer-right">
 					<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片">
 					<i class="hs-icon-trash" ng-if="piece.user_id == user_info.id"></i>
 					</a>
 					<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" class="m-left-15" title="查看碎片评论">
 					<i class="hs-icon-comment-o"></i> {{piece.comments_num}}
 					</a>
-				</span>
+				</span> -->
 			</div>
 		</div>
 		<!-- 碎片评论 -->
@@ -89,9 +99,10 @@
 
 <div class="index-empty-tip center-tip" ng-show="index_empty"><i class="hs-icon-warning"></i> 空空如也，好冷好寂寞(*>﹏<*)<br />[相关的推荐及好友碎片将出现在这里]</div>
 <div class="loadMore" ng-hide="index_empty">
-	<a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a>
+	<!-- <a href="javascript:void(0);" class="load-more index-load-more" ng-click="indexLoadMore();"><i class="hs-icon-arrow-down"></i> 加载更多</a> -->
+	<a class="load-more index-load-more hi-btn hi-btn-primary light" ng-click="indexLoadMore()"><i class="hs-icon-arrow-down"></i> 加载更多</a>
 </div>
 
-<script>
+<!-- <script>
 	setTimeout(function(){updateAmazeUIEvent();},1500);
-</script>
+</script> -->

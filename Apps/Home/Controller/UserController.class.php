@@ -1,6 +1,8 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Org\Util\DBUtil;
+use Org\Util\Util;
 /**
  * Deal with user action
  * Author:Hisheng
@@ -261,19 +263,40 @@ class UserController extends Controller {
     public function get_pieces(){
         $user_id = I('post.user_id')?I('post.user_id'):$this->user_id;
         $page = I('post.page');
-        $page = $page?$page-1:0;
+        $page = $page?$page:0;
+        //$page = $page?$page-1:0;
         $visible = $user_id==$this->user_id?'':' AND p.visible=1';
         $piece_model = D('Piece');
-        $sql = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_piece as p 
+
+        /*$sql = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_piece as p 
         join hs_user as u on p.user_id=u.id left join hs_piece_comment as c on p.piece_id=c.piece_id where p.user_id=".$user_id.$visible." group by p.piece_id order by p.date desc limit ".
         $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
         $pieces = $piece_model->query($sql);
-        /*$pieces = $piece_model->alias('p')->where('p.user_id='.$user_id.$visible)
+        $pieces = $piece_model->alias('p')->where('p.user_id='.$user_id.$visible)
         ->field('u.id,u.userName,u.avatar,p.piece_id,p.date,p.tag,p.content')
         ->join('hs_user as u on u.id=p.user_id')
         ->order('p.date desc')->limit($page*$this->piece_nums_per_page,$this->piece_nums_per_page)->select();*/
-        if($pieces !== false)$this->ajaxReturn(array('error'=>0,'pieces'=>$pieces),'json');
-        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
+
+        $cached_pieces = S('User_pieces_'.$page.'_'.$user_id);//是否已有缓存
+        if(0)$this->ajaxReturn(array('error'=>0,'cached'=>true,'pieces'=>$cached_pieces),'json');
+        //if($cached_pieces)$this->ajaxReturn(array('error'=>0,'cached'=>true,'pieces'=>$cached_pieces),'json');
+        else{
+            $pieces = $piece_model->where('user_id='.$user_id)
+            ->field('piece_id,user_id,date,tag,content,visible,visible_tag')
+            ->order('date desc')->select();
+            if($pieces !== false){
+                //关联用户表
+                $pieces = DBUtil::loadRelatedData($pieces,'user_id','user','id',array('userName','avatar'));
+                //关联评论表
+                $pieces = DBUtil::loadRelatedData($pieces,'piece_id','piece_comment','piece_id',array('count(comment_id) as comments_num'));
+                $pieces = A('Auth')->filter_invisible_piece($pieces);
+                //进行分页并缓存结果
+                $pieces = Util::pageOfArray($pieces,$page,$this->piece_nums_per_page);
+                S('User_pieces_'.$page.'_'.$user_id,$pieces,array('type'=>'file','expire'=>5*60));//缓存该用户第n页的碎片,5分钟
+                $this->ajaxReturn(array('error'=>0,'pieces'=>$pieces),'json');
+            }
+            else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
+        }
     }
     //获取用户文章
     public function get_essays(){
@@ -282,9 +305,13 @@ class UserController extends Controller {
         $page = $page?$page-1:0;
         $visible = $user_id==$this->user_id?'':' AND visible=1';
         $essay_model = D('Essay');
-        $essays = $essay_model->where('user_id='.$user_id.$visible)
+        //$essays = $essay_model->where('user_id='.$user_id.$visible)
+        $essays = $essay_model->where('user_id='.$user_id)
         ->order('date desc')->limit($page*$this->essay_nums_per_page,$this->essay_nums_per_page)->select();
-        if($essays !== false)$this->ajaxReturn(array('error'=>0,'essays'=>$essays),'json');
+        if($essays !== false){
+            $essays = A('Auth')->filter_invisible_essay($essays);
+            $this->ajaxReturn(array('error'=>0,'essays'=>$essays),'json');
+        }
         else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');
     }
     

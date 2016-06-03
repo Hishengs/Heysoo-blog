@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Org\Util\Util;
 /**
  * This is the enterance of the whole application.
  * Author:Hisheng
@@ -31,7 +32,7 @@ class IndexController extends Controller {
     //get index page
     public function ng_index(){
         $page = I('get.index_page');//The request page number
-        $page = $page?$page-1:0;
+        $page = $page?$page:1;
         /**
          * 1.我的动态
          * 2.我关注的人的动态
@@ -43,15 +44,18 @@ class IndexController extends Controller {
         where p.visible=1 AND u.id=p.user_id AND p.user_id in (SELECT followed_id as id from hs_follow where follower_id=".$this->user_id." 
         union SElECT id from hs_user where id=".$this->user_id.") order by p.date desc limit ".$page*$this->piece_nums_per_page.
         ",".$this->piece_nums_per_page;*/
-        $sql2 = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content from hs_piece as p 
-        join hs_user as u on p.user_id=u.id left join hs_piece_comment as c on p.piece_id=c.piece_id where p.user_id=".$this->user_id.
-        " or p.user_id in (select f.followed_id from hs_follow as f where f.follower_id=".$this->user_id.") and p.visible=1 group by p.piece_id order by p.date desc limit ".
-        $page*$this->piece_nums_per_page.",".$this->piece_nums_per_page;
+        $sql2 = "select count(c.comment_id) as comments_num,u.userName,u.avatar,p.piece_id,p.user_id,p.date,p.tag,p.content,p.visible,p.visible_tag 
+        from hs_piece as p join hs_user as u on p.user_id=u.id left join hs_piece_comment as c on p.piece_id=c.piece_id where p.user_id=".$this->user_id.
+        " or p.user_id in (select f.followed_id from hs_follow as f where f.follower_id=".$this->user_id.") and p.visible=1 group by p.piece_id order by p.date desc ";
         $pieces = $this->piece_model->query($sql2);
-        if($pieces !== false)
+        if($pieces !== false){
+            if($pieces == NULL)$this->ajaxReturn(array('pieces'=>$pieces,'error'=>2,'msg'=>'暂无记录！'),'json');
+            if(count($pieces)){
+                $pieces = A('Auth')->filter_invisible_piece($pieces);//过滤不可见的碎片
+                $pieces = Util::pageOfArray($pieces,$page,$this->piece_nums_per_page);//分页
+            }
             $this->ajaxReturn(array('pieces'=>$pieces,'error'=>0),'json');
-        else if($pieces == NULL)$this->ajaxReturn(array('pieces'=>$pieces,'error'=>2,'msg'=>'暂无记录！'),'json');
-        else $this->ajaxReturn(array('pieces'=>$pieces,'error'=>1,'msg'=>'查询失败！'),'json');
+        }else $this->ajaxReturn(array('pieces'=>$pieces,'error'=>1,'msg'=>'查询失败！'),'json');
     }
    //init the sidebar panel
    public function ng_init_side_panel(){

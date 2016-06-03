@@ -1572,3 +1572,10 @@ function think_filter(&$value){
 function in_array_case($value,$array){
     return in_array(strtolower($value),array_map('strtolower',$array));
 }
+
+//将下划线转为驼峰命名
+function convertUnderlineToCamel($str,$ucfirst = true){
+    $str = ucwords(str_replace('_', ' ', $str));
+    $str = str_replace(' ','',lcfirst($str));
+    return $ucfirst ? ucfirst($str) : $str;
+}

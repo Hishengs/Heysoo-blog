@@ -42,6 +42,8 @@ return array(
 			'DELETE_FAILED'=>'删除失败！',
 			'POST_SUCCESS'=>'发布成功！',
 			'POST_FAILED'=>'发布失败！',
+			'UPDATE_SUCCESS'=>'更新成功！',
+			'UPDATE_FAILED'=>'更新失败！',
 			'PIECE_CONTENT_EMPTY_TIP'=>'碎片内容不能为空！',
 			'PIECE_CONTENT_LENGTH_ERROR'=>'碎片总字数不能超过255个字符！当前字数为：',
 			'ESSAY_VIEW_ACCESS_DENIED'=>'你无查看此文章的权限！',
@@ -49,6 +51,6 @@ return array(
 			'INVITE_CODE_ERROR'=>'邀请码错误或已过期！',
 			'INVITE_CODE_EMPTY'=>'邀请码不能为空！',
 			'ACCESS_DENIED'=>'没有权限！',
-			''=>'',
+			//'TODO'=>array(),
 			)
 );

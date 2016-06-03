@@ -1,6 +1,7 @@
 var paginator_index = 1;
 var num_per_page = 10;
 var url_prefix = home_path+"/Action/ng_paginator.html";
+var progress_bar;
 heysoo.controller('c_index',['$scope','$rootScope','$state','$stateParams','$http','$timeout','Piece','ipCookie','User','$ocLazyLoad',
     function($scope,$rootScope,$state,$stateParams,$http,$timeout,Piece,ipCookie,User,$ocLazyLoad){
     //前端路由的统一管理
@@ -193,8 +194,9 @@ heysoo.controller('c_index',['$scope','$rootScope','$state','$stateParams','$htt
       public_path+'/editor/meditor/css/editormd.min.css',
       public_path+'/bower/ng-dialog/css/ngDialog.css',
       public_path+'/bower/amazeui/dist/js/amazeui.min.js']).then(function () {
+        updateAmazeUIEvent();
         console.log('成功延迟加载所需文件！');
-        var progress_bar = $.AMUI.progress;//全局进度条，依赖amazeui.min.js
+        progress_bar = $.AMUI.progress;//全局进度条，依赖amazeui.min.js
     }, function (e){});
 }])
 //管理分頁
@@ -397,13 +399,14 @@ heysoo.controller('c_index',['$scope','$rootScope','$state','$stateParams','$htt
     });
 }])
 .controller('c_song_search',['$scope','$rootScope',function($scope,$rootScope){
-  //往编辑器插入音乐
-  $scope.insertMusicBox = function(song_id){
-    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width='+music_player_width+' height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
-    //edit_post.appendHtml(music_frame);
-    $rootScope.current_editor.insertValue(music_frame);
-    $('#song_search_modal').modal('toggle');
-  }
+    //往编辑器插入音乐
+    $scope.insertMusicBox = function(song_id){
+        music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width='+music_player_width+' height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+        if($rootScope.current_editor['insertValue'])
+            $rootScope.current_editor.insertValue(music_frame);
+        else $rootScope.current_editor.appendHtml(music_frame);
+        $('#song_search_modal').modal('toggle');
+    }
 }]);
 
 angular.bootstrap(document.body,['Index']);

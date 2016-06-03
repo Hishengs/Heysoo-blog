@@ -2,14 +2,34 @@
 <html lang="zh">
 <head>
 	<base href="/">
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Blog,Simple,Personal.博客，简单，个人">
+	<meta name="description" content="A Simple,Personal Blog Platform for Everyone.一个简单，个人的在线博客。">
+	<meta name="robots" content="noindex,follow" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
 	<link rel="icon" type="image/png" href="__PUBLIC__/img/favicon.ico">
 	<title>{$userName | default="我的主页"}</title>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/plugins.css"/>
 	<link rel="stylesheet" href="__PUBLIC__/css/dist/index.css"/>
-	<!-- <script data-main="__PUBLIC__/js/boot.js" src="__PUBLIC__/bower/requirejs/require.js"></script> -->
+	<link rel="stylesheet" href="http://www.heysoo.com/heyui/dist/css/heyui.min.css"/>
+	<!-- Piwik -->
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="//www.heysoo.com/analytics/piwik/";
+	    _paq.push(['setTrackerUrl', u+'piwik.php']);
+	    _paq.push(['setSiteId', 1]);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript><p><img src="//www.heysoo.com/analytics/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+	<!-- End Piwik Code -->
 </head>
 <script>
 	var site_prefix = "http://localhost/Heysoo";
@@ -27,15 +47,17 @@
 	<div id="top-bar" ng-controller="c_sidePanel" ng-show="{$is_logined}">
 		<div class="top-bar-wrapper">
 		<div class="top-bar-left">
-			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-hide="device.isMobile"><i class="hs-icon-home"></i> 首页</a>
+			<!-- <a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-hide="device.isMobile"><i class="hs-icon-home"></i> 首页</a> -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="index" ondblclick="javascript:window.location.href='{:U('Index/index')}'" ng-hide="device.isMobile" title="双击刷新首页"><i class="hs-icon-home"></i> 首页</a>
 			<a href="javascript:void(0);" class="plain-link m-left-15" onclick="javascript:window.location.href='{:U('Index/index')}'" ng-show="device.isMobile"><i class="hs-icon-paper-plane"></i> Heysoo</a>
 			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="piece({page:1})" ng-hide="device.isMobile"><i class="hs-icon-paper-plane"></i> 碎片</a>
 			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="essay({page:1})" ng-hide="device.isMobile"><i class="hs-icon-book"></i> 文章</a>
+			<a href="javascript:void(0);" class="plain-link m-left-15" ui-sref="todo" ng-hide="device.isMobile"><i class="hs-icon-bookmark"></i> 待办</a>
 		</div>
 		<div class="top-bar-center">
 			<a href="javascript:void(0);" class="plain-link" ng-show="device.isMobile"><strong>{$userName}</strong></a>
-			<a href="javascript:void(0);" class="plain-link" ui-sref="edit({action:'new',type:'essay'})" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a><!-- 发布文章 -->
-			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()" ng-hide="device.isMobile"><i class="hs-icon-paint-brush"></i> 写碎片</a><!-- 发布碎片 -->
+			<a href="javascript:void(0);" class="plain-link" ui-sref="edit({action:'new',type:'essay'})" ng-hide="device.isMobile"><i class="hs-icon-pencil"></i> 写文章</a><!-- 发布文章 -->
+			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="togglePublisher()" ng-hide="device.isMobile"><i class="hs-icon-pencil"></i> 写碎片</a><!-- 发布碎片 -->
 		</div>
 		<div class="top-bar-right">
 			<a href="javascript:void(0);" class="plain-link m-left-15" ng-click="showMessage()" ng-hide="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息
@@ -44,7 +66,7 @@
 			<div class="hs-dropdown m-left-15 dis-inline-block" data-hs-dropdown>
 				<a href="javascript:void(0);" class="plain-link m-right-20 hs-dropdown-toggle"><!-- 头像,个人中心 -->
 					<img ng-src="{{avatar}}" alt="" class="avatar">
-					<i class="hs-icon-chevron-down m-left-15"></i>
+					<!-- <i class="hs-icon-chevron-down m-left-15"></i> -->
 				</a>
 				<ul class="hs-dropdown-content">
 					<li><a href="javascript:void(0);" ng-click="showPublish()" ng-show="device.isMobile"><i class="hs-icon-paint-brush"></i> 写文章</a></li>
@@ -54,7 +76,7 @@
 					<li><a href="javascript:void(0);" ng-click="showMessage()" ng-show="device.isMobile"><i class="hs-icon-envelope-o"></i> 消息 <span class="hs-badge hs-badge-warning hs-radius">{{unread_msg_num}}</span></a></li>
 					<li><a href="javascript:void(0);" ui-sref="search" ng-show="device.isMobile"><i class="hs-icon-search"></i> 搜索</a></li>
 					<li><a href="javascript:void(0);" ng-click="showFollow()"><i class="hs-icon-eye"></i> 关注</a></li>
-					<li><a href="javascript:void(0);" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</a></li>
+					<!-- <li><a href="javascript:void(0);" ng-click="showTag()"><i class="hs-icon-tags"></i> 标签</a></li> -->
 					<li><a href="javascript:void(0);" ng-click="showSetting()"><i class="hs-icon-cog"></i> 设置</a></li>
 					<li><a href="javascript:void(0);" onclick="window.location.href='{:U('Action/logout')}'"><i class="hs-icon-power-off"></i> 退出</a></li>
 				</ul>
@@ -208,11 +230,9 @@
 	var editor_basePath = "__PUBLIC__/editor/";
 	var get_token_path = "{:U('Action/get_qiniu_token')}";
 	var home_path = "__MODULE__";
-	console.log(public_path);
 </script>
 <script src="__PUBLIC__/js/dist/plugins.js"></script>
 <script src="__PUBLIC__/js/dist/angular.js"></script>
 <script src="__PUBLIC__/js/dist/index.js"></script>
 <script src="__PUBLIC__/js/dist/app.js"></script>
-<!-- <script src="__PUBLIC__/editor/meditor/js/editormd.js"></script> -->
 </html>

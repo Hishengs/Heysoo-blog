@@ -18,7 +18,7 @@ div.essay-modify
 div.essay-edit form div.essay-edit-footer{margin: 10px auto;}
 div.essay-edit form div.essay-edit-footer button{margin: 20px auto;}
 div.essay-edit-footer-note{font-size: 14px; color: #696969;}
-#essay-editor{margin-bottom: 0;}
+div.essay-edit form div.essay-editor{margin-bottom: 0;}
 div.essay-edit form textarea{}
 div.essay-edit form input.title{
 	border-left:0px;border-top:0px;border-right:0px;border-bottom:1px solid #cdcdcd;
@@ -60,9 +60,6 @@ div.essay-edit form div.publisher-footer{
 	padding: 10px 0;
 	background-color: #f5f5f5;
 }
-/* #essay-editor{
-	border-top:0px;
-} */
 /* div.input-group{margin: 10px auto;}
 div.input-group input,div.input-group select{ border-radius: 0;}
 span.input-group-addon{margin: 10px auto; border-radius: 0; background-color: #dff0d8; color: #000;} */

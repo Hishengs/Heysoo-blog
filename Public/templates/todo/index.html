@@ -1,0 +1,296 @@
+<div class="todos" ng-controller="todo">
+	<!-- 搜索区域 -->
+	<div class="search" ng-show="show.search">
+		<form class="hs-form">
+			<div class="hs-form-group">
+				<label for="">发布时间，起</label>
+				<input type="date" placeholder="开始时间" ng-model="cdt.start_time">
+			</div>
+			<div class="hs-form-group">
+				<label for="">止</label>
+				<input type="date" placeholder="结束时间" ng-model="cdt.end_time">
+			</div>
+			<div class="hs-form-group">
+				<label for="">截止时间</label>
+				<input type="date" placeholder="截止时间" ng-model="cdt.deadline">
+			</div>
+			<div class="hs-form-group">
+				<label for="">紧急程度</label>
+				<select title="紧急程度" ng-model="cdt.urgent_level">
+					<option value="0">所有</option>
+					<option value="1">紧急且重要</option>
+					<option value="2">紧急但不重要</option>
+					<option value="3">不紧急但重要</option>
+					<option value="4">不紧急且不重要</option>
+				</select>
+			</div>
+			<div class="hs-form-group">
+				<label for="">地点</label>
+				<input type="text" placeholder="地点" ng-model="cdt.address">
+			</div>
+			<div class="hs-form-group">
+				<label for="">状态</label>
+				<select title="状态" ng-model="cdt.status">
+					<option value="">所有</option>
+					<option value="0">待办</option>
+					<option value="1">已办</option>
+				</select>
+			</div>
+			<div class="hs-form-group">
+				<label for="">关键词</label>
+				<input type="text" placeholder="关键词" ng-model="cdt.key_words">
+			</div>
+			<button type="button" class="hi-btn hi-btn-primary light hi-btn-block" ng-click="search()">搜索</button>
+			<button type="button" class="hi-btn light hi-btn-block m-top-15" ng-click="resetQuery()">重置</button>
+		</form>
+	</div>
+	<!-- 发布区域 -->
+	<div class="add" ng-show="show.add">
+		<form class="hs-form">
+			<div class="hs-form-group">
+				<label for="">截止时间</label>
+				<input type="date" placeholder="截止时间" ng-model="todo.deadline">
+			</div>
+			<div class="hs-form-group">
+				<label for="">紧急程度</label>
+				<select title="紧急程度" ng-model="todo.urgent_level">
+					<option value="1">紧急且重要</option>
+					<option value="2">紧急但不重要</option>
+					<option value="3">不紧急但重要</option>
+					<option value="4">不紧急且不重要</option>
+				</select>
+			</div>
+			<div class="hs-form-group">
+				<label for="">地点(可选)</label>
+				<input type="text" placeholder="地点(可选)" ng-model="todo.address">
+			</div>
+			<div class="hs-form-group">
+				<label for="">待办事项</label>
+				<!-- <input type="text" placeholder="待办事项" ng-model="todo.content"> -->
+				<textarea cols="30" rows="10" placeholder="待办事项" ng-model="todo.content"></textarea>
+			</div>
+			<button type="button" class="hi-btn hi-btn-primary light hi-btn-block" ng-click="add()">添加</button>
+		</form>
+	</div>
+
+	<div class="todo" id="todo-{{todo.id}}" ng-repeat="todo in todos">
+		<!-- 状态 -->
+		<div class="status urgent important" ng-if="todo.urgent_level=='1'&&todo.status=='0'" title="紧急且重要">
+			<i class="hs-icon-bookmark"></i> 待办
+		</div>
+		<div class="status urgent not-important" ng-if="todo.urgent_level=='2'&&todo.status=='0'" title="紧急但不重要">
+			<i class="hs-icon-bookmark"></i> 待办
+		</div>
+		<div class="status not-urgent important" ng-if="todo.urgent_level=='3'&&todo.status=='0'" title="不紧急但重要">
+			<i class="hs-icon-bookmark"></i> 待办
+		</div>
+		<div class="status not-urgent not-important" ng-if="todo.urgent_level=='4'&&todo.status=='0'" title="不紧急且不重要">
+			<i class="hs-icon-bookmark"></i> 待办
+		</div>
+		<div class="status done" ng-if="todo.status=='1'"><i class="hs-icon-bookmark"></i> 已办</div>
+		<div class="header">
+			<!-- 截止时间 -->
+			<div class="deadline dis-inline-block">截止时间：{{todo.deadline}}</div>
+			<!-- 地点 -->
+			<div class="address dis-inline-block">地点：{{todo.address || '未指定地点'}}</div>
+		</div>
+		<del ng-if="todo.status=='1'"><div class="content" ng-bind-html="todo.content | trustHtml"></div></del>
+		<div class="content" ng-bind-html="todo.content | trustHtml" ng-if="todo.status=='0'"></div>
+		<div class="footer">
+			<!-- <span class="date m-right-15" title="{{todo.created_at}}"><i class="hs-icon-calendar"></i> {{todo.created_at | transferPostDate}}</span>
+			<span class="addr m-right-15"><i class="hs-icon-map-marker"></i> {{todo.address || '深圳大学'}}</span> -->
+			<span class="m-right-15 post_time" title="{{todo.created_at}}">发布于 {{todo.created_at | transferPostDate}}</span>
+			<a href="javascript:void(0);" class="plain-link" title="删除" ng-click="delete(todo.id)">删除</a>
+			<a href="javascript:void(0);" class="plain-link f-right" title="标为已办" ng-click="setDone(todo.id)" ng-if="todo.status=='0'">标为已办</a>
+			<a href="javascript:void(0);" class="plain-link f-right" title="撤销已办" ng-click="resetDone(todo.id)" ng-if="todo.status=='1'">撤销已办</a>
+		</div>
+	</div>
+
+	<!-- 侧边栏内容 -->
+	<div id="archive-nav">
+		<ul class="hs-list hs-text-truncate">
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="toggleAdd()">
+				新建 
+				<i class="hs-icon-caret-down f-right" ng-hide="show.add"></i>
+				<i class="hs-icon-caret-right f-right" ng-show="show.add"></i>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="toggleSearch()">
+				搜索 
+				<i class="hs-icon-caret-down f-right" ng-hide="show.search"></i>
+				<i class="hs-icon-caret-right f-right" ng-show="show.search"></i>
+				</a>
+			</li>
+			<li class="menu">
+				筛选
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="filterStatus()">
+					所有<i class="hs-icon-check f-right" ng-show="cdt.status===''"></i>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="filterStatus(0)">
+					待办<i class="hs-icon-check f-right" ng-show="cdt.status=='0'&&cdt.status!==''"></i>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="plain-link" ng-click="filterStatus(1)">
+					已办<i class="hs-icon-check f-right" ng-show="cdt.status=='1'"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- 空提示 -->
+	<div class="todo-empty-tip" ng-show="is_empty"><i class="hs-icon-warning"></i> 这里空空如也~⊙﹏⊙‖</div>
+
+	<!-- 加载更多 -->
+	<div class="load-more" ng-hide="is_empty">
+		<button class="load-more hi-btn hi-btn-primary light" ng-click="loadMore()" ng-bind-html="loadMoreText | trustHtml">加载更多</button>
+	</div>
+
+	<!-- 分页 -->
+	<!-- <div id="piece-pagination" class="pagination" ng-controller="c_paginator" ng-hide="is_empty">
+		<div class="hs-btn-group hs-btn-group-justify">
+		    <button type="button" class="hs-btn hs-btn-transparent" ng-click="esy_paginator('prev');"><i class="hs-icon-arrow-left"></i></button>
+		    <div class="hs-dropdown hs-dropdown-up dis-inline-block" id="essay_pages_selections">
+				<button class="hs-btn hs-btn-transparent hs-dropdown-toggle">
+					<i class="hs-icon-rocket"></i>
+				</button>
+				<ul class="hs-dropdown-content">
+					<li ng-repeat="option in paginator_pages"><a href="javascript:void(0);" ng-click="esy_paginator(option.id);">{{option.name}}</a></li>
+				</ul>
+			</div>
+			<script>
+				$(function(){
+					$('#essay_pages_selections').dropdown();
+				});
+			</script>
+		    <button type="button" class="hs-btn hs-btn-{{interface_color}}" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button>
+		    <button type="button" class="hs-btn hs-btn-transparent" ng-click="esy_paginator('next');"><i class="hs-icon-arrow-right"></i></button>
+		</div>
+	</div> -->
+
+</div>
+
+<style>
+div.todos{
+	/*margin: 0 auto;*/
+	/* position: absolute;
+	padding-top:100px;
+	left: 50%;
+	margin-left: -400px;
+	width:800px; */
+	width: 100%;
+	/*padding-left: 200px;*/
+	padding-top: 20px;
+	padding-left: 150px;
+	position: relative;
+}
+/*搜索*/
+div.todos div.search{
+	position: fixed;
+	top: 50px;
+	left: 150px;
+	/*right: 0;*/
+	width: 250px;
+	/*height: 43px;*/
+	bottom: 0;
+	z-index: 99;
+	background: #fff;
+	border-right: 1px solid #cdcdcd;
+}
+div.todos div.search form{
+	padding: 10px;
+}
+/*发布*/
+div.todos div.add{
+	position: fixed;
+	top: 50px;
+	left: 150px;
+	/*right: 0;*/
+	width: 400px;
+	/*height: 43px;*/
+	bottom: 0;
+	z-index: 99;
+	background: #fff;
+	border-right: 1px solid #cdcdcd;
+}
+div.todos div.add form{
+	padding: 10px;
+}
+/*空提示*/
+div.todos div.todo-empty-tip{
+	width:100%;
+	margin-top: 200px;
+	text-align: center;
+	left: -75px;
+	position: absolute;
+}
+/*待办事项*/
+div.todo{
+	border:1px solid #cdcdcd;
+	max-width:800px;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom: 30px;
+}
+div.todo div.status{
+	position: absolute;
+	padding: 5px;
+	color: #fff;
+	white-space: nowrap;
+	right: 799px;
+	top: -1px;
+	font-size: 14px;
+}
+div.todo div.header{
+	/*padding: 10px;*/
+	border-bottom: 1px solid #cdcdcd;
+}
+div.todo div.header div.deadline{
+	width: 49%;
+	border-right: 1px solid #cdcdcd;
+	padding: 10px;
+}
+div.todo div.header div.address{
+	width: 50%;
+	padding: 10px;
+}
+div.todo div.content{
+	padding: 10px;
+}
+div.todo div.footer{
+	border-top: 1px solid #cdcdcd;
+	padding: 5px 10px;
+	background-color: #f5f5f5;
+	font-size: 12px;
+}
+div.todo div.footer *{
+	font-size: 12px;
+	background-color: #f5f5f5;
+}
+div.todo div.status.urgent.important{
+	background: #dd514c;
+}
+div.todo div.status.urgent.not-important{
+	background: #f37b1d;
+}
+div.todo div.status.not-urgent.important{
+	background: #0e90d2;
+}
+div.todo div.status.not-urgent.not-important{
+	background: #72cceb;
+}
+div.todo div.status.done{
+	background: #5eb95e;
+}
+/*加载更多*/
+div.todos div.load-more{
+	width: 100%;
+	text-align: center;
+}
+</style>

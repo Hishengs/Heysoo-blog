@@ -1,8 +1,16 @@
 //文章，碎片，日记发布
-heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Music','$ocLazyLoad','ngDialog','$stateParams',
-    function($scope,$rootScope,$state,$http,Music,$ocLazyLoad,ngDialog,$stateParams){
+heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Music','$ocLazyLoad','ngDialog','$stateParams','User',
+    function($scope,$rootScope,$state,$http,Music,$ocLazyLoad,ngDialog,$stateParams,User){
     //--------------- 动态创建编辑器 -------------
-    window.essay_editor = editormd("essay-editor",essay_editor_opt);
+    $scope.post = {};//待发布或编辑的文章
+    $scope.edit_song_key = '';//查找音乐的关键词
+    $scope.songs = [];//查找到的音乐结果
+    $scope.song_search_tip_show = false;
+    window.essay_md_editor = editormd("essay-md-editor",essay_md_editor_opt);//初始化Markdown编辑器
+    $scope.current_editor = 'markdown';//当前的编辑器类型：markdown/regular
+    //两种编辑器的资源路径数组
+    var regular_editor_resource = [public_path+'/editor/kindeditor-min.js',public_path+'/editor/themes/simple/simple.css'];
+    var markdown_editor_resource = [];
     //------------ 初始化数据 ----------------
     if($stateParams.action == 'new'){//新增文章
         $scope.action = 'new';
@@ -13,18 +21,32 @@ heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Mus
             visible_tag:'',
             archive:'',
             content:'',
-            post_piece:true
+            piece_check:false
         };
         $scope.selected_tags = '';
+        //新建的编辑器由用户偏好来决定
+        User.getUserConfig().success(function(res){
+            if(res.user_config.editor=='regular'){
+                $ocLazyLoad.load(regular_editor_resource).then(function(){
+                    window.essay_editor = KindEditor.create('#essay-editor',regular_essay_editor_opt);
+                    $scope.current_editor = 'regular';
+                },function(e){
+                    console.log('初始化时加载编辑器出错！');
+                });
+            }else {
+                window.essay_md_editor = editormd("essay-md-editor",essay_md_editor_opt);
+                $scope.current_editor = 'markdown';
+            }
+        });
     }else {//编辑文章
         $scope.action = 'edit';
+        //修改的编辑器由文章新建时所使用的编辑器决定
         //---------------- 获取文章内容 ----------------
         $http({
             method:'POST',
             url:home_path+"/Essay/get_essay.html",
             data:{'id':$stateParams.id}
         }).success(function(res){
-            console.log(res);
             if(res.error === 0){
                 $scope.post = {
                     id:$stateParams.id,
@@ -33,50 +55,69 @@ heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Mus
                     visible:res.items.visible,
                     visible_tag:res.items.visible_tag,
                     archive:res.items.archive,
-                    content:res.items.content,
+                    content:parseInt(res.items.is_md)?res.items.content_md:res.items.content,
                     piece_check:false
                 }
                 $scope.selected_tags = res.items.selected_tags;
-                setTimeout(function(){window.essay_editor.setMarkdown(toMarkdown(res.items.content?res.items.content:''));},1500);
+                //将html转为md
+                if(!parseInt(res.items.is_md)){//如果文章原来使用普通编辑器编辑则继续使用该编辑器
+                    //加载普通编辑器
+                    $ocLazyLoad.load(regular_editor_resource).then(function(){
+                        window.essay_editor = KindEditor.create('#essay-editor',regular_essay_editor_opt);
+                        window.essay_editor.html($scope.post.content);
+                        $scope.current_editor = 'regular';
+                    },function(e){
+                        console.log('初始化时加载编辑器出错！');
+                    });
+                }else{
+                    window.essay_md_editor = editormd("essay-md-editor",essay_md_editor_opt);//初始化Markdown编辑器
+                    $scope.current_editor = 'markdown';
+                    setTimeout(function(){window.essay_md_editor.setMarkdown($scope.post.content);},1000);//这里需延迟等编辑器初始化好了再设置内容
+                }
             }else{hMessage(res.msg);}
         });
     }
-    $scope.edit_song_key = '';//查找音乐的关键词
-    $scope.songs = [];
-    $scope.song_search_tip_show = false;
     //-------------- 初始化编辑器 ------------
+    //1.归档信息 2.etc
     $http({
         method:'POST',
         url:home_path+'/Essay/get_edit_init_info.html',
         data:{}
     }).success(function(res){
-        console.log(res);
         if(res.error === 0){
             $scope.archiveItems = res.data.archive;
             if($scope.action == 'new')
             $scope.post.archive = $scope.archiveItems[0].id;
         }else{hMessage(res.msg);}
     });
-    //setTimeout(function(){window.essay_editor.fullscreen();},500);
     //--------------- 发布文章 ------------------
     $scope.editPost = function(){
-        $scope.post.content = window.essay_editor.getHTML();//获取markdown编辑器的html
-        console.log($scope.post);
-        if($scope.action == 'new')
+        var is_sys = arguments[0] && arguments[0]=='sys';//是否是内部调用
+        //return;
+        if($scope.current_editor=='markdown'){
+            $scope.post.content = window.essay_md_editor.getHTML();//获取markdown编辑器的html
+            $scope.post.content_md = window.essay_md_editor.getMarkdown();
+        }else {
+            //ps,如果使用普通编辑器，将html转为md可能会有问题
+            $scope.post.content_md = toMarkdown(window.essay_editor.html());
+            $scope.post.content = window.essay_editor.html();
+        }
+        $scope.post.is_md = $scope.current_editor=='markdown'?1:0;//文章的编辑方式
+        if($scope.action == 'new' && !$scope.post['id'])
             $http({
                 method:'POST',
                 url:home_path+"/Essay/post.html",
                 data:$scope.post
             }).success(function(res){
-            console.log(res);
+                console.log(res);
                 if(res.error === 0){
-                    hMessage(res.msg);
-                    //edit_post.html('');
-                    window.essay_editor.setValue('');//将编辑器内容置空
-                    if($scope.edit_type == 'essay')
-                        $state.go('view',{id:res.id});
-                    else
-                    {$state.go('home');}
+                    if(is_sys)$scope.post.id = res.id;
+                    else{
+                        hMessage(res.msg);
+                        if($scope.current_editor=='markdown')window.essay_md_editor.setValue('');//将编辑器内容置空
+                        else window.essay_editor.html('');
+                        $state.go('essay',{page:1});
+                    }
                 }else{hMessage(res.msg);}
             });
         else 
@@ -85,11 +126,15 @@ heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Mus
                 url:home_path+"/Essay/update.html",
                 data:$scope.post
             }).success(function(res){
-            console.log(res);
+                console.log(res);
                 if(res.error === 0){
-                    hMessage(res.msg);
-                    window.essay_editor.setValue('');//将编辑器内容置空
-                    $state.go('essay',{page:1});
+                    if(is_sys);
+                    else{
+                        hMessage(res.msg);
+                        if($scope.current_editor=='markdown')window.essay_md_editor.setValue('');//将编辑器内容置空
+                        else window.essay_editor.html('');
+                        $state.go('essay',{page:1});
+                    }
                 }else{hMessage(res.msg);}
             });
 
@@ -98,7 +143,7 @@ heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Mus
     $scope.searchSong = function(){
       if(isEmpty($scope.edit_song_key)){hMessage("输入不能为空！");return;}
       $rootScope.song_search_tip = '查询中...';
-      $rootScope.current_editor = window.essay_editor;
+      $rootScope.current_editor = $scope.current_editor=='markdown'?window.essay_md_editor:window.essay_editor;
       $rootScope.search_songs = new Array();
       Music.search($scope.edit_song_key).success(function(res){
         if(res.songs.length){
@@ -232,6 +277,76 @@ heysoo.register.controller('c_edit',['$scope','$rootScope','$state','$http','Mus
     $scope.setPieceCheck = function(){
       $scope.post.piece_check = !$scope.post.piece_check;
     }
+    //-------------- 更换编辑器 --------------
+    $scope.changeEditor = function(){
+        //如果要转为普通编辑器需要异步加载脚本文件
+        if($scope.current_editor=='markdown'){
+            $ocLazyLoad.load([public_path+'/editor/kindeditor-min.js',public_path+'/editor/themes/simple/simple.css']).then(function(){
+                //动态创建编辑器
+                var essay_content = essay_md_editor.getHTML();
+                $scope.current_editor = 'regular';
+                window.essay_editor = KindEditor.create('#essay-editor',regular_essay_editor_opt);
+                console.log('进入异步加载了');
+                essay_editor.html(essay_content);
+                $scope.post.content = essay_content;
+                var ke_container = document.getElementsByClassName('ke-container')[0];
+                if(ke_container !== undefined)ke_container.style.cssText = 'display:block;';
+                console.log('current_editor:'+$scope.current_editor);
+            },function(e){
+                console.log('普通编辑器加载出错！');
+                return;
+            });
+        }else {
+            $scope.post.content = toMarkdown(window.essay_editor.html());
+            essay_md_editor.setMarkdown($scope.post.content);
+            $scope.current_editor = 'markdown';
+            document.getElementsByClassName('ke-container')[0].style.cssText = 'display:none;';
+            window.essay_editor = null;
+            //console.log('current_editor:'+$scope.current_editor);
+        }
+    }    
+    //-------------- 实现自动保存 --------------
+    $scope.auto_save = {time_gap:30*1000,tip:'',show_tip:false,id:0,saved_content:'',begin_after:60*1000};
+    $scope.autoSave = function(){
+        //console.log('autoSave 被调用');
+        //如果文章内容为空，则不保存
+        $scope.post.content = $scope.current_editor=='markdown'?window.essay_md_editor.getMarkdown():window.essay_editor.html();
+        //如果文章内容为空或者内容没有变化则不保存
+        if(isEmpty($scope.post.content) || ($scope.auto_save.saved_content == $scope.post.content)){/*console.log('文章内容为空或者内容没有变化');*/return;}
+        else{
+            $scope.auto_save.saved_content = $scope.post.content;
+            $scope.post.title = isEmpty($scope.post.title)?'未标题':$scope.post.title;
+            $scope.editPost('sys');//提交保存
+            $scope.auto_save.tip = '已自动保存：' + new Date().toLocaleString();
+            $scope.auto_save.show_tip = true;
+            setTimeout(function(){$scope.auto_save.show_tip = false;},500);//0.5秒后隐藏提示
+        }
+    }
+    //页面打开1分钟开启自动保存
+    if($scope.action=='new')//只对新增开启
+    setTimeout(function(){
+        //console.log('已开启自动保存');
+        $scope.auto_save.id = setInterval(function(){
+            $scope.autoSave();
+            if(!$state.is('edit')){clearInterval($scope.auto_save.id);/*console.log('autoSave 被停止调用');*/}//如果离开了当前状态则停止自动保存
+        },$scope.auto_save.time_gap);
+    },$scope.auto_save.begin_after);
+    //舍弃已保存的文章
+    $scope.dropPost = function(){
+        if(confirm('确定舍弃已保存的内容？')){
+            //删除已保存的文章
+            $http({
+                method:'POST',
+                url:home_path+"/Essay/delete.html",
+                data:{essay_id:$scope.post.id}
+            }).success(function(res){
+                console.log(res);
+                if(res.error === 0){
+                    history.go(-1);//返回前一页
+                }else{/*hMessage(res.msg);*/}
+            });
+        }
+    }
 }]);
 
 heysoo.register.controller('c_piece_publisher',function($scope,$rootScope,$state,$http,Music){
@@ -300,12 +415,16 @@ heysoo.register.controller('c_piece_publisher',function($scope,$rootScope,$state
       });
     }
 });
-heysoo.register.controller('c_song_search',function($scope,$rootScope){
-  //往编辑器插入音乐
-  $scope.insertMusicBox = function(song_id){
-    music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width='+music_player_width+' height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
-    //edit_post.appendHtml(music_frame);
-    $rootScope.current_editor.insertValue(music_frame);
-    $('#song_search_modal').modal('toggle');
-  }
-});
+//移到home.js
+/*heysoo.register.controller('c_song_search',function($scope,$rootScope){
+    //往编辑器插入音乐
+    $scope.insertMusicBox = function(song_id){
+        console.log('往编辑器插入音乐');
+        music_frame = '<iframe class="netease-music" frameborder="no" border="0" marginwidth="0" marginheight="0" min-width='+music_player_width+' height=86 src="http://music.163.com/outchain/player?type=2&id='+song_id+'&auto=0&height=66"></iframe>';
+        //edit_post.appendHtml(music_frame);
+        if($rootScope.current_editor['insertValue'] !== undefined)
+            $rootScope.current_editor.insertValue(music_frame);
+        else $rootScope.current_editor.appendHtml(music_frame);
+        $('#song_search_modal').modal('toggle');
+    }
+});*/

@@ -1,4 +1,11 @@
 //var site_prefix = "http://localhost";
+var regular_essay_editor_opt = {//普通编辑器的配置
+    width:'760px',
+    height:'650px',
+    items:['link','image','bold','italic','preview','plainpaste'],
+    resizeType:0,
+    themeType:'simple'
+};
 //发布
 var editOpts = {
     width:'100%',
@@ -21,6 +28,7 @@ var essayCmtOptions  = {
 		height:'180px',
 		minHeight:'180px',
 		resizeType:0,
+		lineNumbers:false,
 		items:['emoticons', 'link','image'],
 		themeType : 'simple'
 			}; 
@@ -31,6 +39,7 @@ var essayReplyCmtOptions  = {
 		maxWidth:'520px',
 		height:'180px',
 		minHeight:'180px',
+		lineNumbers:false,
 		resizeType:0,
 		items:['emoticons', 'link','image'],
 		themeType : 'simple'
@@ -44,18 +53,19 @@ var pieceCmtOptions  = {
 		maxWidth:'380px',
 		height:'330px',
 		minHeight:'330px',
+		lineNumbers:false,
 		resizeType:0,
 		items:['emoticons', 'link','image'],
 		themeType : 'simple'
 			}; 
 //文章发布
-var essay_editor_opt = {
+var essay_md_editor_opt = {
     path : public_path+"/editor/meditor/lib/",
     height:650,
     toolbarIcons:function(){
-      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+      return ["bold","italic","quote","hr","link","image","watch","preview","fullscreen"]
     },
-    emoji:true,
+    emoji:false,
     watch:false,
     htmlDecode:"script,img",
     saveHTMLToTextarea:true,
@@ -72,9 +82,9 @@ var essay_modify_editor_opt = {
 	path : public_path+"/editor/meditor/lib/",
 	height:650,
 	toolbarIcons:function(){
-	return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+	return ["bold","italic","quote","hr","link","image","watch","preview","fullscreen"]
 	},
-	emoji:true,
+	emoji:false,
 	watch:false,
 	htmlDecode:"script,img",
 	saveHTMLToTextarea:true,
@@ -93,16 +103,17 @@ var piece_editor_opt = {
     path : public_path+"/editor/meditor/lib/",
     height:250,
     toolbarIcons:function(){
-      return ["bold","italic","quote","hr","link","image","emoji","watch","preview","fullscreen"]
+      return ["quote","link","image","watch","preview"]
     },
-    emoji:true,
+    emoji:false,
     watch:false,
     htmlDecode:"script,img",
     saveHTMLToTextarea:true,
-    placeholder:"在此输入内容",
+    placeholder:"在此输入内容(支持Markdown语法)",
     imageUpload: true,
     imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
     imageUploadURL: "http://upload.qiniu.com/",
+    lineNumbers:false,
     qiniu:{uploadUrl:'http://upload.qiniu.com/',get_token_path:get_token_path}
 };
 var essay_comment_editor_opt = {//评论框
@@ -110,9 +121,9 @@ var essay_comment_editor_opt = {//评论框
 	height:250,
 	width:'100%',
 	toolbarIcons:function(){
-	return ["link","image","emoji"]
+	return ["link","image"]
 	},
-	emoji:true,
+	emoji:false,
 	watch:false,
 	autoFocus:false,
 	htmlDecode:"script,img",
@@ -129,9 +140,9 @@ var essay_comment_reply_editor_opt = {//回复框
     height:250,
     width:'100%',
     toolbarIcons:function(){
-      return ["link","image","emoji"]
+      return ["link","image"]
     },
-    emoji:true,
+    emoji:false,
     watch:false,
     htmlDecode:"script,img",
     saveHTMLToTextarea:true,
@@ -211,7 +222,7 @@ function hideMask(){
 }
 //弹出消息框
 function hMessage(msg){
-	var time = arguments[1] ? arguments[1] : 2000; 
+	var time = arguments[1] ? arguments[1] : 500; 
 	if($('#hMessage').length > 0){
 		$('#hMessage').html(msg);
 		$("#hMessage-mask").append($('#hMessage'));
@@ -234,12 +245,15 @@ function hMessage(msg){
 			"position":"fixed",
 			"z-index":"9999999",
 			"left":"50%",
-			"top":"200px",
+			//"top":"200px",
+			"top":"20px",
 			"margin-left":"-150px",
 			"text-align":"center",
 			"width":"300px",
 			"height":"auto",
-			"background":"#f5f5f5",
+			//"background":"#f5f5f5",
+			"background":"#fff",
+			"border":"1px solid #cdcdcd",
 			"color":"#666",
 			"padding":"20px",
 			"font-size":"16px",
@@ -325,6 +339,33 @@ function updateAmazeUIEvent(){
         $('[data-hs-dropdown]').dropdown();
         console.log('更新amazeui-dropdown事件');
     }
+}
+//---------------- 判断输入是否为空 ----------------
+//对象，数组，布尔，字符串，数字，null，undefined
+function isEmpty(obj){
+    var res = true;
+    var type = Object.prototype.toString.call(obj).slice(8,-1);//判断对象类型
+    switch(type){
+        case 'Null':
+        case 'Undefined':
+            res = true;
+            break;
+        case 'Object':
+            return Object.getOwnPropertyNames(obj).length==0?true:false;
+            break;
+        case 'Array':
+            res = obj.length==0?true:false;
+            break;
+        case 'Boolean':
+            res = !obj;
+            break;
+        default:
+            var whitespace = "[\\x20\\t\\r\\n\\f]";
+            var rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" );
+            res = obj.toString().replace(rtrim,'').length==0?true:false;//去掉前后空格
+            break;
+    }
+    return res;
 }
 ;(function(window){
     var root = this;

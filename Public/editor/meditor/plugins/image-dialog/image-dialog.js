@@ -151,7 +151,8 @@
                         return false;
                     }
                     
-                    if (!isImage.test(fileName))
+                    //if (!isImage.test(fileName))
+                    if (!isImage.test(fileName.toLocaleLowerCase()))
                     {
                         alert(imageLang.formatNotAllowed + settings.imageFormats.join(", "));
                         

@@ -9,19 +9,39 @@
 			<div class="piece-triangle"></div> -->
 			<div class="piece-info">
 				<span class="piece-user"><a href="javascript:;" ui-sref="user({user_id:piece.user_id})" class="piece-user">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
-				<span class="piece-date"><i class="hs-icon-time"></i> {{piece.date}}</span>
+				<span class="piece-date" title="{{piece.date}}">{{piece.date | transferPostDate}}</span>&nbsp;
+				<!-- <div class="hs-dropdown" data-hs-dropdown>
+					<a href="javascript:void(0);" class="hs-dropdown-toggle plain-link">
+						<i class="hs-icon-caret-square-o-down"></i>
+					</a>
+					<ul class="hs-dropdown-content">
+						<li class="hs-dropdown-header">操作</li>
+						<li>
+							<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片"><i class="hs-icon-trash"></i> 删除</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" title="查看碎片评论"><i class="hs-icon-comment-o"></i> 评论({{piece.comments_num}})</a>
+						</li>
+					</ul>
+				</div> -->
 			</div>
 			<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
 			<div class="piece-footer"><i class="hs-icon-tag"></i> 
-				<a href="javascript:tag('{{piece.tag}}');" class="tag" style="text-decoration:none;">{{piece.tag}}</a>&nbsp;
-				<span class="piece-footer-right">
+				<a href="javascript:tag('{{piece.tag}}');" class="tag plain-link">{{piece.tag}}</a>&nbsp;
+				<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片" ng-if="piece.user_id == user_info.id">
+					<i class="hs-icon-trash"></i> 删除
+				</a>&nbsp;
+				<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" title="查看碎片评论">
+					<i class="hs-icon-comment-o"></i> 评论({{piece.comments_num}})
+				</a>
+				<!-- <span class="piece-footer-right">
 					<a href="javascript:void(0);" ng-click="deletePiece(piece.piece_id)" title="删除碎片">
-					<i class="hs-icon-trash" ng-if="piece.user_id == user_info.id"></i>
+						<i class="hs-icon-trash" ng-if="piece.user_id == user_info.id"></i>
 					</a>
 					<a href="javascript:void(0);" ng-click="pieceCommentToggle(piece.piece_id);" class="m-left-15" title="查看碎片评论">
-					<i class="hs-icon-comment-o"></i> {{piece.comments_num}}
+						<i class="hs-icon-comment-o"></i> {{piece.comments_num}}
 					</a>
-				</span>
+				</span> -->
 			</div>
 		</div>
 		<!-- 碎片评论 -->
@@ -62,6 +82,7 @@
 				</li>
 			</ul>
 		</div>
+		<hr>
 	</div>
 </div>
 
@@ -87,5 +108,9 @@
     <button type="button" class="hs-btn hs-btn-transparent" ng-click="paginator('piece','next');"><i class="hs-icon-arrow-right"></i></button>
 </div>
 </div>
+
+<script>
+	setTimeout(function(){updateAmazeUIEvent();},1000);
+</script>
 
 

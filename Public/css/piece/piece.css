@@ -19,6 +19,7 @@ div.piece-right{ position:relative; margin-left:70px; width:auto; background-col
 div.piece-right div.piece-content{margin:15px 0;}
 div.piece-right div.piece-content *{font-size:1.6rem;}
 div.piece-right div.piece-content img{max-width: 95%;}
+div.piece-right div.piece-content div.img-preview .img-wrapper{width: 80px; height: 80px;}
 div.piece-right:hover{ /* box-shadow:0px 2px 20px rgba(0,0,0,0.5); */}
 div.piece-triangle{ position:absolute; left:-20px; top:30px; width:0; height:0; border-width:10px; border-color:transparent #FFFFFF transparent transparent; border-style:solid;} 
 div.bg{position:absolute; left:-21px; top:30px; width:0; height:0; border-width:10px; border-color:transparent #aaa transparent transparent; border-style:solid;}

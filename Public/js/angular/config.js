@@ -10,6 +10,7 @@ var tpl_setting_url = public_path+'/templates/setting';
 var tpl_follow_url = public_path+'/templates/follow';
 var tpl_action_url = public_path+'/templates/action';
 var tpl_user_url = public_path+'/templates/user';
+var tpl_todo_url = public_path+'/templates/todo';
 
 var loaded_js = [];//保存动态加载过的js文件
 

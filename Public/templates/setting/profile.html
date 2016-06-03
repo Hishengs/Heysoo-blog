@@ -2,13 +2,13 @@
 <div class="hs-panel hs-panel-default setting-user-avatar" ng-controller="c_modify_avatar">
     <div class="hs-panel-hd">头像
         <form class="hs-form upload-avatar-form" style="display:inline-block;float:right;" enctype="multipart/form-data" action="http://upload.qiniu.com/" method="post" target="upload_avatar_ifm">
-            <button class="avatar-select hs-btn hs-btn-{{interface_color}} hs-btn-xs">
+            <button class="avatar-select hi-btn hi-btn-primary light hs-primary-mini">
                 <span id="avatar-file-name">选择头像</span>
                 <input type="file" name="file" class="new_avatar" id="new_avatar" ng-model="new_avatar">
             </button>
             <input style="display:none" name="token" id="upload_avatar_token" ng-model="upload_avatar_token">
             <!-- <button style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="selectAvatar()" ng-bind="selectAvatarBtn"></button> -->
-            <button type="button" style="display:inline-block;" class="hs-btn hs-btn-{{interface_color}} hs-btn-xs" ng-click="uploadAvatar()" ng-bind="uploadAvatarBtn"></button>
+            <button type="button" style="display:inline-block;" class="hi-btn hi-btn-primary light hs-primary-mini" ng-click="uploadAvatar()" ng-bind="uploadAvatarBtn"></button>
         </form>
         <iframe id='upload_avatar_ifm' name='upload_avatar_ifm' style="display:none"/>
     </div>
@@ -60,7 +60,7 @@
               <span class="hs-input-group-label"><i class="hs-icon-lock hs-icon-fw"></i> 新密码</span>
               <input type="password" class="hs-form-field" name="new_passwd" placeholder="新密码" ng-model="new_passwd">
             </div>
-            <button class="hs-btn hs-btn-{{interface_color}}" ng-click="resetPasswd()">重置</button>
+            <button class="hi-btn hi-btn-primary light" ng-click="resetPasswd()">重置</button>
         </form>
     </div>
 </div>
@@ -78,7 +78,7 @@
             <span class="hs-input-group-label"><i class="hs-icon-user"></i> 新用户名</span>
             <input type="text" class="hs-form-field" name="new_usernhse" placeholder="新用户名" ng-model="new_usernhse">
         </div>
-        <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifyUserNhse('userNhse')">保存</button>
+        <button type="button" class="hi-btn hi-btn-primary light hi-btn-block" ng-click="modifyUserNhse('userNhse')">保存</button>
     </form>
     </div>
   </div>
@@ -95,7 +95,7 @@
                   <span class="hs-input-group-label"><i class="hs-icon-tag"></i> 新签名</span>
                   <input type="text" class="hs-form-field modify_signature" name="new_signature" placeholder="新签名" ng-model="new_signature">
                 </div>
-                <button type="button" class="hs-btn hs-btn-{{interface_color}} hs-btn-block" ng-click="modifySignature('signature')">保存</button>
+                <button type="button" class="hi-btn hi-btn-primary light hi-btn-block" ng-click="modifySignature('signature')">保存</button>
     </form>
     </div>
   </div>
@@ -118,7 +118,7 @@
             <div class="hs-input-group">
             <input type="text" class="hs-form-field" name="invite_code" placeholder="通过邀请码邀请好友注册" ng-model="invite_code" disabled="disabled">
             <span class="hs-input-group-btn">
-            <button class="hs-btn hs-btn-{{interface_color}}" type="button" ng-click="createInviteCode()">生成邀请码</button>
+            <button class="hs-btn hs-btn-default" type="button" ng-click="createInviteCode()">生成邀请码</button>
             </span>
             </div>
             </div>

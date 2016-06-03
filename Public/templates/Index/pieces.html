@@ -7,7 +7,7 @@
 	<!-- <div class="bg"></div><div class="piece-triangle"></div> -->
 	<div class="piece-info">
 	<span class="piece-author"><a class="piece-user" href="javascript:;" onclick="hMessage('暂时无法访问');" target="_blank">{{piece.username}}  </a></span>&nbsp;&nbsp;发布于
-	<span class="piece-date"><i class="icon-time"></i> {{piece.date}}</span>
+	<span class="piece-date" title="{{piece.date}}">{{piece.date | transferPostDate}}</span>
 	</div>
 	<div class="piece-content" ng-bind-html="piece.content | trustHtml"></div>
 	<div class="piece-footer"><i class="icon-tag"></i> 

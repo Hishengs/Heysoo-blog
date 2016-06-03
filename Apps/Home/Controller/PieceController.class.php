@@ -56,7 +56,8 @@ class PieceController extends Controller {
         $content = I('post.content','','');
         $str_num = A('Action')->str_length($content);
         $current_str_num = $str_num['cn']+$str_num['en'];
-        if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_EMPTY_TIP')),'json');
+        //if($current_str_num < 1)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_EMPTY_TIP')),'json');
+        if(empty(trim($content)))$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_EMPTY_TIP')),'json');
         if($current_str_num > 255)$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.PIECE_CONTENT_LENGTH_ERROR').$current_str_num,'str_num'=>$str_num),'json');
         else{
             $userName = $_SESSION['USER_NAME'];

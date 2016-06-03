@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Org\Util\DBUtil;
 /**
  * Deal with essay
  * Author:Hisheng
@@ -56,7 +57,9 @@ class EssayController extends Controller {
                 'user_id'=>$this->user_id,
                 'title'=>I('post.title'),
                 'tag'=>$tag,
+                'is_md'=>I('post.is_md'),
                 'content'=>$content,
+                'content_md'=>I('post.content_md')?I('post.content_md','',''):'',
                 'userName'=>$userName,
                 'visible'=>I('post.visible'),
                 'visible_tag'=>$visible_tag,
@@ -92,6 +95,11 @@ class EssayController extends Controller {
         else
             $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
     }
+    public function delete(){
+        $essay_id = I('post.essay_id');
+        if(!empty($essay_id))$this->ng_delete($essay_id);
+        else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.DELETE_FAILED')),'json');
+    }
     //是否是文章发布者
     protected function is_essay_author($essay_id){
         $cdt = array('essay_id'=>$essay_id,'user_id'=>$this->user_id);
@@ -118,8 +126,14 @@ class EssayController extends Controller {
         else if($current_str_num > 10000)$this->ajaxReturn(array('error'=>1,'msg'=>'文章总字数不能超过1万个字！当前字数为：'.$current_str_num,'str_num'=>$str_num),'json');
         else{
             $last_modify_date = date("Y-m-d H:i:s");
-            $data = array('title'=>I('post.title'),'tag'=>I('post.tag'),'content'=>$content,'visible'=>I('post.visible'),
-                'visible_tag'=>I('post.visible_tag'),'archive'=>I('post.archive'),'last_modify_date'=>$last_modify_date);
+            $data = array('title'=>I('post.title'),
+                'tag'=>I('post.tag'),
+                'content'=>$content,
+                'content_md'=>I('post.content_md')?I('post.content_md','',''):'',
+                'visible'=>I('post.visible'),
+                'visible_tag'=>I('post.visible_tag'),
+                'archive'=>I('post.archive'),
+                'last_modify_date'=>$last_modify_date);
             $res = $this->essay_model->where("essay_id=".$essay_id)->save($data);
             if($res != false){
                 $post_piece = $post_piece=="false"?false:true;
@@ -231,6 +245,7 @@ class EssayController extends Controller {
             ->field('hs_user.userName,hs_essay.essay_id,hs_essay.user_id,hs_essay.title,hs_essay.date,hs_essay.tag,LEFT(hs_essay.content,1000) as content,hs_essay.visible')
             ->order('hs_essay.date desc')->limit($page*$this->page_size,$this->page_size)->select();
             $count = $this->essay_model->where($cdt)->count();
+            $essays = A('Auth')->filter_invisible_essay($essays);
             $this->ajaxReturn(array('error'=>0,'items'=>$essays,'page'=>$page+1,'count'=>$count),'json');
         }
     }
@@ -241,7 +256,7 @@ class EssayController extends Controller {
          * 私有文章则只能是登陆用户且是作者本身
          */
         $id = I('get.id');
-        $essay = $this->essay_model->field('hs_user.userName,hs_essay.user_id,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content,hs_essay.visible')->
+        /*$essay = $this->essay_model->field('hs_user.userName,hs_essay.user_id,hs_essay.essay_id,hs_essay.title,hs_essay.date,hs_essay.tag,hs_essay.content,hs_essay.visible')->
         join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         if($essay === false){$this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');}//查询失败
         else if($essay == NULL){$this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.ESSAY_NOT_EXIST')),'json');}//文章不存在
@@ -266,14 +281,40 @@ class EssayController extends Controller {
                 $res = array('error'=>0,'essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on,'is_logined'=>empty($_SESSION['USER_ID'])?0:1);
                 $this->ajaxReturn($res,'json');
             }
-        }
+        }*/
+        
+        $essays = $this->essay_model->where('essay_id='.$id)->field('user_id,essay_id,title,date,tag,content,visible,visible_tag')->select();
+        //$this->ajaxReturn(array('error'=>1,'essay'=>$essays),'json');
+        if($essays !== false){
+            if($essays == NULL){$this->ajaxReturn(array('error'=>2,'msg'=>C('SITE_LANG.ESSAY_NOT_EXIST')),'json');}//文章不存在
+            $essays = A('Auth')->filter_invisible_essay($essays);//可见性验证
+            if(count($essays)){
+                //关联用户表
+                $essay = DBUtil::loadRelatedData($essays,'user_id','user','id',array('userName'))[0];
+                //检查是否开启了文章评论，若开启则获取文章评论
+                $user_config = A('User')->get_user_config($essay['user_id']);
+                $essay_comment_on = $user_config['privacy_essay_comment']==1 && C('ESSAY_COMMENT_ON');//是否开启了评论
+                //获取文章评论
+                if(empty($_SESSION['USER_ID'])){//如果未登录
+                    $comments = array();
+                    $comments_num = 0;
+                }else{
+                    $comments = A('Comment')->get_essay_comments($essay['essay_id']);
+                    $comments_num = count($comments);
+                }
+                $res = array('error'=>0,'essay'=>$essay,'comments'=>$comments,'comments_num'=>$comments_num,'essay_comment_on'=>$essay_comment_on,'is_logined'=>empty($_SESSION['USER_ID'])?0:1);
+                $this->ajaxReturn($res,'json');
+            }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.ESSAY_VIEW_ACCESS_DENIED')),'json');//没有查看的权限
+        }else $this->ajaxReturn(array('error'=>1,'msg'=>C('SITE_LANG.QUERY_FAILED')),'json');//查询失败
+        
     }
     //get message of one essay
     public function get_essay(){
-        IF(!IS_POST)return;
+        if(!IS_POST)return;
         $id = I('post.id');
         if(empty($_SESSION['USER_ID']))exit(C('SITE_LANG.LOGIN_ALERT'));//如果未登录
-        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,hs_essay.visible_tag,hs_essay.archive,hs_essay.tag,hs_essay.content')
+        $essay = $this->essay_model->field('hs_user.userName,hs_essay.essay_id,hs_essay.title,hs_essay.visible,
+            hs_essay.visible_tag,hs_essay.archive,hs_essay.tag,hs_essay.is_md,hs_essay.content,hs_essay.content_md')
         ->join('hs_user ON hs_user.id=hs_essay.user_id AND hs_essay.essay_id='.$id)->find(); 
         if(!empty($essay['visible_tag'])){
             $cdt['id'] = array('in',$essay['visible_tag']);
